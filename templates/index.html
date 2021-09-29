@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{.Metadata.Title}}</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+{{.Body}}
+
+{{ range .Posts }}
+<h1>{{.Title}}</h1>
+<ul>
+{{ range .Tags}}
+<li>{{.}}</li>
+{{ end }}
+</ul>
+<p><a href="{{.Filename}}">{{.Filename}}</a></p>
+{{ end }}
+</body>
+</html>
