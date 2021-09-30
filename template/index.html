@@ -5,17 +5,19 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+{{ template "header" }}
 
-{{.Body}}
+<h1>Posts</h1>
 
 {{ range .Posts }}
-<h1>{{.Title}}</h1>
-<ul>
-{{ range .Tags}}
-<li>{{.}}</li>
-{{ end }}
-</ul>
-<p><a href="{{.Filename}}">{{.Filename}}</a></p>
+<p>
+    <a href="{{ .Filename }}">{{ .Title }}</a>
+    <ul>
+    {{ range .Tags}}
+    <li>{{.}}</li>
+    {{ end }}
+    </ul>
+</p>
 {{ end }}
 </body>
 </html>

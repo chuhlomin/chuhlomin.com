@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="{{ back .Path }}styles.css">
 </head>
 <body>
+{{ template "header" }}
+
 <a href="{{ back .Path }}index.html">← Home</a>
 
 {{.Body}}
