@@ -4,6 +4,10 @@ created: 2020-04-24
 
 # SuperTeamDeluxe.com
 
+<video width="462" height="274" controls>
+  <source src="superteamdeluxe.mp4" type="video/mp4">
+</video>
+
 Посмотрите на красивый сайт 👆
 Стиль, анимации кнопок – кайф.
 

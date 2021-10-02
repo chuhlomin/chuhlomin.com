@@ -12,15 +12,7 @@
     {{ template "header" "index"}}
     <div class="content">
         {{ range .Posts }}
-        <p>
-            <a href="{{ .Filename }}">{{ .Title }}</a>
-            <ul>
-            {{ range .Tags}}
-            <li>{{.}}</li>
-            {{ end }}
-            </ul>
-            <span class="created">{{ .Created }}</span>
-        </p>
+        <p><a href="{{ .Filename }}">{{ .Title }}</a></p>
         {{ end }}
     </div>
 </div>
