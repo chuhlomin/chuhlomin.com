@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>{{.Metadata.Title}}</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body>
+<div class="common">
+    {{ template "header" "index"}}
+    <div class="content">
+        {{ range .Posts }}
+        <p>
+            <a href="{{ .Filename }}">{{ .Title }}</a>
+            <ul>
+            {{ range .Tags}}
+            <li>{{.}}</li>
+            {{ end }}
+            </ul>
+        </p>
+        {{ end }}
+    </div>
+</div>
+</body>
+</html>

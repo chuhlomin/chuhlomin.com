@@ -18,13 +18,12 @@ site from Markdown files and templates.
 genblog
 ```
 
-Use [fswatch](https://github.com/emcrisostomo/fswatch) to update static site
-on every file change.
+Use [fswatch](https://github.com/emcrisostomo/fswatch) to update the site on every file change.
 
 ```bash
 # brew install fswatch
-fswatch -or -e "output" -e ".git" . | xargs -n1 genblog
+fswatch -or -e "output" -e ".git" . | xargs -n1 sh -c "genblog; cp -R static/ output/"
 
 # ⬆️ same as:
-fswatch --one-per-batch --recursive --exclude="output" --exclude=".git" . | xargs -n1 genblog
+fswatch --one-per-batch --recursive --exclude="output" --exclude=".git" . | xargs -n1 sh -c "genblog; cp -R static/ output/"
 ```
