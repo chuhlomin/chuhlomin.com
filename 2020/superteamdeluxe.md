@@ -11,7 +11,8 @@ created: 2020-04-24
 Посмотрите на красивый сайт 👆
 Стиль, анимации кнопок – кайф.
 
-Care Instructions: https://superteamdeluxe.com/pages/care 
+Care Instructions: https://superteamdeluxe.com/pages/care
+
 > Find iron. Summon laundry ghost.
 
 Еще позабавил текст в конце страницы: 
