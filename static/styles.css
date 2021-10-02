@@ -69,6 +69,11 @@ p {
   max-width: 720px;
 }
 
+.created {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 75%;
+}
+
 .content, .footer {
   margin: 0 9% 40px 9%;
   width: calc(100% - 9% - 9%);

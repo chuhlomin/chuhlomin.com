@@ -9,6 +9,7 @@
 <div class="common">
     {{ template "header" .Path }}
     <div class="content">
+        <div class="created">{{ .Metadata.Created }}</div>
         <h1>{{ .Metadata.Title }}</h1>
         {{ .Body }}
     </div>
