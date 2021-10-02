@@ -1,5 +1,7 @@
 # micro
 
+[![main](https://github.com/chuhlomin/micro/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/chuhlomin/micro/actions/workflows/main.yml)
+
 ## Local setup
 
 Use [e](https://github.com/chuhlomin/e) to get values from `.env` file into
