@@ -101,6 +101,18 @@ a:hover {
   font-size: 75%;
 }
 
+video {
+  margin-top: 10px;
+}
+
+ul {
+  margin: 10px 0 0 0;
+  padding: 0 0 0 30px;
+}
+ul li + li {
+  margin-top: 10px;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background: #181a1b;
@@ -130,18 +142,6 @@ a:hover {
     border: solid 1px #353E46;
     border-bottom-color: #272F37;
     box-shadow: inset 0 -1px 0 #272F37;
-  }
-
-  video {
-    margin-top: 10px;
-  }
-
-  ul {
-    margin: 10px 0 0 0;
-    padding: 0 0 0 30px;
-  }
-  ul li + li {
-    margin-top: 10px;
   }
 }
 
