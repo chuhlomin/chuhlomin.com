@@ -2,15 +2,19 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>{{.Metadata.Title}}</title>
+<title>{{ .Metadata.Title }}</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div class="common">
     {{ template "header" "index"}}
     <div class="content">
+        Привет!<br>
+        Меня зовут Константин, я программист, и это мой личный микроблог.
+
         {{ range .Posts }}
         <p><a href="{{ .Filename }}">{{ .Title }}</a></p>
         {{ end }}
