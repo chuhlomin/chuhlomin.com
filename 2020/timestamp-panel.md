@@ -18,7 +18,7 @@ created: 2020-05-20
 В желании попробовать фреймворк VueJS я таки закатал рукава и сделал:
 ts.chuhlomin.com
 
-![Timestamp Panel screenshot](timestamp.jpeg "Timestamp Panel screenshot")
+![Timestamp Panel screenshot](timestamp-panel.jpeg "Timestamp Panel screenshot")
 
 https://github.com/chuhlomin/timestamp
 
