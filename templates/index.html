@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>{{ .Metadata.Title }}</title>
+<title>Константин Чухломин</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -13,7 +13,7 @@
     {{ template "header" "index"}}
     <div class="content">
         Привет!<br>
-        Меня зовут Константин, я программист, и это мой личный микроблог.
+        Меня зовут Константин, я инженер-программист, и это мой микроблог.
 
         {{ range .Posts }}
         <p><a href="{{ .Filename }}">{{ .Title }}</a></p>
