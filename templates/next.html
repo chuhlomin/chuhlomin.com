@@ -1,0 +1,23 @@
+{{ define "next" }}
+<div class="next-background">
+    <div class="next">
+        <div class="prevNext">
+            {{ $next := nextPage . }}
+            {{ $prev := prevPage . }}
+            <div class="prevLink">
+                {{ if $prev }}
+                <a class="hasArrow" href="{{ back $prev.Metadata.Filename }}{{ $prev.Metadata.Filename }}">← <span>{{ $prev.Metadata.Title }}</span></a>
+                {{ end }}
+            </div>
+            <div class="middle">
+                {{ if and $prev $next }}<span class="dot"> • </span>{{ end }}
+            </div>
+            <div class="nextLink">
+                {{ if $next }}
+                <a class="hasArrow" href="{{ back $next.Metadata.Filename }}{{ $next.Metadata.Filename }}"><span>{{ $next.Metadata.Title }}</span> →</a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

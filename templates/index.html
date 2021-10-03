@@ -12,11 +12,10 @@
 <div class="common">
     {{ template "header" "index"}}
     <div class="content">
-        Привет!<br>
-        Меня зовут Константин, я инженер-программист, и это мой микроблог.
+        Привет! Меня зовут Константин, я инженер-программист, и это мой микроблог.
 
-        {{ range .Posts }}
-        <p><a href="{{ .Filename }}">{{ .Title }}</a></p>
+        {{ range .AllPages }}
+        <p><a href="{{ .Metadata.Filename }}">{{ .Metadata.Title }}</a></p>
         {{ end }}
     </div>
 </div>

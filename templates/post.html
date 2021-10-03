@@ -2,18 +2,19 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>{{ .Metadata.Title }}</title>
-<link rel="stylesheet" href="{{ back .Path }}styles.css">
+<title>{{ .CurrentPage.Metadata.Title }}</title>
+<link rel="stylesheet" href="{{ back .CurrentPage.Path }}styles.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div class="common">
-    {{ template "header" .Path }}
+    {{ template "header" .CurrentPage.Path }}
     <div class="content">
-        <h1>{{ .Metadata.Title }}</h1>
-        {{ .Body }}
-        <div class="created">{{ .Metadata.Created }}</div>
+        <h1>{{ .CurrentPage.Metadata.Title }}</h1>
+        {{ .CurrentPage.Body }}
+        <div class="created">{{ .CurrentPage.Metadata.Created }}</div>
     </div>
+    {{ template "next" . }}
 </div>
 </body>
 </html>
