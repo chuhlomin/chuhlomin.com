@@ -26,8 +26,8 @@ a {
   border-bottom: 1px solid rgba(0, 112, 243, 0.75);
 }
 a:visited {
-  color: #E0B0FF;
-  border-color: rgba(248, 255, 131, 0.75);
+  color: #551A8B;
+  border-bottom: 1px solid rgba(85, 26, 139, 0.75);
 }
 a:hover {
   color: #66f;
