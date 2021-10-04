@@ -183,7 +183,7 @@ ul li + li {
   text-align: left;
   margin-right: 20px;
 }
-.next .prevLink {
+.next a:first-child {
   margin-left: -10px;
 }
 .next .prevLink::before {
@@ -276,6 +276,9 @@ ul li + li {
     width: calc(100% - 40px);
   }
 
+  .next a:first-child {
+    margin-left: 20px;
+  }
   .next .prevLink {
     margin-left: 20px;
   }
@@ -314,8 +317,10 @@ ul li + li {
     flex-wrap: wrap;
     flex-direction: column-reverse;
   }
-
   .next .dot {
     display: none;
+  }
+  .next a:first-child {
+    margin-left: 20px;
   }
 }
