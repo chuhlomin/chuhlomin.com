@@ -68,6 +68,9 @@ a.hasArrow:hover {
   border: none;
 }
 a.hasArrow span {
+  transition-property: border;
+  transition-duration: 0.33s;
+  transition-timing-function: ease-out;
   border-bottom: 1px solid var(--color-link-underscore);
 }
 a.hasArrow:visited span {
@@ -322,5 +325,18 @@ ul li + li {
   }
   .next a:first-child {
     margin-left: 20px;
+  }
+}
+
+@-moz-document url-prefix() {
+  /*
+  Strange animation in Firefox when hover on visited link:
+  when hover on link, color blinks to default and then transition to hover color;
+  when move mouse away, color transition to default color and then blinks to visited color.
+  */
+  a,
+  a.hasArrow span {
+    transition: none;
+    transition-property: none;
   }
 }
