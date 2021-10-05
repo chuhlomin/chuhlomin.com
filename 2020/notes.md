@@ -4,7 +4,7 @@ created: 2020-07-17
 
 # Notes
 
-![Notes screenshot](notes.jpeg "Notes screenshot")
+![Notes screenshot](notes.png "Notes screenshot")
 
 Мне кажется многие незаслуженно обходят приложение Notes стороной.
 Да, у него нет тех несчётных фич, которые есть у конкурентов, но, может, они и не нужны большинству пользователей?

@@ -21,4 +21,4 @@ https://www.alfredapp.com (программа для MacOS)
 
 https://github.com/chuhlomin/alfred-workflow-timestamp
 
-#app #alfred
+#alfred #app

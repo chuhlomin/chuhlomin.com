@@ -4,7 +4,7 @@ created: 2020-04-26
 
 # WebP
 
-![WebP logo](webp.jpeg "WebP logo")
+![WebP logo](webp.png "WebP logo")
 
 В 2010 году Google анонсировал новый формат изображений – WebP (читается как "weppy"). 
 https://developers.google.com/speed/webp/

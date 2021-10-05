@@ -16,7 +16,7 @@ https://ohmyz.sh
 
 Даже если ты уже используешь OhMyZsh, все равно посмотри на список плагинов, может быть найдешь что-то полезное (например common-aliases, alias-finder).
 
-Темы: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+Темы: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes<br>
 Плагины https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
 
 Ну а напоследок рекомендую zsh-autosuggestions, который добавляет подсказки к недописанной команде на основе истории, как в Fish.  

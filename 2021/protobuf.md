@@ -3,11 +3,11 @@ title: Protobuf
 created: 2021-01-17
 ---
 
-![Protocol Buffers](protobuf.jpeg "Protocol Buffers")
-
 Protocol Buffers – открытый расширяемый механизм сериализации структурированных данных, разработанный в Google. Как JSON или XML, только бинарный, компактнее. При этом "отправитель" и "получатель" сообщения должны заранее договаривиться о "схеме сообщения".
 
 https://developers.google.com/protocol-buffers/
+
+![Protocol Buffers](protobuf.jpeg "Protocol Buffers")
 
 Из Protobuf файлов можно генерировать код для разных языков программирования: Go, Java, Python, C++, C#, Ruby.
 

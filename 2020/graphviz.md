@@ -35,6 +35,6 @@ nodesep = 0.2
 
 Вот пример такого графа для проекта https://github.com/esimov/caire
 
-![esimov/caire dependency graph](dependency_graph.png "esimov/caire dependency graph")
+[![esimov/caire dependency graph](dependency_graph.png "esimov/caire dependency graph")](dependency_graph.png)
 
 #visualization #go

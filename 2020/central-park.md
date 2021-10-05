@@ -4,7 +4,7 @@ created: 2020-06-21
 
 # Central Park
 
-![Central Park promo](central-park.jpeg "Central Park promo")
+![Central Park promo](central-park.png "Central Park promo")
 
 На Apple TV+ выходит неожиданно неплохой семейный анимационный ситком-мюзикл Central Park.
 

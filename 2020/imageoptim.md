@@ -9,7 +9,7 @@ created: 2020-04-20
 Недавно нашел и советую бесплатный ImageOptim который удаляет все эти данные:
 https://imageoptim.com
 
-![ImageOptim screenshot](imageoptim.jpeg "ImageOptim screenshot")
+![ImageOptim screenshot](imageoptim.png "ImageOptim screenshot")
 
 Больше советов в старой статье на CNET:
 https://www.cnet.com/how-to/remove-metadata-from-office-files-pdfs-and-images/

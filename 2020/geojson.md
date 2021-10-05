@@ -6,9 +6,9 @@ created: 2020-05-06
 
 GeoJSON это формат описания гео-данных используя JSON.
 
-![GeoJSON demo](geojson.jpeg "GeoJSON demo")
+![GeoJSON demo](geojson.png "GeoJSON demo")
 
-https://en.wikipedia.org/wiki/GeoJSON
+https://en.wikipedia.org/wiki/GeoJSON<br>
 https://geojson.org
 
 В 2015 году IETF (Инженерный совет Интернета) и группа авторов изначальной спецификации объединились в рабочую группу по стандартизации GeoJSON. В 2016 опубликовали RFC7946 “The GeoJSON Format”:

@@ -4,8 +4,6 @@ created: 2020-05-31
 
 # CCMenu
 
-![CCMenu promo](ccmenu.jpeg "CCMenu promo")
-
 Был такой инструмент «непрерывной сборки» (по-русски – CI) как CruiseControl (2001–2010).
 Написанный работниками ThoughtWorks, проект с открытым исходным кодом под BSD-лицензией, видимо, получил большую известность.
 http://cruisecontrol.sourceforge.net
@@ -21,5 +19,7 @@ https://ci.chuhlomin.com/api/badges/chuhlomin/timestamp/cc.xml
 В MacOS с этим справляется программа под названием CCMenu (см. скриншот).
 
 http://ccmenu.org
+
+![CCMenu promo](ccmenu.png "CCMenu promo")
 
 #ci #app #macos

@@ -16,7 +16,7 @@ created: 2020-04-20
 
 Я поэкспериментировал немного с одной Gо библиотекой и сделал CLI к ней: https://github.com/chuhlomin/go-blurhash-experiment
 
-![Blurhash demo 2](blurhash.png "Blurhash demo 2")
+[![Blurhash demo 2](blurhash.png "Blurhash demo 2")](blurhash.png)
 
 Photo by Melissa Keizer on Unsplash https://unsplash.com/@keizgoesboom
 

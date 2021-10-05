@@ -4,7 +4,7 @@ created: 2020-07-14
 
 # Learn X in Y minutes
 
-![Learn X in Y minutes promo](learn-x-in-y-minutes.jpeg "Learn X in Y minutes promo")
+![Learn X in Y minutes promo](learn-x-in-y-minutes.png "Learn X in Y minutes promo")
 
 Adam Bard из Канады в 2013 году сделал проект «Learn X in Y minutes» – сайт с короткими туториалами по разным языкам программирования для программистов, позволяющий быстро освоить новый язык.
 

@@ -4,7 +4,7 @@ created: 2020-05-30
 
 # Gitmoji
 
-![Gitmoji promo](gitmoji.jpeg "Gitmoji promo")
+![Gitmoji promo](gitmoji.png "Gitmoji promo")
 
 Как-то я пропустил такую штуку как Gitmoji (с 2016).
 Это такой «справочник» по эмоджи для коммит-сообщений.
@@ -20,8 +20,8 @@ https://github.com/carloscuesta/gitmoji/blame/master/src/data/gitmojis.json
 
 Также обратите внимание, что по клику на эмоджи на сайте он копируется в буфер обмена. 
 
-А если не хочется всегда ходить на сайт – есть gitmoji-cli, который служит «оболочкой» над git commit (см. скриншот).
+А если не хочется всегда ходить на сайт – есть `gitmoji-cli`, который служит «оболочкой» над git commit (см. скриншот).
 
 https://github.com/carloscuesta/gitmoji-cli (MIT)
 
-#git #interface #emoji
+#git #emoji #interface

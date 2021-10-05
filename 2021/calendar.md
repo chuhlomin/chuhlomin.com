@@ -15,4 +15,6 @@ created: 2021-01-01
 
 <a href="calendar.pdf">calendar.pdf</a>
 
-#calendar
+![Кадендарь](calendar.png "Календарь, январь 2020")
+
+#project #calendar

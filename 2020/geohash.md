@@ -7,7 +7,7 @@ created: 2020-05-05
 В 2008 году Gustavo Niemeyer придумал Гео-хеш – способ представления области на карте в виде строки символов.
 Чем длиннее строка – тем больше точность/меньше область.
 
-![GeoHash demo](geohash.jpeg "GeoHash demo")
+![GeoHash demo](geohash.png "GeoHash demo")
 
 https://en.wikipedia.org/wiki/Geohash
 

@@ -11,7 +11,7 @@ https://visualstudio.microsoft.com/services/live-share/
 После логина через GitHub или Microsoft аккаунт с помощью этого расширения можно начать «Лайв-сессию» и кинуть коллеге ссылку.
 Коллега подключается к сессии и получает доступ к файлам проекта из своего редактора (со своими настроенными горячими клавишами): VSCode или Visual Studio.
 
-![VSCode Live Share promo](vscode-live-share.jpeg "VSCode Live Share promo")
+![VSCode Live Share promo](vscode-live-share.jpg "VSCode Live Share promo")
 
 Работает не идеально, но уже достаточно хорошо чтобы этим пользоваться.
 В довесок предлагаются расширения добавляющие чат и аудио связь.

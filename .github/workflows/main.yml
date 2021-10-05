@@ -22,11 +22,12 @@ jobs:
       - name: GenBlog
         uses: chuhlomin/genblog@v0.1
         with:
-          title: "Konstantin Chukhlomin's microblog"
-          author: "Konstantin Chukhlomin"
+          title: Konstantin Chukhlomin's microblog
+          author: Konstantin Chukhlomin
           short_description: ""
           posts_directory: "."
           output_directory: "./output"
+          allowed_file_extensions: ".jpeg,.jpg,.png,.mp4,.pdf"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1

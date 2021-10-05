@@ -18,6 +18,6 @@ https://iterm2.com/downloads.html
 
 Суть в том что вместо классических комбинаций вроде "Control+A", "Control+E", "Esc, b", "Esc, f" можно использовать интуитивно понятные и запоминаемые комбинации из текстовых редакторов: "⌘+←", "⌘+→", "⌥+←", "⌥+→".
 
-![Настройка Natural Text Editing](iterm2_keys.png "Настройка Natural Text Editing")
+[![Настройка Natural Text Editing](iterm2_keys.png "Настройка Natural Text Editing")](iterm2_keys.png)
 
 #app #macos

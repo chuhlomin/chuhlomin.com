@@ -4,7 +4,7 @@ created: 2020-05-01
 
 # Monaco Editor
 
-![Monaco Editor](monaco.jpeg "Monaco Editor")
+![Monaco Editor](monaco.png "Monaco Editor")
 
 Сейчас мой основной редактор в котором я пишу код – VSCode.
 Совсем недавно я обнаружил что Microsoft отдельно предоставляет JS библиотеку Monaco Editor – максимально обрезанную версию VSCode где остались только редактор с мини-картой, подсветка, и куча мелких фишек.

@@ -10,10 +10,10 @@ created: 2021-04-19
 
 Так как я перешёл на GitHub Actions, а Helm мне не кажется достаточно минималистичным, я написал свой Action: https://github.com/chuhlomin/render-template
 
-![Render Template Example](render-template.jpeg "Render Template Example")
+![Render Template Example](render-template.png "Render Template Example")
 
 Пример использования: https://github.com/chuhlomin/timestamp/runs/2372341222
 
 GitHub Marketplace: https://github.com/marketplace/actions/render-template
 
-#project
+#project #ops #go

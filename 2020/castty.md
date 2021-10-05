@@ -12,4 +12,6 @@ https://github.com/dhobsd/castty
 
 Demo: https://9vx.org/~dho/term/index.html
 
+![CasTTY screenshot](castty.png "CasTTY screenshot")
+
 #cli #app

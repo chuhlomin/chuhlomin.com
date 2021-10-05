@@ -4,7 +4,7 @@ created: 2020-04-27
 
 # Lottie
 
-![Lottie logo](lottie.jpeg "Lottie logo")
+![Lottie logo](lottie.png "Lottie logo")
 
 Продолжим про Телеграм стикеры. 
 Вместо WebP для анимированных стикеров был выбран формат под названием Lottie, разработанный в AirBnB (помните, раньше еще можно было путешествовать в другие страны?).

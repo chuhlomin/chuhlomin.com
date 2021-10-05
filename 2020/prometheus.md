@@ -4,7 +4,7 @@ created: 2020-07-04
 
 # Prometheus
 
-![Prometheus logo](prometheus.jpeg "Prometheus logo")
+![Prometheus logo](prometheus.png "Prometheus logo")
 
 Уже несколько лет я пользуюсь (и всем советую) Prometheus – система мониторинга с открытым исходным кодом (Go, Apache-2.0), созданная SoundCloud еще в 2012 году.
 https://prometheus.io/

@@ -12,7 +12,7 @@ Andrew Brampton написал JS библиотеку для генерации
 А на основе этого проекта Aleksandar Toplek из Хорватии сделал расширение для VSCode:
 https://marketplace.visualstudio.com/items?itemName=AleksandarDev.vscode-sequence-diagrams
 
-![VSCode sequence diagrams](seqdiag.jpeg "VSCode sequence diagrams")
+![VSCode sequence diagrams](seqdiag.png "VSCode sequence diagrams")
 
 Не забудьте настроить стиль в settings.json:
 ```json

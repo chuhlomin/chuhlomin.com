@@ -4,7 +4,7 @@ created: 2020-07-27
 
 # Drone
 
-![Drone](drone.jpeg "Drone")
+![Drone](drone.png "Drone")
 
 Расскажу про прекрасную систему сборки с открытым исходным кодом (Apache 2) на Go, основанную на Docker контейнерах.
 

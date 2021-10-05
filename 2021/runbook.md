@@ -4,7 +4,7 @@ created: 2021-06-06
 
 # Runbook
 
-![RUNBOOK.md](runbook.jpeg "RUNBOOK.md")
+![RUNBOOK.md](runbook.png "RUNBOOK.md")
 
 В 2016 году команда Skelton Thatcher Consulting опубликовала шаблон руководства по эксплуатации систем – Runbook: https://github.com/SkeltonThatcher/run-book-template/blob/master/run-book-template.md
 
