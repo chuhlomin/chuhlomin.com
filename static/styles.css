@@ -87,9 +87,9 @@ a.hasArrow:hover span {
 }
 
 .header-content {
-  max-width: calc(100% - 9% - 9%);
-  margin: 0 auto;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .header-content h1, .header-content #name {
@@ -102,12 +102,11 @@ a.hasArrow:hover span {
 .logo {
   display: block;
   position: absolute;
-  left: calc(-1 * (40px + 20px * 2));
+  left: -60px;
   top: 50%;
   transform: translateY(-50%);
   width: 50px;
   height: 50px;
-  margin: 0 20px 0;
 }
 
 .user-picture-image {
@@ -119,12 +118,28 @@ a.hasArrow:hover span {
   border-radius: 50%;
 }
 
+.languages [class^="lang-"] {
+  padding: 0.33rem 0.66rem;
+  margin-top: -0.33rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-size: 75%;
+  border: none;
+}
+
+.languages span {
+  font-weight: bold;
+  cursor: default;
+}
+
 .blog-title {
   font-size: 16px;
   font-weight: bold;
+  flex-grow: 10;
 }
 
-.content, .footer, .next {
+.content, .footer, .next, .header-content {
   margin: 0 9%;
   width: calc(100% - 9% - 9%);
   max-width: 720px;
@@ -269,14 +284,15 @@ ul li + li {
     left: 0;
     top: 0;
     transform: none;
-    margin: 0 0 5px 0;
+    margin: 0 10px 0 0;
+  }
+  .content, .footer, .next, .header-content {
+    margin: 0 20px 40px 20px;
+    width: calc(100% - 40px);
   }
   .header-content {
     max-width: calc(100% - 40px);
-  }
-  .content, .footer, .next {
-    margin: 0 20px 40px 20px;
-    width: calc(100% - 40px);
+    margin-bottom: 0px;
   }
 
   .next a:first-child {
@@ -303,13 +319,15 @@ ul li + li {
   .flag {
     padding: 10px 0 10px;
   }
-  .header-content {
-    max-width: calc(100% - 20px);
-  }
-  .content, .footer, .next {
+  .content, .footer, .next, .header-content {
     margin: 0 10px 20px 10px;
     width: calc(100% - 20px);
   }
+  .header-content {
+    max-width: calc(100% - 20px);
+    margin-bottom: 0px;
+  }
+
   .content video,
   .content img {
     margin-left: -10px;

@@ -1,8 +1,28 @@
 {{ define "header" }}
+{{ $name := "Konstantin Chukhlomin" }}
+{{ $indexSuffix := "" }}
+{{ if eq .CurrentPage.Metadata.Language "ru" }}
+    {{ $name = "Константин Чухломин" }}
+    {{ $indexSuffix = "_ru" }}
+{{ end }}
 <div class="flag">
     <div class="header-content">
-        <div class="logo"><img src="{{ back . }}apple-touch-icon.png" class="user-picture-image" alt=""></div>
-        <div class="blog-title">{{ if eq . "index" }}Константин Чухломин{{ else }}<a href="{{ back . }}index.html">Константин Чухломин</a>{{ end }}</div>
+        <div class="logo"><img src="{{ back .CurrentPage.Path }}apple-touch-icon.png" class="user-picture-image" alt=""></div>
+        <div class="blog-title">{{ if eq .CurrentPage.ID "index.html" }}{{ $name }}{{ else }}<a href="{{ back .CurrentPage.Path }}index{{ $indexSuffix }}.html">{{ $name }}</a>{{ end }}</div>
+
+        {{ $langs := allLanguageVariations . }}
+        {{ $length := len $langs }}
+        {{ if gt $length 1 }}
+        <div class="languages">
+            {{ range $langs }}
+                {{ if eq .Metadata.Language $.CurrentPage.Metadata.Language }}
+                    <span class="lang-{{ .Metadata.Language }}">{{ .Metadata.Language }}</span>
+                {{ else }}
+                    <a class="lang-{{ .Metadata.Language }}" href="{{ back $.CurrentPage.Path }}{{ .Path }}">{{ .Metadata.Language }}</a>
+                {{ end }}
+            {{ end }}
+        </div>
+        {{ end }}
     </div>
 </div>
 {{ end }}

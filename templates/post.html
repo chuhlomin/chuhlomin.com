@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ .CurrentPage.Metadata.Language }}">
 <head>
 <meta charset="UTF-8">
 <title>{{ .CurrentPage.Metadata.Title }}</title>
@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="common">
-    {{ template "header" .CurrentPage.Path }}
+    {{ template "header" . }}
     <div class="content">
         <h1>{{ .CurrentPage.Metadata.Title }}</h1>
         {{ .CurrentPage.Body }}

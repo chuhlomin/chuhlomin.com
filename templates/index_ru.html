@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Konstantin Chukhlomin</title>
+<title>Константин Чухломин</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -12,10 +12,10 @@
 <div class="common">
     {{ template "header" . }}
     <div class="content">
-        Hello! My name is Konstantin, i'm a software engineer, and this is my microblog.
+        Привет! Меня зовут Константин, я инженер-программист, и это мой микроблог.
 
         {{ range .AllPages }}
-        {{ if eq .Metadata.Language "en" }}
+        {{ if eq .Metadata.Language "ru" }}
         <p><a href="{{ .Path }}">{{ .Metadata.Title }}</a></p>
         {{ end }}
         {{ end }}
