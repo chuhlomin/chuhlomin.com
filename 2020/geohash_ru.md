@@ -14,6 +14,6 @@ https://en.wikipedia.org/wiki/Geohash
 Интерактивная карта (в правом верхнем углу выбери «GeoHash»)
 http://missinglink.github.io/leaflet-spatial-prefix-tree/
 
-Go-библиотека: https://github.com/mmcloughlin/geohash
+Go библиотека: https://github.com/mmcloughlin/geohash
 
 #geo

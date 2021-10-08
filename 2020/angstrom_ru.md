@@ -4,7 +4,7 @@ created: 2020-08-07
 
 # Ångström
 
-![Ångström promo](angstrom.jpeg "Ångström promo")
+![Ångström promo](angstrom.png "Ångström promo")
 
 Angstrom (Ангстрем) – единица измерения равная 10⁻¹⁰м, а также название ещё одного iOS приложения, которое переехало на мой основной экран – Ångström (от Александра Бабаева и Ильи Бирмана).
 

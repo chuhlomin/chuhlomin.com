@@ -6,8 +6,8 @@ created: 2020-04-19
 
 https://github.com/dhobsd/castty
 
-"A CLI tool to record audio-enabled screencasts of your terminal, for the web."<br>
-You can highlight text in videos 🤯<br>
+"A CLI tool to record audio-enabled screencasts of your terminal, for the web."  
+You can select text in videos 🤯  
 You can host the "video" yourself and insert it into your documentation.
 
 Demo: https://9vx.org/~dho/term/index.html

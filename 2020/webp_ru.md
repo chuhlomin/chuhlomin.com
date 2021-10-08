@@ -6,7 +6,7 @@ created: 2020-04-26
 
 ![WebP logo](webp.png "WebP logo")
 
-В 2010 году Google анонсировал новый формат изображений – WebP (читается как "weppy"). 
+В 2010 году Google анонсировал новый формат изображений – WebP (читается как "weppy").
 https://developers.google.com/speed/webp/
 
 Эффективнее чем JPEG, PNG и GIF, он стал использоваться для показа превью видео на YouTube, что ускорило загрузку страницы на 10%:

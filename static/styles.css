@@ -295,7 +295,16 @@ ul li + li {
     margin-bottom: 0px;
   }
 
+  .nextBackground {
+    padding: 10px 0 40px;
+  }
+  .next {
+    margin: 0 10px;
+  }
   .next a:first-child {
+    margin-left: initial;
+  }
+  .next .prevLink:first-child {
     margin-left: 20px;
   }
   .next .prevLink {
@@ -334,15 +343,17 @@ ul li + li {
     margin-right: -10px;
     max-width: calc(100% + 20px);
   }
+
+  .nextBackground {
+    padding: 0 0 20px;
+  }
   .next {
+    margin: 0;
     flex-wrap: wrap;
     flex-direction: column-reverse;
   }
   .next .dot {
     display: none;
-  }
-  .next a:first-child {
-    margin-left: 20px;
   }
 }
 
