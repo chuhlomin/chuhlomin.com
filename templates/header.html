@@ -15,9 +15,7 @@
         {{ if gt $length 1 }}
         <div class="languages">
             {{ range $langs }}
-                {{ if eq .Metadata.Language $.CurrentPage.Metadata.Language }}
-                    <span class="lang-{{ .Metadata.Language }}">{{ .Metadata.Language }}</span>
-                {{ else }}
+                {{ if ne .Metadata.Language $.CurrentPage.Metadata.Language }}
                     <a class="lang-{{ .Metadata.Language }}" href="{{ back $.CurrentPage.Path }}{{ .Path }}">{{ .Metadata.Language }}</a>
                 {{ end }}
             {{ end }}
