@@ -16,7 +16,7 @@
 
         {{ range .AllPages }}
         {{ if eq .Metadata.Language "ru" }}
-        <p><a href="{{ .Path }}">{{ .Metadata.Title }}</a></p>
+        <p><a href="{{ langToGetParameter .Path }}">{{ .Metadata.Title }}</a></p>
         {{ end }}
         {{ end }}
     </div>
