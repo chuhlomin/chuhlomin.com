@@ -8,7 +8,7 @@ created: 2020-04-30
 
 Another great (so far) series is What we do in the shadows (2019, FX, Hulu).
 
-In 2014, a film of the same name was released in the genre of a documentary horror-comedy, where a group of cameramen shoots the everyday life of three vampires in the modern world.
+In 2014, a film of the same name was released in the genre of a mockumentary horror-comedy, where a group of cameramen shoots the everyday life of three vampires in the modern world.
 
 In 2018 New Zealand TV channel TVNZ 2 started a spin-off series, "Wellington Paranormal," about the cops from the movie who investigate paranormal phenomena in the same town. But, unfortunately, it turned out very average, with silly jokes and boring stories.
 

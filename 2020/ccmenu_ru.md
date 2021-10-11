@@ -12,11 +12,11 @@ http://cruisecontrol.sourceforge.net
 https://cctray.org/v1/
 
 Travis, Jenkins, TeamCity, Drone CI, и многие другие предоставляют специальные URL-адреса по которым отдают информацию о состоянии сборок, например:
-https://ci.chuhlomin.com/api/badges/chuhlomin/timestamp/cc.xml
+https://ci.chuhlomin.com/api/badges/chuhlomin/timestamp/cc.xml  
 В Drone CI ожидаемо это работает только для публичных проектов.
 
-Остается другая сторона вопроса: предоставление этой информации пользователю в удобном виде.
-В MacOS с этим справляется программа под названием CCMenu (см. скриншот).
+Остается другая сторона вопроса: предоставление этой информации пользователю в удобном виде.  
+В macOS с этим справляется программа под названием CCMenu (см. скриншот).
 
 http://ccmenu.org
 
