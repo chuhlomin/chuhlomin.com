@@ -16,7 +16,7 @@ Gource shows the project repository as an animated tree, with the root directory
 Dots represent individual files and sub-directories. Authors appear and disappear as they make changes.
 https://github.com/acaudwell/Gource
 
-Любопытно выглядит поддержка Gravatar (базы аватаров, ассоциированных с email адресом).
+Support for Gravatar (a database of avatars associated with an email address) looks interesting.
 https://github.com/acaudwell/Gource/wiki
 
 #visualization #app

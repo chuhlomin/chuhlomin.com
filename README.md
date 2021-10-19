@@ -27,3 +27,11 @@ fswatch -or -e "output" -e ".git" . | xargs -n1 sh -c "genblog; cp -R static/ ou
 # ⬆️ same as:
 fswatch --one-per-batch --recursive --exclude="output" --exclude=".git" . | xargs -n1 sh -c "genblog; cp -R static/ output/"
 ```
+
+Serve output folder locally via nginx using docker-compose:
+
+```bash
+docker-compose up -d nginx
+```
+
+Open http://127.0.0.1:8080
