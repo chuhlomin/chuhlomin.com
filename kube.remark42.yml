@@ -61,8 +61,6 @@ spec:
               value: /srv/var/backup
             - name: DEBUG
               value: "{{ .remark_debug }}"
-            - name: AUTH_GOOGLE_CID
-              value: /srv/var/db
           envFrom:
             - secretRef:
                 name: remark42

@@ -1,5 +1,6 @@
 ---
 date: 2021-10-22
+comments_enabled: true
 ---
 
 # fswatch
