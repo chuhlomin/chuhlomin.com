@@ -11,7 +11,7 @@ data:
   AUTH_GOOGLE_CID: {{ .auth_google_cid_base64 }}
   AUTH_GOOGLE_CSEC: {{ .auth_google_csec_base64 }}
 ---
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .app }}
@@ -60,7 +60,7 @@ spec:
             - name: BACKUP_PATH
               value: /srv/var/backup
             - name: DEBUG
-              value: {{ .remark_debug }}
+              value: "{{ .remark_debug }}"
             - name: AUTH_GOOGLE_CID
               value: /srv/var/db
           envFrom:
@@ -98,8 +98,10 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: {{ .name }}
-              servicePort: 8080
+              service:
+                name: {{ .name }}
+                port:
+                  number: 8080
             pathType: Prefix
             path: /
   tls:
