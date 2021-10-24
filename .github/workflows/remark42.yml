@@ -9,7 +9,7 @@ env:
   GKE_ZONE: us-central1-c
 
 jobs:
-  release:
+  remark42:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
