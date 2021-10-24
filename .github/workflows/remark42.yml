@@ -1,0 +1,52 @@
+name: remark42
+
+on: 
+  workflow_dispatch:
+
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GKE_CLUSTER: cluster-1
+  GKE_ZONE: us-central1-c
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup gcloud CLI
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          service_account_key: ${{ secrets.GKE_SA_KEY }}
+          project_id: ${{ secrets.GKE_PROJECT }}
+
+      - name: Get the GKE credentials
+        uses: google-github-actions/get-gke-credentials@v0.2.1
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER }}
+          location: ${{ env.GKE_ZONE }}
+          credentials: ${{ secrets.GKE_SA_KEY }}
+
+      - name: Render template Remark42
+        id: render_template_remark42
+        uses: chuhlomin/render-template@v1.2
+        with:
+          template: kube.remark42.yml
+          vars: |
+            image: umputun/remark42:v1.8.1
+            name: remark42
+            app: remark42
+            domain: comments.chuhlomin.com
+            issuer: letsencrypt
+            secret_base64: ${{ secrets.REMARK42_SECRET_BASE64 }}
+            auth_github_cid_base64: ${{ secrets.AUTH_GITHUB_CID_BASE64 }}
+            auth_github_csec_base64: ${{ secrets.AUTH_GITHUB_CSEC_BASE64 }}
+            auth_google_cid_base64: ${{ secrets.AUTH_GOOGLE_CID_BASE64 }}
+            auth_google_csec_base64: ${{ secrets.AUTH_GOOGLE_CSEC_BASE64 }}
+
+      - name: Deploy Remark42
+        timeout-minutes: 4
+        run: |-
+          echo '${{ steps.render_template_remark42.outputs.result }}' | kubectl apply -f -
+          kubectl rollout status deployment/remark42
