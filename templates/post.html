@@ -5,6 +5,7 @@
 <title>{{ .CurrentPage.Metadata.Title }} \ Konstantin Chukhlomin</title>
 <link rel="stylesheet" href="{{ back .CurrentPage.Path }}styles.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
 </head>
 <body>
 <div class="common">
@@ -16,5 +17,6 @@
     </div>
     {{ template "next" . }}
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
 </body>
 </html>
