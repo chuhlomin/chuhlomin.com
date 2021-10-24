@@ -29,6 +29,7 @@ jobs:
           output_directory: "./output"
           allowed_file_extensions: ".jpeg,.jpg,.png,.mp4,.pdf"
           templates: "index.html,index_ru.html,404.html"
+          typographEnabled: true
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
