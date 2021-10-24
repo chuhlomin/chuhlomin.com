@@ -80,7 +80,6 @@ spec:
   type: ClusterIP
   selector:
     app: {{ .app }}
-    env: {{ .env }}
   ports:
     - protocol: TCP
       port: 8080
