@@ -1,5 +1,5 @@
 ---
-created: 2021-05-23
+date: 2021-05-23
 ---
 
 # Pantone Matching System (PMS)

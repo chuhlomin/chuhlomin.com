@@ -1,5 +1,5 @@
 ---
-created: 2021-10-09
+date: 2021-10-09
 ---
 
 # Environment variables and alias `e`

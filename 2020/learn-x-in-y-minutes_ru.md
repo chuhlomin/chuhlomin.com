@@ -1,5 +1,5 @@
 ---
-created: 2020-07-14
+date: 2020-07-14
 ---
 
 # Learn X in Y minutes
