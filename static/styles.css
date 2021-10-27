@@ -140,6 +140,10 @@ a.hasArrow:hover span {
   flex-grow: 10;
 }
 
+.blog-title .sep {
+  font-weight: normal;
+}
+
 .content, .footer, .next, .header-content, .comments {
   margin: 0 9%;
   width: calc(100% - 9% - 9%);

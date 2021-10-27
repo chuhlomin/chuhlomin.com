@@ -10,10 +10,8 @@
 </head>
 <body>
 <div class="common">
-    {{ template "header" . }}
+    {{ template "_header" . }}
     <div class="content">
-        Hello! My&nbsp;name is&nbsp;Konstantin, i'm&nbsp;a&nbsp;software engineer, and this is&nbsp;my&nbsp;microblog.
-
         {{ range .AllPages }}
         {{ if eq .Metadata.Language "en" }}
         <p><a href="{{ langToGetParameter .Path }}">{{ .Metadata.Title }}</a></p>

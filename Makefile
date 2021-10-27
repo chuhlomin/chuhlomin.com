@@ -4,13 +4,19 @@ help:
 	@echo "Usage: \n"
 	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'
 
+.PHONY: clean
+## clean: remove all generated files
+clean:
+	@echo "Cleaning generated files..."
+	@rm -r -f output/*
+
 .PHONY: build
 ## build: run genblog, copy static files
 build:
 	@genblog; cp -R static/ output/
 
 .PHONY: run-docker
-## run-docker: run the docker container on http://127.0.0.1:8080
+## run-docker: run the docker container
 run-docker:
 	@docker-compose up -d nginx
 

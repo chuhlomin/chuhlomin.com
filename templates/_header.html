@@ -1,8 +1,10 @@
-{{ define "header" }}
+{{ define "_header" }}
 {{ $name := "Konstantin Chukhlomin" }}
+{{ $blog := "Microblog" }}
 {{ $langGetParameter := "" }}
 {{ if eq .CurrentPage.Metadata.Language "ru" }}
     {{ $name = "Константин Чухломин" }}
+    {{ $blog = "Микроблог" }}
     {{ $langGetParameter = "?lang=ru" }}
 {{ end }}
 {{ $root := back .CurrentPage.Path }}
@@ -12,7 +14,11 @@
 <div class="flag">
     <div class="header-content">
         <div class="logo"><img src="{{ $root }}apple-touch-icon.png" class="user-picture-image" alt=""></div>
-        <div class="blog-title">{{ if eq .CurrentPage.ID "index.html" }}{{ $name }}{{ else }}<a href="{{ $root }}index.html{{ $langGetParameter }}">{{ $name }}</a>{{ end }}</div>
+        <div class="blog-title">
+            <a class="name" href="https://chuhlomin.com{{ $langGetParameter }}">{{ $name }}</a>
+            <span class="sep">/</span>
+            {{ if eq .CurrentPage.ID "index.html" }}<span>{{ $blog }}</span>{{ else }}<a href="{{ $root }}index.html{{ $langGetParameter }}">{{ $blog }}</a>{{ end }}
+        </div>
 
         {{ $langs := allLanguageVariations . }}
         {{ $length := len $langs }}
