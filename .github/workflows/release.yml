@@ -32,7 +32,6 @@ jobs:
           posts_directory: "."
           output_directory: "./output"
           allowed_file_extensions: ".jpeg,.jpg,.png,.mp4,.pdf"
-          templates: "index.html,index_ru.html,404.html"
           typography_enabled: "false"
           comments_enabled: "false"
           comments_site_id: "micro"
