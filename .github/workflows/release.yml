@@ -33,7 +33,7 @@ jobs:
           output_directory: "./output"
           allowed_file_extensions: ".jpeg,.jpg,.png,.mp4,.pdf"
           typography_enabled: "false"
-          comments_enabled: "false"
+          comments_enabled: "true"
           comments_site_id: "micro"
 
 
