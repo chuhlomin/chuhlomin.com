@@ -335,7 +335,7 @@ ul li + li {
 }
 
 @media screen and (max-width: 450px) {
-  a {
+  .content a {
     word-break: break-all;
   }
   .flag {
