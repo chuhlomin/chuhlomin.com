@@ -11,7 +11,7 @@
 <body>
 <div class="common">
     {{ template "_header" . }}
-    <div class="content">
+    <div class="content inner">
         {{ range .AllPages }}
         {{ if eq .Metadata.Language "en" }}
         <p><a href="{{ langToGetParameter .Path }}">{{ .Metadata.Title }}</a></p>

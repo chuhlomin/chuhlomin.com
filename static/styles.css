@@ -174,8 +174,9 @@ a[href^="https://github.com"] {
   padding-left: 20px;
 }
 
+.info .tags,
 .info a.github {
-  float: right;
+  margin-left: 20px;
 }
 
 video {

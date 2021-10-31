@@ -1,6 +1,14 @@
 {{ define "_info" }}
 <div class="info inner">
     <span class="date">{{ .CurrentPage.Metadata.Date }}</span>
+    {{ if .CurrentPage.Metadata.Tags }}
+    {{ $root := back .CurrentPage.Path }}
+    <span class="tags">
+        {{ range .CurrentPage.Metadata.Tags }}
+        <a class="tag" href="{{ $root }}index.html{{ langGetParameter $.CurrentPage.Path $.DefaultLanguage }}#{{ . }}">#{{ . }}</a>
+        {{ end }}
+    </span>
+    {{ end }}
     <a class="github" href="https://github.com/chuhlomin/micro/blob/main/{{ .CurrentPage.Source }}">{{ .CurrentPage.Source }}</a>
 </div>
 {{ end }}
