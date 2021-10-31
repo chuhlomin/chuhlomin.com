@@ -144,7 +144,7 @@ a.hasArrow:hover span {
   font-weight: normal;
 }
 
-.content, .footer, .next, .header-content, .comments {
+.inner {
   margin: 0 9%;
   width: calc(100% - 9% - 9%);
   max-width: 720px;
@@ -163,9 +163,19 @@ a.hasArrow:hover span {
   object-fit: contain;
 }
 
-.date {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 75%;
+.info {
+  margin-bottom: 10px;
+}
+
+a.github,
+a[href^="https://github.com"] {
+  background: url(./GitHub-Mark-32px.png) center right no-repeat;
+  background-size: 16px 16px;
+  padding-left: 20px;
+}
+
+.info a.github {
+  float: right;
 }
 
 video {
@@ -180,7 +190,7 @@ ul li + li {
   margin-top: 10px;
 }
 
-.nextBackground {
+.darkBackground {
   padding: 10px 0;
   background-color: rgba(0,0,0,0.05);
 }
@@ -271,6 +281,12 @@ ul li + li {
     border-color: var(--color-link-hover-underscore-dark);
   }
 
+  a.github,
+  a[href^="https://github.com"] {
+    background: url(./GitHub-Mark-Light-32px.png) center left no-repeat;
+    background-size: 16px 16px;
+  }
+
   kbd {
     color: #fafbfc;
     background-color: #444d56;
@@ -295,7 +311,7 @@ ul li + li {
     transform: none;
     margin: 0 10px 0 0;
   }
-  .content, .footer, .next, .header-content, .comments {
+  .inner {
     margin: 0 20px 40px 20px;
     width: calc(100% - 40px);
   }
@@ -341,7 +357,7 @@ ul li + li {
   .flag {
     padding: 10px 0 10px;
   }
-  .content, .footer, .next, .header-content, .comments {
+  .inner {
     margin: 0 10px 20px 10px;
     width: calc(100% - 20px);
   }
