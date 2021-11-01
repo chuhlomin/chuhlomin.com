@@ -1,0 +1,51 @@
+{{ define "_selectedTag" }}
+{{ $prefix := "with tag " }}
+{{ if eq .CurrentPage.Metadata.Language "ru" }}
+    {{ $prefix = "с тегом " }}
+{{ end }}
+<span id="selectedTag">
+    <span class="dotted">{{ $prefix }}<span id="tag"></span></span>
+    <a id="clearTag" href="#">⌫</a>
+</span>
+<script>
+var initialTitle = document.title;
+
+function hashUpdated(hash) {
+    console.log('Hash updated: ' + hash);
+    let selectedTag = document.getElementById('selectedTag')
+    let postCards = document.getElementsByClassName('postCard');
+
+    if (hash.length > 0) {
+        tag.innerHTML = '#' + hash;
+        document.title = '#' + hash + ' \\ ' + initialTitle;
+        selectedTag.style.display = 'inline';
+        for (let i = 0; i < postCards.length; i++) {
+            if (postCards[i].dataset.tags.split(',').includes(hash)) {
+                postCards[i].style.display = 'block';
+            } else {
+                postCards[i].style.display = 'none';
+            }
+        }
+    } else {
+        tag.innerHTML = '';
+        document.title = initialTitle;
+        selectedTag.style.display = 'none';
+        clearTag.style.height = 0;
+        for (let i = 0; i < postCards.length; i++) {
+            postCards[i].style.display = 'block';
+        }
+    }
+}
+
+// when document loaded
+window.onload = function() {
+    // get hash from url
+    let hash = window.location.hash.substring(1);
+    hashUpdated(hash);
+    // update hash when hash changes
+    window.onhashchange = function() {
+        hashUpdated(window.location.hash.substring(1));
+    }
+}
+</script>
+{{ end }}

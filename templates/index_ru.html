@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Константин Чухломин</title>
+<title>Микроблог \ Константин Чухломин</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -12,11 +12,14 @@
 <div class="common">
     {{ template "_header" . }}
     <div class="content inner">
-        {{ range .AllPages }}
-        {{ if eq .Metadata.Language "ru" }}
-        <p><a href="{{ langToGetParameter .Path }}">{{ .Metadata.Title }}</a></p>
-        {{ end }}
-        {{ end }}
+        <h1>Все посты{{ template "_selectedTag" . }}</h1>
+        <div class="posts">
+            {{ range .AllPages }}
+            {{ if eq .Metadata.Language "ru" }}
+                {{ template "_postCard" . }}
+            {{ end }}
+            {{ end }}
+        </div>
     </div>
 </div>
 </body>

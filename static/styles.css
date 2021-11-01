@@ -1,24 +1,26 @@
 @charset "UTF-8";
 
 :root {
+  --underline-opacity: 0.25;
+
   --color-text: #222222;
   --color-text-dark: #909090;
   --color-background: #f9f9f9;
   --color-background-dark: #181a1b;
   --color-header: #000000;
   --color-header-dark: #ffffff;
-  --color-link: #006699;
+  --color-link: #0969da;
   --color-link-dark: #6BF;
-  --color-link-underscore: rgba(0, 112, 243, 0.75);
-  --color-link-underscore-dark: rgba(102, 187, 255, 0.75);
+  --color-link-underscore: rgba(9, 105, 218, var(--underline-opacity));
+  --color-link-underscore-dark: rgba(102, 187, 255, var(--underline-opacity));
   --color-link-visited: #551A8B;
-  --color-link-visited-underscore: rgba(85, 26, 139, 0.75);
+  --color-link-visited-underscore: rgba(85, 26, 139, var(--underline-opacity));
   --color-link-visited-dark: #E0B0FF;
-  --color-link-visited-underscore-dark: rgba(224, 176, 255, 0.75);
-  --color-link-hover: #6666ff;
+  --color-link-visited-underscore-dark: rgba(224, 176, 255, var(--underline-opacity));
+  --color-link-hover: #0969da;
   --color-link-hover-dark: #f8ff83;
-  --color-link-hover-underscore: rgba(0, 112, 243, 1);
-  --color-link-hover-underscore-dark: rgba(248, 255, 131, 0.75);
+  --color-link-hover-underscore: rgba(9, 105, 218, var(--underline-opacity));
+  --color-link-hover-underscore-dark: rgba(248, 255, 131, var(--underline-opacity));
 
   --padding: 10px;
   --padding-small: 20px;
@@ -81,6 +83,17 @@ a.hasArrow:hover span {
   border-color: var(--color-link-hover-underscore);
 }
 
+a.github,
+a[href^="https://github.com"] {
+  background: url(./GitHub-Mark-32px.png) center left no-repeat;
+  background-size: 16px 16px;
+  padding-left: 20px;
+}
+
+.dotted {
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.75);
+}
+
 .flag {
   position: relative;
   width: 100%;
@@ -117,6 +130,10 @@ a.hasArrow:hover span {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+.languages {
+  margin-right: -0.66rem;
 }
 
 .languages [class^="lang-"] {
@@ -163,15 +180,59 @@ a.hasArrow:hover span {
   object-fit: contain;
 }
 
-.info {
-  margin-bottom: 10px;
+/*#search {
+  display: block;
+  padding: 0.33rem 0.66rem;
+  margin: 0 -0.66rem 20px;
+  font-size: 18px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 100px;
+  box-shadow: inset 0 2px 2px rgba(0,0,0,0.05);
+}
+#search:focus {
+  border-color: var(--color-link);
+  box-shadow: inset 0 2px 2px var(--color-link-underscore);
+}*/
+
+.tag {
+  border: none;
 }
 
-a.github,
-a[href^="https://github.com"] {
-  background: url(./GitHub-Mark-32px.png) center right no-repeat;
-  background-size: 16px 16px;
-  padding-left: 20px;
+#selectedTag {
+  display: none;
+  opacity: 0.65;
+}
+
+#clearTag {
+  display: inline-block;
+  border: none;
+}
+
+.postCard {
+  margin-top: 20px;
+}
+
+.postCard .date {
+  float: right;
+  font-family: monospace;
+  opacity: 0.25;
+}
+
+.postCard a {
+  margin-right: 10px;
+  word-break: normal;
+}
+
+.postCard .tag {
+  word-break: normal;
+  opacity: 0.5;
+}
+
+.info {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .info .tags,
@@ -232,6 +293,10 @@ ul li + li {
   position: absolute;
   left: -12px;
   content: "←";
+  color: var(--color-link);
+  transition-property: color;
+  transition-duration: 0.33s;
+  transition-timing-function: ease-out;
 }
 
 .next .nextLink {
@@ -244,6 +309,19 @@ ul li + li {
   top: 10px;
   right: -12px;
   content: "→";
+  color: var(--color-link);
+  transition-property: color;
+  transition-duration: 0.33s;
+  transition-timing-function: ease-out;
+}
+
+.next .prevLink:visited::before,
+.next .nextLink:visited::after {
+  color: var(--color-link-visited);
+}
+.next .prevLink:hover::before,
+.next .nextLink:hover::after {
+  color: var(--color-link-hover);
 }
 
 .comments {
@@ -288,6 +366,10 @@ ul li + li {
     background-size: 16px 16px;
   }
 
+  .dotted {
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.75);
+  }
+
   kbd {
     color: #fafbfc;
     background-color: #444d56;
@@ -298,6 +380,19 @@ ul li + li {
 
   .nextBackground {
     background:rgba(255, 255, 255, 0.05);
+  }
+
+  .next .prevLink::before,
+  .next .nextLink::after {
+    color: var(--color-link-dark);
+  }
+  .next .prevLink:visited::before,
+  .next .nextLink:visited::after {
+    color: var(--color-link-visited-dark);
+  }
+  .next .prevLink:hover::before,
+  .next .nextLink:hover::after {
+    color: var(--color-link-hover-dark);
   }
 }
 
@@ -314,11 +409,16 @@ ul li + li {
   }
   .inner {
     margin: 0 20px 40px 20px;
-    width: calc(100% - 40px);
+    width: auto;
+    max-width: 100%;
   }
   .header-content {
-    max-width: calc(100% - 40px);
     margin-bottom: 0px;
+    max-width: 100%;
+  }
+
+  .languages {
+    margin-right: 0;
   }
 
   .nextBackground {
@@ -360,11 +460,6 @@ ul li + li {
   }
   .inner {
     margin: 0 10px 20px 10px;
-    width: calc(100% - 20px);
-  }
-  .header-content {
-    max-width: calc(100% - 20px);
-    margin-bottom: 0px;
   }
 
   .content video,
@@ -372,6 +467,15 @@ ul li + li {
     margin-left: -10px;
     margin-right: -10px;
     max-width: calc(100% + 20px);
+  }
+
+  /*#search {
+    margin-left: 0;
+    margin-right: 0;
+  }*/
+
+  .postCard {
+    margin-top: 10px;
   }
 
   .next {

@@ -15,8 +15,7 @@
     <div class="header-content inner">
         <div class="logo"><img src="{{ $root }}apple-touch-icon.png" class="user-picture-image" alt=""></div>
         <div class="blog-title">
-            <a class="name" href="https://chuhlomin.com{{ $langGetParameter }}">{{ $name }}</a>
-            <span class="sep">/</span>
+            <a class="name" href="https://chuhlomin.com{{ $langGetParameter }}">{{ $name }}</a>&nbsp;<span class="sep">/</span>
             {{ if eq .CurrentPage.ID "index.html" }}<span>{{ $blog }}</span>{{ else }}<a href="{{ $root }}index.html{{ $langGetParameter }}">{{ $blog }}</a>{{ end }}
         </div>
 

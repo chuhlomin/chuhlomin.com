@@ -1,0 +1,15 @@
+{{ define "_postCard" }}
+<div class="postCard" data-tags="{{ join .Metadata.Tags "," }}">
+    <a href="{{ langToGetParameter .Path }}">{{ .Metadata.Title }}</a>
+    {{ if .Metadata.Date }}
+    <span class="date">{{ .Metadata.Date }}</span>
+    {{ end }}
+    {{ if .Metadata.Tags }}
+    <span class="tags">
+        {{ range .Metadata.Tags }}
+        <a class="tag" href="#{{ . }}">#{{ . }}</a>
+        {{ end }}
+    </span>
+    {{ end }}
+</div>
+{{ end }}
