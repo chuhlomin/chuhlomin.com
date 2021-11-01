@@ -136,7 +136,7 @@ a[href^="https://github.com"] {
   margin-right: -0.66rem;
 }
 
-.languages [class^="lang-"] {
+.lang {
   padding: 0.33rem 0.66rem;
   margin-top: -0.33rem;
   background: rgba(255, 255, 255, 0.05);

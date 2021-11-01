@@ -25,7 +25,7 @@
         <div class="languages">
             {{ range $langs }}
                 {{ if ne .Metadata.Language $.CurrentPage.Metadata.Language }}
-                    <a class="lang-{{ .Metadata.Language }}" href="{{ $root }}{{ langToGetParameter .Path }}">{{ .Metadata.Language }}</a>
+                    <a class="lang lang-{{ .Metadata.Language }}" href="{{ $root }}{{ langToGetParameter .Path }}">{{ .Metadata.Language }}</a>
                 {{ end }}
             {{ end }}
         </div>
