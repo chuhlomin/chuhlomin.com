@@ -1,11 +1,17 @@
 # micro
 
-[![main](https://github.com/chuhlomin/micro/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/chuhlomin/micro/actions/workflows/main.yml)
+[![main](https://github.com/chuhlomin/micro/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/chuhlomin/micro/actions/workflows/main.yml) [![release](https://github.com/chuhlomin/micro/actions/workflows/release.yml/badge.svg)](https://github.com/chuhlomin/micro/actions/workflows/release.yml)
+
+Microblog, stored as Markdown files in Git repository.
+
+GitHub Actions uses [genblog](https://github.com/chuhlomin/genblog) Go app that generates static site using `templates` directory.
+
+Powers https://chuhlomin.com/blog
 
 ## Local setup
 
-Use [e](https://github.com/chuhlomin/e) to get values from `.env` file into
-environment:
+Set environment variables values from `.env` file.
+You may use [alias e](https://github.com/chuhlomin/e) for that.
 
 ```bash
 e
