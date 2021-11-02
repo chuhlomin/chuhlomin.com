@@ -407,6 +407,9 @@ ul li + li {
     transform: none;
     margin: 0 10px 0 0;
   }
+  .user-picture-image {
+    position: relative;
+  }
   .inner {
     margin: 0 20px 40px 20px;
     width: auto;
