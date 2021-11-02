@@ -1,5 +1,5 @@
 {{ define "_postCard" }}
-<div class="postCard" data-tags="{{ join .Metadata.Tags "," }}">
+<div class="postCard" data-tags="{{ year .Metadata.Date }},{{ join .Metadata.Tags "," }}">
     <div class="titleAndTags">
         <a href="{{ langToGetParameter .Path }}">{{ .Metadata.Title }}</a>
         {{ if .Metadata.Tags }}
