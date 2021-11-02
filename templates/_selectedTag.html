@@ -23,7 +23,7 @@ function hashUpdated(hash) {
         /* update posts visibility */
         for (let i = 0; i < postCards.length; i++) {
             if (postCards[i].dataset.tags.split(',').includes(hash)) {
-                postCards[i].style.display = 'block';
+                postCards[i].style.display = 'flex';
             } else {
                 postCards[i].style.display = 'none';
             }
@@ -38,7 +38,7 @@ function hashUpdated(hash) {
         selectedTag.style.display = 'none';
         /* update posts visibility */
         for (let i = 0; i < postCards.length; i++) {
-            postCards[i].style.display = 'block';
+            postCards[i].style.display = 'flex';
         }
         /* remove hash from .lang links */
         for (let i = 0; i < langs.length; i++) {

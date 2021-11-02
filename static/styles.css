@@ -199,6 +199,10 @@ a[href^="https://github.com"] {
 .tag {
   border: none;
 }
+.tag:visited { /* for some reasons :visited #hash-only links don't work well on mobile */
+  color: var(--color-link);
+  border-bottom: 1px solid var(--color-link-underscore);
+}
 
 #selectedTag {
   display: none;
@@ -211,13 +215,20 @@ a[href^="https://github.com"] {
 }
 
 .postCard {
+  display: flex;
   margin-top: 20px;
 }
 
+.postCard .titleAndTags {
+  flex-grow: 1;
+}
+
 .postCard .date {
-  float: right;
+  /* float: right; */
   font-family: monospace;
   opacity: 0.25;
+  word-break: keep-all;
+  padding-left: 10px;
 }
 
 .postCard a {
@@ -380,6 +391,11 @@ ul li + li {
 
   .nextBackground {
     background:rgba(255, 255, 255, 0.05);
+  }
+
+  .tag:visited { /* for some reasons :visited #hash-only links don't work well on mobile */
+    color: var(--color-link-dark);
+    border-bottom: 1px solid var(--color-link-underscore-dark);
   }
 
   .next .prevLink::before,
