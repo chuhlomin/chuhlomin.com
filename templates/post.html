@@ -29,6 +29,13 @@ var remark_config = {
     <div class="content inner">
         <h1>{{ .CurrentPage.Metadata.Title }}</h1>
         {{ .CurrentPage.Body }}
+        {{ if .CurrentPage.Metadata.Tags }}
+        <div class="tags">
+            {{ range .CurrentPage.Metadata.Tags }}
+            <a class="tag" href="{{ back $.CurrentPage.Path }}index.html{{ langGetParameter $.CurrentPage.Path $.DefaultLanguage }}#{{ . }}">#{{ . }}</a>
+            {{ end }}
+        </div>
+        {{ end }}
     </div>
     <div class="darkBackground">
         {{ template "_info" . }}

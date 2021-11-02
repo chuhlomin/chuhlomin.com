@@ -180,6 +180,14 @@ a[href^="https://github.com"] {
   object-fit: contain;
 }
 
+.content .tags {
+  margin-top: 20px;
+}
+
+.content .tags .tag {
+  margin-right: 10px;
+}
+
 /*#search {
   display: block;
   padding: 0.33rem 0.66rem;
@@ -242,13 +250,13 @@ a[href^="https://github.com"] {
 }
 
 .info {
+  display: flex;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.info .tags,
-.info a.github {
-  margin-left: 20px;
+.info .date {
+  flex-grow: 1;
 }
 
 video {
@@ -389,13 +397,13 @@ ul li + li {
     box-shadow: inset 0 -1px 0 #272F37;
   }
 
-  .nextBackground {
-    background:rgba(255, 255, 255, 0.05);
-  }
-
   .tag:visited { /* for some reasons :visited #hash-only links don't work well on mobile */
     color: var(--color-link-dark);
     border-bottom: 1px solid var(--color-link-underscore-dark);
+  }
+
+  .darkBackground {
+    background-color: rgba(0,0,0,0.2);
   }
 
   .next .prevLink::before,
@@ -440,9 +448,6 @@ ul li + li {
     margin-right: 0;
   }
 
-  .nextBackground {
-    padding: 10px 0;
-  }
   .next {
     margin: 0 10px;
   }
@@ -471,6 +476,7 @@ ul li + li {
 }
 
 @media screen and (max-width: 450px) {
+  /* all 20px paddings shrinks to 10px */
   .content a {
     word-break: break-all;
   }
