@@ -77,6 +77,8 @@ spec:
               value: /srv/var/backup
             - name: DEBUG
               value: "{{ .remark_debug }}"
+            - name: ADMIN_SHARED_ID
+              value: "{{ .admin_shared_id }}"
           envFrom:
             - secretRef:
                 name: remark42

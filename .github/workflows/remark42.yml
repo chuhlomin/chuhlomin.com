@@ -40,6 +40,7 @@ jobs:
             domain: comments.chuhlomin.com
             issuer: letsencrypt
             remark_debug: "false"
+            admin_shared_id: "github_273bcb28a295b223235763996744e39f7cedfbc4"
             secret_base64: ${{ secrets.REMARK42_SECRET_BASE64 }}
             auth_github_cid_base64: ${{ secrets.AUTH_GITHUB_CID_BASE64 }}
             auth_github_csec_base64: ${{ secrets.AUTH_GITHUB_CSEC_BASE64 }}
