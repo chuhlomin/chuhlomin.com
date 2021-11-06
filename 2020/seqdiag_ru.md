@@ -14,7 +14,7 @@ https://marketplace.visualstudio.com/items?itemName=AleksandarDev.vscode-sequenc
 
 ![VSCode sequence diagrams](seqdiag.png "VSCode sequence diagrams")
 
-Не забудьте настроить стиль в settings.json:
+Не забудьте настроить стиль в `settings.json`:
 ```json
 "sequencediagrams.diagram.style": "simple"
 ```

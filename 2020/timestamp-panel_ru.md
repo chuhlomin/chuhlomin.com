@@ -22,4 +22,4 @@ https://ts.chuhlomin.com
 
 https://github.com/chuhlomin/timestamp
 
-#project
+#project #timestamp

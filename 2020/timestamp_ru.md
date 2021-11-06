@@ -16,4 +16,4 @@ date: 2020-10-04
 
 <img src="timestamp.jpeg" width="408" height="640" alt="Timestamp Shortcut" />
 
-#ios
+#ios #timestamp

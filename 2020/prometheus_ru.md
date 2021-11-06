@@ -15,6 +15,7 @@ https://prometheus.io/
 С предвкушением смотрю на проект OpenMetrics, вдохновленный Prometheus, который хочет стандартизировать формат обмена метриками.
 
 https://openmetrics.io/
+
 https://github.com/OpenObservability/OpenMetrics
 
 #ops

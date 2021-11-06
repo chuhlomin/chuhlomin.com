@@ -10,7 +10,7 @@ https://marketplace.visualstudio.com/items?itemName=humao.rest-client
 
 [![REST client](vscode-rest-client.png "REST client")](vscode-rest-client.png)
 
-В отдельном файле с расширением .http или .rest можно описать свои простые запросы и отправить их не покидая редактор.
+В отдельном файле с расширением .http или .rest можно описать свои простые запросы и отправить их не покидая редактор.  
 Есть подсветка синтаксиса, поддерживается GraphQL, multipart/form-data, указание файлов в качестве тела запроса.
 Нет поддержки OAuth.
 

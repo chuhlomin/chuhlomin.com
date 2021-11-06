@@ -12,10 +12,10 @@ https://webmention.net/draft/
 
 ![Webmention sequence diagrams](webmention.png "Webmention sequence diagrams")
 
-Всё это вытекает из идей децентрализованного интернета:
+Всё это вытекает из идей децентрализованного интернета:  
 https://indieweb.org/federation
 
-Примеры реализций:
+Примеры реализций:  
 https://indieweb.org/Webmention#IndieWeb_Examples
 
 #rfc
