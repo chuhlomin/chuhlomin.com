@@ -50,4 +50,4 @@ jobs:
         timeout-minutes: 4
         run: |-
           echo '${{ steps.render_template_remark42.outputs.result }}' | kubectl apply -f -
-          kubectl rollout status deployment/remark42
+          kubectl rollout status sts/remark42
