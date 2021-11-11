@@ -15,6 +15,22 @@ clean:
 build:
 	@genblog; cp -R static/ output/
 
+.PHONY: build-podman
+## build-podman: build image with podman
+build-podman:
+	@podman build -t micro:local .
+
+.PHONY: run-podman
+## run-podman: run image with podman
+run-podman:
+	@podman stop micro || true;
+	@podman rm micro || true;
+	@podman run -d --name micro -p 8080:80 micro:local
+
+.PHONY: rebuild-podman
+## rebuild-podman: alias for buid, build-podman, run-podman
+rebuild-podman: build build-podman run-podman
+
 .PHONY: run-docker
 ## run-docker: run the docker container
 run-docker:
