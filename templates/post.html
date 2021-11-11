@@ -4,24 +4,7 @@
 <meta charset="UTF-8">
 <title>{{ .CurrentPage.Metadata.Title }} \ Blog \ Konstantin Chukhlomin</title>
 <link rel="stylesheet" href="{{ back .CurrentPage.Path }}styles.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-{{ if bool .CurrentPage.Metadata.CommentsEnabled }}
-<script>
-var theme = 'light'
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    theme = 'dark'
-}
-var remark_config = {
-    host: 'https://comments.chuhlomin.com',
-    site_id: {{ .CommentsSiteID }},
-    theme: theme,
-    locale: {{ .CurrentPage.Metadata.Language }},
-    simple: 'true',
-    simple_view: 'true',
-}
-</script>
-{{ end }}
+{{ template "_head" . }}
 </head>
 <body>
 <div class="common">
@@ -45,22 +28,5 @@ var remark_config = {
         <div id="remark42"></div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-{{ if bool .CurrentPage.Metadata.CommentsEnabled }}
-<script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
-<script>
-window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", event => {
-    if (event.matches) {
-        console.log("It's dark now 🌑");
-        window.REMARK42.changeTheme('dark');
-    } else {
-        console.log("It's light now 🌕");
-        window.REMARK42.changeTheme('light');
-    }
-});
-</script>
-{{ end }}
 </body>
 </html>
