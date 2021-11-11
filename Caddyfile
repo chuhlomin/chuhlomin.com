@@ -1,0 +1,22 @@
+{
+  local_certs
+  auto_https disable_redirects
+  # debug
+}
+
+# Add to /etc/hosts so that Caddy can issue certificate locally
+# 127.0.0.1       local.chuhlomin.com
+
+local.chuhlomin.com {
+  tls internal
+  uri strip_prefix /blog
+
+  @langRu {
+    query lang=ru
+  }
+  uri @langRu replace .html _ru.html 
+
+  root * output
+  file_server
+}
+

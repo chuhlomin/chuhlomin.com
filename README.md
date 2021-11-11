@@ -6,7 +6,7 @@ Microblog, stored as Markdown files in Git repository.
 
 GitHub Actions uses [genblog](https://github.com/chuhlomin/genblog) Go app that generates static site using `templates` directory.
 
-Powers https://chuhlomin.com/blog
+Powers https://chuhlomin.com/blog/index.html
 
 ## Local setup
 
@@ -42,6 +42,16 @@ fswatch --one-per-batch --recursive --exclude="output" --exclude=".git" . | xarg
 make watch
 ```
 
+### Option 1. Open file in the browser
+
+```
+open output/index.html
+```
+
+⚠️ `?lang=ru` links will not work in this case.
+
+### Option 1. [Docker](https://www.docker.com)
+
 Serve output folder locally via Nginx using docker-compose:
 
 ```bash
@@ -51,3 +61,39 @@ make run-docker
 ```
 
 Open http://127.0.0.1:8080
+
+### Option 2. [Podman](https://podman.io)
+
+Or use [podman](https://podman.io) to build and run the image:
+
+```bash
+podman build -t micro:local .
+podman run --name micro -p 8080:80 micro:local
+# or
+make build-podman
+make run-podman
+```
+
+Open http://127.0.0.1:8080
+
+### Option 3. [Caddy](https://caddyserver.com)
+
+Add to `/etc/hosts` file:
+
+```
+127.0.0.1       local.chuhlomin.com
+```
+
+Install Caddy:
+
+```bash
+brew install caddy
+```
+
+Run Caddy from repository root:
+
+```bash
+caddy run
+```
+
+Open https://local.chuhlomin.com/blog/index.html
