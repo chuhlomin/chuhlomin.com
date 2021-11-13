@@ -261,9 +261,8 @@ a[href^="https://github.com"] {
 
 .info .genblog {
   flex-grow: 1;
-  opacity: 0.75;
-  font-size: 12px;
   text-align: right;
+  padding-right: 0.33rem;
 }
 
 video {
@@ -291,15 +290,15 @@ ul li + li {
 }
 
 .next .prevLink,
-.next .dot,
 .next .nextLink {
   padding: 10px;
   position: relative;
 }
 
-.next .dot {
-  display: inline-block;
+.next .prevLink {
+  flex-grow: 1;
 }
+
 .next .nextLink {
   text-align: left;
   margin-right: 20px;
@@ -317,6 +316,7 @@ ul li + li {
 .next .prevLink::before {
   display: block;
   position: absolute;
+  top: 10px;
   left: -12px;
   content: "←";
   color: var(--color-link);
@@ -428,9 +428,6 @@ ul li + li {
 }
 
 @media screen and (max-width: 815px) { /* tablet */
-  .hideTablet {
-    display: none;
-  }
   .flag {
     padding: 20px 0 20px;
   }
@@ -456,6 +453,13 @@ ul li + li {
 
   .languages {
     margin-right: 0;
+  }
+
+  .info .genblog {
+    display: none;
+  }
+  .info .date {
+    flex-grow: 1;
   }
 
   .next {
@@ -494,7 +498,7 @@ ul li + li {
     padding: 10px 0 10px;
   }
   .inner {
-    margin: 0 10px 20px 10px;
+    margin: 0 10px 10px 10px;
   }
 
   .content video,
@@ -510,11 +514,7 @@ ul li + li {
   }*/
 
   .info .date {
-    flex-grow: 1;
     padding-right: 10px;
-  }
-  .info .genblog {
-    display: none;
   }
 
   .postCard {
@@ -522,12 +522,23 @@ ul li + li {
   }
 
   .next {
-    margin: 0;
-    flex-wrap: wrap;
-    flex-direction: column-reverse;
+    margin: 10px 10px 0 10px;
+    /* flex-wrap: wrap; */
+    /* flex-direction: column-reverse; */
   }
-  .next .dot {
-    display: none;
+  .next .prevLink,
+  .next .nextLink {
+    padding: 0;
+  }
+  .next .prevLink::before,
+  .next .nextLink::after {
+    top: 0;
+  }
+  .next .prevLink::before {
+    left: -20px;
+  }
+  .next .nextLink::after {
+    right: -20px;
   }
 }
 
