@@ -20,7 +20,7 @@
         </div>
         {{ end }}
     </div>
-    <div class="darkBackground">
+    <div class="darkBackground" hx-boost="true">
         {{ template "_info" . }}
         {{ template "_next" . }}
     </div>
@@ -28,5 +28,6 @@
         <div id="remark42"></div>
     </div>
 </div>
+{{ template "_scripts" . }}
 </body>
 </html>

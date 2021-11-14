@@ -1,0 +1,109 @@
+{{ define "_scripts" }}
+<!-- Remark 42 -->
+<script>
+// console.log("Hello from _scripts");
+var theme = 'light';
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    theme = 'dark';
+}
+window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", event => {
+    if (event.matches) {
+        console.log("It's dark now 🌑");
+        window.REMARK42.changeTheme('dark');
+    } else {
+        console.log("It's light now 🌕");
+        window.REMARK42.changeTheme('light');
+    }
+});
+
+var remark_config = {
+    host: 'https://comments.chuhlomin.com',
+    site_id: {{ .CommentsSiteID }},
+    theme: theme,
+    locale: {{ .CurrentPage.Metadata.Language }},
+    simple: 'true',
+    simple_view: 'true',
+};
+
+var remark42Instance;
+
+function initRemark42(url) {
+    // console.log('initRemark42, url:', url);
+    if (remark42Instance) {
+        remark42Instance.destroy();
+    }
+
+    remark42Instance = window.REMARK42.createInstance({
+        node: document.getElementById('remark42'),
+        ...remark_config,
+        url: url
+    });
+}
+
+{{/* window.onpopstate = function(event) {
+    console.log('onpopstate', window.location.href);
+    initRemark42(window.location.href);
+}; */}}
+
+window.onload = function() {
+    // console.log('load');
+    if (window.REMARK42) {
+        initRemark42(window.location.origin + window.location.pathname);
+    } else {
+        window.addEventListener('REMARK42::ready', () => {
+            // console.log('REMARK42::ready');
+            initRemark42(window.location.origin + window.location.pathname);
+        })
+    }
+
+    document.body.addEventListener('htmx:beforeSwap', function(evt) {
+        // console.log('beforeSwap');
+        if (evt.detail.xhr.status === 404) {
+            // alert the user when a 404 occurs (maybe use a nicer mechanism than alert())
+            alert("Error: Could Not Find Resource");
+            return;
+        }
+        if (remark42Instance) {
+            remark42Instance.destroy();
+        }
+    });
+
+    document.body.addEventListener('htmx:load', function(evt) {
+        initRemark42(window.location.origin + window.location.pathname);
+    });
+
+    document.body.addEventListener('htmx:afterSwap', function(evt) {
+        Prism.highlightAll();
+    });
+
+    document.body.addEventListener('htmx:afterSettle', function(evt) {
+        initRemark42(
+            new URL(
+                evt.detail.pathInfo.finalPath,
+                window.location.origin + window.location.pathname
+            ).href
+        );
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode === 37 && e.altKey) {
+            // console.log('goPrev');
+            // if #prevLink is defined, click it
+            if (document.getElementById('prevLink')) {
+                document.getElementById('prevLink').click();
+            }
+        }
+        if (e.keyCode === 39 && e.altKey) {
+            // console.log('goNext');
+            // if #nextLink is defined, click it
+            if (document.getElementById('nextLink')) {
+                document.getElementById('nextLink').click();
+            }
+        }
+    });
+}
+</script>
+<script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+{{ end }}

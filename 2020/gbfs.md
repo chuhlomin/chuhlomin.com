@@ -4,7 +4,7 @@ date: 2020-12-27
 
 # GBFS
 
-![GBFS JSON example](gbfs.jpeg "GBFS JSON example")
+![GBFS JSON example](../2020/gbfs.jpeg "GBFS JSON example")
 
 The General Bikeshare Feed Specification is a standard for describing data about bicycle rental systems (and beyond), with an emphasis on the relevance of such data. Developed under the direction of the North American Bikeshare Association, the standard has been widely adopted around the world. The first version was released in 2019.
 

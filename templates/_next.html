@@ -3,10 +3,16 @@
     {{ $next := nextPage . }}
     {{ $prev := prevPage . }}
     {{ if $prev }}
-    <a class="prevLink hasArrow" href="{{ back $prev.Path }}{{ langToGetParameter $prev.Path }}"><span>{{ $prev.Metadata.Title }}</span></a>
+    <div class="prevLinkContainer">
+        <a id="prevLink" class="prevLink hasArrow" href="{{ back $prev.Path }}{{ langToGetParameter $prev.Path }}"><span>{{ $prev.Metadata.Title }}</span></a>
+        <div class="shortcut"><kbd>⌥</kbd>+<kbd>←</kbd></div>
+    </div>
     {{ end }}
     {{ if $next }}
-    <a class="nextLink hasArrow" href="{{ back $next.Path }}{{ langToGetParameter $next.Path }}"><span>{{ $next.Metadata.Title }}</span></a>
+    <div class="nextLinkContainer">
+        <a id="nextLink" class="nextLink hasArrow" href="{{ back $next.Path }}{{ langToGetParameter $next.Path }}"><span>{{ $next.Metadata.Title }}</span></a>
+        <div class="shortcut"><kbd>⌥</kbd>+<kbd>→</kbd></div>
+    </div>
     {{ end }}
 </div>
 {{ end }}

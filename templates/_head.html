@@ -3,32 +3,6 @@
 <link rel="icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<!-- Remark 42 -->
-<script>
-var theme = 'light'
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    theme = 'dark'
-}
-var remark_config = {
-    host: 'https://comments.chuhlomin.com',
-    site_id: {{ .CommentsSiteID }},
-    theme: theme,
-    locale: {{ .CurrentPage.Metadata.Language }},
-    simple: 'true',
-    simple_view: 'true',
-}
-window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", event => {
-    if (event.matches) {
-        console.log("It's dark now 🌑");
-        window.REMARK42.changeTheme('dark');
-    } else {
-        console.log("It's light now 🌕");
-        window.REMARK42.changeTheme('light');
-    }
-});
-</script>
-<script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+<script src="https://unpkg.com/htmx.org@1.6.0" defer></script>
 {{ end }}

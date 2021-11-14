@@ -15,6 +15,6 @@ Set goals and make plans! You probably won't reach all your goals, but you'll be
 
 <a href="calendar.pdf">calendar.pdf</a>
 
-![Calendar](calendar.png "Calendar")
+![Calendar](../2021/calendar.png "Calendar")
 
 #project #calendar

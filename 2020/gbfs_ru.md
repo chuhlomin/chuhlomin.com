@@ -4,7 +4,7 @@ date: 2020-12-27
 
 # GBFS
 
-![GBFS JSON example](gbfs.jpeg "GBFS JSON example")
+![GBFS JSON example](../2020/gbfs.jpeg "GBFS JSON example")
 
 General Bikeshare Feed Specification – стандарт описания данных о системах велопроката (и не только), с акцентом на актуальность таких данных. Разработанный под руководством North American Bikeshare Association’s, стандарт получил широкое распространение по всему миру. Первая версия вышла в 2019 году.
 

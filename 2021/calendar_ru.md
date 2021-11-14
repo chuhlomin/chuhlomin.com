@@ -15,6 +15,6 @@ date: 2021-01-01
 
 <a href="calendar.pdf">calendar.pdf</a>
 
-![Кадендарь](calendar.png "Календарь")
+![Кадендарь](../2021/calendar.png "Календарь")
 
 #project #calendar

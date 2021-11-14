@@ -257,6 +257,7 @@ a[href^="https://github.com"] {
 
 .info .date {
   padding-right: 20px;
+  flex-grow: 1;
 }
 
 .info .genblog {
@@ -277,6 +278,18 @@ ul li + li {
   margin-top: 10px;
 }
 
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 12px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2), inset 0 0 3px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.2);
+}
+
 .darkBackground {
   padding: 10px 0;
   background-color: rgba(0,0,0,0.05);
@@ -291,12 +304,14 @@ ul li + li {
 
 .next .prevLink,
 .next .nextLink {
-  padding: 10px;
+  display: inline-block;
   position: relative;
+  padding: 10px;
 }
 
-.next .prevLink {
+.next .nextLinkContainer {
   flex-grow: 1;
+  text-align: right;
 }
 
 .next .nextLink {
@@ -350,6 +365,11 @@ ul li + li {
   color: var(--color-link-hover);
 }
 
+.shortcut {
+  margin-top: -10px;
+  color: #999;
+}
+
 .comments {
   padding-top: 20px;
 }
@@ -399,9 +419,7 @@ ul li + li {
   kbd {
     color: #fafbfc;
     background-color: #444d56;
-    border: solid 1px #353E46;
-    border-bottom-color: #272F37;
-    box-shadow: inset 0 -1px 0 #272F37;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.75), inset 0 0 3px rgba(255,255,255,0.1), 0 1px 3px rgba(255,255,255,0.1);
   }
 
   .tag:visited { /* for some reasons :visited #hash-only links don't work well on mobile */
@@ -411,6 +429,9 @@ ul li + li {
 
   .darkBackground {
     background-color: rgba(0,0,0,0.2);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
   .next .prevLink::before,
@@ -458,9 +479,6 @@ ul li + li {
   .info .genblog {
     display: none;
   }
-  .info .date {
-    flex-grow: 1;
-  }
 
   .next {
     margin: 0 10px;
@@ -482,6 +500,10 @@ ul li + li {
   }
   .next .nextLink::after {
     padding-left: 10px;
+  }
+
+  .shortcut {
+    display: none;
   }
 
   .comments {
