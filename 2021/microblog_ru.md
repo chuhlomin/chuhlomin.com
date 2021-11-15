@@ -28,6 +28,8 @@ date: 2021-11-14
 которая берет посты из [репозитория](https://github.com/chuhlomin/micro)
 и за секунду строит статический HTML сайт.
 
+![genblog](microblog.png "genblog")
+
 Всё ещё довольно сырое, но результат меня уже вполне устраивает.
 
 #blog #project #go

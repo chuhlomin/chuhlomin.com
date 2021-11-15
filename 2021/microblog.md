@@ -24,6 +24,8 @@ the generator must understand that the file `bfg_ru.md` contains the post in Rus
 or that I could list the tags of posts at the end of the file and not describe them in some special format at the beginning of the file.
 So, in short, I wrote a little [program in Go](https://github.com/chuhlomin/genblog) that takes the posts from the [repository](https://github.com/chuhlomin/micro) and builds a static HTML site in a second.
 
+![genblog](microblog.png "genblog")
+
 It's still pretty raw, but I'm already pretty happy with the result.
 
 #blog #project #go
