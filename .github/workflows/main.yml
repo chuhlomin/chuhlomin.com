@@ -10,7 +10,7 @@ env:
   GKE_CLUSTER: cluster-1
   GKE_ZONE: us-central1-c
   DOCKER_IMAGE: cr.chuhlomin.com/micro
-  DEPLOYMENT_NAME: micro-dev
+  DEPLOYMENT_NAME: micro
 
 jobs:
   main:
@@ -28,9 +28,9 @@ jobs:
           posts_directory: "."
           output_directory: "./output"
           allowed_file_extensions: ".jpeg,.jpg,.png,.mp4,.pdf"
-          typography_enabled: "true"
+          typography_enabled: "false"
           comments_enabled: "true"
-          comments_site_id: "micro-dev"
+          comments_site_id: "micro"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -79,7 +79,7 @@ jobs:
           template: kube.yml
           vars: |
             image: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
-            app: micro-dev
+            app: micro
 
       - name: Deploy
         timeout-minutes: 4
