@@ -20,7 +20,7 @@ https://caddyserver.com
 
 For example, this is what the config for one project looks like right now:
 
-```
+```caddyfile
 ts.chuhlomin.com {
   reverse_proxy timestamp:80
 }

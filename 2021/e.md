@@ -8,7 +8,7 @@ Variables are "named memory areas." Like symbols in a mathematical formula, they
 
 Environment variables are those special variables that affect the operation of processes in the operating system.
 
-The most common way to describe environment variables in the industry is a `.env` file, where each line has the format "KEY=VALUE".
+The most common way to describe environment variables in the industry is a `.env` file, where each line has the format `KEY=VALUE`.
 
 Docker Compose knows how to work with such files by default:
 https://docs.docker.com/compose/env-file/

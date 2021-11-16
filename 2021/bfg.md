@@ -4,9 +4,9 @@ date: 2021-02-21
 
 # BFG Repo-Cleaner
 
-I hope everyone knows that storing secret values in an open form in Git repositories (even private ones) is strongly discouraged. There have been a couple of times when I've cleaned up such repositories. Of course, you have to rewrite the history and coordinate it with the team. The official documentation suggests using git-filter-branch, but there is a faster way.
+I hope everyone knows that storing secret values in an open form in Git repositories (even private ones) is strongly discouraged. There have been a couple of times when I've cleaned up such repositories. Of course, you have to rewrite the history and coordinate it with the team. The official documentation suggests using `git-filter-branch`, but there is a faster way.
 
-Roberto Tyley wrote a BFG app in Scala in 2012 that is 10-720 times faster than git-filter-branch.
+Roberto Tyley wrote a BFG app in Scala in 2012 that is 10-720 times faster than `git-filter-branch`.
 
 https://rtyley.github.io/bfg-repo-cleaner/
 

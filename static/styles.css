@@ -4,7 +4,7 @@
   --underline-opacity: 0.25;
 
   --color-text: #222222;
-  --color-text-dark: #909090;
+  --color-text-dark: rgb(201, 209, 217);
   --color-background: #f9f9f9;
   --color-background-dark: #181a1b;
   --color-header: #000000;
@@ -21,6 +21,9 @@
   --color-link-hover-dark: #f8ff83;
   --color-link-hover-underscore: rgba(9, 105, 218, var(--underline-opacity));
   --color-link-hover-underscore-dark: rgba(248, 255, 131, var(--underline-opacity));
+
+  --color-neutral-muted: rgba(175, 184, 193, 0.2);
+  --color-neutral-muted-dark: rgba(110, 118, 129, 0.4);
 
   --padding: 10px;
   --padding-small: 20px;
@@ -90,6 +93,18 @@ a[href^="https://github.com"] {
   padding-left: 20px;
 }
 
+a > code,
+p > code,
+h1 > code,
+li > code {
+  font-family: SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: var(--color-neutral-muted);
+  border-radius: 6px;
+}
+
 .dotted {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.75);
 }
@@ -139,7 +154,7 @@ a[href^="https://github.com"] {
 .lang {
   padding: 0.33rem 0.66rem;
   margin-top: -0.33rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   text-transform: uppercase;
   font-size: 75%;
@@ -412,6 +427,10 @@ kbd {
     background-size: 16px 16px;
   }
 
+  .lang {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
   .dotted {
     border-bottom: 1px dotted rgba(255, 255, 255, 0.75);
   }
@@ -420,6 +439,13 @@ kbd {
     color: #fafbfc;
     background-color: #444d56;
     box-shadow: 0 1px 0 rgba(0,0,0,0.75), inset 0 0 3px rgba(255,255,255,0.1), 0 1px 3px rgba(255,255,255,0.1);
+  }
+
+  a > code,
+  p > code,
+  h1 > code,
+  li > code {
+    background-color: var(--color-neutral-muted-dark);
   }
 
   .tag:visited { /* for some reasons :visited #hash-only links don't work well on mobile */
