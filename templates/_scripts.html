@@ -28,9 +28,11 @@ var remark_config = {
 };
 
 var remark42Instance;
+var remark42CurrentURL;
 
 function initRemark42(url) {
-    // console.log('initRemark42, url:', url);
+    // console.log('initRemark42', url);
+
     if (remark42Instance) {
         remark42Instance.destroy();
     }
@@ -53,7 +55,7 @@ window.onload = function() {
         initRemark42(window.location.origin + window.location.pathname);
     } else {
         window.addEventListener('REMARK42::ready', () => {
-            // console.log('REMARK42::ready');
+            // console.log('REMARK42::ready', window.location.origin + window.location.pathname);
             initRemark42(window.location.origin + window.location.pathname);
         })
     }
@@ -71,6 +73,7 @@ window.onload = function() {
     });
 
     document.body.addEventListener('htmx:load', function(evt) {
+        // console.log('htmx:load', window.location.origin + window.location.pathname);
         initRemark42(window.location.origin + window.location.pathname);
     });
 
@@ -79,12 +82,15 @@ window.onload = function() {
     });
 
     document.body.addEventListener('htmx:afterSettle', function(evt) {
-        initRemark42(
-            new URL(
+        let url = new URL(
                 evt.detail.pathInfo.finalPath,
                 window.location.origin + window.location.pathname
-            ).href
-        );
+            ).href.split('?')[0]
+
+        if (url != remark42CurrentURL) {
+            // console.log('htmx:afterSettle', url);
+            initRemark42(url);
+        }
     });
 
     document.addEventListener('keydown', function(e) {
