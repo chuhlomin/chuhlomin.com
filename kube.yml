@@ -27,7 +27,7 @@ spec:
               cpu: 10m
               memory: 10Mi
       imagePullSecrets:
-        - name: regcred
+        - name: ghcrcred
 ---
 apiVersion: v1
 kind: Service
