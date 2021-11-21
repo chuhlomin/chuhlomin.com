@@ -1,10 +1,6 @@
 {{ define "_info" }}
-{{ $edit := "Edit" }}
-{{ if eq .CurrentPage.Metadata.Language "ru" }}
-    {{ $edit = "Править" }}
-{{ end }}
 <div class="info inner">
     <span class="date">{{ .CurrentPage.Metadata.Date }}</span>
-    <a class="github" href="https://github.com/chuhlomin/micro/blob/main/{{ .CurrentPage.Source }}">{{ $edit }} {{ filepathBase .CurrentPage.Source }}</a>
+    <a class="github" href="https://github.com/chuhlomin/micro/blob/main/{{ .CurrentPage.Source }}">{{ i18n "edit" .CurrentPage.Metadata.Language }} {{ filepathBase .CurrentPage.Source }}</a>
 </div>
 {{ end }}
