@@ -41,11 +41,13 @@ jobs:
             issuer: letsencrypt
             remark_debug: "false"
             admin_shared_id: "github_273bcb28a295b223235763996744e39f7cedfbc4"
+            admin_shared_email: ${{ secrets.ADMIN_SHARED_EMAIL }}
             secret_base64: ${{ secrets.REMARK42_SECRET_BASE64 }}
             auth_github_cid_base64: ${{ secrets.AUTH_GITHUB_CID_BASE64 }}
             auth_github_csec_base64: ${{ secrets.AUTH_GITHUB_CSEC_BASE64 }}
             auth_google_cid_base64: ${{ secrets.AUTH_GOOGLE_CID_BASE64 }}
             auth_google_csec_base64: ${{ secrets.AUTH_GOOGLE_CSEC_BASE64 }}
+            telegram_token_base64: ${{ secrets.TELEGRAM_TOKEN_BASE64 }}
 
       - name: Deploy Remark42
         timeout-minutes: 4
