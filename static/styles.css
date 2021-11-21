@@ -392,6 +392,14 @@ kbd {
   padding-top: 20px;
 }
 
+#remark42 {
+  margin: -6px; /* compensate iframe body padding: 6px; */
+}
+
+#remark42 iframe {
+  margin: 0 !important; /* override default margin: -6px; */
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background: var(--color-background-dark);
