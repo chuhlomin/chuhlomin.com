@@ -25,6 +25,8 @@
   --color-neutral-muted: rgba(175, 184, 193, 0.2);
   --color-neutral-muted-dark: rgba(110, 118, 129, 0.4);
 
+  --border-radius: 0.33em;
+
   --padding: 10px;
   --padding-small: 20px;
   --padding-micro: 20px;
@@ -102,7 +104,7 @@ li > code {
   margin: 0;
   font-size: 85%;
   background-color: var(--color-neutral-muted);
-  border-radius: 6px;
+  border-radius: var(--border-radius);
 }
 
 .dotted {
@@ -155,7 +157,7 @@ li > code {
   padding: 0.33rem 0.66rem;
   margin-top: -0.33rem;
   background: rgba(0, 0, 0, 0.05);
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   text-transform: uppercase;
   font-size: 75%;
   border: none;
