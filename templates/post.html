@@ -2,7 +2,7 @@
 <html lang="{{ .CurrentPage.Metadata.Language }}">
 <head>
 <meta charset="UTF-8">
-<title>{{ .CurrentPage.Metadata.Title }} \ {{ i18n "blog" .CurrentPage.Metadata.Language }} \ {{ i18n "name" .CurrentPage.Metadata.Language }}</title>
+<title>{{ stripTags .CurrentPage.Metadata.Title }} \ {{ i18n "blog" .CurrentPage.Metadata.Language }} \ {{ i18n "name" .CurrentPage.Metadata.Language }}</title>
 <link rel="stylesheet" href="{{ back .CurrentPage.Path }}styles.css">
 {{ template "_head" . }}
 </head>
