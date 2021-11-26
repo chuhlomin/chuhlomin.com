@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
 :root {
+  color-scheme: light dark; /* opt into the user's color scheme preferences */
+
   --underline-opacity: 0.25;
 
   --color-text: #222222;
