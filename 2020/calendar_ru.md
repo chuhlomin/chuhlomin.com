@@ -18,4 +18,4 @@ https://www.artlebedev.ru/calendar-2020/
 
 Print responsibly.
 
-#projects #calendar
+#project #calendar
