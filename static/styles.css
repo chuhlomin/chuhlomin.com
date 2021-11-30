@@ -7,7 +7,7 @@
 
   --color-text: #222222;
   --color-text-dark: rgb(201, 209, 217);
-  --color-background: ##f0f3f6;
+  --color-background: #f0f3f6;
   --color-background-dark: #181a1b;
   --color-header: #000000;
   --color-header-dark: #ffffff;
@@ -116,13 +116,15 @@ li > code {
 .flag {
   position: relative;
   width: 100%;
-  padding: 48px 0 30px;
+  padding: 35px 0 0;
+  margin-bottom: 20px;
 }
 
 .header-content {
   position: relative;
   display: flex;
   align-items: center;
+  height: 50px;
 }
 
 .header-content h1, .header-content #name {
