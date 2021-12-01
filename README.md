@@ -1,6 +1,6 @@
 # micro
 
-[![main](https://github.com/chuhlomin/micro/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/chuhlomin/micro/actions/workflows/main.yml) [![release](https://github.com/chuhlomin/micro/actions/workflows/release.yml/badge.svg)](https://github.com/chuhlomin/micro/actions/workflows/release.yml)
+[![main](https://github.com/chuhlomin/micro/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/chuhlomin/micro/actions/workflows/main.yml)
 
 Microblog, stored as Markdown files in Git repository.
 
