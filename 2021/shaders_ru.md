@@ -31,6 +31,6 @@ void main() {
 * https://shadered.org/app?fork=4Y3P9GQID0
 
 Для желающих погрузится глубже могу порекомендовать
-[The Book Of Shaders](https://thebookofshaders.com) (в процессе написания).
+[The Book Of Shaders](https://thebookofshaders.com/?lan=ru) (в процессе написания).
 
 #image
