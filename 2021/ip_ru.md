@@ -18,12 +18,12 @@ date: 2021-12-06
 Мне же хотелось чего-то более минималистичного, без стилей, чтобы можно было
 пользоваться и из консоли с `curl`.
 
-Недолго думая, я написал небольшой сервис: http://ip.chuhlomin.com/  
+Недолго думая, я написал небольшой сервис: https://ip.chuhlomin.com/  
 Используются:
 
 * база от [GeoLite2](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data) для определния города и провайдера (ASN).
-* whois.iana.org для Whois запросов, например http://ip.chuhlomin.com/1.1.1.1/whois
+* whois.iana.org для Whois запросов, например https://ip.chuhlomin.com/1.1.1.1/whois
 
-Проверял только на IPv4, так что PR приветсвтуются: http://github.com/chuhlomin/ip
+Проверял только на IPv4, так что PR приветсвтуются: https://github.com/chuhlomin/ip
 
 #project #ops #go
