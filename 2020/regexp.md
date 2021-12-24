@@ -25,7 +25,7 @@ Regular expressions can be used to:
 - remove from the text all sentences that mention the word "cat" or "dog".
 
 Websites for checking and testing regular expressions:
-https://www.regexpal.com, https://regexr.com
+https://www.regexpal.com, https://regexr.com, https://regex101.com
 
 And to test your regular expression writing skills, I can advise:
 
