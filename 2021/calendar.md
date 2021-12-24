@@ -2,7 +2,7 @@
 date: 2021-01-01
 ---
 
-# 2021
+# Calendar 2021
 
 Happy 2021!  
 Statistically, this year should be better than the last. Seriously, it's hard to imagine that anything could top all the hell that's been going on all year.
