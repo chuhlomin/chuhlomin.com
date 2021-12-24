@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>{{ i18n "name" .CurrentPage.Metadata.Language }}</title>
+    <link href="https://chuhlomin.com/blog/index.html"/>
+    <link rel="self" href="https://chuhlomin.com/blog/feed.atom"/>
+    <updated>2021-12-06T00:00:00Z</updated>
+    <author>
+        <name>{{ i18n "name" .CurrentPage.Metadata.Language }}</name>
+    </author>
+    <id>urn:uuid:692e0df7-7c96-5f6b-9d43-4e2b357baad2</id>
+
+    <link rel="alternate" type="text/html" hreflang="ru" href="https://chuhlomin.com/blog/index.html?lang=ru"/>
+    <generator uri="https://github.com/chuhlomin/genblog" version="1.0">Genblog</generator>
+    
+    {{ range .AllPages }}
+    {{ if eq .Metadata.Language "ru" }}
+    <entry>
+        <id>https://chuhlomin.com/blog/{{ langToGetParameter .Path }}</id>
+        <title>{{ .Metadata.Title }}</title>
+        <link rel="alternate" type="text/html" href="https://chuhlomin.com/blog/{{ langToGetParameter .Path }}"/>
+        <updated>{{ .Metadata.Date }}T00:00:00Z</updated>
+        <published>{{ .Metadata.Date }}T00:00:00Z</published>
+        <content type="html" xml:lang="ru">
+            <![CDATA[{{ .Body }}]]>
+        </content>
+    </entry>
+    {{ end }}
+    {{ end }}
+</feed>

@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <title>{{ i18n "blog" .CurrentPage.Metadata.Language }} \ {{ i18n "name" .CurrentPage.Metadata.Language }}</title>
 <link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/atom+xml" title="{{ i18n "name" .CurrentPage.Metadata.Language }}" href="https://local.chuhlomin.com/blog/feed.atom"/>
+<link rel="alternate" type="application/atom+xml" title="{{ i18n "name" "ru" }}" href="https://local.chuhlomin.com/blog/feed.atom?lang=ru"/>
 {{ template "_head" . }}
 </head>
 <body>
