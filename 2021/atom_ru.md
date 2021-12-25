@@ -19,8 +19,8 @@ https://validator.w3.org/feed/docs/atom.html
 
 Теперь этот блог можно читать в любимом приложении для чтения RSS (с большой вероятностью оно поддерживает и Atom). Ссылка на фид: https://chuhlomin.com/blog/feed.atom?lang=ru
 
-Я рекомендую приложение [Reeder](https://reeder.app) с синхронизацией через iCloud ($10 для MacOS, $5 для iOS).
+Я рекомендую приложение [Reeder](https://reeder.app) с синхронизацией через iCloud ($10 для macOS, 5 для iOS).
 
-![Reeder for MacOS](reeder.png)
+![Reeder for macOS](reeder.png)
 
 #blog #rfc #app
