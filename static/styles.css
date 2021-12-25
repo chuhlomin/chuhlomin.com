@@ -97,6 +97,18 @@ a[href^="https://github.com"] {
   padding-left: 20px;
 }
 
+.feed-icon {
+  position: relative;
+  border: none;
+}
+
+.feed-icon img {
+  position: absolute;
+  height: 16px;
+  bottom: 1px;
+  left: 0.33rem;
+}
+
 a > code,
 p > code,
 h1 > code,

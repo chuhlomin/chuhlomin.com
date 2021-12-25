@@ -12,7 +12,14 @@
         <div class="logo"><img src="{{ $root }}apple-touch-icon.png" class="user-picture-image" alt=""></div>
         <div class="blog-title">
             <a class="name" href="https://chuhlomin.com{{ $langGetParameter }}">{{ i18n "name" .CurrentPage.Metadata.Language }}</a>&nbsp;<span class="sep">/</span>
-            {{ if eq .CurrentPage.ID "index.html" }}<span>{{ i18n "blog" .CurrentPage.Metadata.Language }}</span>{{ else }}<a href="{{ $root }}index.html{{ $langGetParameter }}">{{ i18n "blog" .CurrentPage.Metadata.Language }}</a>{{ end }}
+            {{ if eq .CurrentPage.ID "index.html" }}
+            <span>{{ i18n "blog" .CurrentPage.Metadata.Language }}</span>
+            {{ else }}
+            <a href="{{ $root }}index.html{{ $langGetParameter }}">{{ i18n "blog" .CurrentPage.Metadata.Language }}</a>
+            {{ end }}
+            <a href="{{ $root }}feed.atom{{ $langGetParameter }}" class="feed-icon">
+                <img alt="Atom" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI4IiBmaWxsPSIjRDA2ODI4Ii8+PGNpcmNsZSBjeD0iOCIgY3k9IjI0IiByPSIzIiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTMuNDE5IDYuNjc0NjVDMTAuNzQ5OSA1LjU2OTA1IDcuODg5MDggNSA1IDVWOUM3LjM2Mzc5IDkgOS43MDQ0NCA5LjQ2NTU4IDExLjg4ODMgMTAuMzcwMkMxNC4wNzIyIDExLjI3NDggMTYuMDU2NSAxMi42MDA2IDE3LjcyNzkgMTQuMjcyMUMxOS4zOTk0IDE1Ljk0MzUgMjAuNzI1MiAxNy45Mjc4IDIxLjYyOTggMjAuMTExN0MyMi41MzQ0IDIyLjI5NTYgMjMgMjQuNjM2MiAyMyAyN0gyN0MyNyAyNC4xMTA5IDI2LjQzMSAyMS4yNTAxIDI1LjMyNTQgMTguNTgxQzI0LjIxOTcgMTUuOTExOCAyMi41OTkyIDEzLjQ4NjUgMjAuNTU2NCAxMS40NDM3QzE4LjUxMzUgOS40MDA3NiAxNi4wODgyIDcuNzgwMjUgMTMuNDE5IDYuNjc0NjVaIiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTAuMzU3NiAxNC4wNjU3QzguNjU5MDEgMTMuMzYyMSA2LjgzODUxIDEzIDUgMTNWMTYuODczQzYuMjI5ODYgMTYuOTI5IDcuNDQxOTEgMTcuMTk4NCA4LjU4MTYgMTcuNjcwNUM5Ljg3MDE2IDE4LjIwNDMgMTEuMDQxIDE4Ljk4NjYgMTIuMDI3MiAxOS45NzI4QzEzLjAxMzQgMjAuOTU5IDEzLjc5NTcgMjIuMTI5OCAxNC4zMjk1IDIzLjQxODRDMTQuODAxNSAyNC41NTgxIDE1LjA3MSAyNS43NzAxIDE1LjEyNjkgMjdMMTkgMjdDMTkgMjUuMTYxNSAxOC42Mzc5IDIzLjM0MSAxNy45MzQzIDIxLjY0MjRDMTcuMjMwNyAxOS45NDM5IDE2LjE5OTUgMTguNDAwNSAxNC44OTk1IDE3LjEwMDVDMTMuNTk5NSAxNS44MDA1IDEyLjA1NjEgMTQuNzY5MyAxMC4zNTc2IDE0LjA2NTdaIiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==">
+            </a>
         </div>
 
         {{ $langs := allLanguageVariations . }}
