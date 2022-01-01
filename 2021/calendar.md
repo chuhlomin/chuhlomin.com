@@ -13,7 +13,7 @@ It helped me a lot in 2020 not to get lost in time.
 
 Set goals and make plans! You probably won't reach all your goals, but you'll be a lot closer to them than if you hadn't planned.
 
-<a href="calendar.pdf">calendar.pdf</a>
+<a href="calendar.pdf" download="2021 Calendar.pdf">2021 Calendar.pdf</a>
 
 ![Calendar](../2021/calendar.png "Calendar")
 

@@ -12,7 +12,7 @@ https://www.artlebedev.ru/calendar-2020/
 
 Не помню, почему именно я не стал его заказывать. Видимо, руки чесались и я сделал свою версию.
 
-<a href="calendar.pdf">2020 Calendar.pdf</a>
+<a href="calendar.pdf" download="2020 Calendar.pdf">2020 Calendar.pdf</a>
 
 ![Кадендарь](calendar.png "Календарь, май 2020")
 

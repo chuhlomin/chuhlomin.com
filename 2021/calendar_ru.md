@@ -13,7 +13,7 @@ date: 2021-01-01
 
 Ставьте цели и составляйте планы! Скорее всего, вы не достигните всех целей, но станете сильно ближе к ним, чем если бы не планировали.
 
-<a href="calendar.pdf">calendar.pdf</a>
+<a href="calendar.pdf" download="2021 Calendar.pdf">2021 Calendar.pdf</a>
 
 ![Кадендарь](../2021/calendar.png "Календарь")
 
