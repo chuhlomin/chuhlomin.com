@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>{{ i18n "name" .CurrentPage.Metadata.Language }}</title>
-    <link href="https://chuhlomin.com/blog/index.html"/>
+    <link href="https://chuhlomin.com/blog/index.html?lang=ru"/>
     <link rel="self" href="https://chuhlomin.com/blog/feed.atom?lang=ru"/>
     <updated>2021-12-06T00:00:00Z</updated>
     <author>
