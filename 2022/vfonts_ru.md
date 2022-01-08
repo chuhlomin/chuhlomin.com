@@ -13,7 +13,7 @@ date: 2022-01-08
 вес, ширина, наклон, оптический размер или
 любой другой параметр конкретного шрифта.
 
-https://en.wikipedia.org/wiki/Variable_font
+https://ru.wikipedia.org/wiki/Вариативный_шрифт
 
 Поддерживается уже большинством современных браузеров:
 https://caniuse.com/variable-fonts
