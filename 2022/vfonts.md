@@ -21,7 +21,7 @@ https://caniuse.com/variable-fonts
 Demo: https://chuhlomin.com/experiments/vfonts/index.html  
 
 <iframe
-    src="https://dev.chuhlomin.com/experiments/vfonts/index.html"
+    src="https://chuhlomin.com/experiments/vfonts/index.html"
     width="100%"
     height="200px">
 </iframe>
