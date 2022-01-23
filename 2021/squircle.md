@@ -18,4 +18,6 @@ https://en.m.wikipedia.org/wiki/Superellipse
 
 Since recently, you can adjust the smoothing of corners in Figma.
 
+<img src="squircle_figma.jpg" width="341" height="180" alt="Figma Corner Smoothing">
+
 #design

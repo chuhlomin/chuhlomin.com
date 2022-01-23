@@ -18,4 +18,6 @@ https://en.m.wikipedia.org/wiki/Superellipse
 
 В Figma с недавних пор можно настраивать сглаживание углов.
 
+<img src="squircle_figma.jpg" width="341" height="180" alt="Figma Corner Smoothing">
+
 #design
