@@ -19,7 +19,7 @@ Diagrams of this type are named after Sankey and are widely used:
 * https://en.wikipedia.org/wiki/Sankey_diagram#/media/File:Minard.png
 * https://www.iea.org/sankey/#?c=World&s=Balance
 
-More examples of Sankey Diagrams can be found at www.sankey-diagrams.com blog.
+More examples of Sankey Diagrams can be found at [sankey-diagrams.com](https://www.sankey-diagrams.com) blog.
 
 Tools for creating a Sankey Diagram:
 

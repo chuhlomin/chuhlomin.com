@@ -17,7 +17,7 @@ date: 2022-02-16
 * https://en.wikipedia.org/wiki/Sankey_diagram#/media/File:Minard.png
 * https://www.iea.org/sankey/#?c=World&s=Balance
 
-Больше примеров Сэнки диаграм можно найти в блоге www.sankey-diagrams.com
+Больше примеров Сэнки диаграм можно найти в блоге [sankey-diagrams.com](https://www.sankey-diagrams.com).
 
 Инструменты для создания Сэнки диаграм:
 
