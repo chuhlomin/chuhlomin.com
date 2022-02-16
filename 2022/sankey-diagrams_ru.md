@@ -11,7 +11,7 @@ date: 2022-02-16
 
 ![The Thermal Efficiency of Steam-Engines](https://upload.wikimedia.org/wikipedia/commons/1/10/JIE_Sankey_V5_Fig1.png)
 
-Диаграммы подобного типа наваны в честь Сэнки и широко используются:
+Диаграммы подобного типа названы в честь Сэнки и широко используются:
 
 * https://www.eia.gov/totalenergy/data/monthly/pdf/flow/total_energy.pdf
 * https://en.wikipedia.org/wiki/Sankey_diagram#/media/File:Minard.png
