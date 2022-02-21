@@ -9,7 +9,7 @@ date: 2022-02-21
 Terraform это инструмент от Hashicorp который позволяет настраивать внешние
 сервисы с помощью конфигурационных файлов.
 
-https://www.terraform.io
+https://www.terraform.io  
 https://github.com/hashicorp/terraform
 
 Для любого сервиса который отдаёт наружу API можно написать "провайдера" Terraform.

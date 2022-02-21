@@ -8,7 +8,7 @@ date: 2022-02-21
 
 Terraform is a Hashicorp tool that allows configuring external services with config files.
 
-https://www.terraform.io
+https://www.terraform.io  
 https://github.com/hashicorp/terraform
 
 For any service that provides external API, you can write a "provider." Terraform provider defines what "resources" can be configured in this service.
