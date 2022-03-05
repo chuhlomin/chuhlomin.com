@@ -13,6 +13,8 @@ https://github.com/hashicorp/terraform
 
 For any service that provides external API, you can write a "provider." Terraform provider defines what "resources" can be configured in this service.
 
+![Terraform Provider](terraform-provider.png)
+
 There are already official providers for popular services:
 
 - [AWS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
@@ -20,8 +22,6 @@ There are already official providers for popular services:
 - [Fastly](https://registry.terraform.io/providers/fastly/fastly/latest/docs)
 - [DataDog](https://registry.terraform.io/providers/DataDog/datadog/latest/docs)
 - [Terraform Cloud](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs)
-
-![Terraform Provider](terraform-provider.png)
 
 To understand what changed since the last run, Terraform needs to store the state of the resources in a file, S3 bucket, or somewhere else.
 

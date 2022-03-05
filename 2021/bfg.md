@@ -8,6 +8,8 @@ I hope everyone knows that storing secret values in an open form in Git reposito
 
 Roberto Tyley wrote a BFG app in Scala in 2012 that is 10-720 times faster than `git-filter-branch`.
 
+![BFG Cleaner](bfg.png)
+
 https://rtyley.github.io/bfg-repo-cleaner/
 
 ```bash

@@ -22,4 +22,4 @@ http://ccmenu.org
 
 ![CCMenu promo](ccmenu.png "CCMenu promo")
 
-#ci #app #macos
+#ops #app #macos

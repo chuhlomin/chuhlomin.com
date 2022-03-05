@@ -1,5 +1,6 @@
 ---
 date: 2020-12-20
+image: animals-ar.png
 ---
 
 # Animals AR

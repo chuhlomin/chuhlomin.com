@@ -1,5 +1,6 @@
 ---
 date: 2020-05-10
+image: alfred.png
 ---
 
 # Alfred

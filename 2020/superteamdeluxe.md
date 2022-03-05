@@ -1,5 +1,6 @@
 ---
 date: 2020-04-24
+image: superteamdeluxe.png
 ---
 
 # SuperTeamDeluxe.com

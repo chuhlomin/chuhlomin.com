@@ -1,5 +1,6 @@
 ---
 date: 2021-10-31
+image: remark42.png
 ---
 
 # Remark42

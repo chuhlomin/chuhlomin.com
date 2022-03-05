@@ -4,6 +4,8 @@ date: 2020-05-08
 
 # GitHub Satellite
 
+![GitHub Satellite Logo](github-satellite.png)
+
 This Wednesday there was an online conference called "GitHub Satellite."
 https://githubsatellite.com
 

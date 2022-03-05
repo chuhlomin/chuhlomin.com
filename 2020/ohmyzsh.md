@@ -24,4 +24,4 @@ And lastly, I recommend `zsh-autosuggestions` which adds hints to incomplete com
 https://github.com/zsh-users/zsh-autosuggestions
 (can be installed as OhMyZsh plugin)
 
-#cli #shell
+#cli

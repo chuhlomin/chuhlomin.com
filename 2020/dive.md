@@ -1,5 +1,6 @@
 ---
 date: 2020-05-14
+image: dive.png
 ---
 
 # Dive
@@ -32,4 +33,4 @@ docker run --rm -it \
 
 Can you imagine, you can run a Dive container through Docker to analyze a Dive container.
 
-#docker
+#ops

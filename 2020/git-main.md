@@ -4,6 +4,8 @@ date: 2020-08-12
 
 # Git: main
 
+![Git main branch](git-main.png)
+
 In Git, starting with the latest version 2.28, there is an option to change
 the default branch name from `master` to something else, such as `main`:
 

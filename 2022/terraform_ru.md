@@ -14,6 +14,9 @@ https://github.com/hashicorp/terraform
 
 Для любого сервиса который отдаёт наружу API можно написать "провайдера" Terraform.
 Провайдер опеределяет какие "ресурсы" можно настраивать в этом сервисе.
+
+![Terraform Provider](terraform-provider.png)
+
 А для популярных сервисов уже есть официальные провайдеры:
 
 - [AWS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
@@ -21,8 +24,6 @@ https://github.com/hashicorp/terraform
 - [Fastly](https://registry.terraform.io/providers/fastly/fastly/latest/docs)
 - [DataDog](https://registry.terraform.io/providers/DataDog/datadog/latest/docs)
 - [Terraform Cloud](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs)
-
-![Terraform Provider](terraform-provider.png)
 
 Чтобы понимать, что изменилось с последнего запуска, Terraform нужно где-то хранить
 "состояние": в локальном файле, или в S3-бакете или где-то ещё.

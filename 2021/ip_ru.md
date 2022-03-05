@@ -18,7 +18,23 @@ date: 2021-12-06
 Мне же хотелось чего-то более минималистичного, без стилей, чтобы можно было
 пользоваться и из консоли с `curl`.
 
-Недолго думая, я написал небольшой сервис: https://ip.chuhlomin.com/  
+Недолго думая, я написал небольшой сервис: https://ip.chuhlomin.com/
+
+```bash
+curl -L https://ip.chuhlomin.com
+ip: 107.217.36.202
+user_agent: curl/7.77.0
+asn:
+  number: 6079
+  org: RCN-AS
+geoip:
+  country: US
+  country_name: United States
+  city: Queens
+  lat: 40.726
+  lon: -73.848
+```
+
 Используются:
 
 * база от [GeoLite2](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data) для определния города и провайдера (ASN).

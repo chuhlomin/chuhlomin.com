@@ -23,4 +23,4 @@ https://ohmyz.sh
 https://github.com/zsh-users/zsh-autosuggestions
 (может быть установлен как плагин OhMyZsh)
 
-#cli #shell
+#cli

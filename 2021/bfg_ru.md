@@ -9,6 +9,8 @@ date: 2021-02-21
 Roberto Tyley в 2012 году написал на Скале приложение BFG, которое быстрее `git-filter-branch` в 10–720 раз.
 https://rtyley.github.io/bfg-repo-cleaner/
 
+![BFG Cleaner](bfg.png)
+
 ```bash
 git clone --mirror git://example.com/some-big-repo.git
 java -jar bfg.jar \

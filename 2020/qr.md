@@ -20,4 +20,4 @@ More information is collected here: https://github.com/zxing/zxing/wiki/Barcode-
 
 There are several QR code libraries for the Go programming language, and I used this one: https://github.com/liyue201/goqr
 
-#qr #golang
+#qr #go
