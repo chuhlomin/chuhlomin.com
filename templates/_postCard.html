@@ -1,5 +1,13 @@
 {{ define "_postCard" }}
 <div class="postCard" data-tags="{{ year .Metadata.Date }},{{ join .Metadata.Tags "," }}">
+    <div class="image">
+        {{ if .Metadata.Images }}
+        {{ $img := index .Metadata.Images 0 }}
+        <a href="{{ langToGetParameter .Path }}">
+            <img src="{{ $img.ThumbPath }}" alt="{{ $img.Alt }}">
+        </a>
+        {{ end }}
+    </div>
     <div class="titleAndTags">
         <a href="{{ langToGetParameter .Path }}">{{ .Metadata.Title }}</a>
         {{ if .Metadata.Tags }}

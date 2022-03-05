@@ -148,10 +148,21 @@ li > code {
 }
 
 .header-content {
-  position: relative;
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(65ch, 100%)
+    1fr;
   height: 50px;
+  align-items: center;
+}
+
+.header-content .logo {
+  grid-column: 1;
+}
+
+.header-content .blog-title {
+  grid-column: 2;
 }
 
 .header-content h1, .header-content #name {
@@ -162,25 +173,18 @@ li > code {
 }
 
 .logo {
-  display: block;
-  position: absolute;
-  left: -60px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
+  text-align: right;
 }
 
 .user-picture-image {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  margin-right: 0.66rem;
 }
 
 .languages {
+  float: right;
   margin-right: -0.66rem;
 }
 
@@ -213,6 +217,18 @@ li > code {
   margin: 0 auto;
   width: calc(100% - 9% - 9%);
   max-width: 720px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(65ch, 100%)
+    1fr;
+}
+
+.wrapper > * {
+  grid-column: 2;
 }
 
 .content {
@@ -283,6 +299,7 @@ iframe {
 
 .postCard {
   display: flex;
+  align-items: center;
   margin-top: 20px;
 }
 
@@ -290,15 +307,34 @@ iframe {
   flex-grow: 1;
 }
 
+.postCard .image {
+  width: 70px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.postCard .image a {
+  border: none;
+}
+
+.postCard .image img {
+  max-width: 70px;
+  max-height: 70px;
+  vertical-align: middle;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
 .postCard .date {
-  /* float: right; */
   font-family: monospace;
   opacity: 0.25;
   word-break: keep-all;
   padding-left: 10px;
 }
 
-.postCard a {
+.postCard .titleAndTags a {
   margin-right: 10px;
   word-break: normal;
 }
@@ -506,6 +542,10 @@ kbd {
   .tag:visited { /* for some reasons :visited #hash-only links don't work well on mobile */
     color: var(--color-link-dark);
     border-bottom: 1px solid var(--color-link-underscore-dark);
+  }
+
+  .postCard .image img {
+    border: 1px solid rgba(255,255,255,0.2);
   }
 
   iframe {
