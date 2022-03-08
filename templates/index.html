@@ -11,14 +11,16 @@
 <body>
 <div class="common">
     {{ template "_header" . }}
-    <div class="content inner">
-        <h1>All posts{{ template "_selectedTag" . }}</h1>
-        <div class="posts">
-            {{ range .AllPages }}
-            {{ if eq .Metadata.Language "en" }}
-                {{ template "_postCard" . }}
-            {{ end }}
-            {{ end }}
+    <div class="wrapper">
+        <div class="content">
+            <h1>All posts{{ template "_selectedTag" . }}</h1>
+            <div class="posts">
+                {{ range .AllPages }}
+                {{ if eq .Metadata.Language "en" }}
+                    {{ template "_postCard" . }}
+                {{ end }}
+                {{ end }}
+            </div>
         </div>
     </div>
 </div>

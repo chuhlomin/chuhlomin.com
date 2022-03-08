@@ -9,23 +9,29 @@
 <body>
 <div class="common">
     {{ template "_header" . }}
-    <div class="content inner">
-        <h1>{{ .CurrentPage.Metadata.Title }}</h1>
-        {{ .CurrentPage.Body }}
-        {{ if .CurrentPage.Metadata.Tags }}
-        <div class="tags">
-            {{ range .CurrentPage.Metadata.Tags }}
-            <a class="tag" href="{{ back $.CurrentPage.Path }}index.html{{ langGetParameter $.CurrentPage.Path $.DefaultLanguage }}#{{ . }}">#{{ . }}</a>
+    <div class="wrapper">
+        <div class="content">
+            <h1>{{ .CurrentPage.Metadata.Title }}</h1>
+            {{ .CurrentPage.Body }}
+            {{ if .CurrentPage.Metadata.Tags }}
+            <div class="tags">
+                {{ range .CurrentPage.Metadata.Tags }}
+                <a class="tag" href="{{ back $.CurrentPage.Path }}index.html{{ langGetParameter $.CurrentPage.Path $.DefaultLanguage }}#{{ . }}">#{{ . }}</a>
+                {{ end }}
+            </div>
             {{ end }}
         </div>
-        {{ end }}
     </div>
-    <div class="darkBackground" hx-boost="true">
+    <div class="wrapper darkBackground" hx-boost="true">
+        <div>
         {{ template "_info" . }}
         {{ template "_next" . }}
+        </div>
     </div>
-    <div class="comments inner">
-        <div id="remark42"></div>
+    <div class="wrapper">
+        <div class="comments">
+            <div id="remark42"></div>
+        </div>
     </div>
 </div>
 {{ template "_scripts" . }}
