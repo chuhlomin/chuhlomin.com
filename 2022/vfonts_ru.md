@@ -24,7 +24,8 @@ https://caniuse.com/variable-fonts
 <iframe
     src="https://chuhlomin.com/experiments/vfonts/index.html"
     width="100%"
-    height="200px">
+    height="200px"
+    scrolling="no">
 </iframe>
 
 Такие шрифты можно найти и посмотреть на сайтах:
