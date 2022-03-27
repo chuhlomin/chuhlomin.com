@@ -1,5 +1,6 @@
 ---
 date: 2022-01-23
+image: fish_promo.png
 ---
 
 # Fish
