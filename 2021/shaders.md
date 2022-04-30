@@ -31,6 +31,10 @@ and see the result in real time:
 * https://shadered.org/app?fork=4Y3P9GQID0
 
 For those who want to dive deeper, I can recommend
-[The Book Of Shaders](https://thebookofshaders.com) (in progress).
+[The Book Of Shaders](https://thebookofshaders.com) (in progress) and Twitter accounts:
+
+* https://twitter.com/XorDev
+* https://twitter.com/kamoshika_vrc
+* https://twitter.com/zozuar
 
 #image
