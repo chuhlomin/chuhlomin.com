@@ -16,7 +16,7 @@ If you can't remember the author, you can look it up like this:
 
 ```bash
 cd ~/Projects
-
+tree . -L 2 | grep -B 1 "Iosevka"
 ├── be5invis
 │   └── Iosevka
 ```
