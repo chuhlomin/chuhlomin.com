@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>{{ stripTags .CurrentPage.Metadata.Title }} \ {{ i18n "blog" .CurrentPage.Metadata.Language }} \ {{ i18n "name" .CurrentPage.Metadata.Language }}</title>
-<link rel="stylesheet" href="{{ back .CurrentPage.Path }}styles.css">
+<link rel="stylesheet" href="{{ back .CurrentPage.Path }}styles.css?ts={{ .Timestamp }}">
 {{ template "_head" . }}
 </head>
 <body>
