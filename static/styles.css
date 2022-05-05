@@ -10,7 +10,7 @@
   --color-background: #f0f3f6;
   --color-background-dark: #181a1b;
   --color-header: #000000;
-  --color-header-dark: #ffffff;
+  --color-header-dark: #ddd;
   --color-link: #0969da;
   --color-link-dark: #6BF;
   --color-link-underscore: rgba(9, 105, 218, var(--underline-opacity));
@@ -177,10 +177,13 @@ li > code {
 }
 
 .user-picture-image {
+  float: right;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   margin-right: 0.66rem;
+  background-image: url('./memoji_v3.png');
+  background-size: cover;
 }
 
 .languages {
@@ -211,12 +214,6 @@ li > code {
 
 .blog-title .sep {
   font-weight: normal;
-}
-
-.inner {
-  margin: 0 auto;
-  width: calc(100% - 9% - 9%);
-  max-width: 720px;
 }
 
 .wrapper {
@@ -547,6 +544,10 @@ kbd {
     border: 1px solid rgba(255,255,255,0.2);
   }
 
+  .user-picture-image {
+    background-image: url('./memoji_v3_dark.png');
+  }
+
   iframe {
     border-color: rgba(110, 118, 129, 0.4);
   }
@@ -588,10 +589,8 @@ kbd {
     text-align: left;
   }
 
-  .inner {
-    margin: 0 20px 40px 20px;
-    width: auto;
-    max-width: 100%;
+  .user-picture-image {
+    float: none;
   }
 
   .languages {
@@ -642,9 +641,6 @@ kbd {
   .wrapper {
     grid-template-columns: 1fr min(60ch, calc(100% - 20px)) 1fr;
     grid-column-gap: 10px;
-  }
-  .inner {
-    margin: 0 10px 10px 10px;
   }
 
   .content video,

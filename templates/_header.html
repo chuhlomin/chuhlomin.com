@@ -9,7 +9,7 @@
 {{ end }}
 <div class="flag">
     <div class="header-content">
-        <div class="logo"><img src="{{ $root }}apple-touch-icon.png" class="user-picture-image" alt=""></div>
+        <div class="logo"><div class="user-picture-image"></div></div>
         <div class="blog-title">
             <a class="name" href="https://chuhlomin.com{{ $langGetParameter }}">{{ i18n "name" .CurrentPage.Metadata.Language }}</a>&nbsp;<span class="sep">/</span>
             {{ if eq .CurrentPage.ID "index.html" }}
