@@ -597,15 +597,9 @@ kbd {
     display: none;
   }
 
-  .prevLink:first-child {
-    margin-left: 10px;
-  }
-  
-  .prevLink .hasArrow::before {
-    padding-right: 10px;
-  }
+  .prevLink .hasArrow::before,
   .nextLink .hasArrow::after {
-    padding-left: 10px;
+    display: none;;
   }
 
   .shortcut {
