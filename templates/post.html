@@ -10,7 +10,8 @@
 <div class="common">
     {{ template "_header" . }}
     <div class="wrapper">
-        <div class="content">
+        <div class="content post">
+            <span class="date">{{ .CurrentPage.Metadata.Date }}</span>
             <h1>{{ .CurrentPage.Metadata.Title }}</h1>
             {{ .CurrentPage.Body }}
             {{ if .CurrentPage.Metadata.Tags }}

@@ -1,0 +1,8 @@
+{{ define "_image" }}
+    {{ if .Metadata.Images }}
+    <div class="imagePromo">
+        {{ $img := index .Metadata.Images 0 }}
+        <img src="{{ back .Path }}{{ $img.ThumbPath }}" alt="{{ $img.Alt }}">
+    </div>
+    {{ end }}
+{{ end }}
