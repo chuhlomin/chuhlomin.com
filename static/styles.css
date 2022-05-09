@@ -320,6 +320,10 @@ iframe {
   border: none;
 }
 
+.imagePromo {
+  max-height: 70px;
+}
+
 .postCard .image img, .imagePromo img {
   max-width: 70px;
   max-height: 70px;
