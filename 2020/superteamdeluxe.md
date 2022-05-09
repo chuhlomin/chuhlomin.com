@@ -3,7 +3,7 @@ date: 2020-04-24
 image: superteamdeluxe.png
 ---
 
-# SuperTeamDeluxe.com
+# Super Team Deluxe
 
 <video width="462" height="274" controls>
   <source src="superteamdeluxe.mp4" type="video/mp4">
@@ -11,6 +11,8 @@ image: superteamdeluxe.png
 
 Look at the beautiful site 👆  
 The style, the button animations are awesome.
+
+https://superteamdeluxe.com
 
 Care Instructions: https://superteamdeluxe.com/pages/care
 
