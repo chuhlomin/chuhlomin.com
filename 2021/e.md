@@ -2,7 +2,7 @@
 date: 2021-10-09
 ---
 
-# Environment variables and alias `e`
+# Alias `e`
 
 Variables are "named memory areas." Like symbols in a mathematical formula, they can take on values and change them as the program runs.
 

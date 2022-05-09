@@ -2,7 +2,7 @@
 date: 2021-05-23
 ---
 
-# Pantone Matching System (PMS)
+# Pantone Matching System
 
 Pantone, headquartered in New Jersey, is well known worldwide for its proprietary color system that is used everywhere in graphic and product design.  
 https://www.pantone.com
