@@ -597,7 +597,14 @@ kbd {
     float: none;
   }
 
+  .blog-title {
+    position: relative; /* for positioning .lanugages */
+  }
+
   .languages {
+    position: absolute;
+    top: -50px; /* height of avatar */
+    right: 0;
     margin-right: 0;
   }
 
