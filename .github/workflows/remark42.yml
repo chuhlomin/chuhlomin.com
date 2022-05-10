@@ -32,9 +32,9 @@ jobs:
         id: render_template_remark42
         uses: chuhlomin/render-template@v1.2
         with:
-          template: kube.remark42.yml
+          template: kube-remark42.template.yml
           vars: |
-            image: umputun/remark42:v1.8.1
+            image: umputun/remark42:v1.9.0
             name: remark42
             app: remark42
             domain: comments.chuhlomin.com

@@ -45,7 +45,7 @@ jobs:
           project_id: ${{ secrets.GKE_PROJECT }}
           cluster_name: cluster-1
           location: us-central1-c
-          template_path: kube.yml
+          template_path: kube.template.yml
           vars: |
             image: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
             app: micro

@@ -43,7 +43,7 @@ spec:
         app: {{ .app }}
     spec:
       volumes:
-        - name: remark42-db
+        - name: remark42-data
           gcePersistentDisk:
             pdName: remark42-db
             fsType: ext4
@@ -73,7 +73,9 @@ spec:
             - name: SITE
               value: "micro,micro-dev"
             - name: STORE_BOLT_PATH
-              value: /srv/var/db
+              value: /srv/var/data/db
+            - name: AVATAR_FS_PATH
+              value: /srv/var/data/avatars
             - name: BACKUP_PATH
               value: /srv/var/backup
             - name: DEBUG
@@ -92,8 +94,8 @@ spec:
             - secretRef:
                 name: remark42
           volumeMounts:
-            - name: remark42-db
-              mountPath: /srv/var/db
+            - name: remark42-data
+              mountPath: /srv/var/data
             - name: remark42-backup
               mountPath: /srv/var/backup
 ---
