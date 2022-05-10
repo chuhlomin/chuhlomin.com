@@ -3,7 +3,7 @@ date: 2020-04-24
 image: superteamdeluxe.png
 ---
 
-# SuperTeamDeluxe.com
+# Super Team Deluxe
 
 <video width="462" height="274" controls>
   <source src="superteamdeluxe.mp4" type="video/mp4">
