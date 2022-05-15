@@ -16,4 +16,4 @@ https://github.com/chuhlomin/gbfs-go
 To make the data more pleasant to look at, I made a small website (pretty useless for now, but maybe it will grow into some "admin").
 https://bike.chuhlomin.com
 
-#bike #geo #project #go
+#bike #transit #geo #project #go
