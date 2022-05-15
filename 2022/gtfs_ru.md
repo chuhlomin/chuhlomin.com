@@ -28,9 +28,7 @@ https://database.mobilitydata.org
 
 https://developers.google.com/transit/gtfs/reference
 
-Особенно любопытно для меня выглядит расширение формата GTFS-Pathways
+Особенно любопытно для меня выглядит расширение формата [GTFS-Pathways](https://docs.google.com/document/d/1qJOTe4m_a4dcJnvXYt4smYj4QQ1ejZ8CvLBYzDM5IyM)
 (`pathways.txt`), описывающее многоуровневые станции, пересадки и зоны посадки.
-
-https://docs.google.com/document/d/1qJOTe4m_a4dcJnvXYt4smYj4QQ1ejZ8CvLBYzDM5IyM
 
 #transit #geo

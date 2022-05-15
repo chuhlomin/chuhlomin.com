@@ -28,9 +28,7 @@ The data are distributed as a ZIP archive with CSV files: `stops.txt`,
 
 https://developers.google.com/transit/gtfs/reference
 
-Especially curious to me is the GTFS-Pathways format extension (`pathways.txt`)
-describing the multi-level stations, transfers, and boarding zones.
-
-https://docs.google.com/document/d/1qJOTe4m_a4dcJnvXYt4smYj4QQ1ejZ8CvLBYzDM5IyM
+Especially curious to me is the [GTFS-Pathways](https://docs.google.com/document/d/1qJOTe4m_a4dcJnvXYt4smYj4QQ1ejZ8CvLBYzDM5IyM)
+format extension (`pathways.txt`) describing the multi-level stations, transfers, and boarding zones.
 
 #transit #geo
