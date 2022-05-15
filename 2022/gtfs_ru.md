@@ -4,7 +4,7 @@ date: 2022-05-15
 
 # GTFS
 
-![GTFS](gtfs.png)
+![GTFS](../2022/gtfs.png "GTFS")
 
 GTFS (General Transit Feed Specification) – отрытый формат для описания
 расположения остановок, расписания движения и т.п.
