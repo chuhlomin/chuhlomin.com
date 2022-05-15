@@ -4,8 +4,6 @@ date: 2022-05-15
 
 # GTFS
 
-![GTFS](../2022/gtfs.png "GTFS")
-
 GTFS (General Transit Feed Specification) is an open format for describing
 stop locations, schedules, etc.
 
@@ -27,6 +25,8 @@ The data are distributed as a ZIP archive with CSV files: `stops.txt`,
 `routes.txt`, `trips.txt`, `shapes.txt`, `calendar.txt`, ...
 
 https://developers.google.com/transit/gtfs/reference
+
+![GTFS](../2022/gtfs.png "GTFS")
 
 Especially curious to me is the [GTFS-Pathways](https://docs.google.com/document/d/1qJOTe4m_a4dcJnvXYt4smYj4QQ1ejZ8CvLBYzDM5IyM)
 format extension (`pathways.txt`) describing the multi-level stations, transfers, and boarding zones.

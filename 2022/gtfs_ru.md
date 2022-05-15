@@ -4,8 +4,6 @@ date: 2022-05-15
 
 # GTFS
 
-![GTFS](../2022/gtfs.png "GTFS")
-
 GTFS (General Transit Feed Specification) – отрытый формат для описания
 расположения остановок, расписания движения и т.п.
 
@@ -27,6 +25,8 @@ https://database.mobilitydata.org
 `routes.txt`, `trips.txt`, `shapes.txt`, `calendar.txt`, ...
 
 https://developers.google.com/transit/gtfs/reference
+
+![GTFS](../2022/gtfs.png "GTFS")
 
 Особенно любопытно для меня выглядит расширение формата [GTFS-Pathways](https://docs.google.com/document/d/1qJOTe4m_a4dcJnvXYt4smYj4QQ1ejZ8CvLBYzDM5IyM)
 (`pathways.txt`), описывающее многоуровневые станции, пересадки и зоны посадки.
