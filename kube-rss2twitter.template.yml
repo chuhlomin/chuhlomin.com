@@ -1,0 +1,52 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .app }}
+type: Opaque
+data:
+  TWI_ACCESS_TOKEN: {{ .twi_access_token_base64 }}
+  TWI_ACCESS_SECRET: {{ .twi_access_secret_base64 }}
+  TWI_CONSUMER_KEY: {{ .twi_consumer_key_base64 }}
+  TWI_CONSUMER_SECRET: {{ .twi_consumer_secret_base64 }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .app }}
+  labels:
+    app: {{ .app }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .app }}
+    spec:
+      containers:
+        - name: {{ .name }}
+          image: {{ .image }}
+          resources:
+            limits:
+              cpu: 20m
+              memory: 50Mi
+            requests:
+              cpu: 10m
+              memory: 10Mi
+          env:
+            - name: REFRESH
+              value: "{{ .refresh }}"
+            - name: TIMEOUT
+              value: "{{ .timeout }}"
+            - name: FEED
+              value: "{{ .feed }}"
+            - name: DRY
+              value: "{{ .dry }}"
+            - name: DEBUG
+              value: "{{ .debug }}"
+          envFrom:
+            - secretRef:
+                name: {{ .app }}

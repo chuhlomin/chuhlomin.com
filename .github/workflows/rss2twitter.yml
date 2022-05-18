@@ -1,0 +1,34 @@
+name: rss2twitter
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  remark42:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Deploy to GKE
+        uses: chuhlomin/actions/deploy-gke@main
+        with:
+          service_account_key: ${{ secrets.GKE_SA_KEY }}
+          project_id: ${{ secrets.GKE_PROJECT }}
+          cluster_name: cluster-1
+          location: us-central1-c
+          template_path: kube-rss2twitter.template.yml
+          vars: |
+            image: umputun/rss2twitter:v0.7.0
+            name: rss2twitter
+            app: rss2twitter
+            refresh: 5m
+            timeout: 5s
+            feed: https://chuhlomin.com/blog/feed.atom
+            dry: "true"
+            debug: "false"
+            twi_access_token_base64: ${{ secrets.TWI_ACCESS_TOKEN_BASE64 }}
+            twi_access_secret_base64: ${{ secrets.TWI_ACCESS_SECRET_BASE64 }}
+            twi_consumer_key_base64: ${{ secrets.TWI_CONSUMER_KEY_BASE64 }}
+            twi_consumer_secret_base64: ${{ secrets.TWI_CONSUMER_SECRET_BASE64 }}
+          rollout_status_wait: deployment/rss2twitter
