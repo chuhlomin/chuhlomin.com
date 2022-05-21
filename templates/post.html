@@ -10,7 +10,7 @@
 <meta property="og:image" content="https://chuhlomin.com/blog/{{ $img.Path }}">
 {{ end }}
 <meta property="og:type" content="article">
-<meta property="og:url" content="{{ langToGetParameter .CurrentPage.Path }}">
+<meta property="og:url" content="https://chuhlomin.com/blog/{{ langToGetParameter .CurrentPage.Path }}">
 <meta property="og:title" content="{{ stripTags .CurrentPage.Metadata.Title }} \ {{ i18n "blog" .CurrentPage.Metadata.Language }} \ {{ i18n "name" .CurrentPage.Metadata.Language }}">
 <meta property="article:author" content="https://chuhlomin.com">
 <meta property="article:published_time" content="{{ .CurrentPage.Metadata.Date }}">
