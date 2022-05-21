@@ -25,7 +25,7 @@ jobs:
             refresh: 5m
             timeout: 5s
             feed: https://chuhlomin.com/blog/feed.atom
-            dry: "true"
+            dry: "false"
             debug: "false"
             twi_access_token_base64: ${{ secrets.TWI_ACCESS_TOKEN_BASE64 }}
             twi_access_secret_base64: ${{ secrets.TWI_ACCESS_SECRET_BASE64 }}
