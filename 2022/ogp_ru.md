@@ -19,8 +19,8 @@ https://ogp.me
 
 ```html
 <meta property="og:type" content="article">
-<meta property="og:title" content="Open Graph Protocol \ Microblog \ Konstantin Chukhlomin">
-<meta property="og:url" content="https://chuhlomin.com/blog/2022/ogp.html">
+<meta property="og:url" content="https://chuhlomin.com/blog/2022/ogp.html?lang=ru">
+<meta property="og:title" content="Open Graph Protocol \ Микроблог \ Константин Чухломин">
 <meta property="og:image" content="https://chuhlomin.com/blog/2022/ogp.png">
 <meta property="article:author" content="https://chuhlomin.com">
 <meta property="article:published_time" content="2022-05-21">
