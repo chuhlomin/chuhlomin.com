@@ -1,0 +1,37 @@
+---
+date: 2022-05-21
+---
+
+# Open Graph Protocol
+
+![Open Graph Protocol](../2022/ogp.png)
+
+Open Graph is a protocol designed to influence what a link should look like,
+when it is shared on the Internet.
+
+https://ogp.me
+
+Using special HTML `meta` tags you can specify title, description, picture
+and other information about the page.
+
+All posts on this blog now have these tags. For example, for this page they
+look like this:
+
+```html
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chuhlomin.com/">
+<meta property="og:image" content="https://chuhlomin.com/blog/2022/ogp.png">
+<meta property="og:title" content="Open Graph Protocol \ Микроблог \ Константин Чухломин">
+<meta property="article:author" content="https://chuhlomin.com">
+<meta property="article:published_time" content="2022-05-21">
+<meta property="article:tag" content="blog">
+```
+
+A few useful tools:
+
+* [Open Graph Generator](https://webcode.tools/generators/open-graph)
+* [Twitter Card Validator](https://cards-dev.twitter.com/validator)
+* [Twitter Card Preview Tool](https://www.bannerbear.com/tools/twitter-card-preview-tool/)
+* [Facebook Preview Tool](https://www.bannerbear.com/tools/facebook-open-graph-preview-tool/)
+
+#blog
