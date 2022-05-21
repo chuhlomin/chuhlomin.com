@@ -37,5 +37,6 @@ For those who want to dive deeper, I can recommend
 * https://twitter.com/kamoshika_vrc
 * https://twitter.com/zozuar
 * https://twitter.com/catzpaw
+* https://twitter.com/tdhooper
 
 #image
