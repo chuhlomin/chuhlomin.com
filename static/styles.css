@@ -9,6 +9,8 @@
   --color-text-dark: rgb(201, 209, 217);
   --color-background: #f0f3f6;
   --color-background-dark: #181a1b;
+  --color-background-higher: #fff;
+  --color-background-higher-dark: #2F3132;
   --color-header: #000000;
   --color-header-dark: #ddd;
   --color-link: #0969da;
@@ -148,7 +150,6 @@ pre {
   position: relative;
   width: 100%;
   padding: 35px 0 0;
-  margin-bottom: 20px;
 }
 
 .header-content {
@@ -298,6 +299,25 @@ iframe {
 
 #heatmap {
   margin-top: 20px;
+}
+
+.message {
+  position: relative;
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  margin: 0 -1rem 1rem -1rem;
+  background: var(--color-background-higher);
+  border-radius: 16px;
+}
+
+.message::after {
+  content: "";
+  width: 20px;
+  height: 15px;
+  position: absolute;
+  top: -6.5px;
+  left: -4px;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAyMCAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMEM1LjkwOTA5IDUuNSA5Ljg2MDYzIDYuNjQ1NjYgMjAgNi42MjA2OVYxNUg3LjU0MDk4QzEuNjgwNzYgMTAuOTE5NyAwLjE4NTgzMiA3LjU0MDAyIDAgMFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=');
 }
 
 .postCard {
@@ -516,6 +536,14 @@ kbd {
     background: rgba(255, 255, 255, 0.05);
   }
 
+  .message {
+    background: var(--color-background-higher-dark);
+  }
+
+  .message::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAyMCAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMEM1LjkwOTA5IDUuNSA5Ljg2MDYzIDYuNjQ1NjYgMjAgNi42MjA2OVYxNUg3LjU0MDk4QzEuNjgwNzYgMTAuOTE5NyAwLjE4NTgzMiA3LjU0MDAyIDAgMFoiIGZpbGw9IiMzMDMxMzIiLz4KPC9zdmc+Cg==');
+  }
+
   .dotted {
     border-bottom: 1px dotted rgba(255, 255, 255, 0.75);
   }
@@ -608,6 +636,16 @@ kbd {
     margin-right: 0;
   }
 
+  .message {
+    margin: -10px 0 0 0;
+  }
+
+  .message::after {
+    top: -8.5px;
+    left: 4px;
+    transform: rotate(45deg);
+  }
+
   .info .genblog {
     display: none;
   }
@@ -630,13 +668,20 @@ kbd {
   .content {
     margin-bottom: 10px;
   }
+
   /* all 20px paddings shrinks to 10px */
   .content a {
     word-break: break-all;
   }
+
   .flag {
     padding: 10px 0 10px;
   }
+
+  .message {
+    margin: 0;
+  }
+
   .header-content,
   .wrapper {
     grid-template-columns: 1fr min(60ch, calc(100% - 20px)) 1fr;

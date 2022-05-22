@@ -13,6 +13,9 @@
     {{ template "_header" . }}
     <div class="wrapper">
         <div class="content">
+            <div class="message">
+                Этот блог можно <a href="https://t.me/chuhlomin_channel">читать в Телеграме</a>
+            </div>
             <h1>Все посты{{ template "_selectedTag" . }}</h1>
             <div class="posts">
                 {{ range .AllPages }}
