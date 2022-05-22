@@ -47,6 +47,8 @@ spec:
               value: "{{ .dry }}"
             - name: DEBUG
               value: "{{ .debug }}"
+            - name: TEMPLATE
+              value: "{{ .template }}"
           envFrom:
             - secretRef:
                 name: {{ .app }}
