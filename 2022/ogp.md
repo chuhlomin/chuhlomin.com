@@ -30,6 +30,7 @@ look like this:
 A few useful tools:
 
 * [Open Graph Generator](https://webcode.tools/generators/open-graph)
+* [About Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
 * [Twitter Card Validator](https://cards-dev.twitter.com/validator)
 * [Twitter Card Preview Tool](https://www.bannerbear.com/tools/twitter-card-preview-tool/)
 * [Facebook Preview Tool](https://www.bannerbear.com/tools/facebook-open-graph-preview-tool/)
