@@ -1,5 +1,6 @@
 ---
 date: 2021-09-26
+image: grand-perspective_icon.png
 ---
 
 # GrandPerspective

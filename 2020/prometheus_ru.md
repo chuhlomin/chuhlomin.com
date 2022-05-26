@@ -1,5 +1,6 @@
 ---
 date: 2020-07-04
+image: prometheus_icon.png
 ---
 
 # Prometheus

@@ -1,10 +1,13 @@
 ---
 date: 2020-05-23
+image: iterm2_icon.png
 ---
 
 # iTerm2
 
-Если вы проводите много времени в терминале на macOS, то наверняка пользуетесь iTerm2 – полноценной заменой системного Терминала с кучей фич:
+![iTerm2 icon](iterm2_icon.png)
+
+Если вы проводите много времени в терминале на macOS, то наверняка пользуетесь iTerm2 — полноценной заменой системного Терминала с кучей фич:
 
 https://iterm2.com/features.html
 
@@ -16,8 +19,12 @@ https://iterm2.com/downloads.html
   <source src="iterm2.mp4" type="video/mp4">
 </video>
 
-Суть в том что вместо классических комбинаций вроде "Control+A", "Control+E", "Esc, b", "Esc, f"
-можно использовать интуитивно понятные и запоминаемые комбинации из текстовых редакторов: "⌘+←", "⌘+→", "⌥+←", "⌥+→".
+Суть в том что вместо классических комбинаций вроде
+"<kbd>Control</kbd>+<kbd>A</kbd>", "<kbd>Control</kbd>+<kbd>E</kbd>",
+"<kbd>Esc</kbd>, <kbd>b</kbd>", "<kbd>Esc</kbd>, <kbd>f</kbd>"
+можно использовать интуитивно понятные и запоминаемые комбинации из текстовых редакторов:
+"<kbd>⌘</kbd>+<kbd>←</kbd>", "<kbd>⌘</kbd>+<kbd>→</kbd>",
+"<kbd>⌥</kbd>+<kbd>←</kbd>", "<kbd>⌥</kbd>+<kbd>→</kbd>".
 
 [![Настройка Natural Text Editing](iterm2_keys.png "Настройка Natural Text Editing")](iterm2_keys.png)
 

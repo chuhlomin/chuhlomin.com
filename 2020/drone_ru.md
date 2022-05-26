@@ -1,5 +1,6 @@
 ---
 date: 2020-07-27
+image: drone_icon.png
 ---
 
 # Drone

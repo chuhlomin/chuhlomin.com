@@ -1,5 +1,6 @@
 ---
 date: 2020-12-13
+image: timemator.png
 ---
 
 # Timemator

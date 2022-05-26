@@ -1,5 +1,6 @@
 ---
 date: 2020-07-08
+image: aegea_icon.png
 ---
 
 # Эгея

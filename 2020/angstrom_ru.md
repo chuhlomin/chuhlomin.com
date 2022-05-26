@@ -1,5 +1,6 @@
 ---
 date: 2020-08-07
+image: angstrom_icon.png
 ---
 
 # Ångström

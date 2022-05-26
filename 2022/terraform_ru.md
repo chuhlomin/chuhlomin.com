@@ -1,5 +1,6 @@
 ---
 date: 2022-02-21
+image: terraform_icon.png
 ---
 
 # Terraform

@@ -1,5 +1,6 @@
 ---
 date: 2020-06-23
+image: caddy_icon.png
 ---
 
 # Caddy (v2)

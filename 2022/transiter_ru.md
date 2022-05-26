@@ -1,5 +1,6 @@
 ---
 date: 2022-02-06
+image: transiter_icon.png
 ---
 
 # Transitër
@@ -21,4 +22,4 @@ date: 2022-02-06
 
 https://apps.apple.com/us/app/transitër/id1472885958
 
-#project #app #ios #transit
+#project #app #ios #transit #app

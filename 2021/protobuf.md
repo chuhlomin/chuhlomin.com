@@ -4,6 +4,8 @@ date: 2021-01-17
 
 # Protobuf
 
+![Protobuf logo](protobuf.png)
+
 Protocol Buffers is an open, extensible mechanism for serializing structured data developed at Google. Like JSON or XML, but binary, more compact. The "producer" and "consumer" of the message must agree on a "message schema" beforehand.
 
 https://developers.google.com/protocol-buffers/

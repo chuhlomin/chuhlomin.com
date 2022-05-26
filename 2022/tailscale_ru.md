@@ -1,5 +1,6 @@
 ---
 date: 2022-03-26
+image: tailscale_icon.png
 ---
 
 # Tailscale

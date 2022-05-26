@@ -4,6 +4,8 @@ date: 2021-12-25
 
 # RSS & Atom
 
+![RSS icon](rss.png)
+
 If you listen to podcasts, you use RSS (Really Simple Syndication) one way or another. With RSS, you can "subscribe" to updates of news sites, blogs, and podcasts and read them all in one place.
 
 An "RSS Feed" is an XML file containing articles on a site or podcast episodes.

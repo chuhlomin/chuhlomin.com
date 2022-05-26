@@ -1,9 +1,10 @@
 ---
 date: 2021-12-06
-image: ip.png
 ---
 
 # IP
+
+![IP icon](ip.png)
 
 Every device on the Internet has an IP address.
 It can be an IPv4 version (e.g. 1.1.1.1) or IPv6 (e.g. 2001:db8:0:1234:0:567:8:1).
@@ -11,6 +12,7 @@ It can be an IPv4 version (e.g. 1.1.1.1) or IPv6 (e.g. 2001:db8:0:1234:0:567:8:1
 Sometimes you need to know your IP or see information about another IP.  
 There are several services for this purpose:
 
+* https://ip.me
 * https://ifconfig.co
 * https://httpbin.org/ip
 * https://ipinfo.io

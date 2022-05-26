@@ -1,5 +1,6 @@
 ---
 date: 2022-02-06
+image: transiter_icon.png
 ---
 
 # Transitër
@@ -20,4 +21,4 @@ The app only works for NYC subways, buses, and New Jersey trains.
 
 https://apps.apple.com/us/app/transitër/id1472885958
 
-#project #ios #transit
+#project #ios #transit #app

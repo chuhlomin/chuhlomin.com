@@ -1,5 +1,6 @@
 ---
 date: 2020-04-25
+image: monokaipro_icon.png
 ---
 
 # Monokai Pro

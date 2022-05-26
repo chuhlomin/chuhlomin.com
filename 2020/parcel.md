@@ -4,6 +4,8 @@ date: 2020-05-19
 
 # Parcel
 
+![Parcel icon](parcel_icon.png)
+
 The sites of different delivery services are very different, each with their own odd logic, usually puzzling, always wanting to know your location. Therefore, going to such sites, and even more so, searching through the mail archives for a letter with a tracking number is not a pleasant procedure.
 
 Fortunately, a developer with a name familiar to my ear, Ivan Pavlov, created the application Parcel, which I have been using with pleasure for several years now.  

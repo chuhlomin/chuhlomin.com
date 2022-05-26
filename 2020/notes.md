@@ -1,5 +1,6 @@
 ---
 date: 2020-07-17
+image: notes_icon.png
 ---
 
 # Notes

@@ -1,9 +1,10 @@
 ---
 date: 2021-11-16
-image: zoom.png
 ---
 
 # Zoom-links
+
+![Zoom logo](zoom.png)
 
 If you work remotely, you almost certainly use Zoom.
 The experience of joining a meeting is something like this (at least for me):

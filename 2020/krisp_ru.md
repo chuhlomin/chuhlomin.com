@@ -1,5 +1,6 @@
 ---
 date: 2020-05-11
+image: krisp_icon.png
 ---
 
 # Krisp

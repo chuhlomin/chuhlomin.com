@@ -1,9 +1,10 @@
 ---
 date: 2020-05-10
-image: alfred.png
 ---
 
 # Alfred
+
+![Alfred icon](alfred.png)
 
 https://www.alfredapp.com (программа для macOS)
 
