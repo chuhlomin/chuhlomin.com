@@ -25,13 +25,16 @@ https://www.clear.rice.edu/comp412/Lectures/Support/Thompson-1968.pdf
 - убрать из текста все предложения, в которых упоминается слово кот или кошка.
 
 Сайты для проверки и тестирования регулярных выражений:
-https://www.regexpal.com, https://regexr.com, https://regex101.com
+
+- https://www.regexpal.com
+- https://regexr.com
+- https://regex101.com
 
 А для проверки своих навыков в написании регулярок могу посоветовать:
 
-* https://regexcrossword.com – кроссворды (есть версия для мобильного!)
-* https://www.hackerrank.com/domains/regex – задачи
-* https://brilliant.org/practice/regular-expressions – тесты
+- https://regexcrossword.com – кроссворды (есть версия для мобильного!)
+- https://www.hackerrank.com/domains/regex – задачи
+- https://brilliant.org/practice/regular-expressions – тесты
 
 Не стоит забывать и две мудрости:
 «У вас есть проблема. Вы решили использовать регулярные выражения. Теперь у вас две проблемы».

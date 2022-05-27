@@ -25,13 +25,16 @@ Regular expressions can be used to:
 - remove from the text all sentences that mention the word "cat" or "dog".
 
 Websites for checking and testing regular expressions:
-https://www.regexpal.com, https://regexr.com, https://regex101.com
+
+- https://www.regexpal.com
+- https://regexr.com
+- https://regex101.com
 
 And to test your regular expression writing skills, I can advise:
 
-* https://regexcrossword.com – crossword puzzles (there's a mobile version!)
-* https://www.hackerrank.com/domains/regex – problems
-* https://brilliant.org/practice/regular-expressions – tests
+- https://regexcrossword.com – crossword puzzles (there's a mobile version!)
+- https://www.hackerrank.com/domains/regex – problems
+- https://brilliant.org/practice/regular-expressions – tests
 
 Don't forget two words of wisdom:
 "You have a problem. You decided to use regular expressions. Now you have two problems."
