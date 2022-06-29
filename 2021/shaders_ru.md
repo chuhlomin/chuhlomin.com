@@ -32,7 +32,7 @@ void main() {
 
 Для желающих погрузится глубже могу порекомендовать
 [The Book Of Shaders](https://thebookofshaders.com/?lan=ru) (в процессе написания)
-и акааунты в Твиттере:
+и аккаунты в Твиттере:
 
 * https://twitter.com/XorDev
 * https://twitter.com/kamoshika_vrc
