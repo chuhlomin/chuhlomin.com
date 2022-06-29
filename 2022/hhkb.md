@@ -5,6 +5,8 @@ image: hhkb-logo.png
 
 # HHKB
 
+![HHKB logo](hhkb-logo.png "HHKB logo")
+
 In 1996 the Japanese computer scientist Eiiti Wada designed Happy Hacking Keyboard,
 a minimalistic keyboard with 60 keys. It is produced in Japan by PFU Limited,
 a subsidiary of Fujitsu.

@@ -5,6 +5,8 @@ image: hhkb-logo.png
 
 # HHKB
 
+![HHKB logo](hhkb-logo.png "HHKB logo")
+
 В 1996 году японский профессор Eiiti Wada создал Happy Hacking Keyboard –
 минималистичную клавиатуру с 60-ю клавишами.
 Производится в Японии PFU Limited, дочерней компании Fujitsu.
