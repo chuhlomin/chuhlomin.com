@@ -4,7 +4,7 @@ date: 2021-12-25
 
 # RSS & Atom
 
-![RSS icon](rss.png)
+![RSS icon](../2021/rss.png)
 
 Если вы слушаете подкасты, то так или иначе вы используете RSS (Really Simple Syndication).
 С помощью RSS можно "подписаться" на обновления новостных сайтов, блогов, подкастов и читать их все одном месте.
@@ -23,6 +23,6 @@ https://validator.w3.org/feed/docs/atom.html
 
 Я рекомендую приложение [Reeder](https://reeder.app) с синхронизацией через iCloud ($10 для macOS, 5 для iOS).
 
-![Reeder for macOS](reeder.png)
+![Reeder for macOS](../2021/reeder.png)
 
 #blog #rfc #app

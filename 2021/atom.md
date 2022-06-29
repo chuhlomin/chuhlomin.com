@@ -4,7 +4,7 @@ date: 2021-12-25
 
 # RSS & Atom
 
-![RSS icon](rss.png)
+![RSS icon](../2021/rss.png)
 
 If you listen to podcasts, you use RSS (Really Simple Syndication) one way or another. With RSS, you can "subscribe" to updates of news sites, blogs, and podcasts and read them all in one place.
 
@@ -20,6 +20,6 @@ You can now read this blog in your favorite RSS reader app (most likely, it supp
 
 I recommend the [Reeder app](https://reeder.app) with iCloud sync ($10 for macOS, 5 for iOS).
 
-![Reeder for macOS](reeder.png)
+![Reeder for macOS](../2021/reeder.png)
 
 #blog #rfc #app
