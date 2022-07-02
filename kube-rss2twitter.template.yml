@@ -31,11 +31,11 @@ spec:
           image: {{ .image }}
           resources:
             limits:
-              cpu: 20m
-              memory: 50Mi
+              cpu: 10m
+              memory: 20Mi
             requests:
               cpu: 10m
-              memory: 10Mi
+              memory: 20Mi
           env:
             - name: REFRESH
               value: "{{ .refresh }}"

@@ -21,11 +21,11 @@ spec:
             - containerPort: 80
           resources:
             limits:
-              cpu: 20m
-              memory: 50Mi
+              cpu: 10m
+              memory: 20Mi
             requests:
               cpu: 10m
-              memory: 10Mi
+              memory: 20Mi
       imagePullSecrets:
         - name: ghcrcred
 ---
