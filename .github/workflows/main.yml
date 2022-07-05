@@ -43,10 +43,11 @@ jobs:
         with:
           service_account_key: ${{ secrets.GKE_SA_KEY }}
           project_id: ${{ secrets.GKE_PROJECT }}
-          cluster_name: cluster-1
-          location: us-central1-c
+          cluster_name: cluster-east
+          location: us-east4-c
           template_path: kube.template.yml
           vars: |
             image: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
             app: micro
+            replicas: 2
           rollout_status_wait: deployment/micro
