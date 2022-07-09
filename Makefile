@@ -13,7 +13,7 @@ clean:
 .PHONY: build
 ## build: run genblog, copy static files
 build:
-	@genblog; cp -R static/ output/
+	@genblog; cp -R _static/ output/
 
 .PHONY: build-podman
 ## build-podman: build image with podman
@@ -40,4 +40,4 @@ run-docker:
 ## watch: watch for changes and rebuild
 watch:
 	@echo "Watching for file changes..."
-	@fswatch -or -e "output" -e ".git" . | xargs -n1 sh -c "genblog; cp -R static/ output/"
+	@fswatch -or -e "output" -e ".git" . | xargs -n1 sh -c "genblog; cp -R _static/ output/"

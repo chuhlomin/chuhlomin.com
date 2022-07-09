@@ -18,12 +18,12 @@ e
 ```
 
 Use [genblog](https://github.com/chuhlomin/genblog) binary to generate static
-site from Markdown files and templates. Also copy files from `static` directory
+site from Markdown files and templates. Also copy files from `_static` directory
 to `output`
 
 ```bash
 genblog
-cp -R static/ output/
+cp -R _static/ output/
 
 # same as:
 make build
@@ -33,10 +33,10 @@ Use [fswatch](https://github.com/emcrisostomo/fswatch) to update the site on eve
 
 ```bash
 # brew install fswatch
-fswatch -or -e "output" -e ".git" . | xargs -n1 sh -c "genblog; cp -R static/ output/"
+fswatch -or -e "output" -e ".git" . | xargs -n1 sh -c "genblog; cp -R _static/ output/"
 
 # same as:
-fswatch --one-per-batch --recursive --exclude="output" --exclude=".git" . | xargs -n1 sh -c "genblog; cp -R static/ output/"
+fswatch --one-per-batch --recursive --exclude="output" --exclude=".git" . | xargs -n1 sh -c "genblog; cp -R _static/ output/"
 
 # same as:
 make watch
