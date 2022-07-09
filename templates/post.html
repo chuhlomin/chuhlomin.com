@@ -17,6 +17,15 @@
 {{ range .CurrentPage.Metadata.Tags }}
 <meta property="article:tag" content="{{ . }}">
 {{ end }}
+{{ $next := nextPage . }}
+{{ $prev := prevPage . }}
+{{ if $prev }}
+<link rel="prev" href="https://chuhlomin.com/blog/{{ langToGetParameter $prev.Path }}">
+{{ end }}
+{{ if $next }}
+<link rel="next" href="https://chuhlomin.com/blog/{{ langToGetParameter $next.Path }}">
+{{ end }}
+<link rel="canonical" href="https://chuhlomin.com/blog/{{ langToGetParameter .CurrentPage.Path }}">
 </head>
 <body>
 <div class="common">
