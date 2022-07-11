@@ -33,7 +33,7 @@ jobs:
           search_path: "search_index"
 
       - name: Update search_index permissions
-        run: chmod -R +r search_index
+        run: ls -lah .
 
       - name: Build and push to CR (search)
         uses: chuhlomin/actions/docker-build-push@main
