@@ -26,6 +26,17 @@ spec:
             requests:
               cpu: 10m
               memory: 20Mi
+        - name: search
+          image: {{ .image_search }}
+          ports:
+            - containerPort: 8081
+          resources:
+            limits:
+              cpu: 10m
+              memory: 20Mi
+            requests:
+              cpu: 10m
+              memory: 20Mi
       imagePullSecrets:
         - name: ghcrcred
 ---
@@ -41,3 +52,6 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081

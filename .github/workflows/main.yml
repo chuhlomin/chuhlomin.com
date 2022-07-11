@@ -7,6 +7,7 @@ on:
 
 env:
   DOCKER_IMAGE: ghcr.io/chuhlomin/micro
+  DOCKER_IMAGE_SEARCH: ghcr.io/chuhlomin/micro_search
 
 jobs:
   main:
@@ -16,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: GenBlog
-        uses: chuhlomin/genblog@v0.4
+        uses: chuhlomin/genblog@v0.5
         with:
           title: Konstantin Chukhlomin's microblog
           author: Konstantin Chukhlomin
@@ -28,8 +29,10 @@ jobs:
           typography_enabled: "false"
           comments_enabled: "true"
           comments_site_id: "micro"
+          search_enabled: "true"
+          search_path: "search_index"
 
-      - name: Build and push to CR
+      - name: Build and push to CR (server)
         uses: chuhlomin/actions/docker-build-push@main
         with:
           registry: ghcr.io
@@ -37,6 +40,16 @@ jobs:
           password: ${{ secrets.PKG_TOKEN }}
           image_name: ${{ env.DOCKER_IMAGE }}
           tags: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+
+      - name: Build and push to CR (search)
+        uses: chuhlomin/actions/docker-build-push@main
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.PKG_TOKEN }}
+          image_name: ${{ env.DOCKER_IMAGE_SEARCH }}
+          dockerfile: search.dockerfile
+          tags: ${{ env.DOCKER_IMAGE_SEARCH }}:${{ github.sha }}
 
       - name: Deploy to GKE
         uses: chuhlomin/actions/deploy-gke@main
@@ -48,6 +61,7 @@ jobs:
           template_path: kube.template.yml
           vars: |
             image: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+            image_search: ${{ env.DOCKER_IMAGE_SEARCH }}:${{ github.sha }}
             app: micro
             replicas: 2
           rollout_status_wait: deployment/micro
