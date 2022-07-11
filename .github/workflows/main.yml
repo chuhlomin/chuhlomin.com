@@ -32,8 +32,14 @@ jobs:
           search_enabled: "true"
           search_path: "search_index"
 
-      - name: Update search_index permissions
-        run: ls -lah .
+      - name: Build and push to CR (server)
+        uses: chuhlomin/actions/docker-build-push@main
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.PKG_TOKEN }}
+          image_name: ${{ env.DOCKER_IMAGE }}
+          tags: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
 
       - name: Build and push to CR (search)
         uses: chuhlomin/actions/docker-build-push@main
@@ -44,15 +50,6 @@ jobs:
           image_name: ${{ env.DOCKER_IMAGE_SEARCH }}
           dockerfile: search.dockerfile
           tags: ${{ env.DOCKER_IMAGE_SEARCH }}:${{ github.sha }}
-
-      - name: Build and push to CR (server)
-        uses: chuhlomin/actions/docker-build-push@main
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.PKG_TOKEN }}
-          image_name: ${{ env.DOCKER_IMAGE }}
-          tags: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
 
       - name: Deploy to GKE
         uses: chuhlomin/actions/deploy-gke@main
