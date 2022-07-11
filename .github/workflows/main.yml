@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: GenBlog
-        uses: chuhlomin/genblog@v0.5
+        uses: chuhlomin/genblog@v0.6
         with:
           title: Konstantin Chukhlomin's microblog
           author: Konstantin Chukhlomin
