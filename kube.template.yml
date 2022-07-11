@@ -49,9 +49,11 @@ spec:
   selector:
     app: {{ .app }}
   ports:
-    - protocol: TCP
+    - name: micro
+      protocol: TCP
       port: 80
       targetPort: 80
-    - protocol: TCP
+    - name: search
+      protocol: TCP
       port: 8081
       targetPort: 8081
