@@ -1,18 +1,21 @@
 version: "3.9"
 
 services:
-  nginx:
+  server:
     image: nginx:alpine
     container_name: nginx-proxy
     ports:
-    - 127.0.0.1:8080:80
+      - 127.0.0.1:8080:80
     volumes:
-    - ./nginx.conf:/etc/nginx/nginx.conf
-    - ./output/:/usr/share/nginx/html/
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./output/:/usr/share/nginx/html/
 
-  # server:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - 127.0.0.1:8080:80
+  search:
+    image: chuhlomin/search:v0.1.0
+    ports:
+      - 127.0.0.1:8081:80
+    environment:
+      - INDEX_PATH=/index
+      - BIND=0.0.0.0:80
+    volumes:
+      - ./search_index:/index

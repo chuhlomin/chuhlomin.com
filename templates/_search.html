@@ -1,0 +1,128 @@
+{{ define "_search" }}
+<script>
+const createNode = (elem) => {
+    return document.createElement(elem);
+};
+
+const appendNode = (parent, elem) => {
+    parent.appendChild(elem);
+}
+
+const normalizeArray = (value) => {
+    if (typeof value === 'string') {
+        return [value];
+    }
+    return value;
+}
+
+function search(query) {
+    const url = "https://chuhlomin.com/blog/search/?q=" + query;
+    const options = {
+        method: 'POST',
+        body: JSON.stringify({
+            "Metadata": {
+                "Title": true,
+                "Date": true,
+                "Tags": true,
+                "Images": {
+                    "ThumbPath": true
+                },
+                "Language": true
+            },
+            "Path": true
+        }),
+    }
+
+    fetch(url, options)
+        .then(res => res.json())
+        .then(function(data) {
+            if (data == null || data.length == 0) {
+                document.getElementById("search_results").innerHTML = "No results found";
+                return
+            }
+
+            let results = document.getElementById("search_results");
+            results.innerHTML = "";
+            var counter = 0;
+
+            for (var i = 0; i < data.length; i++) {
+                let result = data[i];
+                let document = result.document;
+
+                if (document.Metadata.Language != "{{ . }}") {
+                    continue;
+                }
+                counter++;
+
+                let postCard = createNode("div");
+                postCard.className = "postCard";
+
+                let imageWrapper = createNode("div");
+                imageWrapper.className = "image";
+
+                let imageLink = createNode("a");
+                imageLink.href = document.Path;
+
+                let image = createNode("img");
+                thumbs = normalizeArray(document.Metadata.Images.ThumbPath);
+                image.src = thumbs[0];
+                appendNode(imageLink, image);
+                appendNode(imageWrapper, imageLink);
+                appendNode(postCard, imageWrapper);
+
+                let postTitle = createNode("div");
+                postTitle.className = "titleAndTags";
+
+                let link = createNode("a");
+                link.href = document.Path;
+                link.innerHTML = document.Metadata.Title;
+                appendNode(postTitle, link);
+
+                let tags = createNode("span")
+                tags.className = "tags";
+                tagsList = normalizeArray(document.Metadata.Tags);
+                for (var j = 0; j < tagsList.length; j++) {
+                    let tag = createNode("span");
+                    tag.className = "tag";
+                    tag.innerHTML = "#" + tagsList[j];
+                    appendNode(tags, tag);
+                }
+
+                appendNode(postTitle, tags);
+                appendNode(postCard, postTitle);
+
+                let postDate = createNode("div");
+                postDate.className = "date";
+                postDate.innerHTML = document.Metadata.Date.substring(0, document.Metadata.Date.indexOf("T"));
+                appendNode(postCard, postDate);
+
+                // result has file, and fragments
+                // fragments is an array of objects with field and fragment
+                /*div.innerHTML = `<div class="titleAndTags">
+                    <a href="` + result.path + `">` + result.title + `</a>` +
+                    result.tags.map(function(tag) {
+                        return `<a class="tag "href="#` + tag + `">` + tag + `</a>`;
+                    }).join("") + `
+                </div>
+                <div class="date">` + result.date + `</div>`;*/
+
+                /*for (var j = 0; j < result.fragments.length; j++) {
+                    var fragment = result.fragments[j];
+                    if (fragment.field == "Markdown") {
+                        div.innerHTML += "<p>" + fragment.fragment + "</p>";
+                    }
+                }*/
+
+                appendNode(results, postCard);
+            }
+
+            if (counter == 0) {
+                document.getElementById("search_results").innerHTML = "No results found";
+            }
+        })
+        .catch(err => {
+            console.error('Error: ', err);
+        });
+}
+</script>
+{{ end }}
