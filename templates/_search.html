@@ -1,4 +1,6 @@
 {{ define "_search" }}
+{{ $langSuffix := "" }}
+{{ if eq . "ru" }}{{ $langSuffix = "?lang=ru" }}{{ end }}
 <script>
 const createNode = (elem) => {
     return document.createElement(elem);
@@ -16,10 +18,11 @@ const normalizeArray = (value) => {
 }
 
 function search(query) {
-    const url = "https://chuhlomin.com/blog/search/?q=" + query;
+    const url = "{{ config "SearchURL" }}" + query;
     const options = {
         method: 'POST',
         body: JSON.stringify({
+            "Canonical": true,
             "Metadata": {
                 "Title": true,
                 "Date": true,
@@ -28,8 +31,7 @@ function search(query) {
                     "ThumbPath": true
                 },
                 "Language": true
-            },
-            "Path": true
+            }
         }),
     }
 
@@ -37,7 +39,7 @@ function search(query) {
         .then(res => res.json())
         .then(function(data) {
             if (data == null || data.length == 0) {
-                document.getElementById("search_results").innerHTML = "No results found";
+                document.getElementById("search_results").innerHTML = "{{ i18n "search_no_results" . }}";
                 return
             }
 
@@ -47,9 +49,9 @@ function search(query) {
 
             for (var i = 0; i < data.length; i++) {
                 let result = data[i];
-                let document = result.document;
+                let post = result.document;
 
-                if (document.Metadata.Language != "{{ . }}") {
+                if (post.Metadata.Language != "{{ . }}") {
                     continue;
                 }
                 counter++;
@@ -61,10 +63,10 @@ function search(query) {
                 imageWrapper.className = "image";
 
                 let imageLink = createNode("a");
-                imageLink.href = document.Path;
+                imageLink.href = post.Canonical;
 
                 let image = createNode("img");
-                thumbs = normalizeArray(document.Metadata.Images.ThumbPath);
+                thumbs = normalizeArray(post.Metadata.Images.ThumbPath);
                 image.src = thumbs[0];
                 appendNode(imageLink, image);
                 appendNode(imageWrapper, imageLink);
@@ -74,15 +76,16 @@ function search(query) {
                 postTitle.className = "titleAndTags";
 
                 let link = createNode("a");
-                link.href = document.Path;
-                link.innerHTML = document.Metadata.Title;
+                link.href = post.Canonical;
+                link.innerHTML = post.Metadata.Title;
                 appendNode(postTitle, link);
 
                 let tags = createNode("span")
                 tags.className = "tags";
-                tagsList = normalizeArray(document.Metadata.Tags);
+                tagsList = normalizeArray(post.Metadata.Tags);
                 for (var j = 0; j < tagsList.length; j++) {
-                    let tag = createNode("span");
+                    let tag = createNode("a");
+                    tag.href = "index.html{{ $langSuffix }}" + "#" + tagsList[j];
                     tag.className = "tag";
                     tag.innerHTML = "#" + tagsList[j];
                     appendNode(tags, tag);
@@ -93,18 +96,8 @@ function search(query) {
 
                 let postDate = createNode("div");
                 postDate.className = "date";
-                postDate.innerHTML = document.Metadata.Date.substring(0, document.Metadata.Date.indexOf("T"));
+                postDate.innerHTML = post.Metadata.Date.substring(0, post.Metadata.Date.indexOf("T"));
                 appendNode(postCard, postDate);
-
-                // result has file, and fragments
-                // fragments is an array of objects with field and fragment
-                /*div.innerHTML = `<div class="titleAndTags">
-                    <a href="` + result.path + `">` + result.title + `</a>` +
-                    result.tags.map(function(tag) {
-                        return `<a class="tag "href="#` + tag + `">` + tag + `</a>`;
-                    }).join("") + `
-                </div>
-                <div class="date">` + result.date + `</div>`;*/
 
                 /*for (var j = 0; j < result.fragments.length; j++) {
                     var fragment = result.fragments[j];
@@ -117,7 +110,7 @@ function search(query) {
             }
 
             if (counter == 0) {
-                document.getElementById("search_results").innerHTML = "No results found";
+                document.getElementById("search_results").innerHTML = "{{ i18n "search_no_results" . }}";
             }
         })
         .catch(err => {

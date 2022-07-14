@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: GenBlog
-        uses: chuhlomin/genblog@v0.9
+        uses: chuhlomin/genblog@v0.10
         with:
           title: Konstantin Chukhlomin's microblog
           author: Konstantin Chukhlomin
@@ -30,6 +30,7 @@ jobs:
           comments_enabled: "true"
           comments_site_id: "micro"
           search_enabled: "true"
+          search_url: "https://chuhlomin.com/blog/search/?q="
           search_path: "search_index"
 
       - name: Build and push to CR (server)
