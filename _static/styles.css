@@ -114,16 +114,23 @@ a[href^="https://github.com"] {
   padding-left: 20px;
 }
 
-.feed-icon {
-  position: relative;
+.feed-icon, .search-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
   border: none;
+  margin-left: 0.1rem;
+  vertical-align: middle;
 }
 
-.feed-icon img {
-  position: absolute;
-  height: 16px;
-  bottom: 1px;
-  left: 0.33rem;
+.feed-icon {
+  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI4IiBmaWxsPSIjRDA2ODI4Ii8+PGNpcmNsZSBjeD0iOCIgY3k9IjI0IiByPSIzIiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTMuNDE5IDYuNjc0NjVDMTAuNzQ5OSA1LjU2OTA1IDcuODg5MDggNSA1IDVWOUM3LjM2Mzc5IDkgOS43MDQ0NCA5LjQ2NTU4IDExLjg4ODMgMTAuMzcwMkMxNC4wNzIyIDExLjI3NDggMTYuMDU2NSAxMi42MDA2IDE3LjcyNzkgMTQuMjcyMUMxOS4zOTk0IDE1Ljk0MzUgMjAuNzI1MiAxNy45Mjc4IDIxLjYyOTggMjAuMTExN0MyMi41MzQ0IDIyLjI5NTYgMjMgMjQuNjM2MiAyMyAyN0gyN0MyNyAyNC4xMTA5IDI2LjQzMSAyMS4yNTAxIDI1LjMyNTQgMTguNTgxQzI0LjIxOTcgMTUuOTExOCAyMi41OTkyIDEzLjQ4NjUgMjAuNTU2NCAxMS40NDM3QzE4LjUxMzUgOS40MDA3NiAxNi4wODgyIDcuNzgwMjUgMTMuNDE5IDYuNjc0NjVaIiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTAuMzU3NiAxNC4wNjU3QzguNjU5MDEgMTMuMzYyMSA2LjgzODUxIDEzIDUgMTNWMTYuODczQzYuMjI5ODYgMTYuOTI5IDcuNDQxOTEgMTcuMTk4NCA4LjU4MTYgMTcuNjcwNUM5Ljg3MDE2IDE4LjIwNDMgMTEuMDQxIDE4Ljk4NjYgMTIuMDI3MiAxOS45NzI4QzEzLjAxMzQgMjAuOTU5IDEzLjc5NTcgMjIuMTI5OCAxNC4zMjk1IDIzLjQxODRDMTQuODAxNSAyNC41NTgxIDE1LjA3MSAyNS43NzAxIDE1LjEyNjkgMjdMMTkgMjdDMTkgMjUuMTYxNSAxOC42Mzc5IDIzLjM0MSAxNy45MzQzIDIxLjY0MjRDMTcuMjMwNyAxOS45NDM5IDE2LjE5OTUgMTguNDAwNSAxNC44OTk1IDE3LjEwMDVDMTMuNTk5NSAxNS44MDA1IDEyLjA1NjEgMTQuNzY5MyAxMC4zNTc2IDE0LjA2NTdaIiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==") no-repeat;
+  background-size: contain;
+}
+
+.search-icon {
+  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI4IiBmaWxsPSIjMjI0MkVFIi8+PGNpcmNsZSBjeD0iMTQuNzI3OSIgY3k9IjE1IiByPSI3LjUiIHRyYW5zZm9ybT0icm90YXRlKC00NSAxNC43Mjc5IDE1KSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBhdGggZD0iTTE4Ljk3MDUgMjIuMDcxMUMxOC4xODk1IDIxLjI5IDE4LjE4OTUgMjAuMDIzNyAxOC45NzA1IDE5LjI0MjZWMTkuMjQyNkMxOS43NTE2IDE4LjQ2MTYgMjEuMDE3OSAxOC40NjE2IDIxLjc5OSAxOS4yNDI2TDI2LjA0MTYgMjMuNDg1M0MyNi44MjI3IDI0LjI2NjMgMjYuODIyNyAyNS41MzI3IDI2LjA0MTYgMjYuMzEzN1YyNi4zMTM3QzI1LjI2MDYgMjcuMDk0OCAyMy45OTQyIDI3LjA5NDggMjMuMjEzMiAyNi4zMTM3TDE4Ljk3MDUgMjIuMDcxMVoiIGZpbGw9IndoaXRlIi8+PC9zdmc+Cg==") no-repeat;
+  background-size: contain;
 }
 
 a > code,
@@ -218,7 +225,6 @@ pre {
 .blog-title {
   font-size: 18px;
   font-weight: bold;
-  flex-grow: 10;
 }
 
 .blog-title .sep {
@@ -283,6 +289,7 @@ pre {
   line-height: 1.5;
   border: 1px solid var(--color-neutral-muted);
   background: var(--color-background);
+  white-space: pre-wrap;
 }
 
 mark {
