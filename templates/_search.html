@@ -56,6 +56,9 @@ function search(query) {
                 }
                 counter++;
 
+                let resultLine = createNode("div");
+                resultLine.className = "result";
+
                 let postCard = createNode("div");
                 postCard.className = "postCard";
 
@@ -99,14 +102,20 @@ function search(query) {
                 postDate.innerHTML = post.Metadata.Date.substring(0, post.Metadata.Date.indexOf("T"));
                 appendNode(postCard, postDate);
 
-                /*for (var j = 0; j < result.fragments.length; j++) {
-                    var fragment = result.fragments[j];
-                    if (fragment.field == "Markdown") {
-                        div.innerHTML += "<p>" + fragment.fragment + "</p>";
-                    }
-                }*/
+                appendNode(resultLine, postCard);
 
-                appendNode(results, postCard);
+                for (const field in result.fragments) {
+                    if (field == "Markdown") {
+                        for (var j = 0; j < result.fragments[field].length; j++) {
+                            let fragment = createNode("div");
+                            fragment.className = "fragment";
+                            fragment.innerHTML = result.fragments[field][j];
+                            appendNode(resultLine, fragment);
+                        }
+                    }
+                }
+
+                appendNode(results, resultLine);
             }
 
             if (counter == 0) {

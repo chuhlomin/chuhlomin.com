@@ -274,6 +274,23 @@ pre {
   box-shadow: inset 0 2px 2px var(--color-link-underscore);
 }
 
+.fragment {
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  margin-top: 0.33rem;
+  padding: 0.33rem;
+  border-radius: 4px;
+  font-size: 80%;
+  line-height: 1.5;
+  border: 1px solid var(--color-neutral-muted);
+  background: var(--color-background);
+}
+
+mark {
+  background: #fffe00;
+  color: black;
+  padding: 0 0.1rem;
+}
+
 iframe {
   margin-top: 10px;
   border-width: 1px;
@@ -368,7 +385,7 @@ iframe {
 }
 
 .postCard .date, .post .date {
-  font-family: monospace;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
   opacity: 0.25;
   word-break: keep-all;
   padding-left: 10px;
@@ -587,6 +604,11 @@ kbd {
   .search {
     background: #333;
     border-color: #444;
+  }
+
+  .fragment {
+    border: 1px solid var(--color-neutral-muted-dark);
+    background: var(--color-background-dark);
   }
 
   .darkBackground {
