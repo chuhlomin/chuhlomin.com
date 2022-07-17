@@ -116,11 +116,21 @@ a[href^="https://github.com"] {
 
 .feed-icon, .search-icon {
   display: inline-block;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   border: none;
-  margin-left: 0.1rem;
+  margin-right: 0.33rem;
   vertical-align: middle;
+  opacity: 0.9;
+}
+
+.feed-icon:hover, .search-icon:hover {
+  opacity: 1;
+}
+
+.search-icon.disabled, .search-icon.disabled:hover {
+  opacity: 0.5;
+  filter: grayscale(70%);
 }
 
 .feed-icon {
@@ -202,7 +212,7 @@ pre {
   background-size: cover;
 }
 
-.languages {
+.extra {
   float: right;
   margin-right: -0.66rem;
 }
@@ -669,7 +679,7 @@ kbd {
     position: relative; /* for positioning .lanugages */
   }
 
-  .languages {
+  .extra {
     position: absolute;
     top: -50px; /* height of avatar */
     right: 0;

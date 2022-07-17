@@ -18,20 +18,24 @@
             <a href="{{ $root }}index.html{{ $langGetParameter }}">{{ i18n "blog" .CurrentPage.Metadata.Language }}</a>
             {{ end }}
 
-            <a href="{{ $root }}feed.atom{{ $langGetParameter }}" class="feed-icon"></a>
-            <a href="{{ $root }}search.html{{ $langGetParameter }}" class="search-icon"></a>
+            <div class="extra">
+                {{ if eq .CurrentPage.ID "search.html" }}<span class="search-icon disabled"></span>
+                {{ else }}<a href="{{ $root }}search.html{{ $langGetParameter }}" class="search-icon"></a>{{ end }}
 
-            {{ $langs := allLanguageVariations . }}
-            {{ $length := len $langs }}
-            {{ if gt $length 1 }}
-            <div class="languages">
-                {{ range $langs }}
-                    {{ if ne .Metadata.Language $.CurrentPage.Metadata.Language }}
-                        <a class="lang lang-{{ .Metadata.Language }}" href="{{ $root }}{{ langToGetParameter .Path }}">{{ .Metadata.Language }}</a>
+                <a href="{{ $root }}feed.atom{{ $langGetParameter }}" class="feed-icon"></a>
+
+                {{ $langs := allLanguageVariations . }}
+                {{ $length := len $langs }}
+                {{ if gt $length 1 }}
+                <span class="languages">
+                    {{ range $langs }}
+                        {{ if ne .Metadata.Language $.CurrentPage.Metadata.Language }}
+                            <a class="lang lang-{{ .Metadata.Language }}" href="{{ $root }}{{ langToGetParameter .Path }}">{{ .Metadata.Language }}</a>
+                        {{ end }}
                     {{ end }}
+                </span>
                 {{ end }}
             </div>
-            {{ end }}
         </div>
     </div>
 </div>
