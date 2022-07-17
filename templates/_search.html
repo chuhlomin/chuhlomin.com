@@ -18,7 +18,7 @@ const normalizeArray = (value) => {
 }
 
 function search(query) {
-    const url = "{{ config "SearchURL" }}" + query;
+    const url = "{{ config "SearchURL" }}" + encodeURIComponent(query)+ "&lang={{ . }}";
     const options = {
         method: 'POST',
         body: JSON.stringify({
