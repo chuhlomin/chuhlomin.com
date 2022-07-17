@@ -82,6 +82,7 @@ function search(query) {
                 link.href = post.Canonical;
                 link.innerHTML = post.Metadata.Title;
                 appendNode(postTitle, link);
+                appendNode(postTitle, document.createTextNode(" "));
 
                 let tags = createNode("span")
                 tags.className = "tags";
@@ -92,6 +93,7 @@ function search(query) {
                     tag.className = "tag";
                     tag.innerHTML = "#" + tagsList[j];
                     appendNode(tags, tag);
+                    appendNode(tags, document.createTextNode(" "));
                 }
 
                 appendNode(postTitle, tags);
