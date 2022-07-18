@@ -22,8 +22,8 @@ jobs:
           title: Konstantin Chukhlomin's microblog
           author: Konstantin Chukhlomin
           short_description: ""
-          output_directory: "./output"
-          templates_directory: "./templates"
+          output_directory: "output"
+          templates_directory: "_templates"
           source_directory: "."
           allowed_file_extensions: ".jpeg,.jpg,.png,.mp4,.pdf"
           typography_enabled: "false"
