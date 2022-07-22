@@ -619,6 +619,7 @@ kbd {
   .search {
     background: #333;
     border-color: #444;
+    color: var(--color-text-dark);
   }
 
   .fragment {
