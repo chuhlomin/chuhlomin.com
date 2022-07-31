@@ -1,6 +1,14 @@
 @charset "UTF-8";
 
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url(./JetBrainsMono-Regular.woff2) format('woff2');
+}
+
 :root {
+  --font-default: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-monospace: JetBrains Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+
   --underline-opacity: 0.25;
 
   --color-text: #222222;
@@ -55,7 +63,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: var(--font-default);
   font-size: 18px;
   line-height: 26px;
   background: var(--color-background);
@@ -154,7 +162,8 @@ a > code,
 p > code,
 h1 > code,
 li > code {
-  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  font-family: var(--font-monospace);
+  font-size: var(--font-size-small);
   padding: .2em .4em;
   margin: 0;
   font-size: 85%;
@@ -162,8 +171,18 @@ li > code {
   border-radius: var(--border-radius);
 }
 
+code[class*=language-] {
+  font-family: var(--font-monospace) !important;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+pre[class*=language-] {
+  padding: 10px !important;
+}
+
 pre {
-  border-radius: var(--border-radius);
+  border-radius: calc(var(--border-radius) / 2);
 }
 
 .hidden {
@@ -299,7 +318,7 @@ pre {
 }
 
 .fragment {
-  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  font-family: var(--font-monospace);
   margin-top: 0.33rem;
   padding: 0.33rem;
   border-radius: 4px;
@@ -422,7 +441,7 @@ iframe {
 }
 
 .postCard .date, .post .date {
-  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  font-family: var(--font-monospace);
   opacity: 0.25;
   word-break: keep-all;
   padding-left: 10px;
