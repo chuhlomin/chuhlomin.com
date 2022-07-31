@@ -2,9 +2,9 @@
 date: 2022-07-30
 ---
 
-# GRPC
+# gRPC
 
-![GRPC logo](grpc.png)
+![gRPC logo](grpc.png)
 
 gRPC is a modern open source high performance RPC framework.
 
