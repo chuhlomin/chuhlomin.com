@@ -71,6 +71,10 @@ h1 {
   color: var(--color-header);
 }
 
+h2 {
+  margin-top: 20px;
+}
+
 p {
   margin: 10px 0 0 0;
 }
@@ -362,6 +366,18 @@ iframe {
   top: -6.5px;
   left: -4px;
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAyMCAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMEM1LjkwOTA5IDUuNSA5Ljg2MDYzIDYuNjQ1NjYgMjAgNi42MjA2OVYxNUg3LjU0MDk4QzEuNjgwNzYgMTAuOTE5NyAwLjE4NTgzMiA3LjU0MDAyIDAgMFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=');
+}
+
+.posts {
+  margin-top: 20px;
+}
+
+.posts h2:first-child {
+  margin-top: 0;
+}
+
+.year.spacer {
+  height: 20px;
 }
 
 .postCard {

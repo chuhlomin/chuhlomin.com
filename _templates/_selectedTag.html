@@ -11,19 +11,37 @@ function hashUpdated(hash) {
     let selectedTag = document.getElementById('selectedTag')
     let postCards = document.getElementsByClassName('postCard');
     let langs = document.getElementsByClassName('lang');
+    let years = document.getElementsByClassName('year');
 
     if (hash.length > 0) {
         tag.innerHTML = '#' + hash;
         document.title = '#' + hash + ' \\ ' + initialTitle;
         selectedTag.style.display = 'inline';
+        var yearsWithPosts = {};
+
         /* update posts visibility */
         for (let i = 0; i < postCards.length; i++) {
-            if (postCards[i].dataset.tags.split(',').includes(hash)) {
+            const tags = postCards[i].dataset.tags.split(',');
+
+            if (tags.includes(hash)) {
                 postCards[i].style.display = 'flex';
+                const year = tags[0];
+                yearsWithPosts[year] = true;
             } else {
                 postCards[i].style.display = 'none';
             }
         }
+
+        /* update h2 years visibility */
+        for (let i = 0; i < years.length; i++) {
+            const year = years[i].dataset.year;
+            if (yearsWithPosts[year]) {
+                years[i].style.display = 'block';
+            } else {
+                years[i].style.display = 'none';
+            }
+        }
+
         /* update hash in .lang links */
         for (let i = 0; i < langs.length; i++) {
             langs[i].href = langs[i].href.replace(/#.*/, '') + '#' + hash;
@@ -35,6 +53,10 @@ function hashUpdated(hash) {
         /* update posts visibility */
         for (let i = 0; i < postCards.length; i++) {
             postCards[i].style.display = 'flex';
+        }
+        /* update h2 years visibility */
+        for (let i = 0; i < years.length; i++) {
+            years[i].style.display = 'block';
         }
         /* remove hash from .lang links */
         for (let i = 0; i < langs.length; i++) {
