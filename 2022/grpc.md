@@ -16,6 +16,8 @@ https://grpc.io
 gRPC allows you to describe the service and generate both code for clients and
 a "stub" for the server in [popular programming languages](https://grpc.io/docs/languages/).
 
+![gRPC example](grpc_example.png)
+
 Protobuf is used to describe the service.
 Unary "request-response" messages as well as streams of messages are supported.
 
