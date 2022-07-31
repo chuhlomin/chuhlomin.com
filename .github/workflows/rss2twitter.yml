@@ -53,6 +53,7 @@ jobs:
             image: umputun/rss2twitter:v0.7.0
             name: rss2twitter-ru
             app: rss2twitter-ru
+            replicas: 1
             refresh: 5m
             timeout: 5s
             feed: https://chuhlomin.com/blog/feed.atom?lang=ru
