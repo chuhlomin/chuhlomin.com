@@ -46,8 +46,8 @@ jobs:
         with:
           service_account_key: ${{ secrets.GKE_SA_KEY }}
           project_id: ${{ secrets.GKE_PROJECT }}
-          cluster_name: cluster-1
-          location: us-central1-c
+          cluster_name: cluster-east
+          location: us-east4-c
           template_path: kube-rss2twitter.template.yml
           vars: |
             image: umputun/rss2twitter:v0.7.0
