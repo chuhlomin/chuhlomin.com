@@ -20,7 +20,7 @@
                 {{ if eq .Metadata.Language "en" }}
                     {{ if ne (year .Metadata.Date) $year }}
                     {{ if ne $year "" }}
-                    <div class="year spacer" data></div>
+                    <div class="year spacer" data-year="{{ $year }}"></div>
                     {{ end }}
                     {{ $year = year .Metadata.Date }}
                     <h2 class="year" data-year="{{ $year }}">{{ $year }}</h2>
