@@ -19,7 +19,7 @@ jobs:
       - name: GenBlog
         uses: chuhlomin/genblog@v1.0-rc1
         with:
-          base_url: "https://chuhlomin.com/blog/"
+          base_path: "https://chuhlomin.com/blog/"
           source_directory: "."
           output_directory: "output"
           allowed_file_extensions: ".jpeg,.jpg,.png,.mp4,.pdf"
