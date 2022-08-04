@@ -1,25 +1,25 @@
 {{ define "_postCard" }}
-<div class="postCard" data-tags="{{ year .Metadata.Date }},{{ join .Metadata.Tags "," }}">
+<div class="postCard" data-tags="{{ year .Date }},{{ join .Tags "," }}">
     <div class="image">
-        {{ if .Metadata.Images }}
-        {{ $img := index .Metadata.Images 0 }}
+        {{ if .Images }}
+        {{ $img := index .Images 0 }}
         <a href="{{ langToGetParameter .Path }}">
             <img src="{{ $img.ThumbPath }}" alt="{{ $img.Alt }}">
         </a>
         {{ end }}
     </div>
     <div class="titleAndTags">
-        <a href="{{ langToGetParameter .Path }}">{{ .Metadata.Title }}</a>
-        {{ if .Metadata.Tags }}
+        <a href="{{ langToGetParameter .Path }}">{{ .Title }}</a>
+        {{ if .Tags }}
         <span class="tags">
-            {{ range .Metadata.Tags }}
+            {{ range .Tags }}
             <a class="tag" href="#{{ . }}">#{{ . }}</a>
             {{ end }}
         </span>
         {{ end }}
     </div>
-    {{ if .Metadata.Date }}
-    <div class="date">{{ .Metadata.Date }}</div>
+    {{ if .Date }}
+    <div class="date">{{ .Date }}</div>
     {{ end }}
 </div>
 {{ end }}

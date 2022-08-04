@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>{{ i18n "search" .CurrentPage.Metadata.Language }} \ {{ i18n "blog" .CurrentPage.Metadata.Language }} \ {{ i18n "name" .CurrentPage.Metadata.Language }}</title>
+<title>{{ i18n "search" .Current.Language }} \ {{ i18n "blog" .Current.Language }} \ {{ i18n "name" .Current.Language }}</title>
 <link rel="stylesheet" href="styles.css?ts={{ .Timestamp }}">
 {{ template "_head" . }}
 </head>
@@ -12,7 +12,7 @@
     <div class="wrapper">
         <div class="content">
             <h1 class="hidden">Поиск</h1>
-            <input type="search" name="q" placeholder="{{ i18n "search" .CurrentPage.Metadata.Language }}" class="search" onkeyup="search(this.value)">
+            <input type="search" name="q" placeholder="{{ i18n "search" .Current.Language }}" class="search" onkeyup="search(this.value)">
             <div class="posts" id="search_results"></div>
         </div>
     </div>

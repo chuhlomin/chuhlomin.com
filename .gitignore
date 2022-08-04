@@ -1,2 +1,5 @@
 output
+search_index
+ignore
+
 *.log

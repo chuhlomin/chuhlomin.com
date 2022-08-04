@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>{{ i18n "blog" .CurrentPage.Metadata.Language }} \ {{ i18n "name" .CurrentPage.Metadata.Language }}</title>
+<title>{{ i18n "blog" .Current.Language }} \ {{ i18n "name" .Current.Language }}</title>
 <link rel="stylesheet" href="styles.css?ts={{ .Timestamp }}">
-<link rel="alternate" type="application/atom+xml" title="{{ i18n "name" .CurrentPage.Metadata.Language }}" href="https://chuhlomin.com/blog/feed.atom"/>
+<link rel="alternate" type="application/atom+xml" title="{{ i18n "name" .Current.Language }}" href="https://chuhlomin.com/blog/feed.atom"/>
 <link rel="alternate" type="application/atom+xml" title="{{ i18n "name" "ru" }}" href="https://chuhlomin.com/blog/feed.atom?lang=ru"/>
 {{ template "_head" . }}
 </head>
@@ -16,13 +16,13 @@
             <h1>All posts{{ template "_selectedTag" . }}</h1>
             <div class="posts">
                 {{ $year := ""}}
-                {{ range .AllPages }}
-                {{ if eq .Metadata.Language "en" }}
-                    {{ if ne (year .Metadata.Date) $year }}
+                {{ range .All }}
+                {{ if eq .Language "en" }}
+                    {{ if ne (year .Date) $year }}
                     {{ if ne $year "" }}
                     <div class="year spacer" data-year="{{ $year }}"></div>
                     {{ end }}
-                    {{ $year = year .Metadata.Date }}
+                    {{ $year = year .Date }}
                     <h2 class="year" data-year="{{ $year }}">{{ $year }}</h2>
                     {{ end }}
                     {{ template "_postCard" . }}

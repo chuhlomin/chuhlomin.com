@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="{{ .Current.Language }}">
+<head>
+<meta charset="UTF-8">
+<title>{{ stripTags .Current.Title }} \ {{ i18n "blog" .Current.Language }} \ {{ i18n "name" .Current.Language }}</title>
+<link rel="stylesheet" href="{{ config "BasePath" }}styles.css?ts={{ .Timestamp }}">
+{{ template "_head" . }}
+{{ if .Current.Images }}
+{{ $img := index .Current.Images 0 }}
+<meta property="og:image" content="https://chuhlomin.com/blog/{{ $img.Path }}">
+{{ end }}
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chuhlomin.com/blog/{{ langToGetParameter .Current.Path }}">
+<meta property="og:title" content="{{ stripTags .Current.Title }} \ {{ i18n "blog" .Current.Language }} \ {{ i18n "name" .Current.Language }}">
+<meta property="article:author" content="https://chuhlomin.com">
+<meta property="article:published_time" content="{{ .Current.Date }}">
+{{ range .Current.Tags }}
+<meta property="article:tag" content="{{ . }}">
+{{ end }}
+{{ $next := nextPage . }}
+{{ $prev := prevPage . }}
+{{ if $prev }}
+<link rel="prev" href="https://chuhlomin.com/blog/{{ langToGetParameter $prev.Path }}">
+{{ end }}
+{{ if $next }}
+<link rel="next" href="https://chuhlomin.com/blog/{{ langToGetParameter $next.Path }}">
+{{ end }}
+<link rel="canonical" href="https://chuhlomin.com/blog/{{ langToGetParameter .Current.Path }}">
+</head>
+<body>
+<div class="common">
+    {{ template "_header" . }}
+    <div class="wrapper">
+        <div class="content post">
+            <span class="date">{{ .Current.Date }}</span>
+            <h1>{{ .Current.Title }}</h1>
+            {{ .Current.Body }}
+            {{ if .Current.Tags }}
+            <div class="tags">
+                {{ range .Current.Tags }}
+                <a class="tag" href="{{ config "BasePath" }}index.html{{ langGetParameter $.Current.Path }}#{{ . }}">#{{ . }}</a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    <div class="wrapper darkBackground" hx-boost="true">
+        <div>
+        {{ template "_next" . }}
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="comments">
+            <div id="remark42"></div>
+        </div>
+    </div>
+</div>
+{{ template "_scripts" . }}
+</body>
+</html>

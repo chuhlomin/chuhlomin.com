@@ -14,6 +14,7 @@
   --color-text: #222222;
   --color-background: #f6f6f4;
   --color-background-higher: #fff;
+  --color-background-code: #ececef;
   --color-header: #000000;
   --color-link: #0969da;
   --color-link-underscore: rgba(9, 105, 218, var(--underline-opacity));
@@ -69,7 +70,6 @@ body {
   background: var(--color-background);
   color: var(--color-text);
   padding-bottom: 20px;
-  -webkit-font-smoothing: antialiased;
 }
 
 h1 {
@@ -167,7 +167,7 @@ li > code {
   padding: .2em .4em;
   margin: 0;
   font-size: 85%;
-  background-color: var(--color-neutral-muted);
+  background-color: var(--color-background-code);
   border-radius: var(--border-radius);
 }
 
@@ -325,7 +325,7 @@ pre {
   font-size: 80%;
   line-height: 1.5;
   border: 1px solid var(--color-neutral-muted);
-  background: var(--color-background);
+  background: var(--color-background-code);
   white-space: pre-wrap;
 }
 
@@ -578,6 +578,7 @@ kbd {
     --color-text: rgb(201, 209, 217);
     --color-background: #181a1b;
     --color-background-higher: #2F3132;
+    --color-background-code: #29304b;
     --color-header: #ddd;
     --color-link: #6BF;
     --color-link-underscore: rgba(102, 187, 255, var(--underline-opacity));

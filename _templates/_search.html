@@ -23,15 +23,13 @@ function search(query) {
         method: 'POST',
         body: JSON.stringify({
             "Canonical": true,
-            "Metadata": {
-                "Title": true,
-                "Date": true,
-                "Tags": true,
-                "Images": {
-                    "ThumbPath": true
-                },
-                "Language": true
-            }
+            "Title": true,
+            "Date": true,
+            "Tags": true,
+            "Images": {
+                "ThumbPath": true
+            },
+            "Language": true
         }),
     }
 
@@ -51,7 +49,7 @@ function search(query) {
                 let result = data[i];
                 let post = result.document;
 
-                if (post.Metadata.Language != "{{ . }}") {
+                if (post.Language != "{{ . }}") {
                     continue;
                 }
                 counter++;
@@ -69,7 +67,7 @@ function search(query) {
                 imageLink.href = post.Canonical;
 
                 let image = createNode("img");
-                thumbs = normalizeArray(post.Metadata.Images.ThumbPath);
+                thumbs = normalizeArray(post.Images.ThumbPath);
                 image.src = thumbs[0];
                 appendNode(imageLink, image);
                 appendNode(imageWrapper, imageLink);
@@ -80,13 +78,13 @@ function search(query) {
 
                 let link = createNode("a");
                 link.href = post.Canonical;
-                link.innerHTML = post.Metadata.Title;
+                link.innerHTML = post.Title;
                 appendNode(postTitle, link);
                 appendNode(postTitle, document.createTextNode(" "));
 
                 let tags = createNode("span")
                 tags.className = "tags";
-                tagsList = normalizeArray(post.Metadata.Tags);
+                tagsList = normalizeArray(post.Tags);
                 for (var j = 0; j < tagsList.length; j++) {
                     let tag = createNode("a");
                     tag.href = "index.html{{ $langSuffix }}" + "#" + tagsList[j];
@@ -101,7 +99,7 @@ function search(query) {
 
                 let postDate = createNode("div");
                 postDate.className = "date";
-                postDate.innerHTML = post.Metadata.Date.substring(0, post.Metadata.Date.indexOf("T"));
+                postDate.innerHTML = post.Date.substring(0, post.Date.indexOf("T"));
                 appendNode(postCard, postDate);
 
                 appendNode(resultLine, postCard);

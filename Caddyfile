@@ -9,7 +9,10 @@
 
 local.chuhlomin.com {
   tls internal
-  uri strip_prefix /blog
+
+  handle_path /search/* {
+    reverse_proxy 127.0.0.1:8081
+  }
 
   @langRu {
     query lang=ru
@@ -19,4 +22,3 @@ local.chuhlomin.com {
   root * output
   file_server
 }
-
