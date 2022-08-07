@@ -129,6 +129,12 @@ a[href^="https://github.com"] {
   padding-left: 20px;
 }
 
+blockquote p {
+  padding: 10px;
+  border-left: 3px solid var(--color-text);
+  background: var(--color-background-code);
+}
+
 .feed-icon, .search-icon {
   display: inline-block;
   width: 24px;

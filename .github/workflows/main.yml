@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: GenBlog
-        uses: chuhlomin/genblog@v1.0-rc1
+        uses: chuhlomin/genblog@v1.0-rc4
         with:
           base_path: "https://chuhlomin.com/blog/"
           source_directory: "."
