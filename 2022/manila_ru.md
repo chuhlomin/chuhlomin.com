@@ -17,8 +17,9 @@ date: 2022-08-07
 [Neil Sardesai](https://twitter.com/neilsardesai) сделал расширение для Finder
 которое позволяет менять цвет папки через контекстное меню.
 
-> The standard blue folder is pretty nice. But have you ever wished you could
-> have a red folder? Or green? Or maybe even purple? Well, now you can —
+> Стандартная синяя папка - это очень красиво. Но хотелось ли вам когда-нибудь
+> иметь красную папку? Или зеленую? А может быть, даже фиолетовую?
+> Что ж, теперь вы можете –
 
 https://github.com/neilsardesai/Manila
 
