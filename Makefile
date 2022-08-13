@@ -13,7 +13,7 @@ clean:
 .PHONY: build
 ## build: run genblog, copy static files
 build:
-	@genblog; cp -R _static/ output/
+	@genblog
 
 .PHONY: watch
 ## watch: watch for changes and rebuild
