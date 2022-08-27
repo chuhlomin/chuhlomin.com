@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  remark42:
+  rss2twitter:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
