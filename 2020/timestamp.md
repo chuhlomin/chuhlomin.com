@@ -4,7 +4,7 @@ date: 2020-10-04
 
 # Timestamp
 
-As I mentioned in my post about Alfred, I like to put timestamps in my texts. They somehow add context. For example, when debugging something, I write down my thoughts and attempts step by step so that if I get interrupted, I can quickly retrace my steps.
+As I mentioned in my [post about Alfred](alfred.md), I like to put timestamps in my texts. They somehow add context. For example, when debugging something, I write down my thoughts and attempts step by step so that if I get interrupted, I can quickly retrace my steps.
 
 It takes a long time to enter these labels manually, so on the Mac, I use a keyboard shortcut to do this.
 
