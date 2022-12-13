@@ -19,7 +19,7 @@ java -jar bfg.jar \
     some-big-repo.git
 cd some-big-repo.git
 git reflog expire --expire=now --all && \
-    git gc --prune-now--aggressive
+    git gc --prune=now --aggressive
 git push --force
 ```
 
