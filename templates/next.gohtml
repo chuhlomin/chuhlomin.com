@@ -1,0 +1,24 @@
+{{ define "next" }}
+<div class="next">
+    {{ $next := nextPage . }}
+    {{ $prev := prevPage . }}
+    {{ if $prev }}
+    <div class="prevLinkContainer">
+        <a id="prevLink" class="prevLink" href="{{ link $prev.Path "" }}">
+            {{ template "image" $prev }}
+            <span class="link hasArrow">{{ $prev.Title }}</span>
+        </a>
+        <div class="shortcut"><kbd>⌥</kbd>+<kbd>←</kbd></div>
+    </div>
+    {{ end }}
+    {{ if $next }}
+    <div class="nextLinkContainer">
+        <a id="nextLink" class="nextLink" href="{{ link $next.Path "" }}">
+            {{ template "image" $next }}
+            <span class="link hasArrow">{{ $next.Title }}</span>
+        </a>
+        <div class="shortcut"><kbd>⌥</kbd>+<kbd>→</kbd></div>
+    </div>
+    {{ end }}
+</div>
+{{ end }}

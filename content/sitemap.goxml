@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ link "index.html" }}</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>{{ link "index.html" "ru" }}</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>{{ link "blog/index.html" }}</loc>
+    <lastmod>{{ .Timestamp }}</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>{{ link "blog/index.html" "ru" }}</loc>
+    <lastmod>{{ .Timestamp }}</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>{{ link "blog/search.html" }}</loc>
+    <lastmod>{{ .Timestamp }}</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>{{ link "blog/search.html" "ru" }}</loc>
+    <lastmod>{{ .Timestamp }}</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  {{ range .All }}
+  <url>
+    <loc>{{ link .Path .Language }}</loc>
+    <lastmod>{{ .Date }}</lastmod>
+    <priority>0.5</priority>
+  </url>
+  {{ end }}
+
+  <url>
+    <loc>{{ link "experiments/vfonts/index.html" }}</loc>
+    <priority>0.25</priority>
+    <lastmod>2022-01-23</lastmod>
+  </url>
+</urlset>

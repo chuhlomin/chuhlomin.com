@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>{{ i18n "blog" .File.Language }} \ {{ i18n "name" .File.Language }}</title>
+<link rel="stylesheet" href="{{ link "blog/styles.css?ts=" }}{{ .Timestamp }}">
+<link rel="alternate" type="application/atom+xml" title="{{ i18n "name" .File.Language }}" href="feed.atom?lang=ru"/>
+<link rel="alternate" type="application/atom+xml" title="{{ i18n "name" "en" }}" href="feed.atom"/>
+{{ template "head" . }}
+</head>
+<body>
+<div class="common">
+    {{ template "header" . }}
+    <div class="wrapper">
+        <div class="content">
+            <h1>Все посты{{ template "selectedTag" . }}</h1>
+            <div class="posts">
+                {{ $year := ""}}
+                {{ range .All }}
+                {{ if eq .Language "ru" }}
+                    {{ if ne (year .Date) $year }}
+                    {{ if ne $year "" }}
+                    <div class="year spacer" data-year="{{ $year }}"></div>
+                    {{ end }}
+                    {{ $year = year .Date }}
+                    <h2 class="year" data-year="{{ $year }}">{{ $year }}</h2>
+                    {{ end }}
+                    {{ template "postCard" . }}
+                {{ end }}
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

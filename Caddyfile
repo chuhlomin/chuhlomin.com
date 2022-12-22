@@ -10,15 +10,20 @@
 local.chuhlomin.com {
   tls internal
 
-  handle_path /search/* {
+  handle_path /blog/search/* {
     reverse_proxy 127.0.0.1:8081
   }
 
   @langRu {
     query lang=ru
+    file {
+      try_files {path}/index_ru.html {path}_ru.html
+    }
   }
-  uri @langRu replace .html _ru.html 
+  rewrite @langRu {http.matchers.file.relative}
 
   root * output
+  try_files {path}.html
+  encode gzip
   file_server
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="{{ .File.Language }}">
+<head>
+<meta charset="UTF-8">
+<title>{{ stripTags .File.Title }} \ {{ i18n "blog" .File.Language }} \ {{ i18n "name" .File.Language }}</title>
+<link rel="stylesheet" href="{{ link "blog/styles.css?ts=" }}{{ .Timestamp }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ link .File.Path }}">
+<meta property="og:title" content="{{ stripTags .File.Title }} \ {{ i18n "blog" .File.Language }} \ {{ i18n "name" .File.Language }}">
+<meta property="article:author" content="{{ link "" }}">
+<meta property="article:published_time" content="{{ .File.Date }}">
+{{ range .File.Tags }}
+<meta property="article:tag" content="{{ . }}">
+{{ end }}
+{{ $next := nextPage . }}
+{{ $prev := prevPage . }}
+{{ if $prev }}<link rel="prev" href="{{ link $prev.Path }}">{{ end }}
+{{ if $next }}<link rel="next" href="{{ link $next.Path }}">{{ end }}
+<link rel="canonical" href="{{ link .File.Path }}">
+</head>
+<body>
+<div class="common">
+    {{ template "header" . }}
+    <div class="wrapper">
+        <div class="content post">
+            <span class="date">{{ .File.Date }}</span>
+            <h1>{{ .File.Title }}</h1>
+            {{ .File.Body }}
+            {{ if .File.Tags }}
+            <div class="tags">
+                {{ range .File.Tags }}
+                <a class="tag" href="{{ link "blog/index.html" $.File.Language }}#{{ . }}">#{{ . }}</a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    <div class="wrapper darkBackground" hx-boost="true">
+        <div>
+            {{ template "next" . }}
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="comments">
+            <div id="remark42"></div>
+        </div>
+    </div>
+</div>
+{{ template "scripts" . }}
+</body>
+</html>

@@ -1,0 +1,34 @@
+{{ define "header" }}
+<div class="flag">
+    <div class="header-content">
+        <div class="logo"><div class="user-picture-image"></div></div>
+        <div class="blog-title">
+            <a class="name" href="{{ link "" .File.Language }}">{{ i18n "name" .File.Language }}</a>&nbsp;<span class="sep">/</span>
+            {{ if eq .File.ID "blog/index.gohtml" }}
+            <span>{{ i18n "blog" .File.Language }}</span>
+            {{ else }}
+            <a href="{{ link "blog/index.html" .File.Language }}">{{ i18n "blog" .File.Language }}</a>
+            {{ end }}
+
+            <div class="extra">
+                {{ if eq .File.ID "blog/search.gohtml" }}<span class="search-icon disabled"></span>
+                {{ else }}<a href="{{ link "blog/search.html" .File.Language }}" class="search-icon"></a>{{ end }}
+
+                <a href="{{ link "feed.atom" .File.Language }}" class="feed-icon"></a>
+
+                {{ $langs := alternates . }}
+                {{ $length := len $langs }}
+                {{ if gt $length 1 }}
+                <span class="languages">
+                    {{ range $langs }}
+                        {{ if ne .Language $.File.Language }}
+                            <a class="lang lang-{{ .Language }}" href="{{ link .Path .Language }}">{{ .Language }}</a>
+                        {{ end }}
+                    {{ end }}
+                </span>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,8 @@
+{{ define "image" }}
+    {{ if .Images }}
+    <div class="imagePromo">
+        {{ $img := index .Images 0 }}
+        <img src="{{ link $img.ThumbPath "" }}" alt="{{ $img.Alt }}">
+    </div>
+    {{ end }}
+{{ end }}

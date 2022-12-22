@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Trispace';
+    src: url("fonts/Trispace[wdth,wght].ttf") format('truetype'),
+         url("fonts/Trispace[wdth,wght].woff2") format('woff2');
+}
+
+html, body, .center {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Trispace', sans-serif;
+    font-size: 9vw;
+    text-align: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#line {
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    margin-left: -1px;
+    background: rgba(255, 0, 0, 0.5);
+}
+
+/* dark appearance */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #222;
+        color: #fff;
+    }
+}

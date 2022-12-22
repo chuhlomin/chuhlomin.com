@@ -1,8 +1,0 @@
-{{ define "_image" }}
-    {{ if .Images }}
-    <div class="imagePromo">
-        {{ $img := index .Images 0 }}
-        <img src="{{ config "BasePath" }}{{ $img.ThumbPath }}" alt="{{ $img.Alt }}">
-    </div>
-    {{ end }}
-{{ end }}

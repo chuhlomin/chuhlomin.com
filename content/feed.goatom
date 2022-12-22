@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>{{ i18n "name" .File.Language }}</title>
+    <link href="{{ config "BasePath" }}index.html"/>
+    <link rel="self" href="{{ link "feed.atom" }}"/>
+    <updated>2021-12-06T00:00:00Z</updated>
+    <author>
+        <name>{{ i18n "name" .File.Language }}</name>
+    </author>
+    <id>urn:uuid:692e0df7-7c96-5f6b-9d43-4e2b357baad2</id>
+
+    <link rel="alternate" type="text/html" hreflang="en" href="{{ link "blog/index.html" }}"/>
+    <generator uri="https://github.com/chuhlomin/genblog" version="1.0">Genblog</generator>
+    
+    {{ range .All }}
+    {{ if eq .Language "en" }}
+    <entry>
+        <id>{{ link .Path }}</id>
+        <title>{{ .Title }}</title>
+        <link rel="alternate" type="text/html" href="{{ link .Path }}"/>
+        <updated>{{ .Date }}T00:00:00Z</updated>
+        <published>{{ .Date }}T00:00:00Z</published>
+        <content type="html" xml:lang="en">
+            <![CDATA[{{ .Body }}]]>
+        </content>
+    </entry>
+    {{ end }}
+    {{ end }}
+</feed>

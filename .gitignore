@@ -1,5 +1,6 @@
 output
 search_index
 ignore
-
+bin/generator
+cache
 *.log

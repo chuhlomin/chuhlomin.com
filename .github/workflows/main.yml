@@ -3,10 +3,10 @@ name: main
 on:
   push:
     branches:
-      - main
+      - refactor/generator
+      # - main
 
 env:
-  DOCKER_IMAGE: ghcr.io/chuhlomin/micro
   DOCKER_IMAGE_SEARCH: ghcr.io/chuhlomin/micro_search
 
 jobs:
@@ -16,50 +16,44 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: GenBlog
-        uses: chuhlomin/genblog@v1.0
-        with:
-          base_path: "https://chuhlomin.com/blog/"
-          source_directory: "."
-          output_directory: "output"
-          allowed_file_extensions: ".jpeg,.jpg,.png,.mp4,.pdf"
-          templates_directory: "_templates"
-          comments_enabled: "true"
-          comments_site_id: "micro"
-          search_enabled: "true"
-          search_url: "https://chuhlomin.com/blog/search/?q="
-          search_path: "search_index"
+      - name: Build
+        env:
+          REMOVE_HTML_EXT: "1"
+          COMMENTS_ENABLED: "1"
+          COMMENTS_SITE_ID: "micro"
+          SEARCH_ENABLED: "0"
+          # SEARCH_URL: "https://chuhlomin.com/blog/search/?q="
+        run:
+          make build
 
-      - name: Build and push to CR (server)
-        uses: chuhlomin/actions/docker-build-push@main
+      - name: Publish
+        uses: cloudflare/wrangler-action@2.0.0
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.PKG_TOKEN }}
-          image_name: ${{ env.DOCKER_IMAGE }}
-          tags: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages publish output --project-name=homepage --env=production --branch=main --commit-dirty=true
 
-      - name: Build and push to CR (search)
-        uses: chuhlomin/actions/docker-build-push@main
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.PKG_TOKEN }}
-          image_name: ${{ env.DOCKER_IMAGE_SEARCH }}
-          dockerfile: search.dockerfile
-          tags: ${{ env.DOCKER_IMAGE_SEARCH }}:${{ github.sha }}
+      # - name: Build and push to CR (search)
+      #   uses: chuhlomin/actions/docker-build-push@main
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.PKG_TOKEN }}
+      #     image_name: ${{ env.DOCKER_IMAGE_SEARCH }}
+      #     dockerfile: search.dockerfile
+      #     tags: ${{ env.DOCKER_IMAGE_SEARCH }}:${{ github.sha }}
 
-      - name: Deploy to GKE
-        uses: chuhlomin/actions/deploy-gke@main
-        with:
-          service_account_key: ${{ secrets.GKE_SA_KEY }}
-          project_id: ${{ secrets.GKE_PROJECT }}
-          cluster_name: cluster-east
-          location: us-east4-c
-          template_path: kube.template.yml
-          vars: |
-            image: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
-            image_search: ${{ env.DOCKER_IMAGE_SEARCH }}:${{ github.sha }}
-            app: micro
-            replicas: 2
-          rollout_status_wait: deployment/micro
+      # - name: Deploy to GKE
+      #   uses: chuhlomin/actions/deploy-gke@main
+      #   with:
+      #     service_account_key: ${{ secrets.GKE_SA_KEY }}
+      #     project_id: ${{ secrets.GKE_PROJECT }}
+      #     cluster_name: cluster-east
+      #     location: us-east4-c
+      #     template_path: kube.template.yml
+      #     vars: |
+      #       image: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+      #       image_search: ${{ env.DOCKER_IMAGE_SEARCH }}:${{ github.sha }}
+      #       app: micro
+      #       replicas: 2
+      #     rollout_status_wait: deployment/micro

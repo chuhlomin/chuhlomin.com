@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ i18n "404" "en" }} \ {{ i18n "name" "en" }}</title>
+<link rel="stylesheet" href="/blog/styles.css?ts={{ .Timestamp }}">
+<link rel="icon" href="/blog/favicon.ico">
+<link rel="apple-touch-icon" href="{{ link "img/memoji_v3.png" }}">
+</head>
+<body>
+<div class="common">
+    {{ template "header" . }}
+    <div class="wrapper">
+        <div class="content">
+            <h1>{{ i18n "404" "en" }}</h1>
+        </div>
+    </div>
+</div>
+</body>
+</html>
