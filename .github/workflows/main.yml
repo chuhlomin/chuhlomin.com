@@ -18,6 +18,7 @@ jobs:
 
       - name: Build
         env:
+          ROOT_URL: https://homepage-bqu.pages.dev/
           REMOVE_HTML_EXT: "1"
           COMMENTS_ENABLED: "1"
           COMMENTS_SITE_ID: "micro"
