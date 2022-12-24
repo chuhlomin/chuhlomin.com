@@ -9,6 +9,7 @@
 <meta property="og:title" content="{{ stripTags .File.Title }} \ {{ i18n "blog" .File.Language }} \ {{ i18n "name" .File.Language }}">
 <meta property="article:author" content="{{ link "" }}">
 <meta property="article:published_time" content="{{ .File.Date }}">
+{{ template "head" . }}
 {{ range .File.Tags }}
 <meta property="article:tag" content="{{ . }}">
 {{ end }}
