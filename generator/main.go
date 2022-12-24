@@ -68,7 +68,7 @@ func main() {
 		log.Fatalf("ERROR: %v", err)
 	}
 
-	log.Printf("Finished in %dms", time.Now().Sub(ts).Milliseconds())
+	log.Printf("Finished in %v", time.Now().Sub(ts))
 }
 
 func run(ts time.Time) error {
