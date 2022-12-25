@@ -39,4 +39,5 @@ jobs:
             auth_google_cid_base64: ${{ secrets.AUTH_GOOGLE_CID_BASE64 }}
             auth_google_csec_base64: ${{ secrets.AUTH_GOOGLE_CSEC_BASE64 }}
             telegram_token_base64: ${{ secrets.TELEGRAM_TOKEN_BASE64 }}
+            admin_passwd_base64: ${{ secrets.ADMIN_PASSWD_BASE64 }}
           rollout_status_wait: sts/remark42
