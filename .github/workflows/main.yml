@@ -3,8 +3,7 @@ name: main
 on:
   push:
     branches:
-      - refactor/generator
-      # - main
+      - main
 
 env:
   DOCKER_IMAGE_SEARCH: ghcr.io/chuhlomin/micro_search
