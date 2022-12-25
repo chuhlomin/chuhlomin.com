@@ -29,7 +29,7 @@
 
   --kbd-color: #444d56;
   --kbd-background: #fafbfc;
-  --kbd-shadow: 0 1px 0 rgba(0,0,0,0.2), inset 0 0 3px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.2);
+  --kbd-shadow: 0 1px 0 rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.1);
 
   --postcard-border: rgba(0,0,0,0.1);
   --iframe-border: rgba(175, 184, 193, 0.2);
