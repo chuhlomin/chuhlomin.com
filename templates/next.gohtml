@@ -2,20 +2,20 @@
 <div class="next">
     {{ $next := nextPage . }}
     {{ $prev := prevPage . }}
-    {{ if $prev }}
+    {{ with $prev }}
     <div class="prevLinkContainer">
-        <a id="prevLink" class="prevLink" href="{{ link $prev.Path "" }}">
-            {{ template "image" $prev }}
-            <span class="link hasArrow">{{ $prev.Title }}</span>
+        <a id="prevLink" class="prevLink" href="{{ link .Path "" }}">
+            {{ template "image" . }}
+            <span class="link hasArrow">{{ .Title }}</span>
         </a>
         <div class="shortcut"><kbd>⌥</kbd>+<kbd>←</kbd></div>
     </div>
     {{ end }}
-    {{ if $next }}
+    {{ with $next }}
     <div class="nextLinkContainer">
-        <a id="nextLink" class="nextLink" href="{{ link $next.Path "" }}">
-            {{ template "image" $next }}
-            <span class="link hasArrow">{{ $next.Title }}</span>
+        <a id="nextLink" class="nextLink" href="{{ link .Path "" }}">
+            {{ template "image" . }}
+            <span class="link hasArrow">{{ .Title }}</span>
         </a>
         <div class="shortcut"><kbd>⌥</kbd>+<kbd>→</kbd></div>
     </div>

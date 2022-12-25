@@ -18,12 +18,12 @@ jobs:
 
       - name: Build
         env:
-          ROOT_URL: https://pages.chuhlomin.com/
+          ROOT_URL: https://chuhlomin.com/
           REMOVE_HTML_EXT: "1"
           COMMENTS_ENABLED: "1"
           COMMENTS_SITE_ID: "micro"
           SEARCH_ENABLED: "0"
-          # SEARCH_URL: "https://chuhlomin.com/blog/search/?q="
+          SEARCH_URL: "https://search.chuhlomin.com/?q="
         run:
           make build
 
