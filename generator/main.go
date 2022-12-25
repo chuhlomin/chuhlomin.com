@@ -60,6 +60,24 @@ func (c Config) GetString(key string) string {
 	return ""
 }
 
+// GetBool returns the value of the environment variable named by the key.
+// If the variable is not present, GetBool returns `false`.
+// Used in `enabled` template function to access config values.
+func (c Config) GetBool(key string) bool {
+	// use reflect to get the value of the key
+	v := reflect.ValueOf(c)
+	for i := 0; i < v.NumField(); i++ {
+		if v.Field(i).Kind() != reflect.Bool {
+			continue
+		}
+
+		if v.Type().Field(i).Name == key {
+			return v.Field(i).Bool()
+		}
+	}
+	return false
+}
+
 func main() {
 	log.Println("Starting")
 	ts = time.Now()

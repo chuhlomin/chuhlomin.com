@@ -12,6 +12,7 @@ import (
 
 var fm = template.FuncMap{
 	"config":     config,
+	"enabled":    enabled,
 	"i18n":       i18n,
 	"year":       year,
 	"alternates": alternates,
@@ -24,6 +25,10 @@ var fm = template.FuncMap{
 
 func config(key string) string {
 	return cfg.GetString(key)
+}
+
+func enabled(key string) bool {
+	return cfg.GetBool(key)
 }
 
 func i18n(key, lang string) string {
