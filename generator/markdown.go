@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"bytes"
 	"crypto/sha1"
+	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
 	"net/url"
@@ -123,6 +124,7 @@ func processMarkdownFileContent(path string, content []byte) (*MarkdownFile, err
 	}
 
 	md.ID, md.Language = getIDAndLangFromPath(path)
+	md.IDHash = fmt.Sprintf("%x", sha256.Sum256([]byte(md.ID)))
 	if md.Language == "" {
 		md.Language = cfg.DefaultLanguage
 	}
