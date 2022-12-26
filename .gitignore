@@ -1,6 +1,8 @@
 output
 search_index
+index
 ignore
 bin/generator
 cache
 *.log
+secrets.env

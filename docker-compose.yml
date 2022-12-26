@@ -2,11 +2,12 @@ version: "3.9"
 
 services:
   search:
-    image: chuhlomin/search:latest
+    image: getmeili/meilisearch:v0.30
     ports:
-      - 127.0.0.1:8081:80
+      - 127.0.0.1:7700:7700
     environment:
-      - INDEX_PATH=/index
-      - BIND=0.0.0.0:80
+      - MEILI_MASTER_KEY
+      - MEILI_NO_ANALYTICS=true
     volumes:
-      - ./search_index:/index
+      - ./index:/meili_data
+    command: meilisearch --env="development"

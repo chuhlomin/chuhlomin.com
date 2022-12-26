@@ -11,7 +11,7 @@
             {{ end }}
 
             <div class="extra">
-                {{ if enabled "SearchEnabled" }}
+                {{ if false }}
                 {{ if eq .File.ID "blog/search.gohtml" }}<span class="search-icon disabled"></span>
                 {{ else }}<a href="{{ link "blog/search.html" .File.Language }}" class="search-icon"></a>{{ end }}
                 {{ end }}

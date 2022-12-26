@@ -15,8 +15,8 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/chuhlomin/search"
 	"github.com/disintegration/imaging"
+	"github.com/meilisearch/meilisearch-go"
 )
 
 const (
@@ -25,13 +25,13 @@ const (
 )
 
 type Generator struct {
-	cfg         Config
-	t           *template.Template
-	md          []*MarkdownFile
-	tempDir     string                              // temporary directory used to templates
-	templates   map[string]map[string]*MarkdownFile // id -> hashed path -> MarkdownFile
-	templatesMu sync.Mutex
-	indexer     *search.Indexer
+	cfg          Config
+	t            *template.Template
+	md           []*MarkdownFile
+	tempDir      string                              // temporary directory used to templates
+	templates    map[string]map[string]*MarkdownFile // id -> hashed path -> MarkdownFile
+	templatesMu  sync.Mutex
+	searchClient *meilisearch.Client
 }
 
 func NewGenerator() (*Generator, error) {
@@ -45,42 +45,34 @@ func NewGenerator() (*Generator, error) {
 		return nil, fmt.Errorf("Error creating temp directory: %v", err)
 	}
 
-	var indexer *search.Indexer
+	var searchClient *meilisearch.Client
 	if cfg.SearchEnabled {
-		indexer, err = search.NewIndexer(
-			cfg.SearchIndexDirectory,
-			cfg.SearchIndexDirectory+"_temp",
-		)
-		if err != nil {
-			return nil, fmt.Errorf("failed to create search index: %v", err)
-		}
-
-		if err = indexer.RegisterType(MarkdownFile{Language: "en"}, "en"); err != nil {
-			return nil, fmt.Errorf("failed to register MarkdownFile[en] type: %v", err)
-		}
-
-		if err = indexer.RegisterType(MarkdownFile{Language: "ru"}, "ru"); err != nil {
-			return nil, fmt.Errorf("failed to register MarkdownFile[ru] type: %v", err)
-		}
-		_ = indexer.Index("", nil) // create index dirs
+		searchClient = meilisearch.NewClient(meilisearch.ClientConfig{
+			Host:    cfg.SearchHost,
+			APIKey:  cfg.SearchMasterKey,
+			Timeout: cfg.SearchTimeout,
+		})
 	}
 
 	return &Generator{
-		t:           t,
-		md:          []*MarkdownFile{},
-		tempDir:     tempDir,
-		templates:   map[string]map[string]*MarkdownFile{},
-		templatesMu: sync.Mutex{},
-		indexer:     indexer,
+		t:            t,
+		md:           []*MarkdownFile{},
+		tempDir:      tempDir,
+		templates:    map[string]map[string]*MarkdownFile{},
+		templatesMu:  sync.Mutex{},
+		searchClient: searchClient,
 	}, nil
 }
 
 func (g *Generator) Run(ts time.Time) error {
-	files := make(chan string, cfg.FilesChannelSize)
-	images := make(chan image, cfg.ImagesChannelSize)
-	doneFiles := make(chan bool)
-	doneImages := make(chan bool)
-	doneI18s := make(chan bool)
+	var (
+		files              = make(chan string, cfg.FilesChannelSize)
+		images             = make(chan image, cfg.ImagesChannelSize)
+		doneFiles          = make(chan bool)
+		doneImages         = make(chan bool)
+		doneI18s           = make(chan bool)
+		doneSearchIndexing = make(chan bool)
+	)
 
 	go walkDir(cfg.ContentDirectory, files)
 	go g.processFiles(files, images, doneFiles)
@@ -88,21 +80,24 @@ func (g *Generator) Run(ts time.Time) error {
 	go g.processImages(images, doneImages)
 
 	<-doneFiles
-	if cfg.SearchEnabled {
-		if err := g.indexer.Close(); err != nil {
-			return fmt.Errorf("failed to close search index: %v", err)
-		}
-	}
-
 	sort.Sort(ByCreated(g.md))
+
+	if cfg.SearchEnabled {
+		go g.updateSearchIndex(doneSearchIndexing)
+	}
 
 	<-doneI18s
 	g.renderAllTemplates(ts)
-
 	g.renderAllMarkdown(ts)
 
 	log.Printf("Waiting for images to be processed...")
 	<-doneImages
+
+	if cfg.SearchEnabled {
+		log.Printf("Waiting for search index to be updated...")
+		<-doneSearchIndexing
+	}
+
 	return nil
 }
 
@@ -239,6 +234,7 @@ func (g *Generator) processGoTemplate(path string) error {
 	g.templates[id][hash] = &MarkdownFile{
 		Source:   path,
 		ID:       id,
+		IDHash:   fmt.Sprintf("%x", sha256.Sum256([]byte(id))),
 		Path:     outputPath,
 		Language: lang,
 	}
@@ -277,12 +273,6 @@ func (g *Generator) processMarkdown(path string, images chan<- image) error {
 	}
 
 	g.md = append(g.md, md)
-
-	if cfg.SearchEnabled {
-		if err := g.indexer.Index(path, md); err != nil {
-			return fmt.Errorf("Error indexing %s: %v", path, err)
-		}
-	}
 
 	return nil
 }
@@ -533,6 +523,29 @@ func (g *Generator) renderTemplate(outputPath string, data interface{}, t *templ
 	}
 
 	return nil
+}
+
+func (g *Generator) updateSearchIndex(doneSearchIndexing chan<- bool) {
+	languageBatches := map[string][]*MarkdownFile{}
+	for _, file := range g.md {
+		languageBatches[file.Language] = append(languageBatches[file.Language], file)
+	}
+
+	for language, files := range languageBatches {
+		tasks, err := g.searchClient.Index(language).AddDocumentsInBatches(files, 1000, "IDHash")
+		if err != nil {
+			log.Fatalf("Error indexing documents: %v", err)
+		}
+
+		for _, task := range tasks {
+			_, err := g.searchClient.WaitForTask(task.TaskUID)
+			if err != nil {
+				log.Fatalf("Error waiting for task: %v", err)
+			}
+		}
+	}
+
+	doneSearchIndexing <- true
 }
 
 func walkDir(dir string, files chan<- string) {

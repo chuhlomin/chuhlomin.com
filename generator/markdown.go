@@ -44,6 +44,7 @@ type MarkdownFile struct {
 	Path            string  `yaml:"-"`                          // path to the generated HTML file
 	Canonical       string  `yaml:"-"`                          // canonical URL
 	ID              string  `yaml:"-"`                          // same post in different languages will have the same ID value
+	IDHash          string  `yaml:"-"`                          // hash of the ID, used as search index because: document identifier can be of type integer or string, only composed of alphanumeric characters (a-z A-Z 0-9), hyphens (-) and underscores (_)
 	Markdown        string  `yaml:"-" indexer:"text"`           // content of the markdown file
 	Title           string  `yaml:"title" indexer:"text"`       // by default equals to H1 in Markdown file
 	Body            string  `yaml:"-" indexer:"no_store"`       // html body, generated from markdown

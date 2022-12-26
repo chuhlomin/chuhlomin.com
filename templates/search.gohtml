@@ -2,6 +2,11 @@
 {{ $langSuffix := "" }}
 {{ if eq . "ru" }}{{ $langSuffix = "?lang=ru" }}{{ end }}
 <script>
+const client = new MeiliSearch({
+    host: "{{ config "SearchHost" }}",
+    apiKey: "{{ config "SearchAPIKey" }}",
+});
+
 const createNode = (elem) => {
     return document.createElement(elem);
 };
@@ -10,33 +15,11 @@ const appendNode = (parent, elem) => {
     parent.appendChild(elem);
 }
 
-const normalizeArray = (value) => {
-    if (typeof value === 'string') {
-        return [value];
-    }
-    return value;
-}
-
 function search(query) {
-    const url = "{{ config "SearchURL" }}" + encodeURIComponent(query)+ "&lang={{ . }}";
-    const options = {
-        method: 'POST',
-        body: JSON.stringify({
-            "Canonical": true,
-            "Title": true,
-            "Date": true,
-            "Tags": true,
-            "Images": {
-                "ThumbPath": true
-            },
-            "Language": true
-        }),
-    }
-
-    fetch(url, options)
-        .then(res => res.json())
-        .then(function(data) {
-            if (data == null || data.length == 0) {
+    client.index("{{ . }}")
+        .search(query)
+        .then((data) => {
+            if (data == null || data.hits == undefined || data.hits.length == 0) {
                 document.getElementById("search_results").innerHTML = "{{ i18n "search_no_results" . }}";
                 return
             }
@@ -45,14 +28,8 @@ function search(query) {
             results.innerHTML = "";
             var counter = 0;
 
-            for (var i = 0; i < data.length; i++) {
-                let result = data[i];
-                let post = result.document;
-
-                if (post.Language != "{{ . }}") {
-                    continue;
-                }
-                counter++;
+            for (var i = 0; i < data.hits.length; i++) {
+                let file = data.hits[i];
 
                 let resultLine = createNode("div");
                 resultLine.className = "result";
@@ -64,32 +41,34 @@ function search(query) {
                 imageWrapper.className = "image";
 
                 let imageLink = createNode("a");
-                imageLink.href = post.Canonical;
+                imageLink.href = file.Canonical;
 
-                let image = createNode("img");
-                thumbs = normalizeArray(post.Images.ThumbPath);
-                image.src = "/" + thumbs[0];
-                appendNode(imageLink, image);
-                appendNode(imageWrapper, imageLink);
-                appendNode(postCard, imageWrapper);
+                thumbs = file.Images;
+                if (thumbs.length > 0) {
+                    let image = createNode("img");
+                    image.src = "/" + thumbs[0].ThumbPath;
+                    appendNode(imageLink, image);
+                    appendNode(imageWrapper, imageLink);
+                    appendNode(postCard, imageWrapper);
+                }
 
                 let postTitle = createNode("div");
                 postTitle.className = "titleAndTags";
 
                 let link = createNode("a");
-                link.href = post.Canonical;
-                link.innerHTML = post.Title;
+                link.href = file.Canonical;
+                link.innerHTML = file.Title;
                 appendNode(postTitle, link);
                 appendNode(postTitle, document.createTextNode(" "));
 
                 let tags = createNode("span")
                 tags.className = "tags";
-                tagsList = normalizeArray(post.Tags);
-                for (var j = 0; j < tagsList.length; j++) {
+                // iterate over file.Tags
+                for (var j = 0; j < file.Tags.length; j++) {
                     let tag = createNode("a");
-                    tag.href = "/blog/{{ $langSuffix }}" + "#" + tagsList[j];
+                    tag.href = "/blog/{{ $langSuffix }}" + "#" + file.Tags[j];
                     tag.className = "tag";
-                    tag.innerHTML = "#" + tagsList[j];
+                    tag.innerHTML = "#" + file.Tags[j];
                     appendNode(tags, tag);
                     appendNode(tags, document.createTextNode(" "));
                 }
@@ -99,12 +78,12 @@ function search(query) {
 
                 let postDate = createNode("div");
                 postDate.className = "date";
-                postDate.innerHTML = post.Date.substring(0, post.Date.indexOf("T"));
+                postDate.innerHTML = file.Date;
                 appendNode(postCard, postDate);
 
                 appendNode(resultLine, postCard);
 
-                for (const field in result.fragments) {
+                {{/* for (const field in result.fragments) {
                     if (field == "Markdown") {
                         for (var j = 0; j < result.fragments[field].length; j++) {
                             let fragment = createNode("div");
@@ -113,13 +92,9 @@ function search(query) {
                             appendNode(resultLine, fragment);
                         }
                     }
-                }
+                } */}}
 
                 appendNode(results, resultLine);
-            }
-
-            if (counter == 0) {
-                document.getElementById("search_results").innerHTML = "{{ i18n "search_no_results" . }}";
             }
         })
         .catch(err => {
