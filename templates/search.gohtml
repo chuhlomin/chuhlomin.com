@@ -17,7 +17,14 @@ const appendNode = (parent, elem) => {
 
 function search(query) {
     client.index("{{ . }}")
-        .search(query)
+        .search(query, {
+            attributesToRetrieve: ["Title", "Markdown", "Tags", "Images", "Date", "Canonical"],
+            attributesToHighlight: ["Title", "Markdown", "Tags"],
+            attributesToCrop: ["Markdown"],
+            cropLength: 10,
+            highlightPreTag: '<mark>',
+            highlightPostTag: '</mark>'
+        })
         .then((data) => {
             if (data == null || data.hits == undefined || data.hits.length == 0) {
                 document.getElementById("search_results").innerHTML = "{{ i18n "search_no_results" . }}";
@@ -44,36 +51,38 @@ function search(query) {
                 imageLink.href = file.Canonical;
 
                 thumbs = file.Images;
-                if (thumbs.length > 0) {
+                if (thumbs != null && thumbs.length > 0) {
                     let image = createNode("img");
                     image.src = "/" + thumbs[0].ThumbPath;
                     appendNode(imageLink, image);
-                    appendNode(imageWrapper, imageLink);
-                    appendNode(postCard, imageWrapper);
                 }
+                appendNode(imageWrapper, imageLink);
+                appendNode(postCard, imageWrapper);
 
                 let postTitle = createNode("div");
                 postTitle.className = "titleAndTags";
 
                 let link = createNode("a");
                 link.href = file.Canonical;
-                link.innerHTML = file.Title;
+                link.innerHTML = file._formatted.Title;
                 appendNode(postTitle, link);
                 appendNode(postTitle, document.createTextNode(" "));
 
-                let tags = createNode("span")
-                tags.className = "tags";
-                // iterate over file.Tags
-                for (var j = 0; j < file.Tags.length; j++) {
-                    let tag = createNode("a");
-                    tag.href = "/blog/{{ $langSuffix }}" + "#" + file.Tags[j];
-                    tag.className = "tag";
-                    tag.innerHTML = "#" + file.Tags[j];
-                    appendNode(tags, tag);
-                    appendNode(tags, document.createTextNode(" "));
+                let tagsEl = createNode("span")
+                tagsEl.className = "tags";
+                let tags = file._formatted.Tags;
+                if (tags != undefined) {
+                    for (var j = 0; j < tags.length; j++) {
+                        let tag = createNode("a");
+                        tag.href = "/blog/{{ $langSuffix }}" + "#" + file.Tags[j];
+                        tag.className = "tag";
+                        tag.innerHTML = "#" + tags[j];
+                        appendNode(tagsEl, tag);
+                        appendNode(tagsEl, document.createTextNode(" "));
+                    }
                 }
 
-                appendNode(postTitle, tags);
+                appendNode(postTitle, tagsEl);
                 appendNode(postCard, postTitle);
 
                 let postDate = createNode("div");
@@ -83,16 +92,12 @@ function search(query) {
 
                 appendNode(resultLine, postCard);
 
-                {{/* for (const field in result.fragments) {
-                    if (field == "Markdown") {
-                        for (var j = 0; j < result.fragments[field].length; j++) {
-                            let fragment = createNode("div");
-                            fragment.className = "fragment";
-                            fragment.innerHTML = result.fragments[field][j];
-                            appendNode(resultLine, fragment);
-                        }
-                    }
-                } */}}
+                let fragment = createNode("pre");
+                fragment.className = "fragment";
+                fragment.innerHTML = file._formatted.Markdown.replace(/^\n/, "");
+                if (fragment.innerHTML != "…") {
+                    appendNode(resultLine, fragment);
+                }
 
                 appendNode(results, resultLine);
             }
