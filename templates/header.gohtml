@@ -11,10 +11,8 @@
             {{ end }}
 
             <div class="extra">
-                {{ if false }}
                 {{ if eq .File.ID "blog/search.gohtml" }}<span class="search-icon disabled"></span>
                 {{ else }}<a href="{{ link "blog/search.html" .File.Language }}" class="search-icon"></a>{{ end }}
-                {{ end }}
 
                 <a href="{{ link "feed.atom" .File.Language }}" class="feed-icon"></a>
 
