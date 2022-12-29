@@ -21,6 +21,6 @@ https://calendar.chuhlomin.com
 
 Я использовал [Mustache.js](https://github.com/janl/mustache.js),
 [Colr Pickr](https://github.com/R-TEK/colr_pickr)
-и [gofpdf](github.com/jung-kurt/gofpdf) для этого проекта.
+и [gofpdf](https://github.com/jung-kurt/gofpdf) для этого проекта.
 
 #project #calendar

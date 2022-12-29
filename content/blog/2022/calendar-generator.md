@@ -21,6 +21,6 @@ Features:
 
 I used [Mustache.js](https://github.com/janl/mustache.js),
 [Colr Pickr](https://github.com/R-TEK/colr_pickr)
-and [gofpdf](github.com/jung-kurt/gofpdf) for this project.
+and [gofpdf](https://github.com/jung-kurt/gofpdf) for this project.
 
 #project #calendar
