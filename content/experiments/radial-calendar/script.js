@@ -83,8 +83,14 @@ d3.timeMonths(new Date(year, 0, 1), new Date(year + 1, 0, 1)).forEach((d, i) => 
   console.log(d.toLocaleString('default', { month: 'long' }), startAngle, endAngle);
   const path = d3.path();
   path.moveTo(radius, radius);
+
   // draw arc where 0 is at 12 o'clock
-  path.arc(radius, radius, radius - 10, startAngle - Math.PI / 2, endAngle - Math.PI / 2);
+  // change text direction for months from 3 to 9
+  if (d.getMonth() >= 3 && d.getMonth() <= 8) {
+    path.arc(radius, radius, radius + 4, endAngle - Math.PI / 2, startAngle - Math.PI / 2, true);
+  } else {
+    path.arc(radius, radius, radius - 10, startAngle - Math.PI / 2, endAngle - Math.PI / 2);
+  }
   path.lineTo(radius, radius);
   path.closePath();
   svg.append("path")
