@@ -3,7 +3,7 @@ name: main
 on:
   push:
     branches:
-      - main
+      - preview/*
 
 jobs:
   main:
@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Extract preview name
+        run: echo "PREVIEW_NAME=${GITHUB_REF#refs/heads/preview/}" >> $GITHUB_ENV
 
       - name: Restore cache
         uses: actions/cache@v3
@@ -24,10 +27,7 @@ jobs:
           REMOVE_HTML_EXT: "1"
           COMMENTS_ENABLED: "1"
           COMMENTS_SITE_ID: "micro"
-          SEARCH_ENABLED: "1"
-          SEARCH_HOST: "https://ms-8b8b5f0ccb49-1268.nyc.meilisearch.io"
-          SEARCH_MASTER_KEY: ${{ secrets.SEARCH_MASTER_KEY }}
-          SEARCH_API_KEY: ${{ secrets.SEARCH_API_KEY }}
+          SEARCH_ENABLED: "0"
         run:
           make build
 
@@ -36,4 +36,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages publish output --project-name=homepage --branch=main --commit-dirty=true
+          command: pages publish output --project-name=homepage --branch=$PREVIEW_NAME --commit-dirty=true
