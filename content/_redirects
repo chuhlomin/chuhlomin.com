@@ -1,3 +1,9 @@
+/blog/2022/ /blog/#2022 302
+/blog/2021/ /blog/#2021 302
+/blog/2020/ /blog/#2020 302
+/blog/2022/index.html_ru /blog?lang=ru#2022 302
+/blog/2021/index.html_ru /blog?lang=ru#2021 302
+/blog/2020/index.html_ru /blog?lang=ru#2020 302
 /index.html / 301
 /index.html_ru /?lang=ru 301
 /blog/index.html /blog 301
