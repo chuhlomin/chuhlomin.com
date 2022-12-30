@@ -12,12 +12,6 @@ import (
 	"golang.org/x/text/language"
 )
 
-var (
-	ts     time.Time // timestamp used to measure execution time
-	cfg    Config    // global config
-	bundle *i.Bundle // used in templates/i18n to get translated strings
-)
-
 type Config struct {
 	ContentDirectory    string        `env:"CONTENT_DIR" long:"content" description:"content directory" default:"content"`
 	TemplatesDirectory  string        `env:"TEMPLATES_DIR" long:"templates" description:"templates directory" default:"templates"`
@@ -79,6 +73,12 @@ func (c Config) GetBool(key string) bool {
 	}
 	return false
 }
+
+var (
+	ts     time.Time // timestamp used to measure execution time
+	cfg    Config    // global config
+	bundle *i.Bundle // used in templates/i18n to get translated strings
+)
 
 func main() {
 	log.Println("Starting")
