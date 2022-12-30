@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <title>{{ stripTags .File.Title }} \ {{ i18n "blog" .File.Language }} \ {{ i18n "name" .File.Language }}</title>
 <link rel="stylesheet" href="{{ link "blog/styles.css?ts=" }}{{ .Timestamp }}">
+{{ with .File.Images }}
+{{ $img := index . 0 }}
+<meta property="og:image" content="{{ link $img.Path }}">
+{{ end }}
 <meta property="og:type" content="article">
 <meta property="og:url" content="{{ link .File.Path }}">
 <meta property="og:title" content="{{ stripTags .File.Title }} \ {{ i18n "blog" .File.Language }} \ {{ i18n "name" .File.Language }}">
