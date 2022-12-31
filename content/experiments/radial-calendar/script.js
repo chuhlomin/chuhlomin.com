@@ -1,15 +1,21 @@
-/* jshint const: true, esversion: 6, undef: true */
+/* jshint esversion: 6, browser: true */
+/* globals d3 */
+
 const sectionHeight = 20;
 const padding = 20;
 const radius = 500;
+const innerRadius = radius - padding - sectionHeight;
+const outerRadius = radius - padding;
+const font = '-apple-system, "Segoe UI", "Open Sans", Helvetica, Arial, sans-serif';
 
 const svg = d3
   .create('svg')
   .attr("viewBox", [0, 0, radius*2, radius*2])
-  .attr("preserveAspectRatio", "xMidYMid meet")
-  .style("font", "10px sans-serif");
+  .attr("preserveAspectRatio", "xMidYMid meet");
 
-const year = 2023;
+// now in local time
+const now = new Date();
+const year = now.getFullYear();
 
 // create array of days in year to display in D3
 const days = d3.timeDays(new Date(year, 0, 1), new Date(year + 1, 0, 1));
@@ -37,6 +43,18 @@ svg
     .padRadius(radius - sectionHeight)
   );
 
+// fill daysBeforeMonth dictionary with days before each month
+const daysBeforeMonth = new Map();
+daysBeforeMonth.set(-1, 0);
+for (let i = 0; i < 12; i++) {
+  let count = monthDays.get(i);
+  if (i > 0) {
+    count += daysBeforeMonth.get(i - 1);
+  }
+
+  daysBeforeMonth.set(i, count);
+}
+
 // draw all months in a year as a circle
 svg
   .append('g')
@@ -51,36 +69,15 @@ svg
   .attr('d', d3.arc()
     .innerRadius(radius - padding - sectionHeight)
     .outerRadius(radius - padding)
-    .startAngle(d => {
-      let daysBeforeMonth = 0;
-      for (let i = 0; i < d.getMonth(); i++) {
-        daysBeforeMonth += monthDays.get(i);
-      }
-      return daysBeforeMonth * 2 * Math.PI / days.length;
-    })
-    .endAngle(d => {
-      let daysBeforeEndOfMonth = 0;
-      for (let i = 0; i <= d.getMonth(); i++) {
-        daysBeforeEndOfMonth += monthDays.get(i);
-      }
-      return daysBeforeEndOfMonth * 2 * Math.PI / days.length;
-    })
+    .startAngle(d => daysBeforeMonth.get(d.getMonth() - 1) * 2 * Math.PI / days.length)
+    .endAngle(d => daysBeforeMonth.get(d.getMonth()) * 2 * Math.PI / days.length)
     .padRadius(radius - sectionHeight)
   );
 
 // add SVG path for each month
 d3.timeMonths(new Date(year, 0, 1), new Date(year + 1, 0, 1)).forEach((d, i) => {
-  let daysBeforeMonth = 0;
-  for (let j = 0; j < d.getMonth(); j++) {
-    daysBeforeMonth += monthDays.get(j);
-  }
-  let daysBeforeEndOfMonth = 0;
-  for (let j = 0; j <= d.getMonth(); j++) {
-    daysBeforeEndOfMonth += monthDays.get(j);
-  }
-  const startAngle = daysBeforeMonth * 2 * Math.PI / days.length;
-  const endAngle = daysBeforeEndOfMonth * 2 * Math.PI / days.length;
-  console.log(d.toLocaleString('default', { month: 'long' }), startAngle, endAngle);
+  const startAngle = daysBeforeMonth.get(d.getMonth() - 1) * 2 * Math.PI / days.length;
+  const endAngle = daysBeforeMonth.get(d.getMonth()) * 2 * Math.PI / days.length;
   const path = d3.path();
   path.moveTo(radius, radius);
 
@@ -103,7 +100,7 @@ d3.timeMonths(new Date(year, 0, 1), new Date(year + 1, 0, 1)).forEach((d, i) => 
 // add month labels, curved text along the circle
 svg
   .append('g')
-  .attr('font-family', 'sans-serif')
+  .attr('font-family', font)
   .attr('font-size', 20)
   .attr('text-anchor', 'middle')
   .selectAll('text')
@@ -113,5 +110,92 @@ svg
   .attr('xlink:href', (d, i) => "#month" + i)
   .attr('startOffset', '50%')
   .text(d => d.toLocaleString('default', { month: 'long' }));
+
+// add text path for day labels inside arc
+days.forEach((d, i) => {
+  // if day is 10th of month, 20th or last day of month, add label
+  if (!(d.getDate() === 10 || d.getDate() === 20 || d.getDate() === monthDays.get(d.getMonth()))) {
+    return;
+  }
+  
+  const halfDayAngle = Math.PI / days.length / 2;
+  const startAngle = d3.timeDay.count(d3.timeYear(d), d) * 2 * Math.PI / days.length;
+  const endAngle = (d3.timeDay.count(d3.timeYear(d), d) + 1) * 2 * Math.PI / days.length;
+  const middleAngle = startAngle + (endAngle - startAngle) / 2;
+  const path = d3.path();
+  
+  // change direction of text for days from 6 to 12 month
+  if (d.getMonth() >= 6 && d.getMonth() <= 11) {
+    const middleX = radius + outerRadius * Math.cos(middleAngle - halfDayAngle - Math.PI / 2);
+    const middleY = radius + outerRadius * Math.sin(middleAngle - halfDayAngle - Math.PI / 2);
+    const middleX2 = radius + innerRadius * Math.cos(middleAngle - halfDayAngle - Math.PI / 2);
+    const middleY2 = radius + innerRadius * Math.sin(middleAngle - halfDayAngle - Math.PI / 2);
+    path.moveTo(middleX, middleY);
+    path.lineTo(middleX2, middleY2);
+  } else {
+    const middleX = radius + innerRadius * Math.cos(middleAngle + halfDayAngle - Math.PI / 2);
+    const middleY = radius + innerRadius * Math.sin(middleAngle + halfDayAngle - Math.PI / 2);
+    const middleX2 = radius + outerRadius * Math.cos(middleAngle + halfDayAngle - Math.PI / 2);
+    const middleY2 = radius + outerRadius * Math.sin(middleAngle + halfDayAngle - Math.PI / 2);
+    path.moveTo(middleX, middleY);
+    path.lineTo(middleX2, middleY2);
+  }
+  svg.append("path")
+    .attr("id", "day" + d.toLocaleString('default', { month: 'long' }) + d.getDate())
+    .attr("d", path)
+    .attr("fill", "none")
+    .attr("stroke", "none");
+
+  // add text path for day labels in the middle of path
+  svg
+    .append('g')
+    .attr('font-family', font)
+    .attr('font-size', 6)
+    .attr('text-anchor', 'middle')
+    .append('text')
+    .append('textPath')
+    .attr('xlink:href', "#day" + d.toLocaleString('default', { month: 'long' }) + d.getDate())
+    .attr('startOffset', '50%')
+    .text(d.getDate());
+});
+
+// draw clock hand pointing to current time in the year
+const day = d3.timeDay.count(d3.timeYear(now), now);
+// get number of hours in the day in local time
+const hours = now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600;
+const dayAngle = day * 2 * Math.PI / days.length + hours * 2 * Math.PI / days.length / 24;
+
+// add to svg
+svg
+  .append('g')
+  .attr('transform', `translate(${radius}, ${radius})`)
+  .append('line')
+  .attr('x1', 0)
+  .attr('y1', 0)
+  .attr('x2', innerRadius * Math.cos(dayAngle - Math.PI / 2))
+  .attr('y2', innerRadius * Math.sin(dayAngle - Math.PI / 2))
+  .attr('stroke', 'black')
+  .attr('stroke-width', 1);
+
+// add a small circle at the end of the hand
+svg
+  .append('g')
+  .attr('transform', `translate(${radius}, ${radius})`)
+  .append('circle')
+  .attr('cx', innerRadius * Math.cos(dayAngle - Math.PI / 2))
+  .attr('cy', innerRadius * Math.sin(dayAngle - Math.PI / 2))
+  .attr('r', 2)
+  .attr('fill', 'black');
+
+// add a big circle in the middle
+svg
+  .append('g')
+  .attr('transform', `translate(${radius}, ${radius})`)
+  .append('circle')
+  .attr('cx', 0)
+  .attr('cy', 0)
+  .attr('r', 4)
+  .attr('fill', 'black');
+
 
 document.body.append(svg.node());
