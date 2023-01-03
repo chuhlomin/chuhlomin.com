@@ -16,4 +16,4 @@ https://chuhlomin.com/experiments/radial-calendar/
 
 Я сделал его с помощью [D3.js](https://d3js.org/) – отличной библиотеки для визуализации данных.
 
-#visualisation #calendar
+#visualization #calendar
