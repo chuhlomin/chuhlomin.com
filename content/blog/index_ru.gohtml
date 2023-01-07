@@ -21,11 +21,11 @@
                 {{ $year := ""}}
                 {{ range .All }}
                 {{ if eq .Language "ru" }}
-                    {{ if ne (year .Date) $year }}
+                    {{ if ne (date .Date "2006") $year }}
                     {{ if ne $year "" }}
                     <div class="year spacer" data-year="{{ $year }}"></div>
                     {{ end }}
-                    {{ $year = year .Date }}
+                    {{ $year = date .Date "2006" }}
                     <h2 class="year" data-year="{{ $year }}">{{ $year }}</h2>
                     {{ end }}
                     {{ template "postCard" . }}

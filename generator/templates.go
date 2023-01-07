@@ -6,6 +6,7 @@ import (
 	"sort"
 	"strings"
 	"text/template"
+	"time"
 
 	i "github.com/nicksnyder/go-i18n/v2/i18n"
 )
@@ -14,7 +15,7 @@ var fm = template.FuncMap{
 	"config":     config,
 	"enabled":    enabled,
 	"i18n":       i18n,
-	"year":       year,
+	"date":       date,
 	"alternates": alternates,
 	"link":       link,
 	"join":       join,
@@ -42,12 +43,26 @@ func i18n(key, lang string) string {
 	return str
 }
 
-func year(date string) string {
-	if len(date) < 4 {
-		return ""
+func date(date, format string) string {
+	var t time.Time
+	if date == "" {
+		// use current time in UTC
+		t = time.Now().UTC()
+	} else {
+		// parse date
+		var err error
+		t, err = time.Parse("2006-01-02", date)
+		if err != nil {
+			log.Printf("error parsing date %q: %v", date, err)
+			return date
+		}
 	}
 
-	return date[:4]
+	if format == "" {
+		format = "2006-01-02"
+	}
+
+	return t.Format(format)
 }
 
 func alternates(data Data) []*MarkdownFile {

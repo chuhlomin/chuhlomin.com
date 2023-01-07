@@ -1,5 +1,5 @@
 {{ define "postCard" }}
-<div class="postCard" data-tags="{{ year .Date }},{{ join "," .Tags }}">
+<div class="postCard" data-tags="{{ date .Date "2006" }},{{ join "," .Tags }}">
     <div class="image">
         {{ if .Images }}
         {{ $img := index .Images 0 }}
