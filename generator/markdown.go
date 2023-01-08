@@ -13,7 +13,6 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
-	"time"
 
 	"github.com/gomarkdown/markdown"
 	"gopkg.in/yaml.v3"
@@ -30,7 +29,7 @@ type Data struct {
 	File       *MarkdownFile
 	All        []*MarkdownFile
 	Alternates []*MarkdownFile // used only for index.html
-	Timestamp  time.Time
+	Timestamp  string
 }
 
 // MarkdownFile represents a markdown file, for example

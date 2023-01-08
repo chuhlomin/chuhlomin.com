@@ -426,7 +426,7 @@ func (g *Generator) renderGoTemplate(
 			File:       file,
 			Alternates: alternates,
 			All:        g.md,
-			Timestamp:  ts,
+			Timestamp:  ts.Format(time.RFC3339),
 		},
 		t,
 	)
@@ -493,7 +493,7 @@ func (g *Generator) renderMarkdown(md *MarkdownFile, ts time.Time) error {
 		Data{
 			File:      md,
 			All:       g.md,
-			Timestamp: ts,
+			Timestamp: ts.Format(time.RFC3339),
 		},
 		tmpl,
 	); err != nil {
