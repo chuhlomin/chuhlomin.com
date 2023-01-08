@@ -17,11 +17,18 @@
 {{ range .File.Tags }}
 <meta property="article:tag" content="{{ . }}">
 {{ end }}
-{{ $next := nextPage . }}
-{{ $prev := prevPage . }}
-{{ if $prev }}<link rel="prev" href="{{ link $prev.Path }}">{{ end }}
-{{ if $next }}<link rel="next" href="{{ link $next.Path }}">{{ end }}
+{{ with nextPage . }}<link rel="prev" href="{{ link .Path }}">{{ end }}
+{{ with prevPage . }}<link rel="next" href="{{ link .Path }}">{{ end }}
 <link rel="canonical" href="{{ link .File.Path }}">
+{{ $langs := alternates . -}}
+{{ $length := len $langs -}}
+{{ if gt $length 1 -}}
+{{ range $langs -}}
+{{ if ne .Language $.File.Language -}}
+<link rel="alternate" hreflang="{{ .Language }}" href="{{ link .Path .Language }}">
+{{ end }}
+{{- end }}
+{{- end }}
 </head>
 <body>
 <div class="common">
@@ -31,9 +38,9 @@
             <span class="date">{{ .File.Date }}</span>
             <h1>{{ .File.Title }}</h1>
             {{ .File.Body }}
-            {{ if .File.Tags }}
+            {{ with .File.Tags }}
             <div class="tags">
-                {{ range .File.Tags }}
+                {{ range . }}
                 <a class="tag" href="{{ link "blog/index.html" $.File.Language }}#{{ . }}">#{{ . }}</a>
                 {{ end }}
             </div>

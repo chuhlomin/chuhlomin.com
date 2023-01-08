@@ -1,8 +1,6 @@
 {{ define "next" }}
 <div class="next">
-    {{ $next := nextPage . }}
-    {{ $prev := prevPage . }}
-    {{ with $prev }}
+    {{ with prevPage . }}
     <div class="prevLinkContainer">
         <a id="prevLink" class="prevLink" href="{{ link .Path "" }}">
             {{ template "image" . }}
@@ -11,7 +9,7 @@
         <div class="shortcut"><kbd>⌥</kbd>+<kbd>←</kbd></div>
     </div>
     {{ end }}
-    {{ with $next }}
+    {{ with nextPage . }}
     <div class="nextLinkContainer">
         <a id="nextLink" class="nextLink" href="{{ link .Path "" }}">
             {{ template "image" . }}
