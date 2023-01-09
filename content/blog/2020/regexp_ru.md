@@ -13,7 +13,7 @@ https://www.cs.cmu.edu/~./epxing/Class/10715/reading/McCulloch.and.Pitts.pdf
 https://www.rand.org/content/dam/rand/pubs/research_memoranda/2008/RM704.pdf
 
 А еще чуть позже, в 1968, Кен Томсон (кстати, со-автор языка Go) опубликовал статью «Regular Expression Search Algorithm».
-https://www.clear.rice.edu/comp412/Lectures/Support/Thompson-1968.pdf
+https://www.oilshell.org/archive/Thompson-1968.pdf
 
 Регулярное выражение (регулярка) – это шаблон/паттерн задающий правила поиска (или замены) подстроки в строке.
 

@@ -27,7 +27,6 @@ void main() {
 
 * https://twigl.app
 * https://glslsandbox.com
-* https://shader-factory.herokuapp.com
 * https://shadered.org/app?fork=4Y3P9GQID0
 
 Для желающих погрузится глубже могу порекомендовать

@@ -27,7 +27,6 @@ and see the result in real time:
 
 * https://twigl.app
 * https://glslsandbox.com
-* https://shader-factory.herokuapp.com
 * https://shadered.org/app?fork=4Y3P9GQID0
 
 For those who want to dive deeper, I can recommend

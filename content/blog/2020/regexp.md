@@ -13,7 +13,7 @@ In 1951, American mathematician Stephen Cole Claney, in his paper "Representatio
 https://www.rand.org/content/dam/rand/pubs/research_memoranda/2008/RM704.pdf
 
 A little later, in 1968, Ken Thomson (coauthor of Go, by the way) published "Regular Expression Search Algorithm."
-https://www.clear.rice.edu/comp412/Lectures/Support/Thompson-1968.pdf
+https://www.oilshell.org/archive/Thompson-1968.pdf
 
 A regular expression is a pattern/pattern which defines the rules for finding (or replacing) a substring in a string.
 

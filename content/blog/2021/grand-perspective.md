@@ -12,7 +12,7 @@ GrandPerspective is a small application from Erwin Bonsma for analyzing disk spa
 http://grandperspectiv.sourceforge.net
 
 Source code: https://sourceforge.net/projects/grandperspectiv/  
-App Store: https://itunes.apple.com/us/app/grandperspective/id1111570163
+App Store: https://apps.apple.com/us/app/grandperspective/id1111570163
 
 As an alternative, take a look at beautiful DaisyDisk: https://daisydiskapp.com
 

@@ -15,8 +15,8 @@ For example, if a commit fixes some bug, it suggests writing "🐛" prefix to th
 Or "🔥" if it removes any code or files. This makes it easy to determine the purpose of the commit by just looking at the emoji used.
 
 It's an open-source project, and 44 people have already contributed to the list.  
-Especially nice is that the commits themselves to this file already follow these guidelines:
-https://github.com/carloscuesta/gitmoji/blame/master/src/data/gitmojis.json
+Especially nice is that the commits themselves in the repo already follow these guidelines:
+https://github.com/carloscuesta/gitmoji/commits/master
 
 Note that when you click on an emoji on the site, it gets copied to the clipboard.
 
