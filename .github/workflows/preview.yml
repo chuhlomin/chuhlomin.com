@@ -1,4 +1,4 @@
-name: main
+name: preview
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - preview/*
 
 jobs:
-  main:
+  preview:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
