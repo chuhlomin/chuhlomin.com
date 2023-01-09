@@ -312,7 +312,7 @@ figcaption {
 }
 
 .content .tags .tag {
-  margin-right: 10px;
+  margin-right: 0.1rem;
 }
 
 .search {
@@ -365,10 +365,15 @@ iframe {
 
 .tag {
   border: none;
+  background-color: var(--color-background-higher);
+  border-radius: 100px;
+  padding: 0.2rem 0.66rem;
 }
-.tag:visited { /* for some reasons :visited #hash-only links don't work well on mobile */
+.tag:visited {
   color: var(--color-link);
-  border-bottom: 1px solid var(--color-link-underscore);
+}
+.tag:hover {
+  color: var(--color-link-hover);
 }
 
 #selectedTag {
@@ -475,8 +480,14 @@ iframe {
 }
 
 .postCard .tag {
+  font-size: 14px;
   word-break: normal;
-  opacity: 0.5;
+  opacity: 0.75;
+  transition: all 0.2s ease-in-out;
+}
+
+.postCard .tag:hover {
+  opacity: 1;
 }
 
 .info {
