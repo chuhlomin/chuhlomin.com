@@ -20,7 +20,7 @@ jobs:
 
       - name: Build
         env:
-          ROOT_URL: https://chuhlomin.com/
+          ROOT_URL: https://chuhlomin.com
           REMOVE_HTML_EXT: "1"
           COMMENTS_ENABLED: "1"
           COMMENTS_SITE_ID: "micro"

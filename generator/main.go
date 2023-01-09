@@ -18,7 +18,7 @@ type Config struct {
 	OutputDirectory     string        `env:"OUTPUT_DIR" long:"output" description:"output directory" default:"output"`
 	TempDirectory       string        `env:"TEMP_DIR" long:"temp" description:"temp directory" default:""`
 	DefaultLanguage     string        `env:"DEFAULT_LANG" long:"default-lang" description:"default language" default:"en"`
-	RootURL             string        `env:"ROOT_URL" long:"root-url" description:"root url" default:"https://local.chuhlomin.com/"`
+	RootURL             string        `env:"ROOT_URL" long:"root-url" description:"root url" default:"https://local.chuhlomin.com"`
 	RemoveHTMLExtension bool          `env:"REMOVE_HTML_EXT" long:"remove-html-ext" description:"remove .html extension from urls"`
 	CommentsEnabled     bool          `env:"COMMENTS_ENABLED" long:"comments-enabled" description:"enable comments"`
 	CommentsSiteID      string        `env:"COMMENTS_SITE_ID" long:"comments-site-id" description:"comments site id"`

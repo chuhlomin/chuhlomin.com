@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>{{ i18n "name" .File.Language }}</title>
-    <link href="{{ config "BasePath" }}index.html"/>
+    <link href="{{ config "RootURL" }}{{ link "/index.html" }}"/>
     <link rel="self" href="{{ link "/blog/feed.atom" }}"/>
     <updated>{{ date "" "2006-01-02T15:04:05Z" }}</updated>
     <author>
@@ -9,15 +9,15 @@
     </author>
     <id>urn:uuid:692e0df7-7c96-5f6b-9d43-4e2b357baad2</id>
 
-    <link rel="alternate" type="text/html" hreflang="en" href="{{ link "/blog/index.html" }}"/>
+    <link rel="alternate" type="text/html" hreflang="en" href="{{ config "RootURL" }}{{ link "/blog/index.html" }}"/>
     <generator uri="https://github.com/chuhlomin/homepage" version="1.0">Homepage</generator>
     
     {{ range .All }}
     {{ if eq .Language "en" }}
     <entry>
-        <id>{{ link .Path }}</id>
+        <id>{{ config "RootURL" }}{{ link .Path }}</id>
         <title>{{ .Title }}</title>
-        <link rel="alternate" type="text/html" href="{{ link .Path }}"/>
+        <link rel="alternate" type="text/html" href="{{ config "RootURL" }}{{ link .Path }}"/>
         <updated>{{ .Date }}T00:00:00Z</updated>
         <published>{{ .Date }}T00:00:00Z</published>
         <content type="html" xml:lang="en">
