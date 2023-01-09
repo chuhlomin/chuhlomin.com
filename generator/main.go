@@ -33,7 +33,7 @@ type Config struct {
 	SearchAPIKey        string        `env:"SEARCH_API_KEY" long:"search-api-key" description:"search api key, used on frontend to search"`
 	SearchTimeout       time.Duration `env:"SEARCH_TIMEOUT" long:"search-timeout" description:"search timeout" default:"5s"`
 	NumWorkers          int           `env:"NUM_WORKERS" long:"workers" description:"number of workers" default:"4"`
-	ThumbPath           string        `env:"THUMB_PATH" long:"thumb-path" description:"path to thumbnails" default:"img/thumbs/"`
+	ThumbPath           string        `env:"THUMB_PATH" long:"thumb-path" description:"path to thumbnails" default:"/img/thumbs/"`
 	ThumbMaxWidth       int           `env:"THUMB_MAX_WIDTH" long:"thumb-max-width" description:"max width of thumbnails" default:"140"`
 	ThumbMaxHeight      int           `env:"THUMB_MAX_HEIGHT" long:"thumb-max-height" description:"max height of thumbnails" default:"140"`
 }

@@ -113,11 +113,11 @@ func NewMarkdownFile(dir, path string) (*MarkdownFile, error) {
 
 func processMarkdownFileContent(path string, content []byte) (*MarkdownFile, error) {
 	outputPath := strings.Replace(path, ".md", ".html", 1)
-	outputPath = strings.TrimPrefix(outputPath, cfg.ContentDirectory+"/")
+	outputPath = strings.TrimPrefix(outputPath, cfg.ContentDirectory)
 
 	md := &MarkdownFile{
 		Source:    path,
-		Path:      outputPath,
+		Path:      "/" + outputPath,
 		Canonical: link(outputPath),
 		Tags:      tags([]string{}), // setting default value, so that there is no need to check for nil in templates
 	}

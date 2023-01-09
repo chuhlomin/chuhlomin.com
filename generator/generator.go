@@ -223,6 +223,7 @@ func (g *Generator) processGoTemplate(path string) error {
 	// .html, .xml, .txt, etc.
 	newExt := "." + ext[3:]
 	outputPath := filepath.Join(
+		"/",
 		filepath.Dir(path),
 		filepath.Base(path[:len(path)-len(ext)])+newExt,
 	)

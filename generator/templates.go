@@ -113,7 +113,7 @@ func link(path string, langs ...string) string {
 		link += "?lang=" + lang
 	}
 
-	return cfg.RootURL + link
+	return link
 }
 
 func join(sep string, items []string) string {

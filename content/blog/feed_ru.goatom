@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>{{ i18n "name" .File.Language }}</title>
-    <link href="{{ link "index.html" "ru" }}"/>
-    <link rel="self" href="{{ link "feed.atom" "ru" }}"/>
+    <link href="{{ link "/index.html" "ru" }}"/>
+    <link rel="self" href="{{ link "/feed.atom" "ru" }}"/>
     <updated>{{ date "" "2006-01-02T15:04:05Z" }}</updated>
     <author>
         <name>{{ i18n "name" .File.Language }}</name>
     </author>
     <id>urn:uuid:692e0df7-7c96-5f6b-9d43-4e2b357baad2</id>
 
-    <link rel="alternate" type="text/html" hreflang="ru" href="{{ link "blog/index.html" "ru" }}"/>
+    <link rel="alternate" type="text/html" hreflang="ru" href="{{ link "/blog/index.html" "ru" }}"/>
     <generator uri="https://github.com/chuhlomin/homepage" version="1.0">Homepage</generator>
     
     {{ range .All }}
