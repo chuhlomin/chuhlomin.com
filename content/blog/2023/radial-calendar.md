@@ -1,11 +1,13 @@
 ---
 date: 2023-01-03
 image: radial-calendar.png
+related:
+  - ../2022/sankey-diagrams.md
 ---
 
 # Radial Calendar
 
-Continuing the theme of [calendars](/blog/2022/calendar-generator.md),
+Continuing the theme of [calendars](../2022/calendar-generator.md),
 I've made a radial calendar. It's the way I imagine a year in my head:
 a circle with 12 months, new year starts at the top,
 and the months are numbered clockwise.

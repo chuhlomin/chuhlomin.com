@@ -8,7 +8,7 @@ image: grafana-logo.png
 ![Grafana logo](grafana-logo.png "Grafana logo")
 
 Grafana is an open-source app for visualizing and analyzing metrics.
-It supports many data sources, including Prometheus, InfluxDB, and more.
+It supports many data sources, including [Prometheus](../2020/prometheus.md), InfluxDB, and more.
 
 https://grafana.com
 

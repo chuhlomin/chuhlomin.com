@@ -8,7 +8,7 @@ image: grafana-logo.png
 ![Grafana logo](grafana-logo.png "Grafana logo")
 
 Grafana – это приложение с открытым исходным кодом для визуализации и анализа метрик.
-Оно поддерживает множество источников данных, включая Prometheus, InfluxDB и другие.
+Оно поддерживает множество источников данных, включая [Prometheus](../2020/prometheus_ru.md), InfluxDB и другие.
 
 https://grafana.com
 

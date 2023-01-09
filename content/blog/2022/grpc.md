@@ -18,7 +18,7 @@ a "stub" for the server in [popular programming languages](https://grpc.io/docs/
 
 ![gRPC example](grpc_example.png)
 
-Protobuf is used to describe the service.
+[Protobuf](../2021/protobuf.md) is used to describe the service.
 Unary "request-response" messages as well as streams of messages are supported.
 
 ```proto
