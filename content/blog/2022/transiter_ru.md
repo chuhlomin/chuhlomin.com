@@ -22,4 +22,4 @@ image: transiter_icon.png
 
 https://apps.apple.com/us/app/transitër/id1472885958
 
-#project #app #ios #transit #app
+#project #ios #transit #app
