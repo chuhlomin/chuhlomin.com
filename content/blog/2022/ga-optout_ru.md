@@ -6,7 +6,7 @@ image: ga.png
 # Google Analytics Opt-out
 
 <figure>
-<img src="./ga.jpg" atl="Google Analytics (Иллюстрация)">
+<img src="./ga.jpg" alt="Google Analytics (Иллюстрация)">
 <figcaption>Картинка сгенерирована <a href="https://www.midjourney.com">Midjourney</a></figcaption>
 </figure>
 
