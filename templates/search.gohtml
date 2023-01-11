@@ -15,6 +15,11 @@ const appendNode = (parent, elem) => {
     parent.appendChild(elem);
 }
 
+function escape(html) {
+    // escape all tags except <mark> and </mark>
+    return html.replace(/<(?!\/?mark>)/g, "&lt;");
+}
+
 function search(query) {
     client.index("{{ . }}")
         .search(query, {
@@ -94,7 +99,7 @@ function search(query) {
 
                 let fragment = createNode("pre");
                 fragment.className = "fragment";
-                fragment.innerHTML = file._formatted.Markdown.replace(/^\n/, "");
+                fragment.innerHTML = escape(file._formatted.Markdown.replace(/^\n/, ""));
                 if (fragment.innerHTML != "…") {
                     appendNode(resultLine, fragment);
                 }
