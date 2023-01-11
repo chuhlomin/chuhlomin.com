@@ -118,7 +118,7 @@ func processMarkdownFileContent(path string, content []byte) (*MarkdownFile, err
 	md := &MarkdownFile{
 		Source:    path,
 		Path:      "/" + outputPath,
-		Canonical: link(outputPath),
+		Canonical: cfg.RootURL + "/" + link(outputPath),
 		Tags:      tags([]string{}), // setting default value, so that there is no need to check for nil in templates
 	}
 

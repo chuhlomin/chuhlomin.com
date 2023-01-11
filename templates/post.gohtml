@@ -17,15 +17,15 @@
 {{ range .File.Tags }}
 <meta property="article:tag" content="{{ . }}">
 {{ end }}
-{{ with nextPage . }}<link rel="prev" href="{{ link .Path }}">{{ end }}
-{{ with prevPage . }}<link rel="next" href="{{ link .Path }}">{{ end }}
-<link rel="canonical" href="{{ link .File.Path }}">
+{{ with nextPage . }}<link rel="next" href="{{ config "RootURL" }}{{ link .Path }}">{{ end }}
+{{ with prevPage . }}<link rel="prev" href="{{ config "RootURL" }}{{ link .Path }}">{{ end }}
+<link rel="canonical" href="{{ .File.Canonical }}">
 {{ $langs := alternates . -}}
 {{ $length := len $langs -}}
 {{ if gt $length 1 -}}
 {{ range $langs -}}
 {{ if ne .Language $.File.Language -}}
-<link rel="alternate" hreflang="{{ .Language }}" href="{{ link .Path .Language }}">
+<link rel="alternate" hreflang="{{ .Language }}" href="{{ config "RootURL" }}{{ link .Path .Language }}">
 {{ end }}
 {{- end }}
 {{- end }}

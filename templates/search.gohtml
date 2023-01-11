@@ -53,7 +53,7 @@ function search(query) {
                 thumbs = file.Images;
                 if (thumbs != null && thumbs.length > 0) {
                     let image = createNode("img");
-                    image.src = "/" + thumbs[0].ThumbPath;
+                    image.src = "{{ config "RootURL" }}" + thumbs[0].ThumbPath;
                     appendNode(imageLink, image);
                 }
                 appendNode(imageWrapper, imageLink);
