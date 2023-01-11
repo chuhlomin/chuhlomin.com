@@ -6,8 +6,8 @@ image: vfonts.png
 # Variable fonts
 
 Typically, fonts come in a variety of styles,
-different combinations of widths and weights (e.g., Condensed, Narrow, Standard, Wide)
-и веса (e.g., Light, Book, Regular, Bold).
+different combinations of widths (e.g., Condensed, Narrow, Standard, Wide)
+and weights (e.g., Light, Book, Regular, Bold).
 
 In 2016, Microsoft added "variable fonts" to the OpenType 1.8 specification.
 These fonts allow for more fine-tuning of the various font parameters:

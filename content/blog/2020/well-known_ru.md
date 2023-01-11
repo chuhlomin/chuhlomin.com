@@ -17,6 +17,6 @@ https://en.wikipedia.org/wiki/List_of_%2F.well-known%2F_services_offered_by_webs
 https://www.iana.org/assignments/well-known-uris/well-known-uris.xhtml
 
 Особенно рекомендую посмотреть на security.txt  
-https://securitytxt.org/ 
+https://securitytxt.org/
 
 #rfc #ops
