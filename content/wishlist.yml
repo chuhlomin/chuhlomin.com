@@ -1,0 +1,119 @@
+- name: Pragmata Pro
+  type: font
+  url: https://fsd.it/shop/fonts/pragmatapro/
+  price: €200
+
+- name: Proxymark 3 RDV 4
+  type: hardware
+  url: https://lab401.com/products/proxmark-3-rdv4
+  price: €300
+
+- name: RFID Field Detector
+  type: hardware
+  url: https://lab401.com/products/rfid-field-detector
+  price: €17
+
+- name: QSL?
+  type: book
+  url: https://standardsmanual.com/products/qsl
+  price: $60
+
+- name: Camera?
+  type: hardware
+  url: https://papershootcamera.com/products/croz-vanguard-camera-set
+  price: $160
+
+- name: OP-1
+  type: hardware
+  url: https://teenage.engineering/store/op-1-field
+  price: $2000
+
+- name: Apple AirPods Max (silver)
+  type: hardware
+  url: https://www.apple.com/airpods-max/
+  price: $550
+
+- name: Smeg Hand Blender
+  type: hardware
+  url: https://www.smeg.com/us/products/HBF02BLUS
+  price: $190
+
+- name: Backbone
+  type: hardware
+  url: https://playbackbone.com/products/backbone-one-playstation/
+  price: $75
+
+- name: Apple Watch Band
+  type: wardrobe
+  url: https://bellroy.com/products/watch-strap?color=evergreen&material=leather&size=large_watch_strap#slide-3
+  price: $70
+
+- name: App Icon Book
+  type: book
+  url: https://flarup.shop/products/the-ios-app-icon-book
+  price: $73
+
+- name: Pants
+  type: wardrobe
+  url: https://byltbasics.com/products/everyday-pant-2-0?variant=39835744108646
+  price: $84
+
+- name: Cap
+  type: wardrobe
+  url: https://www.dadbrandapparel.com/products/low-battery
+  price: $30
+
+- name: Boots
+  type: wardrobe
+  url: https://www.nobullproject.com/products/high-top-army-ivory-trainer-mens
+  price: $140
+
+- name: Sneakers
+  type: wardrobe
+  url: https://rothys.com/products/mens-rs01-sneaker-bone
+  price: $170
+
+- name: Bed
+  type: furniture
+  url: https://www.thuma.co/products/the-bed?variant=40159566987369
+  price: $1300
+
+- name: "The Works: Anatomy of a City"
+  type: book
+  url: https://www.amazon.com/Works-Anatomy-City-Kate-Ascher/dp/0143112708
+  price: $20
+
+- name: The Visual Display of Quantitative Information
+  type: book
+  url: https://www.edwardtufte.com/tufte/books_vdqi
+  price: $507
+
+- name: Visual Explanations
+  type: book
+  url: https://www.edwardtufte.com/tufte/books_visex
+  price: $20
+
+- name: Beautiful Evidence
+  type: book
+  url: https://www.edwardtufte.com/tufte/books_be
+  price: $45
+
+- name: Transit Maps of the World
+  type: book
+  url: https://www.amazon.com/Transit-Maps-World-Expanded-Collection/dp/0143128493
+  price: $30
+
+- name: Magical Geometry
+  type: book
+  url: https://www.amazon.com/Magical-Geometry-Graphic-Design-Composition/dp/9881470390
+  price: $25
+
+- name: Designing Type
+  type: book
+  url: https://www.amazon.com/Designing-Type-Karen-Cheng/dp/0300249926
+  price: $35
+
+- name: New York City Subway LED map
+  type: hardware
+  url: https://www.traintrackr.io/product/mta2
+  price: $220

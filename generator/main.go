@@ -36,6 +36,8 @@ type Config struct {
 	ThumbPath           string        `env:"THUMB_PATH" long:"thumb-path" description:"path to thumbnails" default:"/img/thumbs/"`
 	ThumbMaxWidth       int           `env:"THUMB_MAX_WIDTH" long:"thumb-max-width" description:"max width of thumbnails" default:"140"`
 	ThumbMaxHeight      int           `env:"THUMB_MAX_HEIGHT" long:"thumb-max-height" description:"max height of thumbnails" default:"140"`
+	OpenGraphTimeout    time.Duration `env:"OPENGRAPH_TIMEOUT" long:"opengraph-timeout" description:"opengraph timeout" default:"5s"`
+	OpenGraphCacheFile  string        `env:"OPENGRAPH_CACHE_FILE" long:"opengraph-cache-file" description:"opengraph cache file" default:"cache.yml"`
 }
 
 // GetString returns the value of the environment variable named by the key.
@@ -74,6 +76,15 @@ func (c Config) GetBool(key string) bool {
 	return false
 }
 
+type WishlistItem struct {
+	Name  string
+	Type  string
+	URL   string
+	Price string
+
+	Image string // OpenGraph image URL
+}
+
 var (
 	ts     time.Time // timestamp used to measure execution time
 	cfg    Config    // global config
@@ -101,7 +112,13 @@ func run(ts time.Time) error {
 		return fmt.Errorf("Error initializing i18n bundle: %v", err)
 	}
 
-	generator, err := NewGenerator()
+	og, err := newOpenGraphClient(cfg.OpenGraphTimeout, cfg.OpenGraphCacheFile)
+	if err != nil {
+		return fmt.Errorf("Error creating opengraph client: %v", err)
+	}
+	defer og.Save(cfg.OpenGraphCacheFile)
+
+	generator, err := NewGenerator(og)
 	if err != nil {
 		return fmt.Errorf("Error creating generator: %v", err)
 	}

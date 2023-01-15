@@ -17,6 +17,7 @@ import (
 
 	"github.com/disintegration/imaging"
 	"github.com/meilisearch/meilisearch-go"
+	"gopkg.in/yaml.v3"
 )
 
 const (
@@ -28,13 +29,15 @@ type Generator struct {
 	cfg          Config
 	t            *template.Template
 	md           []*MarkdownFile
+	mdMu         sync.Mutex
 	tempDir      string                              // temporary directory used to templates
 	templates    map[string]map[string]*MarkdownFile // id -> hashed path -> MarkdownFile
 	templatesMu  sync.Mutex
 	searchClient *meilisearch.Client
+	og           *openGraphClient
 }
 
-func NewGenerator() (*Generator, error) {
+func NewGenerator(ogClient *openGraphClient) (*Generator, error) {
 	t, err := template.New("").Funcs(fm).ParseGlob(cfg.TemplatesDirectory + "/*")
 	if err != nil {
 		return nil, fmt.Errorf("Error parsing templates: %v", err)
@@ -61,6 +64,7 @@ func NewGenerator() (*Generator, error) {
 		templates:    map[string]map[string]*MarkdownFile{},
 		templatesMu:  sync.Mutex{},
 		searchClient: searchClient,
+		og:           ogClient,
 	}, nil
 }
 
@@ -105,17 +109,17 @@ func (g *Generator) processFiles(files <-chan string, images chan<- image, done 
 	wg := sync.WaitGroup{}
 
 	for i := 0; i < cfg.NumWorkers; i++ {
-		wg.Add(1)
 
-		go func() {
-			defer wg.Done()
-			for path := range files {
-				err := g.processFile(path, images)
-				if err != nil {
+		for path := range files {
+			go func(path string) {
+				wg.Add(1)
+				defer wg.Done()
+
+				if err := g.processFile(path, images); err != nil {
 					log.Fatalf("Error processing file %s: %v", path, err)
 				}
-			}
-		}()
+			}(path)
+		}
 	}
 
 	wg.Wait()
@@ -273,7 +277,9 @@ func (g *Generator) processMarkdown(path string, images chan<- image) error {
 		images <- image
 	}
 
+	g.mdMu.Lock()
 	g.md = append(g.md, md)
+	g.mdMu.Unlock()
 
 	return nil
 }
@@ -282,43 +288,57 @@ func (g *Generator) processYaml(path string) error {
 	log.Printf("Processing Yaml %s", path)
 
 	// read the file
-	// fileContent, err := os.ReadFile(path)
-	// if err != nil {
-	// 	log.Fatalf("Error reading file %s: %v", path, err)
-	// }
+	fileContent, err := os.ReadFile(filepath.Join(cfg.ContentDirectory, path))
+	if err != nil {
+		return fmt.Errorf("Error reading file %s: %v", path, err)
+	}
 
-	// relPath := path[len(cfg.ContentDirectory)+1:]
+	// unmarshal the file into array of WishlistItem
+	var items []WishlistItem
+	err = yaml.Unmarshal(fileContent, &items)
+	if err != nil {
+		return fmt.Errorf("Error unmarshaling file %s: %v", path, err)
+	}
 
-	// // create the output directory
-	// // for example, if the input file is content/blog/wishlist.yml
-	// // the output directory will be output/blog
-	// outputPath := filepath.Join(cfg.OutputDirectory, filepath.Dir(relPath))
-	// err = os.MkdirAll(outputPath, 0755)
-	// if err != nil {
-	// 	log.Fatalf("Error creating output directory %s: %v", outputPath, err)
-	// }
+	// enrich the items with OpenGraph data
+	for i := range items {
+		og, err := g.og.Get(items[i].URL)
+		if err != nil {
+			log.Printf("Error getting OpenGraph data for %s: %v", items[i].URL, err)
+			continue
+		}
 
-	// // create the output file
-	// outputFile := filepath.Join(outputPath, filepath.Base(relPath[:len(relPath)-len(filepath.Ext(relPath))]+".html"))
-	// f, err := os.Create(outputFile)
-	// if err != nil {
-	// 	log.Fatalf("Error creating output file %s: %v", outputFile, err)
-	// }
-	// defer f.Close()
+		items[i].Image = og.Image
+	}
 
-	// // render template with items
-	// log.Printf("Writing output to %s", outputFile)
-	// err = template.Must(template.ParseFiles(cfg.TemplatesDirectory+"/wishlist.html")).
-	// 	Execute(f, nil)
-	// if err != nil {
-	// 	log.Fatalf("Error rendering template: %v", err)
-	// }
+	outputPath := filepath.Join(cfg.OutputDirectory, strings.Replace(path, ".yml", ".html", 1))
+	log.Printf("OutputPath: %s", outputPath)
+	err = os.MkdirAll(filepath.Dir(outputPath), 0755)
+	if err != nil {
+		return fmt.Errorf("Error creating output directory %s: %v", outputPath, err)
+	}
 
-	// // close the file
-	// err = f.Close()
-	// if err != nil {
-	// 	log.Fatalf("Error closing file %s: %v", outputFile, err)
-	// }
+	// create the output file
+	f, err := os.Create(outputPath)
+	if err != nil {
+		return fmt.Errorf("Error creating file %s: %v", outputPath, err)
+	}
+	defer f.Close()
+
+	// render template with items
+	log.Printf("Writing output to %s", outputPath)
+
+	tmpl := g.t.Lookup("wishlist.gohtml")
+	err = g.renderTemplate(outputPath, items, tmpl)
+	if err != nil {
+		return fmt.Errorf("Error rendering template %s: %v", path, err)
+	}
+
+	// close the file
+	err = f.Close()
+	if err != nil {
+		return fmt.Errorf("Error closing file %s: %v", path, err)
+	}
 
 	return nil
 }

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>Wishlist</title>
+<link rel="stylesheet" href="wishlist.css">
+</head>
+<body>
+<h1>Wishlist</h1>
+<div class="items">
+{{ range . }}
+<a class="item" href="{{ .URL }}">
+    <div class="image" style="background-image: url({{ .Image }})"></div>
+    <div class="info">
+        <span class="name">{{ .Name }}</span>
+        <span class="price">{{ .Price }}</span>
+        <span class="type">{{ .Type }}</span>
+    </div>
+</a>
+{{ end }}
+</body>
+</html>
