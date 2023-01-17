@@ -12,7 +12,7 @@ Cloudflare is a content delivery network (CDN) and a domain name registrar.
 [Cloudflare Pages](https://pages.cloudflare.com) is a JAMstack platform –
 a service for hosting static websites and serverless functions.
 
-It is free, but your website cannot be larger than 25 MB or have more
+It is free, but website cannot be larger than 25 MB or have more
 than 20,000 files.
 
 https://developers.cloudflare.com/pages/platform/limits/
