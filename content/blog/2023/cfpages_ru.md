@@ -13,7 +13,7 @@ Cloudflare это сеть доставки контента (CDN) и регис
 сервис для размещения статических сайтов и бессерверных функций.
 
 Он бесплатный, но сайт не может быть больше 25 МБ или иметь более
-20,000 файлов.
+20000 файлов.
 
 https://developers.cloudflare.com/pages/platform/limits/
 
@@ -24,4 +24,4 @@ https://developers.cloudflare.com/pages/platform/limits/
 С недавних пор, моя [домашняя страница](https://github.com/chuhlomin/homepage)
 размещена на Cloudflare Pages.
 
-#ops
+#ops #blog

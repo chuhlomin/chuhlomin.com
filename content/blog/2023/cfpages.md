@@ -24,4 +24,4 @@ to a connected git repository.
 Since recently, my [homepage](https://github.com/chuhlomin/homepage)
 is hosted on Cloudflare Pages.
 
-#ops
+#ops #blog
