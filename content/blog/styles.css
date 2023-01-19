@@ -363,7 +363,9 @@ iframe {
   appearance: auto;
 }
 
-.tag {
+/* .tag class used to style tags in posts */
+/* :not(.token) is there to avoid styling "tags" in code blocks added by prism.js */
+.tag:not(.token) {
   border: none;
   background-color: var(--color-background-higher);
   border-radius: 100px;
