@@ -23,11 +23,6 @@
   url: https://papershootcamera.com/products/croz-vanguard-camera-set
   price: $160
 
-- name: OP-1
-  type: hardware
-  url: https://teenage.engineering/store/op-1-field
-  price: $2000
-
 - name: Apple AirPods Max (silver)
   type: hardware
   url: https://www.apple.com/airpods-max/
@@ -117,3 +112,8 @@
   type: hardware
   url: https://www.traintrackr.io/product/mta2
   price: $220
+
+- name: LG Oled TV
+  type: hardware
+  url: https://www.lg.com/us/tvs/lg-oled55c1pub-oled-4k-tv
+  price: $1300
