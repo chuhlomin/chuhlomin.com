@@ -3,9 +3,11 @@
     <div class="image">
         {{ if .Images }}
         {{ $img := index .Images 0 }}
+        {{ if not (hasSuffix $img.Path ".svg") }}
         <a href="{{ link .Path .Language }}">
             <img src="{{ link $img.ThumbPath }}" alt="{{ $img.Alt }}">
         </a>
+        {{ end }}
         {{ end }}
     </div>
     <div class="titleAndTags">

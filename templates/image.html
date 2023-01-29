@@ -1,8 +1,10 @@
 {{ define "image" }}
     {{ with .Images }}
+    {{ $img := index . 0 }}
+    {{ if not (hasSuffix $img.Path ".svg") }}
     <div class="imagePromo">
-        {{ $img := index . 0 }}
         <img src="{{ link $img.ThumbPath "" }}" alt="{{ $img.Alt }}">
     </div>
+    {{ end }}
     {{ end }}
 {{ end }}

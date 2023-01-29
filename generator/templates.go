@@ -22,6 +22,7 @@ var fm = template.FuncMap{
 	"nextPage":   nextPage,
 	"prevPage":   prevPage,
 	"stripTags":  stripTags,
+	"hasSuffix":  strings.HasSuffix,
 }
 
 func config(key string) string {
