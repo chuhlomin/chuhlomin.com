@@ -117,3 +117,8 @@
   type: hardware
   url: https://www.lg.com/us/tvs/lg-oled55c1pub-oled-4k-tv
   price: $1300
+
+- name: Yeti Rambler 20oz Thumbler
+  type: thing
+  url: https://www.yeti.com/drinkware/tumblers/21070060028.html
+  price: $35
