@@ -7,7 +7,7 @@ date: 2023-01-28
 When your GitHub organization has a plenty of people, you may want to organize them into teams.
 Over time, it may become difficult to track who is in which team and what is teams hierarchy.
 
-I made a simple tool to help you with that.  
+I made a tool to help you with that.  
 https://github.com/chuhlomin/teams
 
 It is a simple command line tool that reads your GitHub organization members and teams and outputs a graph in [Graphviz](../2020/graphviz.md) format.
