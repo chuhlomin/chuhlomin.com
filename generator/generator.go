@@ -346,6 +346,17 @@ func (g *Generator) processYaml(path string) error {
 func (g *Generator) processImage(image image) error {
 	log.Printf("Processing image %s", image.Path)
 
+	if strings.HasSuffix(image.Path, ".svg") {
+		// SVGs are copied as-is
+		if err := g.copyFile(
+			filepath.Join(cfg.ContentDirectory, image.Path),
+			filepath.Join(cfg.OutputDirectory, image.Path),
+		); err != nil {
+			return fmt.Errorf("Error copying file %s: %v", image.Path, err)
+		}
+		return nil
+	}
+
 	// check cache directory first
 	if _, err := os.Stat(filepath.Join(cfg.CacheDirectory, image.ThumbPath)); err == nil {
 		log.Printf("Image %s already exists in cache", image.ThumbPath)
