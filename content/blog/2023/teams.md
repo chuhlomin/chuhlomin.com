@@ -10,10 +10,12 @@ Over time, it may become difficult to track who is in which team and what is tea
 I made a tool to help you with that.  
 https://github.com/chuhlomin/teams
 
-It is a simple command line tool that reads your GitHub organization members and teams and outputs a graph in [Graphviz](../2020/graphviz.md) format.
+It is a simple command line tool that reads your GitHub organization members and
+teams and outputs a graph in [Graphviz](../2020/graphviz.md) format, for example:
 
 ![Teams graph](teams.svg)
 
-Unfortianately, GitHub API does not provide a way to tell if a user is a only a member of a child team, and not a member of a parent team.
+Unfortianately, GitHub API does not provide a way to tell if a user is a only
+a member of a child team, and not a member of a parent team.
 
 #project #go #github
