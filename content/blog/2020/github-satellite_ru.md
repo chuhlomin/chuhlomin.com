@@ -30,4 +30,4 @@ https://github.com/features/codespaces
 
 • Secret scanning теперь доступно для приватных репозиториев.
 
-#git #vscode
+#git #vscode #github
