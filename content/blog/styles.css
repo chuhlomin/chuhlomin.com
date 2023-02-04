@@ -24,7 +24,7 @@
   --color-link-hover-underscore: rgba(9, 105, 218, var(--underline-opacity));
   --color-neutral-muted: rgba(175, 184, 193, 0.2);
 
-  --lang-background: rgba(0, 0, 0, 0.05);
+  --lang-background: #9999aa;
   --dotted-border-color: rgba(0, 0, 0, 0.75);
 
   --kbd-color: #444d56;
@@ -245,18 +245,26 @@ pre {
 }
 
 .extra {
+  display: flex;
   float: right;
-  margin-right: -0.66rem;
 }
 
 .lang {
-  padding: 0.33rem 0.66rem;
-  margin-top: -0.33rem;
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 0.4rem;
   background: var(--lang-background);
-  border-radius: var(--border-radius);
+  border-radius: 6px;
   text-transform: uppercase;
   font-size: 75%;
   border: none;
+  color: white;
+  transition: none;
+}
+
+.lang:visited {
+  color: white;
 }
 
 .languages span {
@@ -294,12 +302,14 @@ pre {
 
 .content img {
   object-fit: contain;
+  border-radius: 16px;
 }
 
 figure {
   display: flex;
   flex-direction: column;
   align-items: right;
+  margin: 10px 0 0 0;
 }
 
 figcaption {
@@ -618,7 +628,7 @@ kbd {
     --color-link-hover-underscore: rgba(248, 255, 131, var(--underline-opacity));
     --color-neutral-muted: rgba(110, 118, 129, 0.4);
 
-    --lang-background: rgba(255, 255, 255, 0.05);
+    --lang-background: #8899aa;
     --dotted-border-color: rgba(255, 255, 255, 0.75);
 
     --kbd-color: #fafbfc;

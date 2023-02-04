@@ -19,13 +19,11 @@
                 {{ $langs := alternates . }}
                 {{ $length := len $langs }}
                 {{ if gt $length 1 }}
-                <span class="languages">
-                    {{ range $langs }}
-                        {{ if ne .Language $.File.Language }}
-                            <a class="lang lang-{{ .Language }}" href="{{ link .Path .Language }}">{{ .Language }}</a>
-                        {{ end }}
+                {{ range $langs }}
+                    {{ if ne .Language $.File.Language }}
+                        <a class="lang lang-{{ .Language }}" href="{{ link .Path .Language }}">{{ .Language }}</a>
                     {{ end }}
-                </span>
+                {{ end }}
                 {{ end }}
             </div>
         </div>
