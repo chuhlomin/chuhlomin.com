@@ -263,7 +263,7 @@ pre {
   transition: none;
 }
 
-.lang:visited {
+.lang:visited, .lang:hover {
   color: white;
 }
 
