@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>{{ i18n "blog" .File.Language }} \ {{ i18n "name" .File.Language }}</title>
-<link rel="stylesheet" href="{{ link "/blog/styles.css?ts=" }}{{ .Timestamp }}">
+<link rel="stylesheet" href="{{ link "/styles.css?ts=" }}{{ .Timestamp }}">
 <link rel="alternate" type="application/atom+xml" title="{{ i18n "name" .File.Language }}" href="feed.atom"/>
 <link rel="alternate" type="application/atom+xml" title="{{ i18n "name" "ru" }}" href="feed.atom?lang=ru"/>
 {{ template "head" . }}
