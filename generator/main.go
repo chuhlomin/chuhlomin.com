@@ -2,17 +2,18 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"reflect"
 	"time"
 
 	"github.com/BurntSushi/toml"
+	"github.com/charmbracelet/log"
 	flags "github.com/jessevdk/go-flags"
 	i "github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
 )
 
 type Config struct {
+	Debug               bool          `env:"DEBUG" long:"debug" description:"debug mode"`
 	ContentDirectory    string        `env:"CONTENT_DIR" long:"content" description:"content directory" default:"content"`
 	TemplatesDirectory  string        `env:"TEMPLATES_DIR" long:"templates" description:"templates directory" default:"templates"`
 	OutputDirectory     string        `env:"OUTPUT_DIR" long:"output" description:"output directory" default:"output"`
@@ -92,20 +93,24 @@ var (
 )
 
 func main() {
-	log.Println("Starting")
+	log.Info("Starting")
 	ts = time.Now()
 
 	if err := run(ts); err != nil {
-		log.Fatalf("ERROR: %v", err)
+		log.Fatal(err)
 	}
 
-	log.Printf("Finished in %v", time.Now().Sub(ts))
+	log.Infof("Finished in %v", time.Now().Sub(ts))
 }
 
 func run(ts time.Time) error {
 	_, err := flags.Parse(&cfg)
 	if err != nil {
 		return fmt.Errorf("Error parsing flags: %v", err)
+	}
+
+	if cfg.Debug {
+		log.SetLevel(log.DebugLevel)
 	}
 
 	if err := initBundle(); err != nil {

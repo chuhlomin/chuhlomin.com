@@ -5,7 +5,6 @@ import (
 	"fmt"
 	goimage "image"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -15,6 +14,7 @@ import (
 	"text/template"
 	"time"
 
+	"github.com/charmbracelet/log"
 	"github.com/disintegration/imaging"
 	"github.com/meilisearch/meilisearch-go"
 	"gopkg.in/yaml.v3"
@@ -94,11 +94,11 @@ func (g *Generator) Run(ts time.Time) error {
 	g.renderAllTemplates(ts)
 	g.renderAllMarkdown(ts)
 
-	log.Printf("Waiting for images to be processed...")
+	log.Info("Waiting for images to be processed...")
 	<-doneImages
 
 	if cfg.SearchEnabled {
-		log.Printf("Waiting for search index to be updated...")
+		log.Info("Waiting for search index to be updated...")
 		<-doneSearchIndexing
 	}
 
@@ -116,7 +116,7 @@ func (g *Generator) processFiles(files <-chan string, images chan<- image, done 
 				defer wg.Done()
 
 				if err := g.processFile(path, images); err != nil {
-					log.Fatalf("Error processing file %s: %v", path, err)
+					log.Fatalf("Error processing file %s: %v", path, "err", err)
 				}
 			}(path)
 		}
@@ -148,7 +148,7 @@ func (g *Generator) processImages(images <-chan image, done chan<- bool) {
 				accessMap.Unlock()
 
 				if err := g.processImage(img); err != nil {
-					log.Fatalf("Error processing image %s: %v", img.Path, err)
+					log.Fatalf("Error processing image %s: %v", img.Path, "err", err)
 				}
 
 				accessMap.Lock()
@@ -208,7 +208,7 @@ func (g *Generator) processFile(path string, images chan<- image) error {
 }
 
 func (g *Generator) processGoTemplate(path string) error {
-	log.Printf("Processing Go template %s", path)
+	log.Debugf("Processing Go template %s", path)
 
 	// use sha256 hash the path to the template
 	// hashing is used to avoid collisions in the template package
@@ -257,7 +257,7 @@ func (g *Generator) processGoTemplate(path string) error {
 }
 
 func (g *Generator) processMarkdown(path string, images chan<- image) error {
-	log.Printf("Processing Markdown %s", path)
+	log.Debugf("Processing Markdown %s", path)
 
 	// Markdown files are posts/pages and are rendered as HTML using templates
 	// All posts are stored in g.md and then rendered, so that we can use the
@@ -269,7 +269,7 @@ func (g *Generator) processMarkdown(path string, images chan<- image) error {
 	}
 
 	if md.Draft && !cfg.ShowDrafts {
-		log.Printf("DEBUG skipping draft %v", path)
+		log.Debugf("Skipping draft %v", path)
 		return nil
 	}
 
@@ -285,7 +285,7 @@ func (g *Generator) processMarkdown(path string, images chan<- image) error {
 }
 
 func (g *Generator) processYaml(path string) error {
-	log.Printf("Processing Yaml %s", path)
+	log.Debugf("Processing Yaml %s", path)
 
 	// read the file
 	fileContent, err := os.ReadFile(filepath.Join(cfg.ContentDirectory, path))
@@ -304,7 +304,7 @@ func (g *Generator) processYaml(path string) error {
 	for i := range items {
 		og, err := g.og.Get(items[i].URL)
 		if err != nil {
-			log.Printf("Error getting OpenGraph data for %s: %v", items[i].URL, err)
+			log.Errorf("Error getting OpenGraph data for %s: %v", items[i].URL, "err", err)
 			continue
 		}
 
@@ -312,7 +312,7 @@ func (g *Generator) processYaml(path string) error {
 	}
 
 	outputPath := filepath.Join(cfg.OutputDirectory, strings.Replace(path, ".yml", ".html", 1))
-	log.Printf("OutputPath: %s", outputPath)
+	log.Debugf("OutputPath: %s", outputPath)
 	err = os.MkdirAll(filepath.Dir(outputPath), 0755)
 	if err != nil {
 		return fmt.Errorf("Error creating output directory %s: %v", outputPath, err)
@@ -326,7 +326,7 @@ func (g *Generator) processYaml(path string) error {
 	defer f.Close()
 
 	// render template with items
-	log.Printf("Writing output to %s", outputPath)
+	log.Debugf("Writing output to %s", outputPath)
 
 	tmpl := g.t.Lookup("wishlist.gohtml")
 	err = g.renderTemplate(outputPath, items, tmpl)
@@ -344,7 +344,7 @@ func (g *Generator) processYaml(path string) error {
 }
 
 func (g *Generator) processImage(image image) error {
-	log.Printf("Processing image %s", image.Path)
+	log.Debugf("Processing image %s", image.Path)
 
 	if strings.HasSuffix(image.Path, ".svg") {
 		// SVGs are copied as-is
@@ -359,7 +359,7 @@ func (g *Generator) processImage(image image) error {
 
 	// check cache directory first
 	if _, err := os.Stat(filepath.Join(cfg.CacheDirectory, image.ThumbPath)); err == nil {
-		log.Printf("Image %s already exists in cache", image.ThumbPath)
+		log.Debugf("Image %s already exists in cache", image.ThumbPath)
 		err = g.copyFile(
 			filepath.Join(cfg.CacheDirectory, image.ThumbPath),
 			filepath.Join(cfg.OutputDirectory, image.ThumbPath),
@@ -446,7 +446,7 @@ func (g *Generator) renderGoTemplate(
 	alternates []*MarkdownFile,
 	ts time.Time,
 ) error {
-	log.Printf("Rendering %s -> %s", file.Source, file.Path)
+	log.Debugf("Rendering %s → %s", file.Source, file.Path)
 	t := g.t.Lookup(hash)
 	if t == nil {
 		return fmt.Errorf("Template %s not found", file.Source)
@@ -485,7 +485,7 @@ func (g *Generator) renderAllMarkdown(ts time.Time) {
 }
 
 func (g *Generator) copyFile(src, dst string) error {
-	log.Printf("Copying %s -> %s", src, dst)
+	log.Debugf("Copying %s → %s", src, dst)
 
 	dir := filepath.Dir(dst)
 	if err := os.MkdirAll(dir, permDir); err != nil {

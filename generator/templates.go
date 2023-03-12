@@ -1,13 +1,13 @@
 package main
 
 import (
-	"log"
 	"regexp"
 	"sort"
 	"strings"
 	"text/template"
 	"time"
 
+	"github.com/charmbracelet/log"
 	i "github.com/nicksnyder/go-i18n/v2/i18n"
 )
 
@@ -37,7 +37,7 @@ func i18n(key, lang string) string {
 	localizer := i.NewLocalizer(bundle, lang)
 	str, err := localizer.Localize(&i.LocalizeConfig{MessageID: key})
 	if err != nil {
-		log.Printf("error localizing %q: %v", key, err)
+		log.Errorf("error localizing %q: %v", key, err)
 		return key
 	}
 
@@ -54,7 +54,7 @@ func date(date, format string) string {
 		var err error
 		t, err = time.Parse("2006-01-02", date)
 		if err != nil {
-			log.Printf("error parsing date %q: %v", date, err)
+			log.Errorf("error parsing date %q: %v", date, err)
 			return date
 		}
 	}
