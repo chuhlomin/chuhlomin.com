@@ -19,4 +19,4 @@ https://tools.ietf.org/html/rfc5545
 - Go: https://github.com/JulienBreux/rrule-go
 - Python: http://labix.org/python-dateutil/
 
-#rfc
+#rfc #calendar

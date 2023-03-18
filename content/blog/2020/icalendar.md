@@ -19,4 +19,4 @@ For RRule parsing, I found several libraries:
 - Go: https://github.com/JulienBreux/rrule-go
 - Python: http://labix.org/python-dateutil/
 
-#rfc
+#rfc #calendar
