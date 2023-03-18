@@ -341,6 +341,10 @@ kbd.capslock:before {
   margin-bottom: 40px;
 }
 
+.content ul {
+  list-style: inherit;
+}
+
 .content video,
 .content img {
   max-width: 100%;
