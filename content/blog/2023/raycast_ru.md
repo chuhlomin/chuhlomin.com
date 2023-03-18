@@ -7,7 +7,7 @@ image: raycast_og.png
 
 ![Raycast](raycast.png)
 
-Raycast это расширяемый лаунчер, отличный альтернатива Alfred, Spotlight и другим лаунчерам.
+Raycast это расширяемый лаунчер, отличная альтернатива Alfred, Spotlight и другим лаунчерам.
 
 https://www.raycast.com
 
