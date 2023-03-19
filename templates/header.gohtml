@@ -1,7 +1,13 @@
 {{ define "header" }}
 <div class="flag">
     <div class="header-content">
-        <div class="logo"><div class="user-picture-image"></div></div>
+        <div class="logo">
+            {{ if eq .File.ID "index.gohtml" }}
+            <div class="user-picture-image"></div>
+            {{ else }}
+            <a href="/{{ link "" .File.Language }}"><div class="user-picture-image"></div></a>
+            {{ end }}
+        </div>
         <div class="blog-title">
             <a class="name" href="/{{ link "" .File.Language }}">{{ i18n "name" .File.Language }}</a>&nbsp;<span class="sep">/</span>
             {{ if eq .File.ID "blog/index.gohtml" }}
