@@ -10,7 +10,13 @@ import (
 	"time"
 )
 
-var defaultLogger = NewWithOptions(os.Stderr, Options{ReportTimestamp: true})
+var (
+	// registry is a map of all registered lipgloss renderers.
+	registry = sync.Map{}
+
+	// defaultLogger is the default global logger instance.
+	defaultLogger = NewWithOptions(os.Stderr, Options{ReportTimestamp: true})
+)
 
 // Default returns the default logger. The default logger comes with timestamp enabled.
 func Default() *Logger {
@@ -41,10 +47,15 @@ func NewWithOptions(w io.Writer, o Options) *Logger {
 		timeFormat:      o.TimeFormat,
 		formatter:       o.Formatter,
 		fields:          o.Fields,
+		callerFormatter: o.CallerFormatter,
 	}
 
 	l.SetOutput(w)
 	l.SetLevel(Level(l.level))
+
+	if l.callerFormatter == nil {
+		l.callerFormatter = ShortCallerFormatter
+	}
 
 	if l.timeFunc == nil {
 		l.timeFunc = time.Now
@@ -95,6 +106,11 @@ func SetOutput(w io.Writer) {
 // SetFormatter sets the formatter for the default logger.
 func SetFormatter(f Formatter) {
 	defaultLogger.SetFormatter(f)
+}
+
+// SetCallerFormatter sets the caller formatter for the default logger.
+func SetCallerFormatter(f CallerFormatter) {
+	defaultLogger.SetCallerFormatter(f)
 }
 
 // SetPrefix sets the prefix for the default logger.

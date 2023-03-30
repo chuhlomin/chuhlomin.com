@@ -40,7 +40,7 @@ var uriPool = &sync.Pool{
 //
 // URI instance MUST NOT be used from concurrently running goroutines.
 type URI struct {
-	noCopy noCopy //nolint:unused,structcheck
+	noCopy noCopy
 
 	pathOriginal []byte
 	scheme       []byte
@@ -217,11 +217,11 @@ func (u *URI) SetSchemeBytes(scheme []byte) {
 	lowercaseBytes(u.scheme)
 }
 
-func (u *URI) isHttps() bool {
+func (u *URI) isHTTPS() bool {
 	return bytes.Equal(u.scheme, strHTTPS)
 }
 
-func (u *URI) isHttp() bool {
+func (u *URI) isHTTP() bool {
 	return len(u.scheme) == 0 || bytes.Equal(u.scheme, strHTTP)
 }
 
@@ -504,7 +504,7 @@ func unescape(s []byte, mode encoding) ([]byte, error) {
 // appearing in a URL string, according to RFC 3986.
 //
 // Please be informed that for now shouldEscape does not check all
-// reserved characters correctly. See golang.org/issue/5684.
+// reserved characters correctly. See https://github.com/golang/go/issues/5684.
 //
 // Based on https://github.com/golang/go/blob/8ac5cbe05d61df0a7a7c9a38ff33305d4dcfea32/src/net/url/url.go#L100
 func shouldEscape(c byte, mode encoding) bool {
@@ -538,15 +538,9 @@ func shouldEscape(c byte, mode encoding) bool {
 }
 
 func ishex(c byte) bool {
-	switch {
-	case '0' <= c && c <= '9':
-		return true
-	case 'a' <= c && c <= 'f':
-		return true
-	case 'A' <= c && c <= 'F':
-		return true
-	}
-	return false
+	return ('0' <= c && c <= '9') ||
+		('a' <= c && c <= 'f') ||
+		('A' <= c && c <= 'F')
 }
 
 func unhex(c byte) byte {
@@ -637,7 +631,6 @@ func normalizePath(dst, src []byte) []byte {
 
 	if filepath.Separator == '\\' {
 		// remove \.\ parts
-		b = dst
 		for {
 			n := bytes.Index(b, strBackSlashDotBackSlash)
 			if n < 0 {
@@ -658,7 +651,8 @@ func normalizePath(dst, src []byte) []byte {
 			if nn < 0 {
 				nn = 0
 			}
-			n += len(strSlashDotDotBackSlash) - 1
+			nn++
+			n += len(strSlashDotDotBackSlash)
 			copy(b[nn:], b[n:])
 			b = b[:len(b)-n+nn]
 		}
@@ -715,9 +709,9 @@ func (u *URI) RequestURI() []byte {
 //
 // Examples:
 //
-//    * For /foo/bar/baz.html path returns baz.html.
-//    * For /foo/bar/ returns empty byte slice.
-//    * For /foobar.js returns foobar.js.
+//   - For /foo/bar/baz.html path returns baz.html.
+//   - For /foo/bar/ returns empty byte slice.
+//   - For /foobar.js returns foobar.js.
 //
 // The returned bytes are valid until the next URI method call.
 func (u *URI) LastPathSegment() []byte {
@@ -733,14 +727,14 @@ func (u *URI) LastPathSegment() []byte {
 //
 // The following newURI types are accepted:
 //
-//     * Absolute, i.e. http://foobar.com/aaa/bb?cc . In this case the original
-//       uri is replaced by newURI.
-//     * Absolute without scheme, i.e. //foobar.com/aaa/bb?cc. In this case
-//       the original scheme is preserved.
-//     * Missing host, i.e. /aaa/bb?cc . In this case only RequestURI part
-//       of the original uri is replaced.
-//     * Relative path, i.e.  xx?yy=abc . In this case the original RequestURI
-//       is updated according to the new relative path.
+//   - Absolute, i.e. http://foobar.com/aaa/bb?cc . In this case the original
+//     uri is replaced by newURI.
+//   - Absolute without scheme, i.e. //foobar.com/aaa/bb?cc. In this case
+//     the original scheme is preserved.
+//   - Missing host, i.e. /aaa/bb?cc . In this case only RequestURI part
+//     of the original uri is replaced.
+//   - Relative path, i.e.  xx?yy=abc . In this case the original RequestURI
+//     is updated according to the new relative path.
 func (u *URI) Update(newURI string) {
 	u.UpdateBytes(s2b(newURI))
 }
@@ -749,14 +743,14 @@ func (u *URI) Update(newURI string) {
 //
 // The following newURI types are accepted:
 //
-//     * Absolute, i.e. http://foobar.com/aaa/bb?cc . In this case the original
-//       uri is replaced by newURI.
-//     * Absolute without scheme, i.e. //foobar.com/aaa/bb?cc. In this case
-//       the original scheme is preserved.
-//     * Missing host, i.e. /aaa/bb?cc . In this case only RequestURI part
-//       of the original uri is replaced.
-//     * Relative path, i.e.  xx?yy=abc . In this case the original RequestURI
-//       is updated according to the new relative path.
+//   - Absolute, i.e. http://foobar.com/aaa/bb?cc . In this case the original
+//     uri is replaced by newURI.
+//   - Absolute without scheme, i.e. //foobar.com/aaa/bb?cc. In this case
+//     the original scheme is preserved.
+//   - Missing host, i.e. /aaa/bb?cc . In this case only RequestURI part
+//     of the original uri is replaced.
+//   - Relative path, i.e.  xx?yy=abc . In this case the original RequestURI
+//     is updated according to the new relative path.
 func (u *URI) UpdateBytes(newURI []byte) {
 	u.requestURI = u.updateBytes(newURI, u.requestURI)
 }
