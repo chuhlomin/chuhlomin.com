@@ -122,3 +122,8 @@
   type: thing
   url: https://www.yeti.com/drinkware/tumblers/21070060028.html
   price: $35
+
+- name: OnePlus Nord Wired Earphones Black
+  type: thing
+  url: https://www.oneplus.com/us/product/oneplus-nord-wired-earphones
+  price: $14
