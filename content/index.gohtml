@@ -19,6 +19,8 @@
 <meta property="profile:first_name" content="Konstantin">
 <meta property="profile:last_name" content="Chukhlomin">
 <meta property="profile:username" content="chuhlomin">
+<link rel="alternate" hreflang="ru" href="{{ config "RootURL" }}{{ link "index.html" "ru" }}">
+<link rel="edit" href="https://github.com/chuhlomin/homepage/edit/main/content/{{ .File.Source }}">
 </head>
 <body>
 <div class="common">
@@ -105,5 +107,6 @@
         </div>
     </div>
 </div>
+{{ template "hotkeys" . }}
 </body>
 </html>

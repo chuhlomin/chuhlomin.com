@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="{{ link "/styles.css?ts=" }}{{ .Timestamp }}">
 <link rel="alternate" type="application/atom+xml" title="{{ i18n "name" .File.Language }}" href="feed.atom?lang=ru"/>
 <link rel="alternate" type="application/atom+xml" title="{{ i18n "name" "en" }}" href="feed.atom"/>
+<link rel="alternate" hreflang="en" href="{{ config "RootURL" }}{{ link "/blog/index.html" "en" }}">
+<link rel="edit" href="https://github.com/chuhlomin/homepage/edit/main/content/{{ .File.Source }}">
 {{ template "head" . }}
 </head>
 <body>
@@ -35,5 +37,6 @@
         </div>
     </div>
 </div>
+{{ template "hotkeys" . }}
 </body>
 </html>

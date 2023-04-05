@@ -1,0 +1,29 @@
+{{ define "hotkeys" }}
+<script>
+function click(link) {
+    // create a new link element and click it
+    var e = document.createElement('a');
+    e.href = link;
+    e.click();
+}
+window.onload = function() {
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode === 69) { // e
+            if (document.querySelector('head link[rel="alternate"][hreflang="en"]')) {
+                click(document.querySelector('head link[rel="alternate"][hreflang="en"]').href);
+            }
+        }
+        if (e.keyCode === 82) { // r
+            if (document.querySelector('head link[rel="alternate"][hreflang="ru"]')) {
+                click(document.querySelector('head link[rel="alternate"][hreflang="ru"]').href);
+            }
+        }
+        if (e.keyCode === 190) { // .
+            if (document.querySelector('head link[rel="edit"]')) {
+                click(document.querySelector('head link[rel="edit"]').href);
+            }
+        }
+    });
+}
+</script>
+{{ end }}

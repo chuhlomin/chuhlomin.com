@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <title>{{ i18n "search" .File.Language }} \ {{ i18n "blog" .File.Language }} \ {{ i18n "name" .File.Language }}</title>
 <link rel="stylesheet" href="/styles.css?ts={{ .Timestamp }}">
+<link rel="alternate" hreflang="ru" href="{{ config "RootURL" }}{{ link "/blog/search.html" "ru" }}">
+<link rel="edit" href="https://github.com/chuhlomin/homepage/edit/main/content/{{ .File.Source }}">
 {{ template "head" . }}
 <script src="../meilisearch.umd.js"></script>
 </head>
@@ -19,5 +21,6 @@
     </div>
 </div>
 {{ template "search" "en" }}
+{{ template "hotkeys" . }}
 </body>
 </html>
