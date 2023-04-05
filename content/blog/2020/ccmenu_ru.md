@@ -1,5 +1,7 @@
 ---
 date: 2020-05-31
+refs:
+  - blog/2020/drone_ru.md
 ---
 
 # CCMenu

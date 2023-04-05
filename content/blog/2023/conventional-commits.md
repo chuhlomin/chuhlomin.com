@@ -1,6 +1,8 @@
 ---
 date: 2023-03-11
 image: conventional-commits_og.png
+refs:
+  - blog/2020/gitmoji.md
 ---
 
 # Conventional Commits

@@ -1,5 +1,7 @@
 ---
 date: 2022-07-30
+refs:
+  - blog/2021/protobuf_ru.md
 ---
 
 # gRPC

@@ -1,5 +1,7 @@
 ---
 date: 2020-07-09
+refs:
+  - blog/2020/project-org_ru.md
 ---
 
 # gclone

@@ -33,10 +33,6 @@
   --search-background: #fff;
   --search-border: #ccc;
 
-  --more-background: rgba(0,0,0,0.05);
-  --more-shadow: rgba(0,0,0,0.1);
-  --more-border: rgba(255,255,255,0.6);
-
   --border-radius: 0.66em;
 
   --padding: 10px;
@@ -79,7 +75,7 @@ h1 {
 }
 
 h2 {
-  margin: 10px 0 0 0;
+  margin: 40px 0 0 0;
   font-size: 27px;
   font-weight: 600;
 }
@@ -347,7 +343,7 @@ a:hover .user-picture-image {
 }
 
 .content {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .content ul {
@@ -382,6 +378,21 @@ figcaption {
 
 .content .tags .tag {
   margin-right: 0.1rem;
+}
+
+.related {
+  margin-bottom: 10px;
+}
+
+.related h4,
+.next h4 {
+  margin-top: 10px;
+  color: var(--color-text);
+}
+
+.next h4 .shortcut {
+  display: inline-block;
+  margin-left: 0.5rem;
 }
 
 .search {
@@ -591,7 +602,7 @@ iframe {
 .postCard {
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .postCard .titleAndTags {
@@ -687,71 +698,9 @@ ul li + li {
   margin-top: 10px;
 }
 
-.darkBackground {
-  padding: 10px 0 6px;
-  background-color: var(--more-background);
-  box-shadow: inset 0 0 0 1px var(--more-shadow);
-  border-top: 1px solid var(--more-border);
-  border-bottom: 1px solid var(--more-border);
-}
-
-.next {
-  display: flex;
-  align-items: flex-end;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-}
-
-.prevLink,
-.nextLink {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+hr {
   border: none;
-}
-
-.next .nextLinkContainer {
-  text-align: right;
-}
-
-.nextLink {
-  text-align: right;
-  align-items: flex-end;
-}
-
-.hasArrow {
-  position: relative;
-}
-
-.prevLink .hasArrow::before,
-.nextLink .hasArrow::after {
-  display: block;
-  position: absolute;
-  top: 0;
-  color: var(--color-link);
-  transition-property: color;
-  transition-duration: 0.33s;
-  transition-timing-function: ease-out;
-}
-
-.prevLink .hasArrow::before {
-  left: -20px;
-  content: "←";
-}
-
-.prevLink:visited .hasArrow::before,
-.nextLink:visited .hasArrow::after {
-  color: var(--color-link-visited);
-}
-
-.prevLink:hover .hasArrow::before,
-.nextLink:hover .hasArrow::after {
-  color: var(--color-link-hover);
-}
-
-.nextLink .hasArrow::after {
-  right: -20px;
-  content: "→";
+  border-top: 1px solid var(--postcard-border);
 }
 
 .shortcut {
@@ -794,10 +743,6 @@ ul li + li {
 
     --search-background: #333;
     --search-border: #444;
-
-    --more-background: rgba(0,0,0,0.2);
-    --more-shadow: rgba(0,0,0,0.2);
-    --more-border: rgba(255,255,255,0.05);
 
     --postcard-border: rgba(255,255,255,0.2);
     --iframe-border: rgba(110, 118, 129, 0.4);
@@ -863,11 +808,6 @@ ul li + li {
     width: 100%;
   }
 
-  .prevLink .hasArrow::before,
-  .nextLink .hasArrow::after {
-    display: none;;
-  }
-
   .shortcut {
     display: none;
   }
@@ -910,15 +850,6 @@ ul li + li {
 
   .postCard {
     margin-top: 10px;
-  }
-
-  .prevLink,
-  .nextLink {
-    padding: 0;
-  }
-  .prevLink .hasArrow::before,
-  .nextLink .hasArrow::after {
-    display: none;
   }
 }
 

@@ -1,0 +1,14 @@
+{{ define "related" }}
+<div class="related posts"> 
+{{ if .File.Refs }}
+    <h4>{{ i18n "related" .File.Language }}</h4>
+    {{ range .File.Refs }}
+        {{ with (index $.All . ) }}
+            {{ template "postCard" . }}
+        {{ else }}
+            Ref not found: {{ . }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+</div>
+{{ end }}

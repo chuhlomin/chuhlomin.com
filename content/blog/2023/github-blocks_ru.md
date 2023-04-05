@@ -1,5 +1,7 @@
 ---
 date: 2023-03-30
+refs:
+  - blog/2020/graphviz_ru.md
 ---
 
 # GitHub Blocks

@@ -57,6 +57,13 @@ function initRemark42(url) {
     });
 }
 
+function click(link) {
+    // create a new link element and click it
+    var e = document.createElement('a');
+    e.href = link;
+    e.click();
+}
+
 window.onload = function() {
     // console.log('load');
     if (window.REMARK42) {
@@ -69,18 +76,29 @@ window.onload = function() {
     }
 
     document.addEventListener('keydown', function(e) {
-        if (e.keyCode === 37 && e.altKey) {
-            // console.log('goPrev');
-            // if #prevLink is defined, click it
-            if (document.getElementById('prevLink')) {
-                document.getElementById('prevLink').click();
+        if (e.keyCode === 37 && e.altKey) { // left + alt
+            if (document.querySelector('head link[rel="prev"]')) {
+                click(document.querySelector('head link[rel="prev"]').href);
             }
         }
-        if (e.keyCode === 39 && e.altKey) {
-            // console.log('goNext');
-            // if #nextLink is defined, click it
-            if (document.getElementById('nextLink')) {
-                document.getElementById('nextLink').click();
+        if (e.keyCode === 39 && e.altKey) { // right + alt
+            if (document.querySelector('head link[rel="next"]')) {
+                click(document.querySelector('head link[rel="next"]').href);
+            }
+        }
+        if (e.keyCode === 69) { // e
+            if (document.querySelector('head link[rel="alternate"][hreflang="en"]')) {
+                click(document.querySelector('head link[rel="alternate"][hreflang="en"]').href);
+            }
+        }
+        if (e.keyCode === 82) { // r
+            if (document.querySelector('head link[rel="alternate"][hreflang="ru"]')) {
+                click(document.querySelector('head link[rel="alternate"][hreflang="ru"]').href);
+            }
+        }
+        if (e.keyCode === 190) { // .
+            if (document.querySelector('head link[rel="edit"]')) {
+                click(document.querySelector('head link[rel="edit"]').href);
             }
         }
     });

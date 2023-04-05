@@ -1,5 +1,7 @@
 ---
 date: 2020-06-26
+refs:
+  - blog/2020/vscode-live-share_ru.md
 ---
 
 # VSCode REST Client

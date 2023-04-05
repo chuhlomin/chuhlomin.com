@@ -20,4 +20,4 @@ https://github.com/acaudwell/Gource
 Support for Gravatar (a database of avatars associated with an email address) looks interesting.
 https://github.com/acaudwell/Gource/wiki
 
-#visualization #app
+#visualization #app #git

@@ -1,6 +1,9 @@
 ---
 date: 2023-03-18
 image: raycast_og.png
+refs:
+  - blog/2020/alfred_ru.md
+  - blog/2020/meeter_ru.md
 ---
 
 # Raycast

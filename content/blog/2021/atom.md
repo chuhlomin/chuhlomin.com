@@ -1,5 +1,7 @@
 ---
 date: 2021-12-25
+refs:
+  - blog/2021/microblog.md
 ---
 
 # RSS & Atom

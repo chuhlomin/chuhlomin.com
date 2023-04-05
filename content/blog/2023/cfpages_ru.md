@@ -1,6 +1,8 @@
 ---
 date: 2023-01-17
 image: cfpages_og.png
+refs:
+  - blog/2021/microblog_ru.md
 ---
 
 # Cloudflare Pages

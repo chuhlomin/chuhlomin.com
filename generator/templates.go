@@ -132,13 +132,13 @@ func prevPage(data Data) (prev *MarkdownFile) {
 		file *MarkdownFile
 	)
 
-	for i, file = range data.All {
+	for i, file = range data.AllSorted {
 		if file.Path == data.File.Path { // searching for the current page
 			break
 		}
 	}
 
-	for _, file := range data.All[i+1:] {
+	for _, file := range data.AllSorted[i+1:] {
 		if file.ID == data.File.ID { // skipping same pages in different languages
 			continue
 		}
@@ -157,7 +157,7 @@ func nextPage(data Data) (next *MarkdownFile) {
 	// but chronologically, it's the NEXT page
 	next = nil
 
-	for _, file := range data.All {
+	for _, file := range data.AllSorted {
 		if file.Path == data.File.Path { // searching for the current page
 			break // this is the most recent page, so there's no next page
 		}

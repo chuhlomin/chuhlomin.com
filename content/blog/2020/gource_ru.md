@@ -20,4 +20,4 @@ https://github.com/acaudwell/Gource
 Любопытно выглядит поддержка Gravatar (базы аватаров, ассоциированных с email адресом).
 https://github.com/acaudwell/Gource/wiki
 
-#visualization #app
+#visualization #app #git

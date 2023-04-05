@@ -28,7 +28,8 @@ const (
 type Generator struct {
 	cfg          Config
 	t            *template.Template
-	md           []*MarkdownFile
+	md           map[string]*MarkdownFile // relative source path -> MarkdownFile
+	mdSorted     []*MarkdownFile          // sorted MarkdownFiles by creation date
 	mdMu         sync.Mutex
 	tempDir      string                              // temporary directory used to templates
 	templates    map[string]map[string]*MarkdownFile // id -> hashed path -> MarkdownFile
@@ -59,7 +60,7 @@ func NewGenerator(ogClient *openGraphClient) (*Generator, error) {
 
 	return &Generator{
 		t:            t,
-		md:           []*MarkdownFile{},
+		md:           map[string]*MarkdownFile{},
 		tempDir:      tempDir,
 		templates:    map[string]map[string]*MarkdownFile{},
 		templatesMu:  sync.Mutex{},
@@ -84,7 +85,31 @@ func (g *Generator) Run(ts time.Time) error {
 	go g.processImages(images, doneImages)
 
 	<-doneFiles
-	sort.Sort(ByCreated(g.md))
+
+	// add cross references
+	for _, file := range g.md {
+		if file.Refs == nil {
+			continue
+		}
+
+		for _, ref := range file.Refs {
+			refFile, ok := g.md[ref]
+			if !ok {
+				continue
+			}
+
+			if !contains(refFile.Refs, file.Source) {
+				refFile.Refs = append(refFile.Refs, file.Source)
+			}
+		}
+	}
+
+	// sort MarkdownFiles by creation date
+	g.mdSorted = make([]*MarkdownFile, 0, len(g.md))
+	for _, file := range g.md {
+		g.mdSorted = append(g.mdSorted, file)
+	}
+	sort.Sort(ByCreated(g.mdSorted))
 
 	if cfg.SearchEnabled {
 		go g.updateSearchIndex(doneSearchIndexing)
@@ -278,7 +303,7 @@ func (g *Generator) processMarkdown(path string, images chan<- image) error {
 	}
 
 	g.mdMu.Lock()
-	g.md = append(g.md, md)
+	g.md[md.Source] = md
 	g.mdMu.Unlock()
 
 	return nil
@@ -458,6 +483,7 @@ func (g *Generator) renderGoTemplate(
 			File:       file,
 			Alternates: alternates,
 			All:        g.md,
+			AllSorted:  g.mdSorted,
 			Timestamp:  ts.Format(time.RFC3339),
 		},
 		t,
@@ -525,6 +551,7 @@ func (g *Generator) renderMarkdown(md *MarkdownFile, ts time.Time) error {
 		Data{
 			File:      md,
 			All:       g.md,
+			AllSorted: g.mdSorted,
 			Timestamp: ts.Format(time.RFC3339),
 		},
 		tmpl,
@@ -610,4 +637,13 @@ func getImageFromURL(url string) (goimage.Image, error) {
 
 	img, _, err := goimage.Decode(resp.Body)
 	return img, err
+}
+
+func contains(s []string, e string) bool {
+	for _, a := range s {
+		if a == e {
+			return true
+		}
+	}
+	return false
 }

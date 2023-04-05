@@ -17,6 +17,7 @@
 {{ range .File.Tags }}
 <meta property="article:tag" content="{{ . }}">
 {{ end }}
+<link rel="edit" href="https://github.com/chuhlomin/homepage/edit/main/content/{{ .File.Source }}">
 {{ with nextPage . }}<link rel="next" href="{{ config "RootURL" }}{{ link .Path }}">{{ end }}
 {{ with prevPage . }}<link rel="prev" href="{{ config "RootURL" }}{{ link .Path }}">{{ end }}
 <link rel="canonical" href="{{ .File.Canonical }}">
@@ -46,13 +47,9 @@
             </div>
             {{ end }}
         </div>
-    </div>
-    <div class="wrapper darkBackground" hx-boost="true">
-        <div>
-            {{ template "next" . }}
-        </div>
-    </div>
-    <div class="wrapper">
+        <hr>
+        {{ template "related" . }}
+        {{ template "next" . }}
         <div class="comments">
             <div id="remark42"></div>
         </div>

@@ -1,22 +1,13 @@
 {{ define "next" }}
 <div class="next">
-    {{ with prevPage . }}
-    <div class="prevLinkContainer">
-        <a id="prevLink" class="prevLink" href="{{ link .Path "" }}">
-            {{ template "image" . }}
-            <span class="link hasArrow">{{ .Title }}</span>
-        </a>
-        <div class="shortcut"><kbd>⌥</kbd>+<kbd>←</kbd></div>
-    </div>
-    {{ end }}
     {{ with nextPage . }}
-    <div class="nextLinkContainer">
-        <a id="nextLink" class="nextLink" href="{{ link .Path "" }}">
-            {{ template "image" . }}
-            <span class="link hasArrow">{{ .Title }}</span>
-        </a>
-        <div class="shortcut"><kbd>⌥</kbd>+<kbd>→</kbd></div>
-    </div>
+    <h4>{{ i18n "next" $.File.Language }}<div class="shortcut"><kbd>⌥</kbd>+<kbd>→</kbd></div></h4>
+    {{ template "postCard" . }}
+    
+    {{ end }}
+    {{ with prevPage . }}
+    <h4>{{ i18n "previous" $.File.Language }}<div class="shortcut"><kbd>⌥</kbd>+<kbd>←</kbd></div></h4>
+    {{ template "postCard" . }}
     {{ end }}
 </div>
 {{ end }}

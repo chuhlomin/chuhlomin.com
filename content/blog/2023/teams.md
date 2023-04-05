@@ -1,5 +1,7 @@
 ---
 date: 2023-01-28
+refs:
+  - blog/2020/graphviz.md
 ---
 
 # Teams

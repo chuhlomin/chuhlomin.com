@@ -1,5 +1,7 @@
 ---
 date: 2020-06-07
+refs:
+  - blog/2020/alfred_ru.md
 ---
 
 # Alfred Workflows

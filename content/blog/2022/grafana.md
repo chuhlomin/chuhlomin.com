@@ -1,6 +1,8 @@
 ---
 date: 2022-06-21
 image: grafana-logo.png
+refs:
+  - blog/2020/prometheus.md
 ---
 
 # Grafana

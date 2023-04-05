@@ -1,5 +1,7 @@
 ---
 date: 2021-10-09
+refs:
+  - blog/2020/gclone.md
 ---
 
 # Alias `e`

@@ -1,6 +1,8 @@
 ---
 date: 2022-01-23
 image: fish_promo.png
+refs:
+  - blog/2020/ohmyzsh_ru.md
 ---
 
 # Fish

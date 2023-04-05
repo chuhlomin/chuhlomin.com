@@ -19,7 +19,7 @@
             <h1>Все посты{{ template "selectedTag" . }}</h1>
             <div class="posts">
                 {{ $year := ""}}
-                {{ range .All }}
+                {{ range .AllSorted }}
                 {{ if eq .Language "ru" }}
                     {{ if ne (date .Date "2006") $year }}
                     {{ if ne $year "" }}

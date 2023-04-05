@@ -1,5 +1,8 @@
 ---
 date: 2022-05-15
+refs:
+  - blog/2022/transiter.md
+  - blog/2020/gbfs.md
 ---
 
 # GTFS

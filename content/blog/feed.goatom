@@ -12,7 +12,7 @@
     <link rel="alternate" type="text/html" hreflang="en" href="{{ config "RootURL" }}{{ link "/blog/index.html" }}"/>
     <generator uri="https://github.com/chuhlomin/homepage" version="1.0">Homepage</generator>
     
-    {{ range .All }}
+    {{ range .AllSorted }}
     {{ if eq .Language "en" }}
     <entry>
         <id>{{ config "RootURL" }}{{ link .Path }}</id>

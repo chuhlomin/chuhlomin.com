@@ -1,8 +1,6 @@
 ---
 date: 2023-01-03
 image: radial-calendar.png
-related:
-  - ../2022/sankey-diagrams.md
 ---
 
 # Radial Calendar

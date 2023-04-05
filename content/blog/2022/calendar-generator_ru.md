@@ -1,6 +1,8 @@
 ---
 date: 2022-12-30
 image: calendar-generator_promo.png
+refs:
+  - blog/2022/grid_ru.md
 ---
 
 # PDF-генератор календарей

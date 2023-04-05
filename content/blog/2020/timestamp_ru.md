@@ -1,5 +1,8 @@
 ---
 date: 2020-10-04
+refs:
+  - blog/2020/alfred_ru.md
+  - blog/2023/raycast_ru.md
 ---
 
 # Timestamp

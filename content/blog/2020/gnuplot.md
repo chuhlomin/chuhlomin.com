@@ -1,5 +1,7 @@
 ---
 date: 2020-11-20
+refs:
+  - blog/2020/graphviz.md
 ---
 
 # gnuplot
