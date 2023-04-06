@@ -15,7 +15,7 @@
         {{ if .Tags }}
         <span class="tags">
             {{ range .Tags }}
-            <a class="tag" href="#{{ . }}">#{{ . }}</a>
+            <a class="tag" href="{{ link "/blog/index.html" $.Language }}#{{ . }}">#{{ . }}</a>
             {{ end }}
         </span>
         {{ end }}

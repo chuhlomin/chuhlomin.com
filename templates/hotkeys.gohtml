@@ -6,7 +6,7 @@ function click(link) {
     e.href = link;
     e.click();
 }
-window.onload = function() {
+window.addEventListener('load', function() {
     document.addEventListener('keydown', function(e) {
         if (e.keyCode === 69) { // e
             if (document.querySelector('head link[rel="alternate"][hreflang="en"]')) {
@@ -24,6 +24,6 @@ window.onload = function() {
             }
         }
     });
-}
+});
 </script>
 {{ end }}
