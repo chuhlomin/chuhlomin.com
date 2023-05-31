@@ -24,7 +24,7 @@ jobs:
           REMOVE_HTML_EXT: "1"
           COMMENTS_ENABLED: "1"
           COMMENTS_SITE_ID: "micro"
-          SEARCH_ENABLED: "1"
+          SEARCH_ENABLED: "0"
           SEARCH_HOST: "https://ms-8b8b5f0ccb49-1268.nyc.meilisearch.io"
           SEARCH_MASTER_KEY: ${{ secrets.SEARCH_MASTER_KEY }}
           SEARCH_API_KEY: ${{ secrets.SEARCH_API_KEY }}
