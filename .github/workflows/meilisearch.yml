@@ -23,7 +23,7 @@ jobs:
           project_id: ${{ secrets.GKE_PROJECT }}
           cluster_name: cluster-east
           location: us-east4-c
-          template_path: kube-meilisearch.template
+          template_path: kube-meilisearch.template.yml
           vars: |
             image: getmeili/meilisearch:v1.2.0
             name: meilisearch
