@@ -57,6 +57,8 @@ spec:
           env:
             - name: MEILI_NO_ANALYTICS
               value: "true"
+            - name: MEILI_ENV
+              value: "production"
           envFrom:
             - secretRef:
                 name: meilisearch
