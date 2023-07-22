@@ -8,6 +8,7 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/charmbracelet/log"
 	flags "github.com/jessevdk/go-flags"
+	"github.com/meilisearch/meilisearch-go"
 	i "github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
 )
@@ -123,7 +124,16 @@ func run(ts time.Time) error {
 	}
 	defer og.Save(cfg.OpenGraphCacheFile)
 
-	generator, err := NewGenerator(og)
+	var searchClient *meilisearch.Client
+	if cfg.SearchEnabled {
+		searchClient = meilisearch.NewClient(meilisearch.ClientConfig{
+			Host:    cfg.SearchHost,
+			APIKey:  cfg.SearchMasterKey,
+			Timeout: cfg.SearchTimeout,
+		})
+	}
+
+	generator, err := NewGenerator(og, searchClient)
 	if err != nil {
 		return fmt.Errorf("Error creating generator: %v", err)
 	}

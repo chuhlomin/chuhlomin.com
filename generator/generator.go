@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"crypto/sha256"
 	"fmt"
 	goimage "image"
@@ -38,7 +39,10 @@ type Generator struct {
 	og           *openGraphClient
 }
 
-func NewGenerator(ogClient *openGraphClient) (*Generator, error) {
+func NewGenerator(
+	ogClient *openGraphClient,
+	searchClient *meilisearch.Client,
+) (*Generator, error) {
 	t, err := template.New("").Funcs(fm).ParseGlob(cfg.TemplatesDirectory + "/*")
 	if err != nil {
 		return nil, fmt.Errorf("Error parsing templates: %v", err)
@@ -47,15 +51,6 @@ func NewGenerator(ogClient *openGraphClient) (*Generator, error) {
 	tempDir, err := os.MkdirTemp(cfg.TempDirectory, "templates")
 	if err != nil {
 		return nil, fmt.Errorf("Error creating temp directory: %v", err)
-	}
-
-	var searchClient *meilisearch.Client
-	if cfg.SearchEnabled {
-		searchClient = meilisearch.NewClient(meilisearch.ClientConfig{
-			Host:    cfg.SearchHost,
-			APIKey:  cfg.SearchMasterKey,
-			Timeout: cfg.SearchTimeout,
-		})
 	}
 
 	return &Generator{
@@ -111,7 +106,7 @@ func (g *Generator) Run(ts time.Time) error {
 	}
 	sort.Sort(ByCreated(g.mdSorted))
 
-	if cfg.SearchEnabled {
+	if g.isSearchEnabled() {
 		go g.updateSearchIndex(doneSearchIndexing)
 	}
 
@@ -122,7 +117,7 @@ func (g *Generator) Run(ts time.Time) error {
 	log.Info("Waiting for images to be processed...")
 	<-doneImages
 
-	if cfg.SearchEnabled {
+	if g.isSearchEnabled() {
 		log.Info("Waiting for search index to be updated...")
 		<-doneSearchIndexing
 	}
@@ -597,14 +592,27 @@ func (g *Generator) updateSearchIndex(doneSearchIndexing chan<- bool) {
 		}
 
 		for _, task := range tasks {
-			_, err := g.searchClient.WaitForTask(task.TaskUID)
+			// increase default context timeout from 5s to 2m to wait for slow
+			ctx, cancelFunc := context.WithTimeout(context.Background(), time.Minute*2)
+			defer cancelFunc()
+			_, err := g.searchClient.WaitForTask(
+				task.TaskUID,
+				meilisearch.WaitParams{
+					Context:  ctx,
+					Interval: time.Millisecond * 500,
+				},
+			)
 			if err != nil {
-				log.Fatalf("Error waiting for task: %v", err)
+				log.Fatalf("Error waiting for task %d: %v", task.TaskUID, err)
 			}
 		}
 	}
 
 	doneSearchIndexing <- true
+}
+
+func (g *Generator) isSearchEnabled() bool {
+	return g.searchClient != nil
 }
 
 func walkDir(dir string, files chan<- string) {
