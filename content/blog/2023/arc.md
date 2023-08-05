@@ -15,8 +15,6 @@ Unlike other Chromium-based browsers, Arc has a different approach to working
 with tabs and bookmarks. They are arranged vertically, making them look like
 unsorted mail.
 
-https://arc.net/welcome-to-arc
-
 Arc also offers:
 
 * [Boost](https://arc.net/boosts) — customize your own CSS styles and JS scripts
