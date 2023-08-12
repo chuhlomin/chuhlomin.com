@@ -1,4 +1,4 @@
-# homepage
+# chuhlomin.com
 
 [![main](https://github.com/chuhlomin/homepage/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/chuhlomin/homepage/actions/workflows/main.yml)
 [![liks](https://github.com/chuhlomin/homepage/actions/workflows/links.yml/badge.svg?branch=main)](https://github.com/chuhlomin/homepage/actions/workflows/links.yml)
