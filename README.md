@@ -145,8 +145,6 @@ Lastly, there just handly URLs to share:
 /instagram https://www.instagram.com/chuhlomin 302
 ```
 
-```text
-
 ### Feed.atom
 
 To support language-specific feeds, this Transform Rules should be added to CloudFlare Pages:
