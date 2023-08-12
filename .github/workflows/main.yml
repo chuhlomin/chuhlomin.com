@@ -31,9 +31,30 @@ jobs:
         run:
           make build
 
+      - name: Make screenshot
+        uses: chuhlomin/webpage-screenshot-action@main
+        with:
+          url: file://${{github.workspace}}/output/index.html
+          mode: page
+          output: screenshot.png
+          width: 1024
+          height: 768
+
+      - name: Commit screenshot (if changed)
+        if: github.event_name == 'push'
+        run: |
+          if (git status --porcelain | grep screenshot.png)
+          then
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add screenshot.png
+            git commit -m "Update screenshot [skip ci]"
+            git push
+          fi
+
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages publish output --project-name=homepage --branch=main --commit-dirty=true
+          command: pages deploy output --project-name=homepage --branch=main --commit-dirty=true
