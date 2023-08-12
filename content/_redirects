@@ -223,3 +223,21 @@
 /blog/2020/castty.html /blog/2020/castty 301
 /blog/2020/castty.html_ru /blog/2020/castty?lang=ru 301
 /experiments/vfonts/index.html /experiments/vfonts 301
+
+/rss /blog/feed.atom 302
+/rss_ru /blog/feed_ru.atom 302
+
+/grid https://grid.chuhlomin.com 302
+/calendar https://calendar.chuhlomin.com 302
+/ts https://ts.chuhlomin.com 302
+/timestamp https://ts.chuhlomin.com 302
+/ip https://ip.chuhlomin.com 302
+/transiter https://transiter.app 302
+
+/github https://github.com/chuhlomin 302
+/instagram https://www.instagram.com/chuhlomin 302
+/telegram https://t.me/chuhlomin 302
+/channel https://t.me/chuhlomin_channel 302
+/twitter https://twitter.com/chuhlomin 302
+/twitter_ru https://twitter.com/chuhlomin_ru 302
+/spotify https://open.spotify.com/user/chuhlomin?si=e6ab7bcc76494f37 302
