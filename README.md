@@ -5,6 +5,8 @@
 
 Powers https://chuhlomin.com
 
+![Screenshot](./screenshot.png)
+
 ## Directory structure
 
 ```bash
@@ -45,6 +47,13 @@ carry run
 Open https://local.chuhlomin.com
 
 See [main.go](generator/main.go) for more configuration options.
+
+Environment differencies:
+
+|             | Local                                   | Production                   |
+|-------------|-----------------------------------------|------------------------------|
+| Host        | https://local.chuhlomin.com             | https://chuhlomin.com        |
+| Search host | https://local.chuhlomin.com/blog/search | https://search.chuhlomin.com |
 
 ## CloudFlare Pages specifics
 
@@ -119,6 +128,24 @@ Example redirects:
 - /blog/2022 → /blog/#2022
 - /blog/2022/ → /blog/#2022
 - /blog/2022?lang=ru → /blog/?lang=ru#2022
+
+Redirects to address the case when I typed my domain and then realized
+that I forgot to add subdomain:
+
+```text
+/grid https://grid.chuhlomin.com 302
+/calendar https://calendar.chuhlomin.com 302
+/transiter https://transiter.app 302
+```
+
+Lastly, there just handly URLs to share:
+
+```text
+/github https://github.com/chuhlomin 302
+/instagram https://www.instagram.com/chuhlomin 302
+```
+
+```text
 
 ### Feed.atom
 
