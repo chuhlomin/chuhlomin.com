@@ -1,9 +1,10 @@
 name: main
 
 on:
-  push:
+  push: # will deploy to Cloudflare Pages
     branches:
       - main
+  workflow_dispatch: # will only update screenshot
 
 jobs:
   main:
@@ -42,7 +43,7 @@ jobs:
           deviceScaleFactor: 2
 
       - name: Commit screenshot (if changed)
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         run: |
           if (git status --porcelain | grep screenshot.png)
           then
@@ -55,6 +56,7 @@ jobs:
 
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
+        if: github.event_name == 'push'
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
