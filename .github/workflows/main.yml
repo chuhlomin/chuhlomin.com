@@ -36,7 +36,7 @@ jobs:
         uses: chuhlomin/webpage-screenshot-action@main
         with:
           url: file://${{github.workspace}}/output/index.html
-          mode: page
+          mode: wholePage
           output: screenshot.png
           width: 1024
           height: 768
@@ -56,7 +56,7 @@ jobs:
 
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip deploy]')
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
