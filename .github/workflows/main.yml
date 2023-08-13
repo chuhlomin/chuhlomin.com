@@ -56,7 +56,7 @@ jobs:
             git push
           fi
 
-      - name: Publish
+      - name: Deploy
         uses: cloudflare/wrangler-action@2.0.0
         if: github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip deploy]')
         with:
