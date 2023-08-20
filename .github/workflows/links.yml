@@ -15,8 +15,19 @@ jobs:
       - name: Check dead links
         uses: lycheeverse/lychee-action@v1.8.0
         with:
-          args: --verbose --no-progress './content/**/*.md' './content/**/*.html' './content/**/*.gohtml' --exclude whatismyipaddress.com --exclude apple.com --exclude twitter.com --exclude hhkeyboard.us --exclude pkg.go.dev
-          jobSummary: true
           fail: true
+          jobSummary: true
+          args: >-
+            --verbose
+            --no-progress
+            './content/**/*.md'
+            './content/**/*.html'
+            './content/**/*.gohtml'
+            --exclude whatismyipaddress.com
+            --exclude apple.com
+            --exclude twitter.com
+            --exclude hhkeyboard.us
+            --exclude pkg.go.dev
+            --exclude www.youtube-nocookie.com
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
