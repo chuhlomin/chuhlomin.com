@@ -1,6 +1,7 @@
 ---
 date: 2020-06-08
 image: meeter.png
+draft: true # they are closed
 ---
 
 # Meeter
