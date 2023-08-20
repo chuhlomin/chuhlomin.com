@@ -29,5 +29,6 @@ jobs:
             --exclude hhkeyboard.us
             --exclude pkg.go.dev
             --exclude www.youtube-nocookie.com
+            --exclude trymeeter.com
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
