@@ -15,7 +15,6 @@ date: 2022-02-16
 
 * https://www.eia.gov/totalenergy/data/monthly/pdf/flow/total_energy.pdf
 * https://en.wikipedia.org/wiki/Sankey_diagram#/media/File:Minard.png
-* https://www.iea.org/sankey/#?c=World&s=Balance
 
 Больше примеров Сэнки диаграм можно найти в блоге [sankey-diagrams.com](https://www.sankey-diagrams.com).
 

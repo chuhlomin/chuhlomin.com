@@ -17,7 +17,6 @@ Diagrams of this type are named after Sankey and are widely used:
 
 * https://www.eia.gov/totalenergy/data/monthly/pdf/flow/total_energy.pdf
 * https://en.wikipedia.org/wiki/Sankey_diagram#/media/File:Minard.png
-* https://www.iea.org/sankey/#?c=World&s=Balance
 
 More examples of Sankey Diagrams can be found at [sankey-diagrams.com](https://www.sankey-diagrams.com) blog.
 
