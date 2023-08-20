@@ -13,7 +13,7 @@ https://go.dev/blog/gonew
 
 [Шаблоны от Google](https://github.com/GoogleCloudPlatform/go-templates): `appengine`, `pubsubfn`, `httpfn` and `microservice`
 
-[Шаблоны от меня](https://github.com/chuhlomin/gonew): `sever`, `library` и `action`.
+[Шаблоны от меня](https://github.com/chuhlomin/gonew): `server`, `library` и `action`.
 
 Теперь новые проекты я зачинаю с помощью алиаса [`new`](https://github.com/chuhlomin/aliases/blob/main/new.sh):
 
