@@ -1,19 +1,19 @@
-/blog/2023/ /blog/#2023 302
-/blog/2022/ /blog/#2022 302
-/blog/2021/ /blog/#2021 302
-/blog/2020/ /blog/#2020 302
-/blog/2023 /blog/#2023 302
-/blog/2022 /blog/#2022 302
-/blog/2021 /blog/#2021 302
-/blog/2020 /blog/#2020 302
-/blog/2023/_ru /blog?lang=ru#2023 302
-/blog/2022/_ru /blog?lang=ru#2022 302
-/blog/2021/_ru /blog?lang=ru#2021 302
-/blog/2020/_ru /blog?lang=ru#2020 302
-/blog/2023/index_ru /blog?lang=ru#2023 302
-/blog/2022/index_ru /blog?lang=ru#2022 302
-/blog/2021/index_ru /blog?lang=ru#2021 302
-/blog/2020/index_ru /blog?lang=ru#2020 302
+/blog/2023/ /blog/#2023 301
+/blog/2022/ /blog/#2022 301
+/blog/2021/ /blog/#2021 301
+/blog/2020/ /blog/#2020 301
+/blog/2023 /blog/#2023 301
+/blog/2022 /blog/#2022 301
+/blog/2021 /blog/#2021 301
+/blog/2020 /blog/#2020 301
+/blog/2023/_ru /blog?lang=ru#2023 301
+/blog/2022/_ru /blog?lang=ru#2022 301
+/blog/2021/_ru /blog?lang=ru#2021 301
+/blog/2020/_ru /blog?lang=ru#2020 301
+/blog/2023/index_ru /blog?lang=ru#2023 301
+/blog/2022/index_ru /blog?lang=ru#2022 301
+/blog/2021/index_ru /blog?lang=ru#2021 301
+/blog/2020/index_ru /blog?lang=ru#2020 301
 
 /index.html / 301
 /index.html_ru /?lang=ru 301
@@ -223,6 +223,9 @@
 /blog/2020/castty.html /blog/2020/castty 301
 /blog/2020/castty.html_ru /blog/2020/castty?lang=ru 301
 /experiments/vfonts/index.html /experiments/vfonts 301
+
+/blog/2020/gclone /blog/2020/clone 301
+/blog/2020/gclone_ru /blog/2020/clone?lang=ru 301
 
 /rss /blog/feed.atom 302
 /rss_ru /blog/feed_ru.atom 302

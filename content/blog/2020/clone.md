@@ -4,19 +4,19 @@ refs:
   - blog/2020/project-org.md
 ---
 
-# gclone
+# clone
 
 Presenting you the `gclone` script, which clones the repository to the folder
 following convention `<owner>/<repo>` (like go get before introducing modules):
 
 ```bash
-gclone git@github.com:chuhlomin/terraform.git
+clone git@github.com:chuhlomin/terraform.git
 ↓
 mkdir ~/Projects/chuhlomin
 git clone git@github.com:chuhlomin/terraform.git ~/Projects/chuhlomin
 ```
 
-https://gist.github.com/chuhlomin/f7648f173046251db209585ea68a21ac
+https://github.com/chuhlomin/aliases/blob/main/clone.sh
 
 One more thing to add is the `group_by_owner` script, which arranges existing repositories in the "right" places:
 

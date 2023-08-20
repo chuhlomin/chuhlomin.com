@@ -4,18 +4,18 @@ refs:
   - blog/2020/project-org_ru.md
 ---
 
-# gclone
+# clone
 
 Принес вам скрипт gclone, который всегда клонирует репозиторий в нужную папку (как go get до введения модулей):
 
 ```bash
-gclone git@github.com:chuhlomin/terraform.git
+clone git@github.com:chuhlomin/terraform.git
 ↓
 mkdir ~/Projects/chuhlomin
 git clone git@github.com:chuhlomin/terraform.git ~/Projects/chuhlomin
 ```
 
-https://gist.github.com/chuhlomin/f7648f173046251db209585ea68a21ac
+https://github.com/chuhlomin/aliases/blob/main/clone.sh
 
 Ещё вдогонку скрипт group_by_owner, который раскладывает существующие репозитории по «правильным» местам:
 
