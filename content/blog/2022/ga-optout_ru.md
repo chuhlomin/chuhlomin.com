@@ -7,7 +7,7 @@ image: ga.png
 
 <figure>
 <img src="./ga.jpg" alt="Google Analytics (Иллюстрация)">
-<figcaption>Картинка сгенерирована <a href="https://www.midjourney.com">Midjourney</a></figcaption>
+<figcaption>Картинка сгенерирована <a href="https://www.midjourney.com/home/">Midjourney</a></figcaption>
 </figure>
 
 Если вас беспокоит, что Гугл аналитика собирает данные о вас,
