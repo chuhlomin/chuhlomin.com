@@ -14,8 +14,6 @@ https://github.com/chuhlomin/render-template
 
 ![Render Template Example](render-template.png "Render Template Example")
 
-Usage example: https://github.com/chuhlomin/timestamp/runs/2372341222
-
 GitHub Marketplace: https://github.com/marketplace/actions/render-template
 
 #project #ops #go
