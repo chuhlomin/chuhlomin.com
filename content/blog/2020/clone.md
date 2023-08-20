@@ -6,7 +6,7 @@ refs:
 
 # clone
 
-Presenting you the `gclone` script, which clones the repository to the folder
+Presenting you the `clone` script, which clones the repository to the folder
 following convention `<owner>/<repo>` (like go get before introducing modules):
 
 ```bash
