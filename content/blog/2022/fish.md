@@ -3,6 +3,7 @@ date: 2022-01-23
 image: fish_promo.png
 refs:
   - blog/2020/ohmyzsh.md
+  - blog/2021/e.md
 ---
 
 # Fish
