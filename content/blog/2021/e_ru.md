@@ -1,7 +1,7 @@
 ---
 date: 2021-10-09
 refs:
-  - blog/2020/gclone_ru.md
+  - blog/2020/clone_ru.md
 ---
 
 # Переменные окружения и алиас `e`
@@ -22,8 +22,7 @@ https://docs.docker.com/compose/env-file/
 
 Однако мне не удалось найти простого способа импорта значений из `.env` файла. Голь на выдумку хитра: https://gist.github.com/mihow/9c7f559807069a03e302605691f85572
 
-В bash это можно сделать так: `. .env`. Для fish я сделал небольшой алиас:
-https://github.com/chuhlomin/e
+В bash это можно сделать так: `. .env`. Для fish я сделал небольшой [алиас `e`](https://github.com/chuhlomin/aliases/blob/main/e.fish).
 
 ![e demo](e.png "e demo")
 

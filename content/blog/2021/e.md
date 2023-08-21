@@ -1,7 +1,7 @@
 ---
 date: 2021-10-09
 refs:
-  - blog/2020/gclone.md
+  - blog/2020/clone.md
 ---
 
 # Alias `e`
@@ -22,8 +22,7 @@ There are two main console tools available to work with envs:
 
 However, I could not find an easy way to import values from an `.env` file. The art is clever: https://gist.github.com/mihow/9c7f559807069a03e302605691f85572
 
-In bash you can do it this way: `. .env`. I made a small alias for fish:
-https://github.com/chuhlomin/e
+In bash you can do it this way: `. .env`. I made a small [alias `e`](https://github.com/chuhlomin/aliases/blob/main/e.fish) for Fish.
 
 ![e demo](e.png "e demo")
 
