@@ -2,7 +2,7 @@
 date: 2023-08-19
 refs:
   - blog/2020/project-org_ru.md
-  - blog/2020/gclone_ru.md
+  - blog/2020/clone_ru.md
 ---
 
 # gonew
