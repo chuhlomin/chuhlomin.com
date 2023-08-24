@@ -1,0 +1,24 @@
+name: screenshot
+
+on:
+  push:
+    branches:
+      - test/screenshot
+  workflow_dispatch:
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make screenshot
+        uses: chuhlomin/actions/screenshot@main
+        with:
+          url: https://chuhlomin.com
+          mode: wholePage
+          output: screenshot.jpg
+          width: 800
+          height: 600
+          deviceScaleFactor: 2
+          type: jpg
+          quality: 95
+          uploadArtifact: true
