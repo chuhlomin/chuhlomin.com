@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ link "/styles.css?ts=" }}{{ .Timestamp }}">
 {{- with .File.Images }}
 {{- $img := index . 0 }}
-<meta property="og:image" content="{{ config "RootURL" }}{{ link $img.Path }}">
+<meta property="og:image" content="{{ config "RootURL" }}/{{ link $img.Path }}">
 {{- end }}
 <meta property="og:type" content="article">
 <meta property="og:url" content="{{ config "RootURL" }}{{ link .File.Path }}">
