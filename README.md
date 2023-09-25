@@ -41,7 +41,7 @@ make build
 # will create `output` directory with generated static files
 
 # in a separate terminal
-carry run
+caddy run
 ```
 
 Open https://local.chuhlomin.com
