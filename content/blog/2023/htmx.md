@@ -16,7 +16,7 @@ Example:
 
 ```html
 <div hx-get="/hello" hx-swap="outerHTML">
-  <p>Пример, мир!</p>
+  <p>Hello, World!</p>
 </div>
 ```
 

@@ -16,7 +16,7 @@ HTMX – это JavaScript-библиотека размером ≈14k, кот�
 
 ```html
 <div hx-get="/hello" hx-swap="outerHTML">
-  <p>Hello, World!</p>
+  <p>Привет, мир!</p>
 </div>
 ```
 
