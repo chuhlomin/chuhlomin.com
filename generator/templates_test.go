@@ -17,13 +17,6 @@ func TestLink(t *testing.T) {
 			out: "index.html",
 		},
 		{
-			cfg: &Config{
-				RootURL: "https://example.com/",
-			},
-			in:  "index.html",
-			out: "https://example.com/index.html",
-		},
-		{
 			in:  "index_ru.html",
 			out: "index.html?lang=ru",
 		},

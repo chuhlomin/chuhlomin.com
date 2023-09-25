@@ -4,57 +4,61 @@
 <meta charset="UTF-8">
 <title>{{ stripTags .File.Title }} \ {{ i18n "blog" .File.Language }} \ {{ i18n "name" .File.Language }}</title>
 <link rel="stylesheet" href="{{ link "/styles.css?ts=" }}{{ .Timestamp }}">
-{{ with .File.Images }}
-{{ $img := index . 0 }}
-<meta property="og:image" content="{{ link $img.Path }}">
-{{ end }}
+{{- with .File.Images }}
+{{- $img := index . 0 }}
+<meta property="og:image" content="{{ config "RootURL" }}{{ link $img.Path }}">
+{{- end }}
 <meta property="og:type" content="article">
-<meta property="og:url" content="{{ link .File.Path }}">
+<meta property="og:url" content="{{ config "RootURL" }}{{ link .File.Path }}">
 <meta property="og:title" content="{{ stripTags .File.Title }} \ {{ i18n "blog" .File.Language }} \ {{ i18n "name" .File.Language }}">
-<meta property="article:author" content="{{ link "" }}">
+<meta property="article:author" content="{{ config "RootURL" }}{{ link "" }}">
 <meta property="article:published_time" content="{{ .File.Date }}">
-{{ template "head" . }}
-{{ range .File.Tags }}
+{{- template "head" . }}
+{{- range .File.Tags }}
 <meta property="article:tag" content="{{ . }}">
-{{ end }}
+{{- end }}
 <link rel="edit" href="https://github.com/chuhlomin/homepage/edit/main/content/{{ .File.Source }}">
-{{ with nextPage . }}<link rel="next" href="{{ config "RootURL" }}{{ link .Path }}">{{ end }}
-{{ with prevPage . }}<link rel="prev" href="{{ config "RootURL" }}{{ link .Path }}">{{ end }}
+{{- with nextPage . }}
+<link rel="next" href="{{ config "RootURL" }}{{ link .Path }}">
+{{- end }}
+{{- with prevPage . }}
+<link rel="prev" href="{{ config "RootURL" }}{{ link .Path }}">
+{{- end }}
 <link rel="canonical" href="{{ .File.Canonical }}">
-{{ $langs := alternates . -}}
-{{ $length := len $langs -}}
-{{ if gt $length 1 -}}
-{{ range $langs -}}
-{{ if ne .Language $.File.Language -}}
+{{- $langs := alternates . }}
+{{- $length := len $langs }}
+{{- if gt $length 1 }}
+{{- range $langs }}
+{{- if ne .Language $.File.Language }}
 <link rel="alternate" hreflang="{{ .Language }}" href="{{ config "RootURL" }}{{ link .Path .Language }}">
-{{ end }}
+{{- end }}
 {{- end }}
 {{- end }}
 </head>
 <body>
 <div class="common">
-    {{ template "header" . }}
+    {{- template "header" . }}
     <div class="wrapper">
         <div class="content post">
             <span class="date">{{ .File.Date }}</span>
             <h1>{{ .File.Title }}</h1>
-            {{ .File.Body }}
-            {{ with .File.Tags }}
+            {{- .File.Body }}
+            {{- with .File.Tags }}
             <div class="tags">
-                {{ range . }}
+                {{- range . }}
                 <a class="tag" href="{{ link "/blog/index.html" $.File.Language }}#{{ . }}">#{{ . }}</a>
-                {{ end }}
+                {{- end }}
             </div>
-            {{ end }}
+            {{- end }}
         </div>
         <hr>
-        {{ template "related" . }}
-        {{ template "next" . }}
+        {{- template "related" . }}
+        {{- template "next" . }}
         <div class="comments">
             <div id="remark42"></div>
         </div>
     </div>
 </div>
-{{ template "scripts" . }}
+{{- template "scripts" . }}
 </body>
 </html>
