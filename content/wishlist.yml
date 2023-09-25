@@ -122,3 +122,8 @@
   type: thing
   url: https://www.oneplus.com/us/product/oneplus-nord-wired-earphones
   price: $14
+
+- name: GameShell
+  type: hardware
+  url: https://www.clockworkpi.com/product-page/gameshell-kit
+  price: $130

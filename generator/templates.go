@@ -19,6 +19,10 @@ var fm = template.FuncMap{
 	"alternates": alternates,
 	"link":       link,
 	"join":       join,
+	"mkslice":    mkslice,
+	"append":     appendSlice,
+	"sort":       sortSlice,
+	"uniq":       uniq,
 	"nextPage":   nextPage,
 	"prevPage":   prevPage,
 	"stripTags":  stripTags,
@@ -119,6 +123,31 @@ func link(path string, langs ...string) string {
 
 func join(sep string, items []string) string {
 	return strings.Join(items, sep)
+}
+
+func mkslice() []string {
+	return []string{}
+}
+
+func appendSlice(item string, items []string) []string {
+	return append(items, item)
+}
+
+func sortSlice(items []string) []string {
+	sort.Strings(items)
+	return items
+}
+
+func uniq(items []string) []string {
+	seen := make(map[string]struct{})
+	var result []string
+	for _, item := range items {
+		if _, ok := seen[item]; !ok {
+			seen[item] = struct{}{}
+			result = append(result, item)
+		}
+	}
+	return result
 }
 
 func prevPage(data Data) (prev *MarkdownFile) {

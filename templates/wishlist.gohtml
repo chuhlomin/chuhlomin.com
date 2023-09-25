@@ -6,10 +6,38 @@
 <link rel="stylesheet" href="wishlist.css">
 </head>
 <body>
-<h1>Wishlist</h1>
+
+<div class="flag">
+    <div class="header-content">
+        <div class="logo">
+            <a href="/{{ link "" "en" }}"><div class="user-picture-image"></div></a>
+        </div>
+        <div class="blog-title">
+            <a class="name" href="/{{ link "" "en" }}">{{ i18n "name" "en" }}</a>&nbsp;<span class="sep">/</span>
+            <h1>Wishlist</h1>
+        </div>
+    </div>
+</div>
+
+{{/* collect all .Type in array */}}
+{{ $types := mkslice }}
+{{ range . }}
+{{ $types = ($types | append .Type) }}
+{{ end }}
+{{/* remove duplicates */}}
+{{ $types = $types | uniq }}
+{{/* sort the slice */}}
+{{ $types = $types | sort }}
+{{/* loop over the slice */}}
+<ul class="filter" id="filter">
+{{ range $types }}
+<li><a href="#{{ . }}">{{ . }}</a></li>
+{{ end }}
+</ul>
+
 <div class="items">
 {{ range . }}
-<a class="item" href="{{ .URL }}">
+<a class="item" href="{{ .URL }}" data-type="{{ .Type }}">
     <div class="image" style="background-image: url({{ .Image }})"></div>
     <div class="info">
         <span class="name">{{ .Name }}</span>
@@ -18,5 +46,68 @@
     </div>
 </a>
 {{ end }}
+<script>
+var filterEl = document.getElementById("filter");
+var filterItems = filterEl.getElementsByTagName("a");
+
+var items = document.getElementsByClassName("item");
+
+function filter(type, event) {
+    /* if type is empty, show all items */
+    if (type == "") {
+        for (var i = 0; i < items.length; i++) {
+            items[i].style.display = "block";
+        }
+        /* remove active class from all filter items */
+        for (var i = 0; i < filterItems.length; i++) {
+            filterItems[i].classList.remove("active");
+        }
+        /* remove hash from url */
+        window.location.hash = "";
+        event.preventDefault();
+        return;
+    }
+
+    /* update active class on filter items */
+    for (var i = 0; i < filterItems.length; i++) {
+        if (filterItems[i].hash == "#" + type) {
+            filterItems[i].classList.add("active");
+        } else {
+            filterItems[i].classList.remove("active");
+        }
+    }
+
+    /* hide items that don't match the filter */
+    for (var i = 0; i < items.length; i++) {
+        if (items[i].dataset.type != type) {
+            items[i].style.display = "none";
+        } else {
+            items[i].style.display = "block";
+        }
+    }
+}
+
+/* on start check anchor link */
+window.onload = function() {
+    if (window.location.hash) {
+        filter(window.location.hash.substring(1));
+    }
+};
+/* if anchor link is clicked */
+window.onhashchange = function() {
+    if (window.location.hash) {
+        filter(window.location.hash.substring(1));
+    }
+};
+/* second click on anchor link - disable filter */
+for (var i = 0; i < filterItems.length; i++) {
+    filterItems[i].addEventListener("click", function(e) {
+        if (e.target.hash == window.location.hash) {
+            filter("", e);
+        }
+    });
+}
+
+</script>
 </body>
 </html>

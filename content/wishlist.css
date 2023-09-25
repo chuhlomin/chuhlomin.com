@@ -95,6 +95,44 @@ a:hover {
   border-color: var(--color-link-hover-underscore);
 }
 
+.blog-title h1 {
+  font-size: 18px;
+  line-height: 26px;
+  display: inline-block;
+  margin: 0;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 10px;
+  margin: 10px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.filter a {
+  display: inline-block;
+  padding: 0px 10px;
+  border: 1px solid var(--color-neutral-muted);
+  border-radius: var(--border-radius);
+  background-color: var(--color-background-higher);
+  color: var(--color-text);
+  text-decoration: none;
+  transition-property: color, border;
+  transition-duration: 0.33s;
+  transition-timing-function: ease-out;
+  text-transform: capitalize;
+}
+
+.filter a.active {
+  background-color: var(--color-link);
+  border-color: var(--color-link-underscore);
+  color: var(--color-background-higher);
+}
+
 .items {
   display: flex;
   flex-wrap: wrap;
@@ -184,6 +222,18 @@ a:hover {
   a:hover {
     color: var(--color-link-hover-dark);
     border-color: var(--color-link-hover-underscore-dark);
+  }
+
+  .filter a {
+    background-color: var(--color-background-higher-dark);
+    border-color: var(--color-white-10pct);
+    color: var(--color-text-dark);
+  }
+
+  .filter a.active {
+    background-color: var(--color-link-dark);
+    border-color: var(--color-link-underscore-dark);
+    color: var(--color-background-higher-dark);
   }
 
   .item {
