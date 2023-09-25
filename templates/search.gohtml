@@ -56,7 +56,7 @@ function search(query) {
                 imageLink.href = file.Canonical;
 
                 thumbs = file.Images;
-                if (thumbs != null && thumbs.length > 0) {
+                if (thumbs != null && thumbs.length > 0 /* and thumbs[0] is not SVG */ && thumbs[0].ThumbPath.indexOf(".svg") == -1) {
                     let image = createNode("img");
                     image.src = "{{ config "RootURL" }}" + thumbs[0].ThumbPath;
                     appendNode(imageLink, image);
