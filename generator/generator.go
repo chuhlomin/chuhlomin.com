@@ -136,7 +136,7 @@ func (g *Generator) processFiles(files <-chan string, images chan<- image, done 
 				defer wg.Done()
 
 				if err := g.processFile(path, images); err != nil {
-					log.Fatalf("Error processing file %s: %v", path, "err", err)
+					log.Fatalf("Error processing file %s: %v", path, err)
 				}
 			}(path)
 		}
@@ -168,7 +168,7 @@ func (g *Generator) processImages(images <-chan image, done chan<- bool) {
 				accessMap.Unlock()
 
 				if err := g.processImage(img); err != nil {
-					log.Fatalf("Error processing image %s: %v", img.Path, "err", err)
+					log.Fatalf("Error processing image %s: %v", img.Path, err)
 				}
 
 				accessMap.Lock()
@@ -324,7 +324,7 @@ func (g *Generator) processYaml(path string) error {
 	for i := range items {
 		og, err := g.og.Get(items[i].URL)
 		if err != nil {
-			log.Errorf("Error getting OpenGraph data for %s: %v", items[i].URL, "err", err)
+			log.Errorf("Error getting OpenGraph data for %s: %v", items[i].URL, err)
 			continue
 		}
 
