@@ -37,12 +37,28 @@ Pre-requisites:
 - [Caddy](https://caddyserver.com/docs/install)
 
 ```bash
-make build
-# will create `output` directory with generated static files
+# Start MeiliSearch
+docker compose up search -d
 
-# in a separate terminal
+# In a separate terminal start Caddy
 caddy run
+
+# Build static site and update search index
+# (will create `output` directory with generated static files)
+make build
 ```
+
+Example output:
+
+```text
+Building generator...
+Running generator...
+INFO Starting
+INFO Waiting for images to be processed...
+INFO Waiting for search index to be updated...
+INFO Finished in 4.174840792s
+```
+
 
 Open https://local.chuhlomin.com
 
