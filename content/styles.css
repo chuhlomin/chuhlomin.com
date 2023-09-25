@@ -14,6 +14,7 @@
   --color-text: #222222;
   --color-background: #f6f6f4;
   --color-background-higher: #fff;
+  --color-background-code: rgba(0,0,0,0.05);
   --color-header: #000000;
   --color-link: #0969da;
   --color-link-underscore: rgba(9, 105, 218, var(--underline-opacity));
@@ -414,6 +415,10 @@ figcaption {
   box-shadow: inset 0 2px 2px var(--color-link-underscore);
 }
 
+#search_results .result + .result {
+  margin-top: 10px;
+}
+
 .fragment {
   font-family: var(--font-monospace);
   margin-top: 0.33rem;
@@ -427,9 +432,11 @@ figcaption {
 }
 
 mark {
-  background: #fffe00;
+  background: #ffb32f;
   color: black;
   padding: 0 0.1rem;
+  box-shadow: 0 1px 0px #c58602, 0 -1px 0 #febb55;
+  border-radius: 4px;
 }
 
 iframe {
