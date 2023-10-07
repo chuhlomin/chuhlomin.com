@@ -57,7 +57,7 @@ function filter(type, event) {
     /* if type is empty, show all items */
     if (type == "") {
         for (var i = 0; i < items.length; i++) {
-            items[i].style.display = "block";
+            items[i].style.display = "flex";
         }
         /* remove active class from all filter items */
         for (var i = 0; i < filterItems.length; i++) {
@@ -83,7 +83,7 @@ function filter(type, event) {
         if (items[i].dataset.type != type) {
             items[i].style.display = "none";
         } else {
-            items[i].style.display = "block";
+            items[i].style.display = "flex";
         }
     }
 }
