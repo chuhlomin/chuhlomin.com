@@ -20,4 +20,7 @@ https://core.telegram.org/animated_stickers
 Для показа анимаций на сайте предоставляется JS библиотека
 https://github.com/airbnb/lottie-web
 
+Онлайн редактор для создания анимаций:
+https://www.lottielab.com
+
 #telegram
