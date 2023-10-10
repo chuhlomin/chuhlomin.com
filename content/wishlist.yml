@@ -152,3 +152,8 @@
   type: hardware
   url: https://www.apple.com/homepod-mini/
   price: $100
+
+- name: Tidbyt 2
+  type: hardware
+  url: https://gen2.tidbyt.com/
+  price: (unknown)
