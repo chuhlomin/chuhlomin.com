@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strings"
 	"sync"
@@ -319,6 +320,9 @@ func (g *Generator) processYaml(path string) error {
 	if err != nil {
 		return fmt.Errorf("Error unmarshaling file %s: %v", path, err)
 	}
+
+	// reverse the items, so that the newest ones are first
+	slices.Reverse(items)
 
 	// enrich the items with OpenGraph data
 	for i := range items {
