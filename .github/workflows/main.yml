@@ -19,6 +19,11 @@ jobs:
           path: cache
           key: ${{ runner.os }}-cache
 
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.21"
+
       - name: Build
         env:
           ROOT_URL: https://chuhlomin.com
