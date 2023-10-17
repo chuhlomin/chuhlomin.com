@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"slices"
 	"sort"
 	"strings"
 	"sync"
@@ -19,7 +18,6 @@ import (
 	"github.com/charmbracelet/log"
 	"github.com/disintegration/imaging"
 	"github.com/meilisearch/meilisearch-go"
-	"gopkg.in/yaml.v3"
 )
 
 const (
@@ -27,6 +25,7 @@ const (
 	permFile = 0644 // permissions for
 )
 
+// Generator holds all the data needed to generate the site
 type Generator struct {
 	cfg          Config
 	t            *template.Template
@@ -40,6 +39,7 @@ type Generator struct {
 	og           *openGraphClient
 }
 
+// NewGenerator creates a new Generator
 func NewGenerator(
 	ogClient *openGraphClient,
 	searchClient *meilisearch.Client,
@@ -65,6 +65,7 @@ func NewGenerator(
 	}, nil
 }
 
+// Run runs the generator, generating the site
 func (g *Generator) Run(ts time.Time) error {
 	var (
 		files              = make(chan string, cfg.FilesChannelSize)
@@ -308,63 +309,39 @@ func (g *Generator) processMarkdown(path string, images chan<- image) error {
 func (g *Generator) processYaml(path string) error {
 	log.Debugf("Processing Yaml %s", path)
 
-	// read the file
 	fileContent, err := os.ReadFile(filepath.Join(cfg.ContentDirectory, path))
 	if err != nil {
 		return fmt.Errorf("Error reading file %s: %v", path, err)
 	}
 
-	// unmarshal the file into array of WishlistItem
-	var items []WishlistItem
-	err = yaml.Unmarshal(fileContent, &items)
-	if err != nil {
-		return fmt.Errorf("Error unmarshaling file %s: %v", path, err)
-	}
-
-	// reverse the items, so that the newest ones are first
-	slices.Reverse(items)
-
-	// enrich the items with OpenGraph data
-	for i := range items {
-		og, err := g.og.Get(items[i].URL)
-		if err != nil {
-			log.Errorf("Error getting OpenGraph data for %s: %v", items[i].URL, err)
-			continue
-		}
-
-		items[i].Image = og.Image
-	}
-
 	outputPath := filepath.Join(cfg.OutputDirectory, strings.Replace(path, ".yml", ".html", 1))
-	log.Debugf("OutputPath: %s", outputPath)
-	err = os.MkdirAll(filepath.Dir(outputPath), 0755)
-	if err != nil {
-		return fmt.Errorf("Error creating output directory %s: %v", outputPath, err)
+
+	templateName := strings.Replace(path, ".yml", ".gohtml", 1)
+	tmpl := g.t.Lookup(templateName)
+	if tmpl == nil {
+		return fmt.Errorf("Template %q not found", templateName)
 	}
 
-	// create the output file
-	f, err := os.Create(outputPath)
-	if err != nil {
-		return fmt.Errorf("Error creating file %s: %v", outputPath, err)
-	}
-	defer f.Close()
+	var data interface{}
 
-	// render template with items
-	log.Debugf("Writing output to %s", outputPath)
+	switch path {
+	case "wishlist.yml":
+		data, err = g.processWishlistItems(fileContent)
+		if err != nil {
+			return fmt.Errorf("Error processing wishlist items for %q: %v", path, err)
+		}
+	case "photos.yml":
+		return nil // noop
 
-	tmpl := g.t.Lookup("wishlist.gohtml")
-	err = g.renderTemplate(outputPath, items, tmpl)
-	if err != nil {
-		return fmt.Errorf("Error rendering template %s: %v", path, err)
-	}
-
-	// close the file
-	err = f.Close()
-	if err != nil {
-		return fmt.Errorf("Error closing file %s: %v", path, err)
+		// data, err = g.processPhotos(fileContent)
+		// if err != nil {
+		// 	return fmt.Errorf("Error processing photos for %q: %v", path, err)
+		// }
+	default:
+		log.Fatalf("Unknown YAML file %q", path)
 	}
 
-	return nil
+	return g.renderTemplate(outputPath, data, tmpl)
 }
 
 func (g *Generator) processImage(image image) error {

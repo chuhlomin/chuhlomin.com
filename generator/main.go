@@ -78,15 +78,6 @@ func (c Config) GetBool(key string) bool {
 	return false
 }
 
-type WishlistItem struct {
-	Name  string
-	Type  string
-	URL   string
-	Price string
-
-	Image string // OpenGraph image URL
-}
-
 var (
 	ts     time.Time // timestamp used to measure execution time
 	cfg    Config    // global config
