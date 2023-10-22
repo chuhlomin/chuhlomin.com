@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"regexp"
 	"sort"
 	"strings"
@@ -27,6 +28,8 @@ var fm = template.FuncMap{
 	"prevPage":   prevPage,
 	"stripTags":  stripTags,
 	"hasSuffix":  strings.HasSuffix,
+	"ts":         func() string { return ts.Format(time.RFC3339) },
+	"jsonify":    jsonify,
 }
 
 func config(key string) string {
@@ -203,4 +206,13 @@ var htmlTagRegexp = regexp.MustCompile("<[^>]*>")
 
 func stripTags(html string) string {
 	return htmlTagRegexp.ReplaceAllString(string(html), "")
+}
+
+func jsonify(data interface{}) string {
+	b, err := json.Marshal(data)
+	if err != nil {
+		log.Errorf("error marshaling data: %v", err)
+		return ""
+	}
+	return string(b)
 }

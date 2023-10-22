@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photos</title>
+<link rel="stylesheet" href="photos.css?ts={{ ts }}">
+</head>
+<body>
+
+<div class="flag">
+    <div class="header-content">
+        <div class="logo">
+            <a href="/{{ link "" "en" }}"><div class="user-picture-image"></div></a>
+        </div>
+        <div class="blog-title">
+            <a class="name" href="/{{ link "" "en" }}">{{ i18n "name" "en" }}</a>&nbsp;<span class="sep">/</span>
+            <h1>Photos</h1>
+        </div>
+    </div>
+</div>
+
+<div class="photos" id="photos">
+{{ range .Photos }}
+<div class="container"><a href="#{{ .Path }}"><img class="photo" src="{{ $.Root }}{{ .Path }}"></a></div>
+{{ end }}
+</div>
+
+<div id="viewer" style="display: none;">
+    <a id="photo-close" class="close" href="#close">✕</a>
+    <div class="prev">
+        <a id="photo-nav-prev" href="#previous">←</a>
+    </div>
+    <div class="photo">
+        <img id="image">
+    </div>
+    <div class="next">
+        <a id="photo-nav-next" href="#next">→</a>
+    </div>
+</div>
+
+<script>
+var showingViewer = false;
+var photos = {{ .Photos | jsonify }};
+
+var view = function(path) {
+    if (path === "close") {
+        document.getElementById("viewer").style.display = "none";
+        document.body.style.overflow = "auto";
+        showingViewer = false;
+
+        // focus on the photo that was opened in the viewer
+        var photoPath = document.getElementById("image").src.split("{{ .Root }}")[1];
+        var photo = photos.find(function(photo) {
+            return photo.Path === photoPath;
+        });
+        if (photo) {
+            document.querySelector("a[href='#" + photo.Path + "']").focus();
+        }
+        
+        return;
+    }
+
+    var photo = photos.find(function(photo) {
+        return photo.Path === path;
+    });
+    if (!photo) {
+        document.getElementById("viewer").style.display = "none";
+        document.body.style.overflow = "auto";
+        showingViewer = false;
+        return;
+    }
+
+    showingViewer = true;
+
+    // disable scrolling
+    document.body.style.overflow = "hidden";
+
+    document.getElementById("image").src = "{{ .Root }}" + photo.Path;
+    {{/* document.getElementById("photo-title").innerHTML = photo.Title; */}}
+    document.getElementById("viewer").style.display = "grid";
+    var index = photos.indexOf(photo);
+    if (index > 0) {
+        document.getElementById("photo-nav-prev").href = "#" + photos[index - 1].Path;
+        document.getElementById("photo-nav-prev").style.display = "block";
+    } else {
+        document.getElementById("photo-nav-prev").style.display = "none";
+    }
+    if (index < photos.length - 1) {
+        document.getElementById("photo-nav-next").href = "#" + photos[index + 1].Path;
+        document.getElementById("photo-nav-next").style.display = "block";
+    } else {
+        document.getElementById("photo-nav-next").style.display = "none";
+    }
+};
+
+/* on start check anchor link */
+window.onload = function() {
+    if (window.location.hash) {
+        view(window.location.hash.substring(1));
+    }
+};
+/* if anchor link is clicked */
+window.onhashchange = function() {
+    if (window.location.hash) {
+        view(window.location.hash.substring(1));
+    }
+};
+
+window.addEventListener('load', function() {
+    document.addEventListener('keydown', function(e) {
+        if (showingViewer) {
+            /* set focus for corresponding links */
+            switch (e.keyCode) {
+                case 37: // left
+                    if (document.getElementById("photo-nav-prev").style.display === "block") {
+                        document.getElementById("photo-nav-prev").focus();
+                    }
+                    return;
+                case 39: // right
+                    if (document.getElementById("photo-nav-next").style.display === "block") {
+                        document.getElementById("photo-nav-next").focus();
+                    }
+                    return;
+                case 27: // esc
+                case 32: // space
+                    e.preventDefault();
+                    document.getElementById("photo-close").click();
+                    return;
+            }
+        }
+
+        // no viewer is open, so we are navigating between photos
+        var current = document.activeElement.parentNode;
+        if (!current.classList.contains("container")) {
+            return;
+        }
+
+        // ignore space, up/down arrows
+        switch (e.keyCode) {
+            case 32: // space
+                // if space is pressed, open viewer
+                e.preventDefault();
+                current.querySelector("a").click();
+                return;
+            case 37: // left
+                // in case photo is focused, left and right arrow keys should navigate between photos.
+                // each photo link is inside a container div, so we need to query parent node
+                e.preventDefault();
+                var prev = current.previousElementSibling;
+                if (prev) {
+                    prev.querySelector("a").focus();
+                }
+                return;
+            case 39: // right
+                e.preventDefault();
+                var next = current.nextElementSibling;
+                if (next) {
+                    next.querySelector("a").focus();
+                }
+                return;
+
+            // up and down arrow keys should navigate between photos one row above or below.
+            // with CSS grid there is no way to know which row a photo is in, so we need to
+            // calculate it manually.
+            case 38: // up
+                e.preventDefault();
+                var gridStyle = window.getComputedStyle(document.getElementById("photos"));
+                var columns = gridStyle.getPropertyValue("grid-template-columns").split(" ").length;
+
+                var index = Array.prototype.indexOf.call(current.parentNode.children, current);
+                var row = Math.floor(index / columns);
+                var prevRow = row - 1;
+                if (prevRow >= 0) {
+                    var prev = current.parentNode.children[prevRow * columns + index % columns];
+                    prev.querySelector("a").focus();
+                }
+                return;
+            case 40: // down
+                e.preventDefault();
+                var gridStyle = window.getComputedStyle(document.getElementById("photos"));
+                var columns = gridStyle.getPropertyValue("grid-template-columns").split(" ").length;
+
+                var index = Array.prototype.indexOf.call(current.parentNode.children, current);
+                var row = Math.floor(index / columns);
+                var nextRow = row + 1;
+                if (nextRow < current.parentNode.children.length / columns) {
+                    var next = current.parentNode.children[nextRow * columns + index % columns];
+                    next.querySelector("a").focus();
+                }
+                return;
+        }
+    });
+
+    document.addEventListener('keyup', function(e) {
+        if (showingViewer) {
+            if (e.keyCode === 37) { // left
+                if (document.getElementById("photo-nav-prev").style.display === "block") {
+                    document.getElementById("photo-nav-prev").click();
+                }
+            }
+            if (e.keyCode === 39) { // right
+                if (document.getElementById("photo-nav-next").style.display === "block") {
+                    document.getElementById("photo-nav-next").click();
+                }
+            }
+            if (e.keyCode === 27) { // esc
+                e.preventDefault();
+                document.getElementById("photo-close").click();
+            }
+            return
+        }
+    });
+});
+</script>
+</body>
+</html>

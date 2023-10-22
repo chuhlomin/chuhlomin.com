@@ -331,12 +331,10 @@ func (g *Generator) processYaml(path string) error {
 			return fmt.Errorf("Error processing wishlist items for %q: %v", path, err)
 		}
 	case "photos.yml":
-		return nil // noop
-
-		// data, err = g.processPhotos(fileContent)
-		// if err != nil {
-		// 	return fmt.Errorf("Error processing photos for %q: %v", path, err)
-		// }
+		data, err = g.processPhotos(fileContent)
+		if err != nil {
+			return fmt.Errorf("Error processing photos for %q: %v", path, err)
+		}
 	default:
 		log.Fatalf("Unknown YAML file %q", path)
 	}
