@@ -431,7 +431,7 @@ func (g *Generator) renderAllTemplates(ts time.Time) {
 		sort.Sort(ByLanguage(alternates))
 
 		for hash, file := range hashFile {
-			err := g.renderGoTemplate(hash, file, alternates, ts)
+			err := g.renderGoTemplate(hash, file, alternates)
 			if err != nil {
 				log.Fatalf("Error rendering template %s: %v", file.Path, err)
 			}
@@ -443,7 +443,6 @@ func (g *Generator) renderGoTemplate(
 	hash string,
 	file *MarkdownFile,
 	alternates []*MarkdownFile,
-	ts time.Time,
 ) error {
 	log.Debugf("Rendering %s → %s", file.Source, file.Path)
 	t := g.t.Lookup(hash)
@@ -458,7 +457,6 @@ func (g *Generator) renderGoTemplate(
 			Alternates: alternates,
 			All:        g.md,
 			AllSorted:  g.mdSorted,
-			Timestamp:  ts.Format(time.RFC3339),
 		},
 		t,
 	)
