@@ -2,7 +2,7 @@ output
 search_index
 index
 ignore
-bin/generator
+bin/*
 cache
 *.log
 secrets.env

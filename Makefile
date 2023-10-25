@@ -36,3 +36,15 @@ build: build-generator run-generator
 watch:
 	@echo "Watching for file changes..."
 	@fswatch -or -e "output" -e ".git" . | xargs -n1 sh -c "genblog; cp -R _static/ output/"
+
+.PHONY: photographer-build
+## photographer-build: build the photographer
+photographer-build:
+	@echo "Building photographer..."
+	@cd photographer && go build -o ../bin/photographer
+
+.PHONY: photographer
+## photographer: run the photographer
+photographer: photographer-build
+	@echo "Running photographer..."
+	@./bin/photographer
