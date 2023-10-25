@@ -182,3 +182,13 @@
   type: thing
   url: https://shop.pupupula.com/products/little-ben-wall-clock
   price: $65
+
+- name: Van Der Waals speaker
+  type: hardware
+  url: https://www.indiegogo.com/projects/van-der-waals--2#/
+  price: $450
+
+- name: PopMount 2 Car & Desk White
+  type: thing
+  url: https://www.popsockets.com/en-us/p/popmount-2-car-and-desk-white/802757.html?cgid=dash-mount-popmount
+  price: $30
