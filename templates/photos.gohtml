@@ -21,8 +21,8 @@
 </div>
 
 <div class="photos" id="photos">
-{{ range .Photos }}
-<div class="container"><a href="#{{ .Path }}"><img class="photo" src="{{ $.Root }}{{ .Path }}"></a></div>
+{{ range . }}
+<div class="container"><a href="#{{ .Path }}"><img class="photo" src="{{ config "PhotosDomain" }}{{ .Path }}" loading="lazy"></a></div>
 {{ end }}
 </div>
 
@@ -41,7 +41,7 @@
 
 <script>
 var showingViewer = false;
-var photos = {{ .Photos | jsonify }};
+var photos = {{ . | jsonify }};
 
 var view = function(path) {
     if (path === "close") {
@@ -50,7 +50,7 @@ var view = function(path) {
         showingViewer = false;
 
         // focus on the photo that was opened in the viewer
-        var photoPath = document.getElementById("image").src.split("{{ .Root }}")[1];
+        var photoPath = document.getElementById("image").src.split("{{ config "PhotosDomain" }}")[1];
         var photo = photos.find(function(photo) {
             return photo.Path === photoPath;
         });
@@ -76,7 +76,7 @@ var view = function(path) {
     // disable scrolling
     document.body.style.overflow = "hidden";
 
-    document.getElementById("image").src = "{{ .Root }}" + photo.Path;
+    document.getElementById("image").src = "{{ config "PhotosDomain" }}" + photo.Path;
     {{/* document.getElementById("photo-title").innerHTML = photo.Title; */}}
     document.getElementById("viewer").style.display = "grid";
     var index = photos.indexOf(photo);

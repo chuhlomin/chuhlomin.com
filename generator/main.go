@@ -1,3 +1,4 @@
+// Generator is a static site generator for my site.
 package main
 
 import (
@@ -13,6 +14,7 @@ import (
 	"golang.org/x/text/language"
 )
 
+// Config is a struct that holds all configuration options
 type Config struct {
 	Debug               bool          `env:"DEBUG" long:"debug" description:"debug mode"`
 	ContentDirectory    string        `env:"CONTENT_DIR" long:"content" description:"content directory" default:"content"`
@@ -40,6 +42,7 @@ type Config struct {
 	ThumbMaxHeight      int           `env:"THUMB_MAX_HEIGHT" long:"thumb-max-height" description:"max height of thumbnails" default:"140"`
 	OpenGraphTimeout    time.Duration `env:"OPENGRAPH_TIMEOUT" long:"opengraph-timeout" description:"opengraph timeout" default:"5s"`
 	OpenGraphCacheFile  string        `env:"OPENGRAPH_CACHE_FILE" long:"opengraph-cache-file" description:"opengraph cache file" default:"cache.yml"`
+	PhotosDomain        string        `env:"PHOTOS_DOMAIN" long:"photos-domain" description:"photos domain" default:"https://photos.chuhlomin.com/"`
 }
 
 // GetString returns the value of the environment variable named by the key.

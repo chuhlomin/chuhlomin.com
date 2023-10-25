@@ -109,6 +109,10 @@ a:hover {
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 }
 
+.photos .container {
+  align-self: center;
+}
+
 .photos .photo {
   display: block;
   max-width: 140px;
@@ -169,7 +173,7 @@ a:hover {
   align-self: center;
   text-align: center;
   width: 70px;
-  padding: 3px;
+  
 }
 
 #viewer .next {
@@ -196,7 +200,20 @@ a:hover {
   text-decoration: none;
   border: none;
   width: 100%;
-  border-radius: 3px;
+}
+
+#viewer .prev a {
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
+
+#viewer .next a {
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
+}
+
+#viewer .close {
+  border-bottom-left-radius: 30px;
 }
 
 #viewer .prev a:focus,
