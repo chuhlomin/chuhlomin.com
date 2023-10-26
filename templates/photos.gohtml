@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Photos</title>
+<title>Photos \ {{ i18n "name" "en" }}</title>
 <link rel="stylesheet" href="photos.css?ts={{ ts }}">
 </head>
 <body>
@@ -22,20 +22,21 @@
 
 <div class="photos" id="photos">
 {{ range . }}
-<div class="container"><a href="#{{ .Path }}"><img class="photo" src="{{ config "PhotosDomain" }}{{ .Path }}" loading="lazy"></a></div>
-{{ end }}
+<div class="container"><a href="#{{ .Path }}" class="photo" style="background: url('{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}') no-repeat center center; background-position: -{{ divide .ThumbXOffset 2 }}px -{{ divide .ThumbYOffset 2 }}px; background-size: {{ divide .ThumbTotalWidth 2 }}px {{ divide .ThumbTotalHeight 2 }}px; aspect-ratio: {{ .ThumbWidth }} / {{ .ThumbHeight }};" draggable="true"></a></div>
+{{- end }}
+
 </div>
 
 <div id="viewer" style="display: none;">
-    <a id="photo-close" class="close" href="#close">✕</a>
+    <a id="photo-close" class="close" href="#close" aria-label="Close">×</a>
     <div class="prev">
-        <a id="photo-nav-prev" href="#previous">←</a>
+        <a id="photo-nav-prev" href="#previous" aria-label="Previous">←</a>
     </div>
     <div class="photo">
         <img id="image">
     </div>
     <div class="next">
-        <a id="photo-nav-next" href="#next">→</a>
+        <a id="photo-nav-next" href="#next" aria-label="Next">→</a>
     </div>
 </div>
 
@@ -108,6 +109,16 @@ window.onhashchange = function() {
 };
 
 window.addEventListener('load', function() {
+    var photosElements = document.getElementsByClassName("photo")
+    for (var i = 0; i < photosElements.length; i++) {
+        photosElements[i].addEventListener("dragstart", function(e) {
+            let imgSrc = "{{ config "PhotosDomain" }}" + e.target.href.split("#")[1];
+            e.dataTransfer.setData("text/uri-list", imgSrc);
+            e.dataTransfer.setData("text/plain", imgSrc);
+            e.dataTransfer.dropEffect = "copyLink";
+        }, false);
+    }
+
     document.addEventListener('keydown', function(e) {
         if (showingViewer) {
             /* set focus for corresponding links */

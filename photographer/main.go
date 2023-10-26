@@ -9,20 +9,52 @@ package main
 import (
 	"context"
 	"fmt"
+	"image"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 
 	"github.com/charmbracelet/log"
 	flags "github.com/jessevdk/go-flags"
+	"github.com/nfnt/resize"
 	"gopkg.in/yaml.v3"
+
+	"image/draw"
+	"image/jpeg"
+	_ "image/jpeg"
 )
 
 // Photo struct for items in photos.yml file
 // Must be in sync with generator/photos.go
 type Photo struct {
-	Path     string
-	Blurhash string `yaml:"blurhash,omitempty"`
+	Path             string
+	Width            int    `yaml:"width,omitempty"`
+	Height           int    `yaml:"height,omitempty"`
+	ThumbPath        string `yaml:"thumb,omitempty"`
+	ThumbXOffset     int    `yaml:"thumb_x,omitempty"`
+	ThumbYOffset     int    `yaml:"thumb_y,omitempty"`
+	ThumbWidth       int    `yaml:"thumb_width,omitempty"`
+	ThumbHeight      int    `yaml:"thumb_height,omitempty"`
+	ThumbTotalWidth  int    `yaml:"thumb_total_width,omitempty"`
+	ThumbTotalHeight int    `yaml:"thumb_total_height,omitempty"`
+
+	// Temporary image.Image field used to generate thumbnails
+	image image.Image `yaml:"-"`
+}
+
+// PhotoContainer is a wrapper for Photo struct, used for sorting,
+// so that references are not swapped and still can be modified
+type PhotoContainer struct {
+	Photo *Photo
+}
+
+type byThumbHeightDesc []PhotoContainer
+
+func (a byThumbHeightDesc) Len() int      { return len(a) }
+func (a byThumbHeightDesc) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
+func (a byThumbHeightDesc) Less(i, j int) bool {
+	return a[i].Photo.ThumbHeight > a[j].Photo.ThumbHeight
 }
 
 type appConfig struct {
@@ -58,7 +90,7 @@ func run() error {
 
 	ctx := context.Background()
 
-	photos, err := loadPhotos(cfg.YamlFile)
+	photos, err := loadPhotosFile(cfg.YamlFile)
 	if err != nil {
 		return fmt.Errorf("error loading photos: %v", err)
 	}
@@ -83,49 +115,32 @@ func run() error {
 		return fmt.Errorf("error creating r2 client: %v", err)
 	}
 
-	toAdd, toDelete := diff(photos, files)
-
-	for _, file := range toAdd {
-		photos = append(photos, Photo{
-			Path: file,
-		})
-
-		content, err := os.ReadFile(filepath.Join(dir, file))
-		if err != nil {
-			return fmt.Errorf("error reading file: %v", err)
-		}
-
-		log.Infof("Uploading %s", file)
-		if err = r2.Upload(ctx, file, content); err != nil {
-			return fmt.Errorf("error uploading file: %v", err)
-		}
+	photos, err = uploadNewPhotos(ctx, r2, photos, files, dir)
+	if err != nil {
+		return fmt.Errorf("error uploading new photos: %v", err)
 	}
 
-	for _, file := range toDelete {
-		for i, photo := range photos {
-			if photo.Path == file {
-				photos = append(photos[:i], photos[i+1:]...)
-				break
-			}
-		}
+	photos, err = generateThumbnails(ctx, r2, photos, dir)
+	if err != nil {
+		return fmt.Errorf("error generating thumbnails: %v", err)
 	}
 
 	// save photos.yml file
-	if err = savePhotos(cfg.YamlFile, photos); err != nil {
+	if err = savePhotosFile(cfg.YamlFile, photos); err != nil {
 		return fmt.Errorf("error saving photos: %v", err)
 	}
 
 	return nil
 }
 
-func loadPhotos(path string) ([]Photo, error) {
+func loadPhotosFile(path string) ([]*Photo, error) {
 	// read photos.yml file
 	fileContent, err := os.ReadFile(path)
 	if err != nil {
 		return nil, fmt.Errorf("error reading file: %v", err)
 	}
 
-	var photos []Photo
+	var photos []*Photo
 	if err = yaml.Unmarshal(fileContent, &photos); err != nil {
 		return nil, fmt.Errorf("error unmarshaling file: %v", err)
 	}
@@ -161,6 +176,11 @@ func scanDirectory(dir string) ([]string, error) {
 			return nil
 		}
 
+		// Ignore thumbnails (they are handled separately)
+		if strings.HasPrefix(filepath.Base(path), "thumbnails_") {
+			return nil
+		}
+
 		// trim the dir prefix
 		path = strings.TrimPrefix(path, dir)
 		files = append(files, path)
@@ -170,7 +190,7 @@ func scanDirectory(dir string) ([]string, error) {
 	return files, err
 }
 
-func diff(photos []Photo, files []string) ([]string, []string) {
+func diff(photos []*Photo, files []string) ([]string, []string) {
 	var toAdd []string
 	var toDelete []string
 
@@ -201,7 +221,7 @@ func contains(arr []string, needle string) bool {
 	return false
 }
 
-func containsPhoto(arr []Photo, needle string) bool {
+func containsPhoto(arr []*Photo, needle string) bool {
 	for _, item := range arr {
 		if item.Path == needle {
 			return true
@@ -211,7 +231,7 @@ func containsPhoto(arr []Photo, needle string) bool {
 	return false
 }
 
-func savePhotos(path string, photos []Photo) error {
+func savePhotosFile(path string, photos []*Photo) error {
 	// marshal photos to yaml
 	fileContent, err := yaml.Marshal(photos)
 	if err != nil {
@@ -225,4 +245,227 @@ func savePhotos(path string, photos []Photo) error {
 	}
 
 	return nil
+}
+
+func uploadNewPhotos(
+	ctx context.Context,
+	r2 *R2,
+	photos []*Photo,
+	files []string,
+	dir string,
+) ([]*Photo, error) {
+	toAdd, toDelete := diff(photos, files)
+
+	for _, file := range toAdd {
+		photos = append(photos, &Photo{
+			Path: file,
+		})
+
+		content, err := os.ReadFile(filepath.Join(dir, file))
+		if err != nil {
+			return nil, fmt.Errorf("error reading file: %v", err)
+		}
+
+		log.Infof("Uploading %s", file)
+		if err = r2.Upload(ctx, file, content); err != nil {
+			return nil, fmt.Errorf("error uploading file: %v", err)
+		}
+	}
+
+	for _, file := range toDelete {
+		for i, photo := range photos {
+			if photo.Path == file {
+				photos = append(photos[:i], photos[i+1:]...)
+				break
+			}
+		}
+	}
+
+	return photos, nil
+}
+
+const (
+	maxThumbSize = 280 /* 140 * 2 */
+	maxPerRow    = 10
+)
+
+func generateThumbnails(
+	ctx context.Context,
+	r2 *R2,
+	photos []*Photo,
+	dir string,
+) ([]*Photo, error) {
+	// thumbnail is a collage of photos from that year
+
+	// group photos by year
+	photosByYear := make(map[string][]*Photo)
+	for _, photo := range photos {
+		// get year from path (first 4 characters)
+		year := photo.Path[:4]
+		photosByYear[year] = append(photosByYear[year], photo)
+	}
+
+	// filter out year if all photos in it already have thumbnails
+	for year, photos := range photosByYear {
+		allHaveThumbs := true
+		for _, photo := range photos {
+			if photo.ThumbPath == "" {
+				allHaveThumbs = false
+				break
+			}
+		}
+		if allHaveThumbs {
+			delete(photosByYear, year)
+		}
+	}
+
+	// generate thumbnails for each year
+	for year, photos := range photosByYear {
+		thumbPath, err := generateYearThumbnail(year, photos, dir)
+		if err != nil {
+			return nil, fmt.Errorf("error generating thumbnail for %s: %v", year, err)
+		}
+
+		// upload thumbnail to R2
+		thumbContent, err := os.ReadFile(filepath.Join(dir, thumbPath))
+		if err != nil {
+			return nil, fmt.Errorf("error reading thumbnail %q: %v", thumbPath, err)
+		}
+
+		if err := r2.Upload(ctx, thumbPath, thumbContent); err != nil {
+			return nil, fmt.Errorf("error uploading thumbnail %q: %v", thumbPath, err)
+		}
+	}
+
+	return photos, nil
+}
+
+func generateYearThumbnail(year string, photos []*Photo, dir string) (string, error) {
+	log.Infof("Generating thumbnail for %s", year)
+	// each thumbnail should fit into 140x140px square, maximum 10 photos in a row
+	for _, photo := range photos {
+		// decode photo
+		img, err := readImage(dir, photo.Path)
+		if err != nil {
+			return "", fmt.Errorf("error reading image: %v", err)
+		}
+		photo.Width = img.Bounds().Dx()
+		photo.Height = img.Bounds().Dy()
+
+		// resize photo to 140x140px
+		img = resize.Thumbnail(
+			maxThumbSize,
+			maxThumbSize,
+			img,
+			resize.Lanczos3,
+		)
+		photo.image = img
+		photo.ThumbWidth = img.Bounds().Dx()
+		photo.ThumbHeight = img.Bounds().Dy()
+	}
+
+	// sort photos by height, aiming to have less empty space
+	// create a slice of pointers to the original photos
+	containers := make([]PhotoContainer, len(photos))
+	for i := range photos {
+		containers[i].Photo = photos[i]
+	}
+
+	// sort the slice of pointers by thumb height in descending order
+	sort.Sort(byThumbHeightDesc(containers))
+
+	// calculate thumbnail image size
+	var (
+		width   int
+		height  int
+		counter int
+	)
+	for i, container := range containers {
+		if i == 0 {
+			width = container.Photo.ThumbWidth
+			height = container.Photo.ThumbHeight
+		}
+
+		if counter == maxPerRow {
+			counter = 0
+			height += container.Photo.ThumbHeight
+		}
+
+		if i < maxPerRow-1 {
+			width += container.Photo.ThumbWidth
+		}
+
+		counter++
+	}
+
+	img := image.NewRGBA(image.Rect(0, 0, width, height))
+
+	// draw photos on thumbnail
+	var (
+		thumbPath = "thumbnails_" + year + ".jpg"
+		x         int
+		y         int
+		col       int
+		rowHeight int
+	)
+
+	for i, container := range containers {
+		if i == 0 {
+			rowHeight = container.Photo.ThumbHeight
+		}
+
+		if col == maxPerRow {
+			x = 0
+			col = 0
+			y += rowHeight
+			rowHeight = container.Photo.ThumbHeight
+		}
+
+		container.Photo.ThumbPath = thumbPath
+		container.Photo.ThumbXOffset = x
+		container.Photo.ThumbYOffset = y
+		container.Photo.ThumbTotalWidth = width
+		container.Photo.ThumbTotalHeight = height
+
+		draw.Draw(
+			img,
+			image.Rect(x, y, x+container.Photo.ThumbWidth, y+container.Photo.ThumbHeight),
+			container.Photo.image,
+			image.Point{0, 0},
+			draw.Src,
+		)
+		x += container.Photo.ThumbWidth
+		col++
+	}
+
+	// encode img thumbnail into JPEG
+	out, err := os.Create(filepath.Join(dir, thumbPath))
+	if err != nil {
+		return "", fmt.Errorf("error creating file %q: %v", thumbPath, err)
+	}
+	defer out.Close()
+
+	jpegOptions := jpeg.Options{
+		Quality: 90,
+	}
+	if err = jpeg.Encode(out, img, &jpegOptions); err != nil {
+		return "", fmt.Errorf("error encoding thumbnail: %v", err)
+	}
+
+	return thumbPath, nil
+}
+
+func readImage(dir string, path string) (image.Image, error) {
+	file, err := os.Open(filepath.Join(dir, path))
+	if err != nil {
+		return nil, fmt.Errorf("error opening file: %v", err)
+	}
+	defer file.Close()
+
+	img, _, err := image.Decode(file)
+	if err != nil {
+		return nil, fmt.Errorf("error decoding image: %v", err)
+	}
+
+	return img, nil
 }

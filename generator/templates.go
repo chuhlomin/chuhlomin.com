@@ -30,6 +30,7 @@ var fm = template.FuncMap{
 	"hasSuffix":  strings.HasSuffix,
 	"ts":         func() string { return ts.Format(time.RFC3339) },
 	"jsonify":    jsonify,
+	"divide":     func(a, b int) int { return a / b },
 }
 
 func config(key string) string {

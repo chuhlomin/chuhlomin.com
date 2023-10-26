@@ -9,6 +9,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.40.2
 	github.com/charmbracelet/log v0.2.5
 	github.com/jessevdk/go-flags v1.5.0
+	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
 	gopkg.in/yaml.v3 v3.0.1
 )
 
