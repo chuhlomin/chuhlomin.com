@@ -115,8 +115,8 @@ a:hover {
 
 .photos .photo {
   display: block;
-  max-width: 140px;
-  max-height: 140px;
+  max-width: 152px; /* 140 + 6px border */
+  max-height: 152px;
   margin: 0;
   padding: 0;
   border: 6px solid var(--color-background-higher);
@@ -127,13 +127,7 @@ a:hover {
 
 .photos a:focus {
   outline: 2px solid var(--color-link);
-  border-radius: 3px;
-}
-
-.photos a {
-  display: inline-block;
-  text-decoration: none;
-  border: none;
+  border-radius: 1px;
 }
 
 #viewer {
@@ -182,7 +176,6 @@ a:hover {
   align-self: center;
   text-align: center;
   width: 70px;
-  padding: 3px;
 }
 
 #viewer .close {
@@ -190,16 +183,28 @@ a:hover {
   grid-row: 1;
   align-self: center;
   text-align: center;
-  padding: 3px;
 }
 
 #viewer .prev a,
 #viewer .next a,
 #viewer .close {
   padding: 20px;
-  text-decoration: none;
   border: none;
   width: 100%;
+  background: var(--color-background);
+  font-size: 20pt;
+  text-decoration: none;
+}
+
+#viewer .prev a:hover,
+#viewer .next a:hover,
+#viewer .close:hover {
+  background: var(--color-neutral-muted);
+}
+
+#viewer .prev a,
+#viewer .next a {
+  margin-top: -50%;
 }
 
 #viewer .prev a {
@@ -251,6 +256,18 @@ a:hover {
   }
 
   #viewer {
-    background: var(--color-background-higher-dark);
+    background: #000000;
+  }
+
+  #viewer .prev a,
+  #viewer .next a,
+  #viewer .close {
+    background: var(--color-background-dark);
+  }
+
+  #viewer .prev a:hover,
+  #viewer .next a:hover,
+  #viewer .close:hover {
+    background: var(--color-neutral-muted-dark);
   }
 }
