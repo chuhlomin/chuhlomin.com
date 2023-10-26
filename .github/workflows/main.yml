@@ -1,10 +1,9 @@
 name: main
 
 on:
-  push: # will deploy to Cloudflare Pages
+  push:
     branches:
       - main
-  workflow_dispatch: # will only update screenshot
 
 jobs:
   main:
@@ -36,19 +35,6 @@ jobs:
           SEARCH_API_KEY: ${{ secrets.SEARCH_API_KEY }}
         run:
           make build
-
-      - name: Make screenshot
-        uses: chuhlomin/actions/screenshot@main
-        with:
-          url: file://${{github.workspace}}/output/index.html
-          mode: wholePage
-          output: screenshot.png
-          width: 800
-          height: 600
-          deviceScaleFactor: 2
-          cornerRadius: 20
-          addShadow: true
-          commit: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3.3.1
