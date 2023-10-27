@@ -13,6 +13,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strconv"
 	"strings"
 
 	"github.com/charmbracelet/log"
@@ -69,6 +70,8 @@ type appConfig struct {
 	R2AccessKeyID     string `env:"R2_ACCESS_KEY_ID" long:"r2-access-key-id" description:"r2 access key id"`
 	R2AccessKeySecret string `env:"R2_ACCESS_KEY_SECRET" long:"r2-access-key-secret" description:"r2 access key secret"`
 	R2Bucket          string `env:"R2_BUCKET" long:"r2-bucket" description:"r2 bucket"`
+
+	Force bool `long:"force" description:"force thumbnail generation"`
 }
 
 func main() {
@@ -120,7 +123,7 @@ func run() error {
 		return fmt.Errorf("error uploading new photos: %v", err)
 	}
 
-	photos, err = generateThumbnails(ctx, r2, photos, dir)
+	photos, err = generateThumbnails(ctx, r2, photos, dir, cfg.Force)
 	if err != nil {
 		return fmt.Errorf("error generating thumbnails: %v", err)
 	}
@@ -287,6 +290,7 @@ func uploadNewPhotos(
 const (
 	maxThumbSize = 280 /* 140 * 2 */
 	maxPerRow    = 10
+	maxRows      = 5
 )
 
 func generateThumbnails(
@@ -294,36 +298,51 @@ func generateThumbnails(
 	r2 *R2,
 	photos []*Photo,
 	dir string,
+	force bool,
 ) ([]*Photo, error) {
 	// thumbnail is a collage of photos from that year
 
 	// group photos by year
-	photosByYear := make(map[string][]*Photo)
-	for _, photo := range photos {
-		// get year from path (first 4 characters)
-		year := photo.Path[:4]
-		photosByYear[year] = append(photosByYear[year], photo)
+	// split photos into batches of 100 photos each
+	photosBatches := make([][]*Photo, 0)
+	for i := 0; i < len(photos); i += maxPerRow * maxRows {
+		end := i + maxPerRow*maxRows
+		if end > len(photos) {
+			end = len(photos)
+		}
+		photosBatches = append(photosBatches, photos[i:end])
 	}
 
 	// filter out year if all photos in it already have thumbnails
-	for year, photos := range photosByYear {
-		allHaveThumbs := true
-		for _, photo := range photos {
-			if photo.ThumbPath == "" {
-				allHaveThumbs = false
-				break
+	if !force {
+		for batch, photos := range photosBatches {
+			allHaveThumbs := true
+			allHaveSameThumb := true
+			for _, photo := range photos {
+				if photo.ThumbPath == "" {
+					allHaveThumbs = false
+					break
+				}
+				if photo.ThumbPath != photos[0].ThumbPath {
+					allHaveSameThumb = false
+					break
+				}
 			}
-		}
-		if allHaveThumbs {
-			delete(photosByYear, year)
+			if allHaveThumbs && allHaveSameThumb {
+				photosBatches[batch] = nil
+			}
 		}
 	}
 
 	// generate thumbnails for each year
-	for year, photos := range photosByYear {
-		thumbPath, err := generateYearThumbnail(year, photos, dir)
+	for batch, photos := range photosBatches {
+		if photos == nil {
+			continue
+		}
+
+		thumbPath, err := generateThumbnail(batch, photos, dir)
 		if err != nil {
-			return nil, fmt.Errorf("error generating thumbnail for %s: %v", year, err)
+			return nil, fmt.Errorf("error generating thumbnail for %d: %v", batch, err)
 		}
 
 		// upload thumbnail to R2
@@ -340,8 +359,8 @@ func generateThumbnails(
 	return photos, nil
 }
 
-func generateYearThumbnail(year string, photos []*Photo, dir string) (string, error) {
-	log.Infof("Generating thumbnail for %s", year)
+func generateThumbnail(batch int, photos []*Photo, dir string) (string, error) {
+	log.Infof("Generating thumbnail for %d", batch)
 	// each thumbnail should fit into 140x140px square, maximum 10 photos in a row
 	for _, photo := range photos {
 		// decode photo
@@ -402,7 +421,7 @@ func generateYearThumbnail(year string, photos []*Photo, dir string) (string, er
 
 	// draw photos on thumbnail
 	var (
-		thumbPath = "thumbnails_" + year + ".jpg"
+		thumbPath = "thumbnails_" + strconv.Itoa(batch) + ".jpg"
 		x         int
 		y         int
 		col       int
