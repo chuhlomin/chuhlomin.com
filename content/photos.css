@@ -143,6 +143,7 @@ a:hover {
   display: grid;
   grid-template-columns: 1fr minmax(auto, 100%) 1fr;
   grid-template-rows: auto 1fr;
+  gap: 4px; /* to account for :focus outline */
   background: var(--color-background-higher);
 }
 
@@ -222,7 +223,11 @@ a:hover {
 }
 
 #viewer .close {
-  border-bottom-left-radius: 30px;
+  border-radius: 100%;
+  margin-top: 0.3rem;
+  aspect-ratio: 1/1;
+  line-height: 100%;
+  color: var(--color-text);
 }
 
 #viewer .prev a:focus,
@@ -276,5 +281,9 @@ a:hover {
   #viewer .next a:hover,
   #viewer .close:hover {
     background: var(--color-neutral-muted-dark);
+  }
+
+  #viewer .close {
+    color: var(--color-text-dark);
   }
 }
