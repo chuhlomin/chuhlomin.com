@@ -22,7 +22,7 @@
 
 <div class="photos" id="photos">
 {{ range . }}
-<div class="container"><a href="#{{ .Path }}" class="photo" style="background: url('{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}') no-repeat center center; background-position: -{{ divide .ThumbXOffset 2 }}px -{{ divide .ThumbYOffset 2 }}px; background-size: {{ divide .ThumbTotalWidth 2 }}px {{ divide .ThumbTotalHeight 2 }}px; aspect-ratio: {{ .ThumbWidth }} / {{ .ThumbHeight }};" draggable="true"></a></div>
+<div class="container"><a href="#{{ .Path }}" class="photo lazy" style="background: url('{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}') no-repeat center center; background-position: -{{ divide .ThumbXOffset 2 }}px -{{ divide .ThumbYOffset 2 }}px; background-size: {{ divide .ThumbTotalWidth 2 }}px {{ divide .ThumbTotalHeight 2 }}px; aspect-ratio: {{ .ThumbWidth }} / {{ .ThumbHeight }};" draggable="true"></a></div>
 {{- end }}
 
 </div>
@@ -109,6 +109,9 @@ window.onhashchange = function() {
 };
 
 window.addEventListener('load', function() {
+
+    /* drag and drop */
+
     var photosElements = document.getElementsByClassName("photo")
     for (var i = 0; i < photosElements.length; i++) {
         photosElements[i].addEventListener("dragstart", function(e) {
@@ -118,6 +121,26 @@ window.addEventListener('load', function() {
             e.dataTransfer.dropEffect = "copyLink";
         }, false);
     }
+
+
+    /* lazy loading */
+
+    var lazyloadImages = document.querySelectorAll(".lazy");
+    var imageObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var image = entry.target;
+          image.classList.remove("lazy");
+          imageObserver.unobserve(image);
+        }
+      });
+    });
+    lazyloadImages.forEach(function (image) {
+      imageObserver.observe(image);
+    });
+
+
+    /* keyboard navigation */
 
     document.addEventListener('keydown', function(e) {
         if (showingViewer) {

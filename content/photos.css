@@ -125,6 +125,10 @@ a:hover {
   overflow: hidden;
 }
 
+.photos .photo.lazy {
+  background: var(--color-background-higher) !important;
+}
+
 .photos a:focus {
   outline: 2px solid var(--color-link);
   border-radius: 1px;
@@ -252,7 +256,10 @@ a:hover {
 
   .photos .photo {
     border: 6px solid var(--color-background-higher-dark);
-    background: var(--color-background-higher-dark);
+  }
+
+  .photos .photo.lazy {
+    background: var(--color-background-higher-dark) !important;
   }
 
   #viewer {
