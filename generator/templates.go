@@ -31,6 +31,14 @@ var fm = template.FuncMap{
 	"ts":         func() string { return ts.Format(time.RFC3339) },
 	"jsonify":    jsonify,
 	"divide":     func(a, b int) int { return a / b },
+	"cleanPhotos": func(photos []Photo) []Photo {
+		var result []Photo
+		for _, photo := range photos {
+			photo.BlurhashImageBase64 = ""
+			result = append(result, photo)
+		}
+		return result
+	},
 }
 
 func config(key string) string {

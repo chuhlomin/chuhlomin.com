@@ -22,7 +22,7 @@
 
 <div class="photos" id="photos">
 {{ range . }}
-<div class="container"><a href="#{{ .Path }}" class="photo lazy" style="background: url('{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}') no-repeat center center; background-position: -{{ divide .ThumbXOffset 2 }}px -{{ divide .ThumbYOffset 2 }}px; background-size: {{ divide .ThumbTotalWidth 2 }}px {{ divide .ThumbTotalHeight 2 }}px; aspect-ratio: {{ .ThumbWidth }} / {{ .ThumbHeight }};" draggable="true"></a></div>
+<div class="container"><a href="#{{ .Path }}" class="photo lazy" style="background: url('{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}') no-repeat center center; background-position: -{{ divide .ThumbXOffset 2 }}px -{{ divide .ThumbYOffset 2 }}px; background-size: {{ divide .ThumbTotalWidth 2 }}px {{ divide .ThumbTotalHeight 2 }}px; aspect-ratio: {{ .ThumbWidth }} / {{ .ThumbHeight }}; {{ with .BlurhashImageBase64 }}--background-blurhash: url('data:image/jpeg;base64,{{ . }}');{{ end }}" draggable="true"></a></div>
 {{- end }}
 
 </div>
@@ -42,7 +42,7 @@
 
 <script>
 var showingViewer = false;
-var photos = {{ . | jsonify }};
+var photos = {{ . | cleanPhotos | jsonify }};
 
 var view = function(path) {
     if (path === "close") {

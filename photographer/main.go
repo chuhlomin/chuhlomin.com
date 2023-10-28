@@ -7,15 +7,19 @@
 package main
 
 import (
+	"bytes"
 	"context"
+	"encoding/base64"
 	"fmt"
 	"image"
+	"io"
 	"os"
 	"path/filepath"
 	"sort"
 	"strconv"
 	"strings"
 
+	"github.com/bbrks/go-blurhash"
 	"github.com/charmbracelet/log"
 	flags "github.com/jessevdk/go-flags"
 	"github.com/nfnt/resize"
@@ -29,16 +33,18 @@ import (
 // Photo struct for items in photos.yml file
 // Must be in sync with generator/photos.go
 type Photo struct {
-	Path             string
-	Width            int    `yaml:"width,omitempty"`
-	Height           int    `yaml:"height,omitempty"`
-	ThumbPath        string `yaml:"thumb,omitempty"`
-	ThumbXOffset     int    `yaml:"thumb_x,omitempty"`
-	ThumbYOffset     int    `yaml:"thumb_y,omitempty"`
-	ThumbWidth       int    `yaml:"thumb_width,omitempty"`
-	ThumbHeight      int    `yaml:"thumb_height,omitempty"`
-	ThumbTotalWidth  int    `yaml:"thumb_total_width,omitempty"`
-	ThumbTotalHeight int    `yaml:"thumb_total_height,omitempty"`
+	Path                string
+	Width               int    `yaml:"width,omitempty"`
+	Height              int    `yaml:"height,omitempty"`
+	ThumbPath           string `yaml:"thumb,omitempty"`
+	ThumbXOffset        int    `yaml:"thumb_x,omitempty"`
+	ThumbYOffset        int    `yaml:"thumb_y,omitempty"`
+	ThumbWidth          int    `yaml:"thumb_width,omitempty"`
+	ThumbHeight         int    `yaml:"thumb_height,omitempty"`
+	ThumbTotalWidth     int    `yaml:"thumb_total_width,omitempty"`
+	ThumbTotalHeight    int    `yaml:"thumb_total_height,omitempty"`
+	Blurhash            string `yaml:"blurhash,omitempty"`
+	BlurhashImageBase64 string `yaml:"blurhash_image_base64,omitempty"`
 
 	// Temporary image.Image field used to generate thumbnails
 	image image.Image `yaml:"-"`
@@ -71,7 +77,12 @@ type appConfig struct {
 	R2AccessKeySecret string `env:"R2_ACCESS_KEY_SECRET" long:"r2-access-key-secret" description:"r2 access key secret"`
 	R2Bucket          string `env:"R2_BUCKET" long:"r2-bucket" description:"r2 bucket"`
 
-	Force bool `long:"force" description:"force thumbnail generation"`
+	// Force thumbnail generation
+	ForceThumbnails bool `long:"force-thumbnails" description:"force thumbnail generation"`
+
+	// Blurhash
+	ForceBlurhash       bool `long:"force-blurhash" description:"force blurhash generation"`
+	ForceBlurhashImages bool `long:"force-blurhash-images" description:"force blurhash images generation"`
 }
 
 func main() {
@@ -123,9 +134,19 @@ func run() error {
 		return fmt.Errorf("error uploading new photos: %v", err)
 	}
 
-	photos, err = generateThumbnails(ctx, r2, photos, dir, cfg.Force)
+	photos, err = generateThumbnails(ctx, r2, photos, dir, cfg.ForceThumbnails)
 	if err != nil {
 		return fmt.Errorf("error generating thumbnails: %v", err)
+	}
+
+	photos, err = generateBlurhashes(photos, dir, cfg.ForceBlurhash)
+	if err != nil {
+		return fmt.Errorf("error generating blurhashes: %v", err)
+	}
+
+	photos, err = generateBlurhashImages(photos, cfg.ForceBlurhashImages)
+	if err != nil {
+		return fmt.Errorf("error generating blurhash images: %v", err)
 	}
 
 	// save photos.yml file
@@ -487,4 +508,81 @@ func readImage(dir string, path string) (image.Image, error) {
 	}
 
 	return img, nil
+}
+
+func generateBlurhashes(photos []*Photo, dir string, force bool) ([]*Photo, error) {
+	var err error
+	for _, photo := range photos {
+		if photo.Blurhash != "" && !force {
+			continue
+		}
+
+		log.Infof("Generating blurhash for %s", photo.Path)
+		photo.Blurhash, err = generateBlurhash(photo.Path, dir)
+		if err != nil {
+			return nil, fmt.Errorf("error generating blurhash: %v", err)
+		}
+	}
+
+	return photos, nil
+}
+
+func generateBlurhash(path, dir string) (string, error) {
+	file, err := os.Open(filepath.Join(dir, path))
+	if err != nil {
+		return "", fmt.Errorf("error opening file: %v", err)
+	}
+	defer file.Close()
+
+	return generateBlurhashForReader(file)
+}
+
+func generateBlurhashForReader(reader io.Reader) (string, error) {
+	m, _, err := image.Decode(reader)
+	if err != nil {
+		return "", err
+	}
+
+	return blurhash.Encode(4, 4, m)
+}
+
+func generateBlurhashImages(photos []*Photo, force bool) ([]*Photo, error) {
+	var err error
+	for _, photo := range photos {
+		if photo.Blurhash == "" {
+			continue
+		}
+
+		if photo.BlurhashImageBase64 != "" && !force {
+			continue
+		}
+
+		log.Infof("Generating blurhash image for %s", photo.Path)
+		photo.BlurhashImageBase64, err = generateBlurhashImage(photo)
+		if err != nil {
+			return nil, fmt.Errorf("error generating blurhash image: %v", err)
+		}
+	}
+
+	return photos, nil
+}
+
+func generateBlurhashImage(photo *Photo) (string, error) {
+	m, err := blurhash.Decode(
+		photo.Blurhash,
+		photo.ThumbWidth/2,
+		photo.ThumbHeight/2,
+		1,
+	)
+	if err != nil {
+		return "", fmt.Errorf("error decoding blurhash: %v", err)
+	}
+
+	buf := new(bytes.Buffer)
+	if err := jpeg.Encode(buf, m, &jpeg.Options{Quality: 90}); err != nil {
+		return "", fmt.Errorf("error encoding blurhash image: %v", err)
+	}
+
+	b64 := base64.StdEncoding.EncodeToString(buf.Bytes())
+	return b64, nil
 }
