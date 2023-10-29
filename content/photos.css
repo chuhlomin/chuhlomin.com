@@ -125,7 +125,6 @@ a:hover {
   overflow: hidden;
   position: relative; /* for :before element with blurhash image */
   transition-property: none; /* override link transition */
-  object-fit: contain; /* avoid image stretching */
 }
 
 .photos .photo.lazy {
@@ -184,6 +183,7 @@ a:hover {
   transform: translateY(-50%) translateX(-50%);
   max-width: 100%;
   max-height: calc(100% - 40px);
+  object-fit: contain; /* avoid image stretching */
 }
 
 #viewer .prev {
