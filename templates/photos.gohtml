@@ -97,12 +97,18 @@ var view = function(path) {
     if (index > 0) {
         document.getElementById("photo-nav-prev").href = "#" + photos[index - 1].Path;
         document.getElementById("photo-nav-prev").style.display = "block";
+        // preload previous image
+        var prevImgLoader = new Image();
+        prevImgLoader.src = "{{ config "PhotosDomain" }}" + photos[index - 1].Path;
     } else {
         document.getElementById("photo-nav-prev").style.display = "none";
     }
     if (index < photos.length - 1) {
         document.getElementById("photo-nav-next").href = "#" + photos[index + 1].Path;
         document.getElementById("photo-nav-next").style.display = "block";
+        // preload next image
+        var nextImgLoader = new Image();
+        nextImgLoader.src = "{{ config "PhotosDomain" }}" + photos[index + 1].Path;
     } else {
         document.getElementById("photo-nav-next").style.display = "none";
     }
