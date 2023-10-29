@@ -28,7 +28,9 @@
 </div>
 
 <div id="viewer" style="display: none;">
-    <a id="photo-close" class="close" href="#close" aria-label="Close">×</a>
+    <div class="close">
+        <a id="photo-close" class="close" href="#close" aria-label="Close">✗</a>
+    </div>
     <div class="prev">
         <a id="photo-nav-prev" href="#previous" aria-label="Previous">←</a>
     </div>
@@ -58,7 +60,9 @@ var view = function(path) {
         if (photo) {
             document.querySelector("a[href='#" + photo.Path + "']").focus();
         }
-        
+        // remove hash from URL
+        window.location.hash = "";
+
         return;
     }
 
@@ -238,7 +242,7 @@ window.addEventListener('load', function() {
                     document.getElementById("photo-nav-next").click();
                 }
             }
-            if (e.keyCode === 27) { // esc
+            if (e.keyCode === 27 || e.keyCode === 88) { // esc or "x"
                 e.preventDefault();
                 document.getElementById("photo-close").click();
             }
