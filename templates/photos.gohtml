@@ -131,16 +131,16 @@ window.addEventListener('load', function() {
 
     var lazyloadImages = document.querySelectorAll(".lazy");
     var imageObserver = new IntersectionObserver(function (entries, observer) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var image = entry.target;
-          image.classList.remove("lazy");
-          imageObserver.unobserve(image);
-        }
-      });
-    });
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                var image = entry.target;
+                image.classList.remove("lazy");
+                imageObserver.unobserve(image);
+            }
+        });
+    }, { rootMargin: '500px' }); // add rootMargin option to intersect +500px down
     lazyloadImages.forEach(function (image) {
-      imageObserver.observe(image);
+        imageObserver.observe(image);
     });
 
 
