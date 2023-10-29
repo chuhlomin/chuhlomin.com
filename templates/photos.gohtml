@@ -45,6 +45,7 @@
 <script>
 var showingViewer = false;
 var photos = {{ . | cleanPhotos | jsonify }};
+var viewerImage = document.getElementById("image");
 
 var view = function(path) {
     if (path === "close") {
@@ -79,7 +80,17 @@ var view = function(path) {
     // disable scrolling
     document.body.style.overflow = "hidden";
 
-    document.getElementById("image").src = "{{ config "PhotosDomain" }}" + photo.Path;
+    var blurhash = document.querySelector("a[href='#" + photo.Path + "']").style.getPropertyValue("--background-blurhash");
+    viewerImage.src = blurhash.substring(5, blurhash.length - 2); // trim "url(' ... ')" from blurhash
+    viewerImage.width = photo.Width;
+    viewerImage.height = photo.Height;
+
+    var imgLoader = new Image();
+    imgLoader.src = "{{ config "PhotosDomain" }}" + photo.Path;
+    imgLoader.onload = function() {
+        viewerImage.src = imgLoader.src;
+    }
+
     {{/* document.getElementById("photo-title").innerHTML = photo.Title; */}}
     document.getElementById("viewer").style.display = "grid";
     var index = photos.indexOf(photo);

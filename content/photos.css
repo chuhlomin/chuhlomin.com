@@ -124,6 +124,8 @@ a:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative; /* for :before element with blurhash image */
+  transition-property: none; /* override link transition */
+  object-fit: contain; /* avoid image stretching */
 }
 
 .photos .photo.lazy {
