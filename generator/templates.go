@@ -39,6 +39,10 @@ var fm = template.FuncMap{
 		}
 		return result
 	},
+	"escape": func(s string) string {
+		// escape quotes for HTML attributes
+		return strings.ReplaceAll(s, `"`, `&quot;`)
+	},
 }
 
 func config(key string) string {

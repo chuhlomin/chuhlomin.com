@@ -10,6 +10,7 @@ import (
 // Photo is a struct for items in photos.yml file
 type Photo struct {
 	Path                string
+	Title               string `yaml:"title,omitempty"`
 	Width               int    `yaml:"width,omitempty"`
 	Height              int    `yaml:"height,omitempty"`
 	ThumbPath           string `yaml:"thumb,omitempty"`

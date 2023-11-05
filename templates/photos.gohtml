@@ -22,7 +22,7 @@
 
 <div class="photos" id="photos">
 {{ range . }}
-<div class="container"><a href="#{{ .Path }}" class="photo lazy" style="background: url('{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}') no-repeat center center; background-position: -{{ divide .ThumbXOffset 2 }}px -{{ divide .ThumbYOffset 2 }}px; background-size: {{ divide .ThumbTotalWidth 2 }}px {{ divide .ThumbTotalHeight 2 }}px; aspect-ratio: {{ .ThumbWidth }} / {{ .ThumbHeight }}; {{ with .BlurhashImageBase64 }}--background-blurhash: url('data:image/jpeg;base64,{{ . }}');{{ end }}" draggable="true" data-src="{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}"></a></div>
+<div class="container"><a href="#{{ .Path }}" {{ with .Title }}title="{{ . | escape }}" {{ end }}class="photo lazy" style="background: url('{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}') no-repeat center center; background-position: -{{ divide .ThumbXOffset 2 }}px -{{ divide .ThumbYOffset 2 }}px; background-size: {{ divide .ThumbTotalWidth 2 }}px {{ divide .ThumbTotalHeight 2 }}px; aspect-ratio: {{ .ThumbWidth }} / {{ .ThumbHeight }}; {{ with .BlurhashImageBase64 }}--background-blurhash: url('data:image/jpeg;base64,{{ . }}');{{ end }}" draggable="true" data-src="{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}"></a></div>
 {{- end }}
 
 </div>
@@ -30,12 +30,15 @@
 <div id="viewer" style="display: none;">
     <div class="close">
         <a id="photo-close" class="close" href="#close" aria-label="Close">✗</a>
-    </div>
+    </div>  
     <div class="prev">
         <a id="photo-nav-prev" href="#previous" aria-label="Previous">←</a>
     </div>
     <div class="photo">
-        <img id="image">
+        <figure>
+            <img id="image">
+            <figcaption id="caption"></figcaption>
+        </figure>
     </div>
     <div class="next">
         <a id="photo-nav-next" href="#next" aria-label="Next">→</a>
@@ -45,7 +48,33 @@
 <script>
 var showingViewer = false;
 var photos = {{ . | cleanPhotos | jsonify }};
+var viewer = document.getElementById("viewer");
 var viewerImage = document.getElementById("image");
+var photo = document.querySelector("#viewer .photo");
+var caption = document.getElementById("caption");
+
+isWide = function() {
+    var availableHeight = (photo.offsetHeight - 50); // 50px is the height of the caption
+    var aspectRatio = photo.offsetWidth / availableHeight;
+    console.log(photo.offsetWidth);
+
+    if (aspectRatio > viewerImage.dataset.aspectRatio) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+updateImageSize = function() {
+    // fixes caption position, so it is always at the bottom left of the image
+    if (isWide()) {
+        viewerImage.classList.add("wide");
+        viewerImage.classList.remove("narrow");
+    } else {
+        viewerImage.classList.add("narrow");
+        viewerImage.classList.remove("wide");
+    }
+}
 
 var view = function(path) {
     if (path === "close") {
@@ -68,6 +97,7 @@ var view = function(path) {
     var photo = photos.find(function(photo) {
         return photo.Path === path;
     });
+
     if (!photo) {
         document.getElementById("viewer").style.display = "none";
         document.body.style.overflow = "auto";
@@ -82,17 +112,36 @@ var view = function(path) {
 
     var blurhash = document.querySelector("a[href='#" + photo.Path + "']").style.getPropertyValue("--background-blurhash");
     viewerImage.src = blurhash.substring(5, blurhash.length - 2); // trim "url(' ... ')" from blurhash
-    viewerImage.width = photo.Width;
-    viewerImage.height = photo.Height;
+    viewerImage.style.width = photo.Width + "px";
+    viewerImage.style.height = photo.Height + "px";
+    viewerImage.style.aspectRatio = photo.Width / photo.Height;
+    viewerImage.dataset.aspectRatio = photo.Width / photo.Height; /* used for checking if image is wide or narrow */
+    viewerImage.classList.add("blurhash");
+
+    if (photo.Title) {
+        caption.innerHTML = photo.Title;
+        caption.style.display = "block";
+    } else {
+        caption.innerHTML = "";
+        caption.style.display = "none";
+    }
+    viewer.style.display = "grid";
+
+    // wait for viewer to be visible, then load image
+    // todo: fix for first page load
+    viewerImage.onload = function() {
+        updateImageSize();
+    };
 
     var imgLoader = new Image();
     imgLoader.src = "{{ config "PhotosDomain" }}" + photo.Path;
     imgLoader.onload = function() {
         viewerImage.src = imgLoader.src;
-    }
+        viewerImage.classList.remove("blurhash");
+        updateImageSize();
+    };
 
-    {{/* document.getElementById("photo-title").innerHTML = photo.Title; */}}
-    document.getElementById("viewer").style.display = "grid";
+    // Update navigation
     var index = photos.indexOf(photo);
     if (index > 0) {
         document.getElementById("photo-nav-prev").href = "#" + photos[index - 1].Path;
@@ -120,6 +169,7 @@ window.onload = function() {
         view(window.location.hash.substring(1));
     }
 };
+
 /* if anchor link is clicked */
 window.onhashchange = function() {
     if (window.location.hash) {
@@ -127,8 +177,14 @@ window.onhashchange = function() {
     }
 };
 
-window.addEventListener('load', function() {
+/* on resize, get photo aspect ratio */
+window.addEventListener('resize', function() {
+    if (showingViewer) {
+        updateImageSize();
+    }
+});
 
+window.addEventListener('load', function() {
     /* drag and drop */
 
     var photosElements = document.getElementsByClassName("photo")
@@ -140,7 +196,6 @@ window.addEventListener('load', function() {
             e.dataTransfer.dropEffect = "copyLink";
         }, false);
     }
-
 
     /* lazy loading */
 

@@ -167,23 +167,46 @@ a:hover {
 }
 
 #viewer .photo {
-  position: relative;
   grid-column: 2;
   grid-row: 1 / span 2;
   align-self: center;
-  text-align: center;
+  display: flex;
+  align-items: center;
   height: 100%;
+  text-align: center;
+}
+
+#viewer .photo figure {
+  max-height: 100%;
+  margin: 0 auto;
 }
 
 #viewer #image {
   display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
   max-width: 100%;
-  max-height: calc(100% - 40px);
+  max-height: calc(100vh - 50px);
   object-fit: contain; /* avoid image stretching */
+}
+
+#viewer #image.blurhash {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+#viewer #image.narrow {
+  height: auto !important;
+}
+
+#viewer #image.wide {
+  width: auto !important;
+}
+
+#viewer .photo figcaption {
+  text-align: left;
+  font-size: 10pt;
+  height: 25px;
+  line-height: 25px;
 }
 
 #viewer .prev {
@@ -364,5 +387,20 @@ a:hover {
   #viewer .close a {
     margin: 0;
     width: 64px;
+  }
+
+  #viewer .photo figcaption {
+    padding: 0 0.25rem;
+  }
+
+  #viewer #image {
+    max-height: calc(100vh - 118px);
+  }
+
+  #viewer #image.narrow {
+    height: auto !important;
+  }
+  #viewer #image.wide {
+    width: inherit !important;
   }
 }

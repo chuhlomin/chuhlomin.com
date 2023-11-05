@@ -10,11 +10,13 @@ import (
 	"bytes"
 	"context"
 	"encoding/base64"
+	"encoding/json"
 	"fmt"
 	"image"
 	"io"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -34,6 +36,7 @@ import (
 // Must be in sync with generator/photos.go
 type Photo struct {
 	Path                string
+	Title               string `yaml:"title,omitempty"`
 	Width               int    `yaml:"width,omitempty"`
 	Height              int    `yaml:"height,omitempty"`
 	ThumbPath           string `yaml:"thumb,omitempty"`
@@ -76,6 +79,9 @@ type appConfig struct {
 	R2AccessKeyID     string `env:"R2_ACCESS_KEY_ID" long:"r2-access-key-id" description:"r2 access key id"`
 	R2AccessKeySecret string `env:"R2_ACCESS_KEY_SECRET" long:"r2-access-key-secret" description:"r2 access key secret"`
 	R2Bucket          string `env:"R2_BUCKET" long:"r2-bucket" description:"r2 bucket"`
+
+	// Titles file from Instagram, to populate titles for photos
+	TitlesFile string `env:"TITLES_FILE" long:"titles-file" description:"path to posts_1.json file"`
 
 	// Force thumbnail generation
 	ForceThumbnails bool `long:"force-thumbnails" description:"force thumbnail generation"`
@@ -147,6 +153,13 @@ func run() error {
 	photos, err = generateBlurhashImages(photos, cfg.ForceBlurhashImages)
 	if err != nil {
 		return fmt.Errorf("error generating blurhash images: %v", err)
+	}
+
+	if cfg.TitlesFile != "" {
+		photos, err = populateTitles(photos, cfg.TitlesFile)
+		if err != nil {
+			return fmt.Errorf("error populating titles: %v", err)
+		}
 	}
 
 	// save photos.yml file
@@ -585,4 +598,63 @@ func generateBlurhashImage(photo *Photo) (string, error) {
 
 	b64 := base64.StdEncoding.EncodeToString(buf.Bytes())
 	return b64, nil
+}
+
+func populateTitles(photos []*Photo, path string) ([]*Photo, error) {
+	type image struct {
+		URI string `json:"uri"`
+	}
+	type post struct {
+		Media []image `json:"media"`
+		Title string  `json:"title"`
+	}
+	type data []post
+
+	content, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("error reading file: %v", err)
+	}
+
+	var d data
+	if err = json.Unmarshal(content, &d); err != nil {
+		return nil, fmt.Errorf("error unmarshaling file: %v", err)
+	}
+
+	numberPrefix := regexp.MustCompile(`^\d+\.\s+`)
+
+	titles := map[string]string{}
+	for _, post := range d {
+		if post.Title == "" {
+			continue
+		}
+
+		if len(post.Media) == 1 {
+			titles[post.Media[0].URI] = post.Title
+			continue
+		}
+
+		lines := strings.Split(post.Title, "\n")
+		for i, media := range post.Media {
+			if i >= len(lines) {
+				log.Warnf("Not enough titles for %s", media.URI)
+				break
+			}
+			// trim "media/posts/" from media.URI
+			media.URI = strings.TrimPrefix(media.URI, "media/posts/")
+
+			// trim number prefix if present
+			lines[i] = numberPrefix.ReplaceAllString(lines[i], "")
+
+			titles[media.URI] = lines[i]
+		}
+	}
+
+	for _, photo := range photos {
+		if title, ok := titles[photo.Path]; ok {
+			log.Infof("Setting title %q for %s", title, photo.Path)
+			photo.Title = title
+		}
+	}
+
+	return photos, nil
 }
