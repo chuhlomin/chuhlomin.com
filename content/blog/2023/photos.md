@@ -11,7 +11,7 @@ the algorithmic feed, the stories, and the ads. Luckily, it's still possible to
 I decided to make a minimalistic photo gallery.
 The main requirement is that the gallery should work fast on mobile and desktop.
 
-http://chuhlomin.com/photos
+https://chuhlomin.com/photos
 
 ![Photos](photos.png)
 
