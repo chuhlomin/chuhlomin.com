@@ -74,6 +74,13 @@ h1 {
   color: var(--color-header);
 }
 
+.blog-title h1 {
+  font-size: 18px;
+  line-height: 26px;
+  display: inline-block;
+  margin: 0;
+}
+
 p {
   margin: 10px 0 0 0;
 }
@@ -95,18 +102,11 @@ a:hover {
   border-color: var(--color-link-hover-underscore);
 }
 
-.blog-title h1 {
-  font-size: 18px;
-  line-height: 26px;
-  display: inline-block;
-  margin: 0;
-}
-
 .photos {
   margin-top: 20px;
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fill, 152px); /* 140px + (6px * 2) border */
+  grid-template-columns: repeat(auto-fill, 174px); /* 162px + (6px * 2) border */
 }
 
 .photos .container {
@@ -115,8 +115,8 @@ a:hover {
 
 .photos .photo {
   display: block;
-  max-width: 152px; /* 140 + 6px border */
-  max-height: 152px;
+  max-width: 174px; /* 162 + 6px border */
+  max-height: 174px;
   margin: 0;
   padding: 0;
   border: 6px solid var(--color-background-higher);
@@ -343,12 +343,19 @@ a:hover {
     line-height: 24px;
   }
 
+  .blog-title h1 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
   .photos {
-    grid-template-columns: repeat(auto-fill, 146px); /* 140px + (3px * 2) border */
+    grid-template-columns: repeat(auto-fill, 168px); /* 162px + (3px * 2) border */
     gap: 10px;
   }
 
   .photos .photo {
+    max-width: 168px; /* 162 + 3px border */
+    max-height: 168px;
     border-width: 3px;
   }
   

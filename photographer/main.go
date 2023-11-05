@@ -322,7 +322,7 @@ func uploadNewPhotos(
 }
 
 const (
-	maxThumbSize = 280 /* 140 * 2 */
+	maxThumbSize = 324 /* 162 * 2 */
 	maxPerRow    = 10
 	maxRows      = 5
 )
