@@ -140,6 +140,12 @@ var view = function(path) {
         viewerImage.classList.remove("blurhash");
         updateImageSize();
     };
+    imgLoader.onerror = function() {
+        // retry loading image
+        let src = imgLoader.src;
+        imgLoader.src = "";
+        imgLoader.src = src;
+    };
 
     // Update navigation
     var index = photos.indexOf(photo);
@@ -210,7 +216,13 @@ window.addEventListener('load', function() {
                 imgLoader.src = image.dataset.src;
                 imgLoader.onload = function() {
                     image.classList.remove("lazy");
-                }
+                };
+                imgLoader.onerror = function() {
+                    // retry loading image
+                    let src = image.dataset.src;
+                    imgLoader.src = "";
+                    imgLoader.src = src;
+                };
             }
         });
     }, { rootMargin: '500px' }); // add rootMargin option to intersect +500px down
