@@ -106,7 +106,7 @@ a:hover {
   margin-top: 20px;
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fill, 174px); /* 162px + (6px * 2) border */
+  grid-template-columns: repeat(auto-fill, 162px);
 }
 
 .photos .container {
@@ -115,16 +115,19 @@ a:hover {
 
 .photos .photo {
   display: block;
-  max-width: 174px; /* 162 + 6px border */
-  max-height: 174px;
+  max-width: 162px;
+  max-height: 162px;
   margin: 0;
   padding: 0;
-  border: 6px solid var(--color-background-higher);
+  outline: 4px solid var(--color-background-higher);
+  border: none;
+  border-radius: 6px;
   background: var(--color-background-higher);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative; /* for :before element with blurhash image */
-  transition-property: none; /* override link transition */
+  transition-property: outline; /* override link transition */
+  transition-duration: 0.05s;
 }
 
 .photos .photo.lazy {
@@ -149,8 +152,7 @@ a:hover {
 }
 
 .photos a:focus {
-  outline: 2px solid var(--color-link);
-  border-radius: 1px;
+  outline: 4px solid var(--color-link);
 }
 
 #viewer {
@@ -186,6 +188,7 @@ a:hover {
   max-width: 100%;
   max-height: calc(100vh - 50px);
   object-fit: contain; /* avoid image stretching */
+  border-radius: 6px;
 }
 
 #viewer #image.blurhash {
@@ -308,7 +311,7 @@ a:hover {
   }
 
   .photos .photo {
-    border: 6px solid var(--color-background-higher-dark);
+    outline: 4px solid var(--color-background-higher-dark);
   }
 
   .photos .photo.lazy {
@@ -348,17 +351,6 @@ a:hover {
     line-height: 24px;
   }
 
-  .photos {
-    grid-template-columns: repeat(auto-fill, 168px); /* 162px + (3px * 2) border */
-    gap: 10px;
-  }
-
-  .photos .photo {
-    max-width: 168px; /* 162 + 3px border */
-    max-height: 168px;
-    border-width: 3px;
-  }
-  
   #viewer {
     grid-template-columns: 1fr auto 1fr;
     grid-template-rows: 1fr auto 0.3rem;
