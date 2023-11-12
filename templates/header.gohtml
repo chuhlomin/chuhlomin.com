@@ -9,18 +9,18 @@
             {{ end }}
         </div>
         <div class="blog-title">
-            <a class="name" href="/{{ link "" .File.Language }}">{{ i18n "name" .File.Language }}</a>&nbsp;<span class="sep">/</span>
+            <a class="name" href="/{{ link "" .File.Language }}">{{ i18n "name" .File.Language }}</a>
             {{ if eq .File.ID "blog/index.gohtml" }}
             <span>{{ i18n "blog" .File.Language }}</span>
             {{ else }}
             <a href="{{ link "/blog/index.html" .File.Language }}">{{ i18n "blog" .File.Language }}</a>
             {{ end }}
 
+            <a href="/photos">{{ i18n "photos" .File.Language }}</a>
+
             <div class="extra">
                 {{/* if eq .File.ID "blog/search.gohtml" }}<span class="search-icon disabled"></span>
                 {{ else }}<a href="{{ link "/blog/search.html" .File.Language }}" class="search-icon"></a>{{ end */}}
-
-                <a href="{{ link "/blog/feed.atom" .File.Language }}" class="feed-icon"></a>
 
                 {{ $langs := alternates . }}
                 {{ $length := len $langs }}
@@ -31,6 +31,8 @@
                     {{ end }}
                 {{ end }}
                 {{ end }}
+
+                <a href="{{ link "/blog/feed.atom" .File.Language }}" class="feed-icon"></a>
             </div>
         </div>
     </div>
