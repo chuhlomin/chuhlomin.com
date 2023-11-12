@@ -31,5 +31,9 @@ jobs:
             --exclude pkg.go.dev
             --exclude www.youtube-nocookie.com
             --exclude trymeeter.com
+            --exclude ifconfig.co
+            --exclude regexr.com
+            --exclude open.spotify.com
+            --exclude www.midjourney.com
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
