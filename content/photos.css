@@ -361,6 +361,11 @@ a:hover {
     grid-row: 1;
   }
 
+  #viewer #image {
+    /* rounded corners look bad on mobile with "full bleed" image */
+    border-radius: 0;
+  }
+
   #viewer .prev {
     grid-column: 1;
     grid-row: 2;
