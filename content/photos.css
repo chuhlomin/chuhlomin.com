@@ -64,7 +64,6 @@ body {
   line-height: 26px;
   background: var(--color-background);
   color: var(--color-text);
-  padding: 20px;
 }
 
 h1 {
@@ -110,7 +109,8 @@ a:hover {
 .flag {
   position: relative;
   width: 100%;
-  padding: 0;
+  padding: 20px;
+  background: #e7edf4;
 }
 
 .header-content {
@@ -156,7 +156,7 @@ a:hover .user-picture-image {
 }
 
 .photos {
-  margin-top: 20px;
+  padding: 20px;
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fill, 162px);
@@ -341,6 +341,10 @@ a:hover .user-picture-image {
 }
 
 @media (prefers-color-scheme: dark) {
+  :root {
+    --color-link-underscore: rgba(102, 187, 255, var(--underline-opacity));
+  }
+
   body {
     background: var(--color-background-dark);
     color: var(--color-text-dark);
@@ -361,6 +365,10 @@ a:hover .user-picture-image {
   a:hover {
     color: var(--color-link-hover-dark);
     border-color: var(--color-link-hover-underscore-dark);
+  }
+
+  .flag {
+    background: #373f46;
   }
 
   .user-picture-image {
@@ -393,6 +401,16 @@ a:hover .user-picture-image {
 
   #viewer .close a {
     color: var(--color-text-dark);
+  }
+}
+
+@media screen and (max-width: 815px) { /* tablet */
+  .flag {
+    padding: 10px;
+  }
+
+  .photos {
+    padding: 10px;
   }
 }
 

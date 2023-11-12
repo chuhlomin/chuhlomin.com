@@ -2,6 +2,11 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
+	"hash/crc32"
+	"io"
+	"os"
+	"path/filepath"
 	"regexp"
 	"sort"
 	"strings"
@@ -42,6 +47,23 @@ var fm = template.FuncMap{
 	"escape": func(s string) string {
 		// escape quotes for HTML attributes
 		return strings.ReplaceAll(s, `"`, `&quot;`)
+	},
+	"crc32": func(s string) string {
+		// calculate CRC32 checksum for a file
+		file, err := os.Open(filepath.Join(cfg.ContentDirectory, s))
+		if err != nil {
+			log.Errorf("error opening file %q: %v", s, err)
+			return ""
+		}
+		defer file.Close()
+
+		hash := crc32.NewIEEE()
+		if _, err := io.Copy(hash, file); err != nil {
+			log.Errorf("error calculating CRC32 checksum for file %q: %v", s, err)
+			return ""
+		}
+
+		return fmt.Sprintf("%x", hash.Sum32())
 	},
 }
 

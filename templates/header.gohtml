@@ -22,6 +22,8 @@
                 {{/* if eq .File.ID "blog/search.gohtml" }}<span class="search-icon disabled"></span>
                 {{ else }}<a href="{{ link "/blog/search.html" .File.Language }}" class="search-icon"></a>{{ end */}}
 
+                <a href="{{ link "/blog/feed.atom" .File.Language }}" class="feed-icon"></a>
+
                 {{ $langs := alternates . }}
                 {{ $length := len $langs }}
                 {{ if gt $length 1 }}
@@ -31,8 +33,6 @@
                     {{ end }}
                 {{ end }}
                 {{ end }}
-
-                <a href="{{ link "/blog/feed.atom" .File.Language }}" class="feed-icon"></a>
             </div>
         </div>
     </div>
