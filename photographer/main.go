@@ -209,7 +209,7 @@ func scanDirectory(dir string) ([]string, error) {
 		}
 
 		// Skip files that are JPG
-		if filepath.Ext(path) != ".jpg" {
+		if filepath.Ext(path) != ".jpg" && filepath.Ext(path) != ".jpeg" {
 			return nil
 		}
 
