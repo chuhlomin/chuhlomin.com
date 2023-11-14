@@ -11,6 +11,7 @@ import (
 type Photo struct {
 	Path                string
 	Title               string `yaml:"title,omitempty"`
+	TitleRu             string `yaml:"title_ru,omitempty"`
 	Width               int    `yaml:"width,omitempty"`
 	Height              int    `yaml:"height,omitempty"`
 	ThumbPath           string `yaml:"thumb,omitempty"`

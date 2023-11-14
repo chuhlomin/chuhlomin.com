@@ -1,0 +1,316 @@
+{{ define "photosViewer" }}
+<div id="viewer" style="display: none;">
+    <div class="close">
+        <a id="photo-close" class="close" href="#close" aria-label="Close">✗</a>
+    </div>
+    <div class="prev">
+        <a id="photo-nav-prev" href="#previous" aria-label="Previous">←</a>
+    </div>
+    <div class="photo">
+        <figure>
+            <img id="image">
+            <figcaption id="caption"></figcaption>
+        </figure>
+    </div>
+    <div class="next">
+        <a id="photo-nav-next" href="#next" aria-label="Next">→</a>
+    </div>
+</div>
+
+<script>
+var showingViewer = false;
+var photos = {{ . | cleanPhotos | jsonify }};
+var viewer = document.getElementById("viewer");
+var viewerImage = document.getElementById("image");
+var photo = document.querySelector("#viewer .photo");
+var caption = document.getElementById("caption");
+
+var titleProperty = document.documentElement.lang === "en" ? "Title" : "Title" + document.documentElement.lang.charAt(0).toUpperCase() + document.documentElement.lang.slice(1);
+
+isWide = function() {
+    var availableHeight = (photo.offsetHeight - 50); // 50px is the height of the caption
+    var aspectRatio = photo.offsetWidth / availableHeight;
+    console.log(photo.offsetWidth);
+
+    if (aspectRatio > viewerImage.dataset.aspectRatio) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+updateImageSize = function() {
+    // fixes caption position, so it is always at the bottom left of the image
+    if (isWide()) {
+        viewerImage.classList.add("wide");
+        viewerImage.classList.remove("narrow");
+    } else {
+        viewerImage.classList.add("narrow");
+        viewerImage.classList.remove("wide");
+    }
+}
+
+var view = function(path) {
+    if (path === "close") {
+        document.getElementById("viewer").style.display = "none";
+        document.body.style.overflow = "auto";
+        showingViewer = false;
+
+        // focus on the photo that was opened in the viewer
+        var photoPath = document.getElementById("image").src.split("{{ config "PhotosDomain" }}")[1];
+        var photo = photos.find(function(photo) {
+            return photo.Path === photoPath;
+        });
+        if (photo) {
+            document.querySelector("a[href='#" + photo.Path + "']").focus();
+        }
+
+        return;
+    }
+
+    var photo = photos.find(function(photo) {
+        return photo.Path === path;
+    });
+
+    if (!photo) {
+        document.getElementById("viewer").style.display = "none";
+        document.body.style.overflow = "auto";
+        showingViewer = false;
+        return;
+    }
+
+    showingViewer = true;
+
+    // disable scrolling
+    document.body.style.overflow = "hidden";
+
+    var blurhash = document.querySelector("a[href='#" + photo.Path + "']").style.getPropertyValue("--background-blurhash");
+    viewerImage.src = blurhash.substring(5, blurhash.length - 2); // trim "url(' ... ')" from blurhash
+    viewerImage.style.width = photo.Width + "px";
+    viewerImage.style.height = photo.Height + "px";
+    viewerImage.style.aspectRatio = photo.Width / photo.Height;
+    viewerImage.dataset.aspectRatio = photo.Width / photo.Height; /* used for checking if image is wide or narrow */
+    viewerImage.classList.add("blurhash");
+
+    if (photo[titleProperty]) {
+        caption.innerHTML = photo[titleProperty];
+        caption.style.display = "block";
+    } else {
+        caption.innerHTML = "";
+        caption.style.display = "none";
+    }
+    viewer.style.display = "grid";
+
+    // wait for viewer to be visible, then load image
+    // todo: fix for first page load
+    viewerImage.onload = function() {
+        updateImageSize();
+    };
+
+    var imgLoader = new Image();
+    imgLoader.src = "{{ config "PhotosDomain" }}" + photo.Path;
+    imgLoader.onload = function() {
+        viewerImage.src = imgLoader.src;
+        viewerImage.classList.remove("blurhash");
+        updateImageSize();
+    };
+    imgLoader.onerror = function() {
+        // retry loading image
+        let src = imgLoader.src;
+        imgLoader.src = "";
+        imgLoader.src = src;
+    };
+
+    // Update navigation
+    var index = photos.indexOf(photo);
+    if (index > 0) {
+        document.getElementById("photo-nav-next").href = "#" + photos[index - 1].Path;
+        document.getElementById("photo-nav-next").style.display = "block";
+        // preload next image
+        var nextImgLoader = new Image();
+        nextImgLoader.src = "{{ config "PhotosDomain" }}" + photos[index - 1].Path;
+    } else {
+        document.getElementById("photo-nav-next").style.display = "none";
+    }
+    if (index < photos.length - 1) {
+        document.getElementById("photo-nav-prev").href = "#" + photos[index + 1].Path;
+        document.getElementById("photo-nav-prev").style.display = "block";
+        // preload next image
+        var prevImgLoader = new Image();
+        prevImgLoader.src = "{{ config "PhotosDomain" }}" + photos[index + 1].Path;
+    } else {
+        document.getElementById("photo-nav-prev").style.display = "none";
+    }
+};
+
+/* on start check anchor link */
+window.onload = function() {
+    if (window.location.hash) {
+        view(window.location.hash.substring(1));
+    }
+};
+
+/* if anchor link is clicked */
+window.onhashchange = function() {
+    if (window.location.hash) {
+        view(window.location.hash.substring(1));
+    }
+};
+
+/* on resize, get photo aspect ratio */
+window.addEventListener('resize', function() {
+    if (showingViewer) {
+        updateImageSize();
+    }
+});
+
+window.addEventListener('load', function() {
+    /* drag and drop */
+
+    var photosElements = document.getElementsByClassName("photo")
+    for (var i = 0; i < photosElements.length; i++) {
+        photosElements[i].addEventListener("dragstart", function(e) {
+            let imgSrc = "{{ config "PhotosDomain" }}" + e.target.href.split("#")[1];
+            e.dataTransfer.setData("text/uri-list", imgSrc);
+            e.dataTransfer.setData("text/plain", imgSrc);
+            e.dataTransfer.dropEffect = "copyLink";
+        }, false);
+    }
+
+    /* lazy loading */
+
+    var lazyloadImages = document.querySelectorAll(".lazy");
+    var imageObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                var image = entry.target;
+                imageObserver.unobserve(image);
+
+                var imgLoader = new Image();
+                imgLoader.src = image.dataset.src;
+                imgLoader.onload = function() {
+                    image.classList.remove("lazy");
+                };
+                imgLoader.onerror = function() {
+                    // retry loading image
+                    let src = image.dataset.src;
+                    imgLoader.src = "";
+                    imgLoader.src = src;
+                };
+            }
+        });
+    }, { rootMargin: '500px' }); // add rootMargin option to intersect +500px down
+
+    lazyloadImages.forEach(function (image) {
+        imageObserver.observe(image);
+    });
+
+
+    /* keyboard navigation */
+
+    document.addEventListener('keydown', function(e) {
+        if (showingViewer) {
+            /* set focus for corresponding links */
+            switch (e.keyCode) {
+                case 37: // left
+                    if (document.getElementById("photo-nav-prev").style.display === "block") {
+                        document.getElementById("photo-nav-prev").focus();
+                    }
+                    return;
+                case 39: // right
+                    if (document.getElementById("photo-nav-next").style.display === "block") {
+                        document.getElementById("photo-nav-next").focus();
+                    }
+                    return;
+                case 27: // esc
+                case 32: // space
+                    e.preventDefault();
+                    document.getElementById("photo-close").click();
+                    return;
+            }
+        }
+
+        // no viewer is open, so we are navigating between photos
+        var current = document.activeElement.parentNode;
+        if (!current.classList.contains("container")) {
+            return;
+        }
+
+        // ignore space, up/down arrows
+        switch (e.keyCode) {
+            case 32: // space
+                // if space is pressed, open viewer
+                e.preventDefault();
+                current.querySelector("a").click();
+                return;
+            case 37: // left
+                // in case photo is focused, left and right arrow keys should navigate between photos.
+                // each photo link is inside a container div, so we need to query parent node
+                e.preventDefault();
+                var prev = current.previousElementSibling;
+                if (prev) {
+                    prev.querySelector("a").focus();
+                }
+                return;
+            case 39: // right
+                e.preventDefault();
+                var next = current.nextElementSibling;
+                if (next) {
+                    next.querySelector("a").focus();
+                }
+                return;
+
+            // up and down arrow keys should navigate between photos one row above or below.
+            // with CSS grid there is no way to know which row a photo is in, so we need to
+            // calculate it manually.
+            case 38: // up
+                e.preventDefault();
+                var gridStyle = window.getComputedStyle(document.getElementById("photos"));
+                var columns = gridStyle.getPropertyValue("grid-template-columns").split(" ").length;
+
+                var index = Array.prototype.indexOf.call(current.parentNode.children, current);
+                var row = Math.floor(index / columns);
+                var prevRow = row - 1;
+                if (prevRow >= 0) {
+                    var prev = current.parentNode.children[prevRow * columns + index % columns];
+                    prev.querySelector("a").focus();
+                }
+                return;
+            case 40: // down
+                e.preventDefault();
+                var gridStyle = window.getComputedStyle(document.getElementById("photos"));
+                var columns = gridStyle.getPropertyValue("grid-template-columns").split(" ").length;
+
+                var index = Array.prototype.indexOf.call(current.parentNode.children, current);
+                var row = Math.floor(index / columns);
+                var nextRow = row + 1;
+                if (nextRow < current.parentNode.children.length / columns) {
+                    var next = current.parentNode.children[nextRow * columns + index % columns];
+                    next.querySelector("a").focus();
+                }
+                return;
+        }
+    });
+
+    document.addEventListener('keyup', function(e) {
+        if (showingViewer) {
+            if (e.keyCode === 37) { // left
+                if (document.getElementById("photo-nav-prev").style.display === "block") {
+                    document.getElementById("photo-nav-prev").click();
+                }
+            }
+            if (e.keyCode === 39) { // right
+                if (document.getElementById("photo-nav-next").style.display === "block") {
+                    document.getElementById("photo-nav-next").click();
+                }
+            }
+            if (e.keyCode === 27 || e.keyCode === 88) { // esc or "x"
+                e.preventDefault();
+                document.getElementById("photo-close").click();
+            }
+            return
+        }
+    });
+});
+</script>
+{{ end }}

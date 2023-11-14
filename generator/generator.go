@@ -314,32 +314,48 @@ func (g *Generator) processYaml(path string) error {
 		return fmt.Errorf("Error reading file %s: %v", path, err)
 	}
 
-	outputPath := filepath.Join(cfg.OutputDirectory, strings.Replace(path, ".yml", ".html", 1))
-
-	templateName := strings.Replace(path, ".yml", ".gohtml", 1)
-	tmpl := g.t.Lookup(templateName)
-	if tmpl == nil {
-		return fmt.Errorf("Template %q not found", templateName)
-	}
-
-	var data interface{}
+	var (
+		data  interface{}
+		tmpls []string
+	)
 
 	switch path {
 	case "wishlist.yml":
+		tmpls = []string{"wishlist.gohtml"}
 		data, err = g.processWishlistItems(fileContent)
 		if err != nil {
 			return fmt.Errorf("Error processing wishlist items for %q: %v", path, err)
 		}
+
 	case "photos.yml":
+		tmpls = []string{"photos.gohtml", "photos_ru.gohtml"}
 		data, err = g.processPhotos(fileContent)
 		if err != nil {
 			return fmt.Errorf("Error processing photos for %q: %v", path, err)
 		}
+
 	default:
-		log.Fatalf("Unknown YAML file %q", path)
+		return fmt.Errorf("Unknown YAML file %q", path)
 	}
 
-	return g.renderTemplate(outputPath, data, tmpl)
+	return g.renderYamlData(data, tmpls)
+}
+
+func (g *Generator) renderYamlData(data interface{}, templates []string) error {
+	for _, templateName := range templates {
+		outputPath := filepath.Join(cfg.OutputDirectory, strings.Replace(templateName, ".gohtml", ".html", 1))
+
+		tmpl := g.t.Lookup(templateName)
+		if tmpl == nil {
+			return fmt.Errorf("Template %q not found", templateName)
+		}
+
+		if err := g.renderTemplate(outputPath, data, tmpl); err != nil {
+			return fmt.Errorf("Error rendering template: %v", err)
+		}
+	}
+
+	return nil
 }
 
 func (g *Generator) processImage(image image) error {

@@ -16,7 +16,7 @@
             <a href="{{ link "/blog/index.html" .File.Language }}">{{ i18n "blog" .File.Language }}</a>
             {{ end }}
 
-            <a href="/photos">{{ i18n "photos" .File.Language }}</a>
+            <a href="{{ link "/photos.html" .File.Language }}">{{ i18n "photos" .File.Language }}</a>
 
             <div class="extra">
                 {{/* if eq .File.ID "blog/search.gohtml" }}<span class="search-icon disabled"></span>

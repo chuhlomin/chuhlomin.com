@@ -33,6 +33,8 @@
   --color-link-hover-underscore: rgba(223, 100, 0, var(--underline-opacity));
   --color-link-hover-underscore-dark: rgba(248, 255, 131 var(--underline-opacity));
 
+  --lang-background: #555577;;
+
   --color-neutral-muted: rgba(175, 184, 193, 0.2);
   --color-neutral-muted-dark: rgba(110, 118, 129, 0.4);
 
@@ -86,6 +88,14 @@ h1 {
   margin: 0;
 }
 
+.extra {
+  display: flex;
+  float: right;
+  gap: 0 7pt;
+  position: absolute;
+  right: 0;
+}
+
 p {
   margin: 10px 0 0 0;
 }
@@ -126,8 +136,28 @@ a:hover {
   line-height: inherit;
 }
 
+.lang {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 0.4rem;
+  background: var(--lang-background);
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-size: 75%;
+  text-decoration: none;
+  color: white;
+  transition: none;
+}
+
+.lang:visited, .lang:hover {
+  color: white;
+}
+
 .blog-title {
   display: flex;
+  position: relative; /* for positioning .lanugages */
+  padding-right: 80px;
   gap: 4pt 14pt;
   flex-wrap: wrap;
 }
@@ -302,6 +332,7 @@ a:hover .user-picture-image {
   background: var(--color-background);
   font-size: 20pt;
   text-decoration: none;
+  user-select: none;
 }
 
 #viewer .close a {
@@ -343,6 +374,7 @@ a:hover .user-picture-image {
 @media (prefers-color-scheme: dark) {
   :root {
     --color-link-underscore: rgba(102, 187, 255, var(--underline-opacity));
+    --lang-background: #555577;
   }
 
   body {
