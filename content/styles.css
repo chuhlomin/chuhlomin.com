@@ -473,6 +473,7 @@ iframe {
   margin: -40px -1rem 0 3rem;
   background: var(--color-background-higher);
   border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .message::after {
@@ -765,6 +766,10 @@ hr {
 
   .message::after {
     background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAyMCAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMEM1LjkwOTA5IDUuNSA5Ljg2MDYzIDYuNjQ1NjYgMjAgNi42MjA2OVYxNUg3LjU0MDk4QzEuNjgwNzYgMTAuOTE5NyAwLjE4NTgzMiA3LjU0MDAyIDAgMFoiIGZpbGw9IiMzMDMxMzIiLz4KPC9zdmc+Cg==');
+  }
+
+  .message {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
   }
 }
 
