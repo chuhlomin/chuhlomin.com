@@ -602,6 +602,35 @@ func generateBlurhashImage(photo *Photo) (string, error) {
 }
 
 func populateTitles(photos []*Photo, path string) ([]*Photo, error) {
+	titles, err := parseTitles(path)
+	if err != nil {
+		return nil, fmt.Errorf("error parsing titles: %v", err)
+	}
+
+	for _, photo := range photos {
+		if title, ok := titles[photo.Path]; ok {
+			log.Infof("Setting title %q for %s", title, photo.Path)
+			photo.Title = title
+		}
+	}
+
+	return photos, nil
+}
+
+func parseTitles(path string) (map[string]string, error) {
+	content, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("error reading file: %v", err)
+	}
+
+	if strings.HasSuffix(path, ".json") {
+		return parseTitlesInstagram(content)
+	}
+
+	return parseTitlesYaml(content)
+}
+
+func parseTitlesInstagram(content []byte) (map[string]string, error) {
 	type image struct {
 		URI string `json:"uri"`
 	}
@@ -611,19 +640,14 @@ func populateTitles(photos []*Photo, path string) ([]*Photo, error) {
 	}
 	type data []post
 
-	content, err := os.ReadFile(path)
-	if err != nil {
-		return nil, fmt.Errorf("error reading file: %v", err)
-	}
-
 	var d data
-	if err = json.Unmarshal(content, &d); err != nil {
+	if err := json.Unmarshal(content, &d); err != nil {
 		return nil, fmt.Errorf("error unmarshaling file: %v", err)
 	}
 
 	numberPrefix := regexp.MustCompile(`^\d+\.\s+`)
 
-	titles := map[string]string{}
+	titles := make(map[string]string)
 	for _, post := range d {
 		if post.Title == "" {
 			continue
@@ -650,12 +674,14 @@ func populateTitles(photos []*Photo, path string) ([]*Photo, error) {
 		}
 	}
 
-	for _, photo := range photos {
-		if title, ok := titles[photo.Path]; ok {
-			log.Infof("Setting title %q for %s", title, photo.Path)
-			photo.Title = title
-		}
+	return titles, nil
+}
+
+func parseTitlesYaml(content []byte) (map[string]string, error) {
+	var titles map[string]string
+	if err := yaml.Unmarshal(content, &titles); err != nil {
+		return nil, fmt.Errorf("error unmarshaling file: %v", err)
 	}
 
-	return photos, nil
+	return titles, nil
 }
