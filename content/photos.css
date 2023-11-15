@@ -190,6 +190,7 @@ a:hover .user-picture-image {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fill, 162px);
+  justify-content: space-around;
 }
 
 .photos .container {
