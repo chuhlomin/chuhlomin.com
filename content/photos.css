@@ -374,6 +374,19 @@ a:hover .user-picture-image {
   outline: 2px solid var(--color-link);
 }
 
+#viewer #text {
+  display: none;
+  width: 600px;
+  font-size: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+}
+
+.edit #viewer #text {
+  display: block;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --color-link-underscore: rgba(102, 187, 255, var(--underline-opacity));

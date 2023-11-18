@@ -26,7 +26,7 @@
 
 <div class="photos" id="photos">
 {{ range . }}
-<div class="container"><a href="#{{ .Path }}" {{ with .Title }}title="{{ . | escape }}" {{ end }}class="photo lazy" style="background: url('{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}') no-repeat center center; background-position: -{{ divide .ThumbXOffset 2 }}px -{{ divide .ThumbYOffset 2 }}px; background-size: {{ divide .ThumbTotalWidth 2 }}px {{ divide .ThumbTotalHeight 2 }}px; aspect-ratio: {{ .ThumbWidth }} / {{ .ThumbHeight }}; {{ with .BlurhashImageBase64 }}--background-blurhash: url('data:image/jpeg;base64,{{ . }}');{{ end }}" draggable="true" data-src="{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}"></a></div>
+<div class="container"><a href="#{{ .Path }}" {{ with .Title }}title="{{ . | md | stripTags | escape }}" {{ end }}class="photo lazy" style="background: url('{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}') no-repeat center center; background-position: -{{ divide .ThumbXOffset 2 }}px -{{ divide .ThumbYOffset 2 }}px; background-size: {{ divide .ThumbTotalWidth 2 }}px {{ divide .ThumbTotalHeight 2 }}px; aspect-ratio: {{ .ThumbWidth }} / {{ .ThumbHeight }}; {{ with .BlurhashImageBase64 }}--background-blurhash: url('data:image/jpeg;base64,{{ . }}');{{ end }}" draggable="true" data-src="{{ config "PhotosDomain" }}{{ .ThumbPath }}?ts={{ ts }}"></a></div>
 {{- end }}
 </div>
 

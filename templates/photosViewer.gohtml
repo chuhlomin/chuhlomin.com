@@ -10,6 +10,7 @@
         <figure>
             <img id="image">
             <figcaption id="caption"></figcaption>
+            <input type="text" id="text" autocomplete="off" spellcheck="true" oninput="saveCaption(event)" onfocus="editingCaption = true" onblur="editingCaption = false">
         </figure>
     </div>
     <div class="next">
@@ -19,11 +20,13 @@
 
 <script>
 var showingViewer = false;
+var editingCaption = false;
 var photos = {{ . | cleanPhotos | jsonify }};
 var viewer = document.getElementById("viewer");
 var viewerImage = document.getElementById("image");
 var photo = document.querySelector("#viewer .photo");
 var caption = document.getElementById("caption");
+var text = document.getElementById("text");
 
 var titleProperty = document.documentElement.lang === "en" ? "Title" : "Title" + document.documentElement.lang.charAt(0).toUpperCase() + document.documentElement.lang.slice(1);
 
@@ -78,6 +81,8 @@ var view = function(path) {
         showingViewer = false;
         return;
     }
+
+    text.value = captions[photo.Path] || "";
 
     showingViewer = true;
 
@@ -209,7 +214,7 @@ window.addEventListener('load', function() {
     /* keyboard navigation */
 
     document.addEventListener('keydown', function(e) {
-        if (showingViewer) {
+        if (showingViewer && !editingCaption) {
             /* set focus for corresponding links */
             switch (e.keyCode) {
                 case 37: // left
@@ -293,7 +298,7 @@ window.addEventListener('load', function() {
     });
 
     document.addEventListener('keyup', function(e) {
-        if (showingViewer) {
+        if (showingViewer && !editingCaption) {
             if (e.keyCode === 37) { // left
                 if (document.getElementById("photo-nav-prev").style.display === "block") {
                     document.getElementById("photo-nav-prev").click();
@@ -312,5 +317,27 @@ window.addEventListener('load', function() {
         }
     });
 });
+
+// Caption editing
+var captions = {};
+
+var saveCaption = function(e) {
+    var photoPath = document.getElementById("image").src.split("{{ config "PhotosDomain" }}")[1];
+    var textValue = e.target.value;
+    if (textValue === "") {
+        delete captions[photoPath];
+    } else {
+        captions[photoPath] = textValue;
+    }
+};
+
+var printCaptions = function() {
+    // YAML format captions dictionary
+    var yaml = "---\n";
+    for (var key in captions) {
+        yaml += key + ": " + captions[key] + "\n";
+    }
+    console.log(yaml);
+};
 </script>
 {{ end }}
