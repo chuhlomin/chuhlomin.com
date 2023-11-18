@@ -271,8 +271,10 @@ a:hover .user-picture-image {
   display: block;
   max-width: 100%;
   max-height: calc(100vh - 50px);
+  max-height: calc(100svh - 50px); /* Safari fix for bottom safe area */
   object-fit: contain; /* avoid image stretching */
   border-radius: 6px;
+  margin: 0 auto; /* center image when text is longer than image width */
 }
 
 #viewer #image.blurhash {
