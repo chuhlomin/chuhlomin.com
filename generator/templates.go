@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/charmbracelet/log"
+	"github.com/gomarkdown/markdown"
 	i "github.com/nicksnyder/go-i18n/v2/i18n"
 )
 
@@ -39,15 +40,13 @@ var fm = template.FuncMap{
 	"cleanPhotos": func(photos []Photo) []Photo {
 		var result []Photo
 		for _, photo := range photos {
+			photo.Title = md(photo.Title)
 			photo.BlurhashImageBase64 = ""
 			result = append(result, photo)
 		}
 		return result
 	},
-	"escape": func(s string) string {
-		// escape quotes for HTML attributes
-		return strings.ReplaceAll(s, `"`, `&quot;`)
-	},
+	"escape": escape,
 	"crc32": func(s string) string {
 		// calculate CRC32 checksum for a file
 		file, err := os.Open(filepath.Join(cfg.ContentDirectory, s))
@@ -65,6 +64,7 @@ var fm = template.FuncMap{
 
 		return fmt.Sprintf("%x", hash.Sum32())
 	},
+	"md": md,
 }
 
 func config(key string) string {
@@ -250,4 +250,15 @@ func jsonify(data interface{}) string {
 		return ""
 	}
 	return string(b)
+}
+
+func md(in string) string {
+	in = string(markdown.ToHTML([]byte(in), nil, nil))
+	// remove newline at the end
+	return strings.TrimSuffix(strings.TrimPrefix(in, "<p>"), "</p>\n")
+}
+
+func escape(in string) string {
+	// escape quotes for HTML attributes
+	return strings.ReplaceAll(in, `"`, `&quot;`)
 }
