@@ -47,24 +47,8 @@ var fm = template.FuncMap{
 		return result
 	},
 	"escape": escape,
-	"crc32": func(s string) string {
-		// calculate CRC32 checksum for a file
-		file, err := os.Open(filepath.Join(cfg.ContentDirectory, s))
-		if err != nil {
-			log.Errorf("error opening file %q: %v", s, err)
-			return ""
-		}
-		defer file.Close()
-
-		hash := crc32.NewIEEE()
-		if _, err := io.Copy(hash, file); err != nil {
-			log.Errorf("error calculating CRC32 checksum for file %q: %v", s, err)
-			return ""
-		}
-
-		return fmt.Sprintf("%x", hash.Sum32())
-	},
-	"md": md,
+	"crc":    crc32sum,
+	"md":     md,
 }
 
 func config(key string) string {
@@ -261,4 +245,30 @@ func md(in string) string {
 func escape(in string) string {
 	// escape quotes for HTML attributes
 	return strings.ReplaceAll(in, `"`, `&quot;`)
+}
+
+var crc32sums = map[string]string{}
+
+func crc32sum(s string) string {
+	if cached, ok := crc32sums[s]; ok {
+		return cached
+	}
+
+	// calculate CRC32 checksum for a file
+	file, err := os.Open(filepath.Join(cfg.ContentDirectory, s))
+	if err != nil {
+		log.Errorf("error opening file %q: %v", s, err)
+		return ""
+	}
+	defer file.Close()
+
+	hash := crc32.NewIEEE()
+	if _, err := io.Copy(hash, file); err != nil {
+		log.Errorf("error calculating CRC32 checksum for file %q: %v", s, err)
+		return ""
+	}
+
+	hashed := fmt.Sprintf("%x", hash.Sum32())
+	crc32sums[s] = hashed
+	return hashed
 }

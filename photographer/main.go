@@ -12,6 +12,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"hash/crc32"
 	"image"
 	"io"
 	"os"
@@ -335,9 +336,6 @@ func generateThumbnails(
 	dir string,
 	force bool,
 ) ([]*Photo, error) {
-	// thumbnail is a collage of photos from that year
-
-	// group photos by year
 	// split photos into batches of 100 photos each
 	photosBatches := make([][]*Photo, 0)
 	for i := 0; i < len(photos); i += maxPerRow * maxRows {
@@ -348,7 +346,7 @@ func generateThumbnails(
 		photosBatches = append(photosBatches, photos[i:end])
 	}
 
-	// filter out year if all photos in it already have thumbnails
+	// filter out batches if all photos in it already have thumbnails
 	if !force {
 		for batch, photos := range photosBatches {
 			allHaveThumbs := true
@@ -388,6 +386,11 @@ func generateThumbnails(
 
 		if err := r2.Upload(ctx, thumbPath, thumbContent); err != nil {
 			return nil, fmt.Errorf("error uploading thumbnail %q: %v", thumbPath, err)
+		}
+
+		// update thumb path with CRC32 checksum for each photo
+		for _, photo := range photos {
+			photo.ThumbPath = thumbPath + "?crc=" + crc32sum(thumbContent)
 		}
 	}
 
@@ -684,4 +687,14 @@ func parseTitlesYaml(content []byte) (map[string]string, error) {
 	}
 
 	return titles, nil
+}
+
+func crc32sum(content []byte) string {
+	hash := crc32.NewIEEE()
+	if _, err := io.Copy(hash, bytes.NewReader(content)); err != nil {
+		log.Errorf("error calculating CRC32 checksum: %v", err)
+		return ""
+	}
+
+	return fmt.Sprintf("%x", hash.Sum32())
 }
