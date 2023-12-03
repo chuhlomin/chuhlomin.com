@@ -433,29 +433,30 @@ func generateThumbnail(batch int, photos []*Photo, dir string) (string, error) {
 
 	// calculate thumbnail image size
 	var (
-		width   int
-		height  int
-		counter int
+		rowWidth    int
+		totalWidth  int
+		totalHeight int
+		counter     int
 	)
 	for i, container := range containers {
 		if i == 0 {
-			width = container.Photo.ThumbWidth
-			height = container.Photo.ThumbHeight
+			totalHeight = container.Photo.ThumbHeight
 		}
 
 		if counter == maxPerRow {
+			totalHeight += container.Photo.ThumbHeight
+			if rowWidth > totalWidth {
+				totalWidth = rowWidth
+			}
+			rowWidth = 0
 			counter = 0
-			height += container.Photo.ThumbHeight
 		}
 
-		if i < maxPerRow-1 {
-			width += container.Photo.ThumbWidth
-		}
-
+		rowWidth += container.Photo.ThumbWidth
 		counter++
 	}
 
-	img := image.NewRGBA(image.Rect(0, 0, width, height))
+	img := image.NewRGBA(image.Rect(0, 0, totalWidth, totalHeight))
 
 	// draw photos on thumbnail
 	var (
@@ -481,8 +482,8 @@ func generateThumbnail(batch int, photos []*Photo, dir string) (string, error) {
 		container.Photo.ThumbPath = thumbPath
 		container.Photo.ThumbXOffset = x
 		container.Photo.ThumbYOffset = y
-		container.Photo.ThumbTotalWidth = width
-		container.Photo.ThumbTotalHeight = height
+		container.Photo.ThumbTotalWidth = totalWidth
+		container.Photo.ThumbTotalHeight = totalHeight
 
 		draw.Draw(
 			img,
