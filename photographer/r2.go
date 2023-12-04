@@ -68,9 +68,10 @@ func (r2 *R2) ListByPrefx(ctx context.Context, prefix string) ([]string, error) 
 // Upload uploads given body to given key
 func (r2 *R2) Upload(ctx context.Context, key string, body []byte) error {
 	_, err := r2.client.PutObject(ctx, &s3.PutObjectInput{
-		Bucket: aws.String(r2.Bucket),
-		Key:    aws.String(key),
-		Body:   bytes.NewReader(body),
+		Bucket:      aws.String(r2.Bucket),
+		Key:         aws.String(key),
+		Body:        bytes.NewReader(body),
+		ContentType: aws.String("image/jpeg"),
 	})
 	if err != nil {
 		return fmt.Errorf("Error uploading object: %v", err)

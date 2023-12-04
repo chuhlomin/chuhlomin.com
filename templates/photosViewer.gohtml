@@ -33,7 +33,6 @@ var titleProperty = document.documentElement.lang === "en" ? "Title" : "Title" +
 isWide = function() {
     var availableHeight = (photo.offsetHeight - 50); // 50px is the height of the caption
     var aspectRatio = photo.offsetWidth / availableHeight;
-    console.log(photo.offsetWidth);
 
     if (aspectRatio > viewerImage.dataset.aspectRatio) {
         return true;
