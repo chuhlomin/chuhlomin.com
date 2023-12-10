@@ -4,9 +4,8 @@ date: 2020-06-14
 
 # Graphviz
 
-If you don't know what graphs are, in short, it's a set of vertices in links (edges) between them.
-
-https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)
+If you don't know [what graphs are](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)),
+in short, it's a set of vertices in links (edges) between them.
 
 You can use graphs to represent a subway map, an organization structure, an NPC path map, an ERD.
 
