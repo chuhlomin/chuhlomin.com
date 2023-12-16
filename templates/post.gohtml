@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ link "/styles.css?crc=" }}{{ crc "styles.css" }}">
 {{- with .File.Images }}
 {{- $img := index . 0 }}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:image" content="{{ config "RootURL" }}/{{ link $img.Path }}">
 {{- end }}
 <meta property="og:type" content="article">
