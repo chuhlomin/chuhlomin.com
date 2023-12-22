@@ -6,6 +6,7 @@ const padding = 20;
 const radius = 500;
 const innerRadius = radius - padding - sectionHeight;
 const outerRadius = radius - padding;
+const moonRadius = innerRadius - padding/2;
 const font = '-apple-system, "Segoe UI", "Open Sans", Helvetica, Arial, sans-serif';
 
 const svg = d3
@@ -197,5 +198,40 @@ svg
   .attr('r', 4)
   .attr('fill', 'black');
 
+// add dotted lines from center to beginning of each month
+svg
+  .append('g')
+  .attr('transform', `translate(${radius}, ${radius})`)
+  .selectAll('line')
+  .data(d3.timeMonths(new Date(year, 0, 1), new Date(year + 1, 0, 1)))
+  .join('line')
+  .attr('x1', 0)
+  .attr('y1', 0)
+  .attr('x2', d => innerRadius * Math.cos(daysBeforeMonth.get(d.getMonth()) * 2 * Math.PI / days.length - Math.PI / 2))
+  .attr('y2', d => innerRadius * Math.sin(daysBeforeMonth.get(d.getMonth()) * 2 * Math.PI / days.length - Math.PI / 2))
+  .attr('stroke', 'black')
+  .attr('stroke-width', 0.25)
+  .attr('stroke-dasharray', '1 1');
+
+// add moon phases
+var fullMoons = phaseRange(
+  new Date(year, 0, 1),
+  new Date(year + 1, 0, 1),
+  FULL
+);
+
+// add full moon circles
+svg
+  .append('g')
+  .attr('transform', `translate(${radius}, ${radius})`)
+  .selectAll('circle')
+  .data(fullMoons)
+  .join('circle')
+  .attr('cx', d => moonRadius * Math.cos(d3.timeDay.count(d3.timeYear(d), d) * 2 * Math.PI / days.length - Math.PI / 2))
+  .attr('cy', d => moonRadius * Math.sin(d3.timeDay.count(d3.timeYear(d), d) * 2 * Math.PI / days.length - Math.PI / 2))
+  .attr('r', 2)
+  .attr('fill', 'white')
+  .attr('stroke', 'black')
+  .attr('stroke-width', 0.5);
 
 document.body.append(svg.node());
