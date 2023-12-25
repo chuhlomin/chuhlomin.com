@@ -1,0 +1,16 @@
+/* const timeWeek = d3.utcMonday; */
+
+const sample = [
+  {{- range .AllSorted }}
+  {{- if eq .Language "ru" }}
+  {"date": "{{ .Date }}", "value": "1", "title": "{{ htmlDecode (stripTags .Title) }}", "url": "{{ config "RootURL" }}{{ link .Path $.File.Language }}"},
+  {{- end }}
+  {{- end }}
+];
+
+sample.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+const timeWeek = d3.utcMonday;
+const weekDays = ["Пн", "", "Ср", "", "Пт", "", ""];
+const dayX = d => timeWeek.count(d3.utcYear(d), d) + 1; // Add 1 to shift the x position by 1
+const dayY = d => (d.getUTCDay() + 6) % 7; // Adjust the y position to start with Monday;

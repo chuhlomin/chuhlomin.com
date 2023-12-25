@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+:root {
+  --font-monospace: JetBrains Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+}
+
+/* Use a more-intuitive box-sizing model. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100vh;
+  height: -webkit-fill-available;
+  overflow: hidden;
+  max-height: 100%;
+}
+
+.year, .weekdays {
+  font-family: var(--font-monospace);
+}
+
+.date {
+  font-family: var(--font-monospace);
+  color: #c9d1d9;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+svg a, svg a rect {
+  cursor: pointer;
+}
+
+svg a:hover rect {
+  filter: brightness(1.2);
+}
+
+svg .tooltip {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.05s linear, opacity 0.05s linear;
+}
+
+svg .tooltip--visible {
+  visibility:visible;
+  opacity:1;
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background: #171a1a;
+  }
+
+  svg text {
+    fill: #c9d1d9;
+  }
+
+  svg .tooltip path {
+    fill: #605f30;
+    stroke: #353300;
+  }
+
+  svg .tooltip text {
+    fill: #ddd;
+  }
+
+  svg rect {
+    fill: #333333;
+  }
+
+  svg a rect {
+    fill: #26a641;
+  }
+
+  svg .months path {
+    stroke: #ddd;
+  }
+}
