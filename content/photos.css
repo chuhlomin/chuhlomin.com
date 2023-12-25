@@ -343,7 +343,7 @@ a:hover .user-picture-image {
   margin-top: 0.3rem;
   margin-right: 0.3rem;
   color: var(--color-text);
-  border-radius: 100%;
+  border-radius: 15%;
 }
 
 #viewer .prev a:hover,
