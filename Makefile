@@ -47,4 +47,4 @@ photographer-build:
 ## photographer: run the photographer
 photographer: photographer-build
 	@echo "Running photographer..."
-	@./bin/photographer
+	@./bin/photographer $(arguments)
