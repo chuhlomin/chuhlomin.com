@@ -627,7 +627,7 @@ iframe {
 }
 
 .postCard .image a {
-  display: inline-block;
+  display: block;
   text-decoration: none;
   border-radius: 4px;
   overflow: hidden;
