@@ -158,11 +158,6 @@
   url: https://gen2.tidbyt.com/
   price: (unknown)
 
-- name: DualSense Edge
-  type: hardware
-  url: https://direct.playstation.com/en-us/buy-accessories/dualsense-edge-wireless-controller?smcid=pdc:us-en:web-pdc-home:buttonblock-buy-now
-  price: $200
-
 - name: CM-15
   type: hardware
   url: https://teenage.engineering/products/cm-15
