@@ -33,6 +33,7 @@ var fm = template.FuncMap{
 	"nextPage":   nextPage,
 	"prevPage":   prevPage,
 	"stripTags":  stripTags,
+	"htmlDecode": htmlDecode,
 	"hasSuffix":  strings.HasSuffix,
 	"ts":         func() string { return ts.Format(time.RFC3339) },
 	"jsonify":    jsonify,
@@ -225,6 +226,10 @@ var htmlTagRegexp = regexp.MustCompile("<[^>]*>")
 
 func stripTags(html string) string {
 	return htmlTagRegexp.ReplaceAllString(string(html), "")
+}
+
+func htmlDecode(html string) string {
+	return strings.ReplaceAll(html, "&amp;", "&")
 }
 
 func jsonify(data interface{}) string {
