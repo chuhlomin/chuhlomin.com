@@ -25,4 +25,4 @@ https://chuhlomin.com/experiments/heatmap/?lang=ru
     this.style.aspectRatio = width / height;"
 ></iframe>
 
-#visualization #blog
+#visualization #blog #calendar
