@@ -14,6 +14,8 @@ By the way, if the data is visualized on a map following the same principle, it 
 
 Out of interest, I made such a map on D3 for posts in this blog:
 
+https://chuhlomin.com/experiments/heatmap/
+
 <iframe src="/experiments/heatmap/"
     width="100%"
     height="auto"
