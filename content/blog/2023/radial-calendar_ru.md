@@ -10,9 +10,9 @@ image: radial-calendar.png
 круг с 12 месяцами, новый год начинается сверху,
 а месяцы нумеруются по часовой стрелке.
 
-https://chuhlomin.com/experiments/radial-calendar/
+https://chuhlomin.com/experiments/radial-calendar/?lang=ru
 
-<iframe src="https://chuhlomin.com/experiments/radial-calendar/" width="100%" height="600px" style="border: none; background: #fff;"></iframe>
+<iframe src="https://chuhlomin.com/experiments/radial-calendar/?lang=ru" width="100%" height="600px" style="border: none; background: #fff;"></iframe>
 
 Я сделал его с помощью [D3.js](https://d3js.org/) – отличной библиотеки для визуализации данных.
 

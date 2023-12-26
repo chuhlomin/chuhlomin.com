@@ -110,7 +110,7 @@ svg
   .append('textPath')
   .attr('xlink:href', (d, i) => "#month" + i)
   .attr('startOffset', '50%')
-  .text(d => d.toLocaleString('default', { month: 'long' }));
+  .text(d => months[d.getMonth()]);
 
 // add text path for day labels inside arc
 days.forEach((d, i) => {
