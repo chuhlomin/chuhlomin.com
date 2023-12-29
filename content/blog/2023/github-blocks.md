@@ -18,11 +18,11 @@ https://blocks.githubnext.com
 I made a simple block for rendering Graphviz DOT files.
 It uses [graphviz-wasm](https://github.com/fabiospampinato/graphviz-wasm/)
 package to run WASM port of Graphviz in browser 🤯.
-If you have access to technical preview, you can
-[see it in action](https://blocks.githubnext.com/chuhlomin/graphviz-block-demo/blob/main/README.md).
 
 https://github.com/chuhlomin/graphviz-block
 
 ![graphviz-block-demo](graphviz-block-demo.png)
+
+**Update 2023-12-15**: The Blocks technical preview [ended](https://gist.github.com/idan/325676d192b32f169b032fde2d866c2c#github-next--technical-preview-sunsets).
 
 #github #project

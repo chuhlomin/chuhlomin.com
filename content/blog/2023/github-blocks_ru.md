@@ -14,10 +14,12 @@ GitHub запустил новую платформу Blocks в эксперим
 https://blocks.githubnext.com
 
 Я сделал простой блок для отображения файлов Graphviz DOT.
-Он использует пакет [graphviz-wasm](https://github.com/fabiospampinato/graphviz-wasm/) чтобы запустить Graphviz в браузере (WASM порт 🤯). Если у вас есть доступ к техническому превью, [посмотрите на это в действии](https://blocks.githubnext.com/chuhlomin/graphviz-block-demo/blob/main/README.md).
+Он использует пакет [graphviz-wasm](https://github.com/fabiospampinato/graphviz-wasm/) чтобы запустить Graphviz в браузере (WASM порт 🤯).
 
 https://github.com/chuhlomin/graphviz-block
 
 ![graphviz-block-demo](graphviz-block-demo.png)
+
+**Обновление 2023-12-15**: Техническое превью Blocks [закончилось](https://gist.github.com/idan/325676d192b32f169b032fde2d866c2c#github-next--technical-preview-sunsets).
 
 #github #project
