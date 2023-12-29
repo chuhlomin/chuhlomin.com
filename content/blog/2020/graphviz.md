@@ -21,9 +21,9 @@ https://graphviz.org/doc/info/lang.html
 dot -Tsvg -o graph.svg graph.dot
 ```
 
-![Graphviz demo](graphviz.jpeg "Graphviz demo")
+![Graphviz demo](graphviz.png "Graphviz demo")
 
-The screenshot shows the work of the plugin for VSCode: https://marketplace.visualstudio.com/items?itemName=joaompinto.vscode-graphviz
+The screenshot shows the work of the plugin for VSCode: https://marketplace.visualstudio.com/items?itemName=tintinweb.graphviz-interactive-preview
 
 By the way, I have such a small snippet to visualize dependency graph in Go projects:
 

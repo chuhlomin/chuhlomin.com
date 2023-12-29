@@ -19,9 +19,9 @@ Dot (одна из программ в наборе) умеет конверти
 dot -Tsvg -o graph.svg graph.dot
 ```
 
-![Graphviz demo](graphviz.jpeg "Graphviz demo")
+![Graphviz demo](graphviz.png "Graphviz demo")
 
-На скриншоте – работа плагина для VSCode: https://marketplace.visualstudio.com/items?itemName=joaompinto.vscode-graphviz
+На скриншоте – работа плагина для VSCode: https://marketplace.visualstudio.com/items?itemName=tintinweb.graphviz-interactive-preview
 
 Кстати, есть у меня такой небольшой сниппет для визуализации графа зависимостей в Go-проектах:
 
