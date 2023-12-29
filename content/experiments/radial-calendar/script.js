@@ -7,6 +7,7 @@ const radius = 500;
 const innerRadius = radius - padding - sectionHeight;
 const outerRadius = radius - padding;
 const moonRadius = innerRadius - padding/2;
+const solsticesRadius = innerRadius - padding;
 const font = '-apple-system, "Segoe UI", "Open Sans", Helvetica, Arial, sans-serif';
 
 const svg = d3
@@ -233,5 +234,25 @@ svg
   .attr('fill', 'white')
   .attr('stroke', 'black')
   .attr('stroke-width', 0.5);
+
+// add summer and winter Solstice
+var solstices = [
+  calcMeanInstant(0, year),
+  calcMeanInstant(1, year),
+  calcMeanInstant(2, year),
+  calcMeanInstant(3, year)
+].map(toDate);
+
+// add solstice circles
+svg
+  .append('g')
+  .attr('transform', `translate(${radius}, ${radius})`)
+  .selectAll('circle')
+  .data(solstices)
+  .join('circle')
+  .attr('cx', d => solsticesRadius * Math.cos(d3.timeDay.count(d3.timeYear(d), d) * 2 * Math.PI / days.length - Math.PI / 2))
+  .attr('cy', d => solsticesRadius * Math.sin(d3.timeDay.count(d3.timeYear(d), d) * 2 * Math.PI / days.length - Math.PI / 2))
+  .attr('r', 2)
+  .attr('fill', 'black');
 
 document.body.append(svg.node());
