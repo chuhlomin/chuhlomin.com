@@ -255,4 +255,19 @@ svg
   .attr('r', 2)
   .attr('fill', 'black');
 
+// get solar eclipses
+var solarEclipses = calcSolarEclipses(year);
+
+// add solar eclipse circles
+svg
+  .append('g')
+  .attr('transform', `translate(${radius}, ${radius})`)
+  .selectAll('circle')
+  .data(solarEclipses)
+  .join('circle')
+  .attr('cx', d => solsticesRadius * Math.cos(d3.timeDay.count(d3.timeYear(d), d) * 2 * Math.PI / days.length - Math.PI / 2))
+  .attr('cy', d => solsticesRadius * Math.sin(d3.timeDay.count(d3.timeYear(d), d) * 2 * Math.PI / days.length - Math.PI / 2))
+  .attr('r', 2)
+  .attr('fill', 'red');
+
 document.body.append(svg.node());
