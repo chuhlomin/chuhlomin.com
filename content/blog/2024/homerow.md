@@ -17,7 +17,7 @@ https://www.homerow.app/
 
 Homerow can be evaluated for free, but please consider buying it if you find it useful. A one time purchase of &#36;29 for one device, &#36;39 for two, or &#36;49 for three.
 
-Alternative: https://shortcat.app/
+Alternatives: https://shortcat.app/, https://superkey.app/
 
 Also recommend [Key extension for Safari](https://apps.apple.com/us/app/keys-for-safari/id1494642810).
 
