@@ -6,7 +6,7 @@ date: 2024-02-01
 
 ![Homerow](homerow.png)
 
-Fans of keyboards, will love this app. Once activated by a hotkey
+Fans of keyboards will love this app. Once activated by a hotkey
 (<kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>Space</kbd> by default),
 it highlights elements on the screen, and you can "click" on them by typing the highlighted letters.
 It's like [Vimium](https://vimium.github.io/) or
