@@ -13,7 +13,11 @@ https://www.homerow.app/
 
 Homerow можно «пробовать» бесплатно, но, пожалуйста, подумайте о покупке, если посчитаете его полезным. Для одного устройства оно стоит 29 долларов разово, для двух – 39, а для трёх – 49.
 
-Альтернативы: https://shortcat.app/, https://superkey.app/
+Альтернативы:
+
+* https://shortcat.app/
+* https://superkey.app/
+* https://superkey.app/
 
 Также, рекомендую [расширение Key для Safari](https://apps.apple.com/us/app/keys-for-safari/id1494642810).
 
