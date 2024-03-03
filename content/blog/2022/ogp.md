@@ -18,21 +18,27 @@ All posts on this blog now have these tags. For example, for this page they
 look like this:
 
 ```html
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://chuhlomin.com/blog/2022/ogp.html">
-<meta property="og:title" content="Open Graph Protocol \ Microblog \ Konstantin Chukhlomin">
-<meta property="og:image" content="https://chuhlomin.com/blog/2022/../2022/ogp.png">
-<meta property="article:author" content="https://chuhlomin.com">
-<meta property="article:published_time" content="2022-05-21">
-<meta property="article:tag" content="blog">
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://chuhlomin.com/blog/2022/ogp" />
+<meta
+  property="og:title"
+  content="Open Graph Protocol \ Microblog \ Konstantin Chukhlomin"
+/>
+<meta
+  property="og:image"
+  content="https://chuhlomin.com/blog/2022/../2022/ogp.png"
+/>
+<meta property="article:author" content="https://chuhlomin.com" />
+<meta property="article:published_time" content="2022-05-21" />
+<meta property="article:tag" content="blog" />
 ```
 
 A few useful tools:
 
-* [Open Graph Generator](https://webcode.tools/generators/open-graph)
-* [About Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
-* [Twitter Card Validator](https://cards-dev.twitter.com/validator)
-* [Twitter Card Preview Tool](https://www.bannerbear.com/tools/twitter-card-preview-tool/)
-* [Facebook Preview Tool](https://www.bannerbear.com/tools/facebook-open-graph-preview-tool/)
+- [Open Graph Debugger/Simulator](https://en.rakko.tools/tools/9/)
+- [Open Graph Generator](https://webcode.tools/generators/open-graph)
+- [About Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
+- [Twitter Card Preview Tool](https://www.bannerbear.com/tools/twitter-card-preview-tool/)
+- [Facebook Preview Tool](https://www.bannerbear.com/tools/facebook-open-graph-preview-tool/)
 
 #blog
