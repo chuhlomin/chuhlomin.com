@@ -835,6 +835,7 @@ hr {
     grid-template-columns: 1fr;
   }
 
+  #alsosee,
   #transiter {
     grid-column: 1;
   }
