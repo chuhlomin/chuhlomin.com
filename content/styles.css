@@ -578,6 +578,7 @@ iframe {
   font-size: inherit;
 }
 
+#alsosee,
 #transiter {
   grid-column: 1 / 3;
 }
