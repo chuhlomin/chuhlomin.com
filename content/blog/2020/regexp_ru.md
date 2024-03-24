@@ -29,6 +29,7 @@ https://www.oilshell.org/archive/Thompson-1968.pdf
 - https://www.regexpal.com
 - https://regexr.com
 - https://regex101.com
+- https://extendsclass.com/regex-tester.html
 
 А для проверки своих навыков в написании регулярок могу посоветовать:
 
