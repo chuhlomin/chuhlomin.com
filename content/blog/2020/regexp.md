@@ -29,6 +29,7 @@ Websites for checking and testing regular expressions:
 - https://www.regexpal.com
 - https://regexr.com
 - https://regex101.com
+- https://extendsclass.com/regex-tester.html
 
 And to test your regular expression writing skills, I can advise:
 
