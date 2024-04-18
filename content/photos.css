@@ -1,13 +1,15 @@
 @charset "UTF-8";
 
 :root {
-  color-scheme: light dark; /* opt into the user's color scheme preferences */
+  color-scheme: light dark;
+  /* opt into the user's color scheme preferences */
 
   --underline-opacity: 0.25;
 
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans",
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+    Courier, monospace;
 
   --color-black-10pct: rgba(0, 0, 0, 0.1);
   --color-white-10pct: rgba(255, 255, 255, 0.1);
@@ -17,7 +19,7 @@
   --color-background: #f6f6f4;
   --color-background-dark: #181a1b;
   --color-background-higher: #fff;
-  --color-background-higher-dark: #2F3132;
+  --color-background-higher-dark: #2f3132;
   --color-header: #000000;
   --color-header-dark: #ddd;
   --color-link: #0969da;
@@ -33,7 +35,7 @@
   --color-link-hover-underscore: rgba(223, 100, 0, var(--underline-opacity));
   --color-link-hover-underscore-dark: rgba(248, 255, 131 var(--underline-opacity));
 
-  --lang-background: #555577;;
+  --lang-background: #555577;
 
   --color-neutral-muted: rgba(175, 184, 193, 0.2);
   --color-neutral-muted-dark: rgba(110, 118, 129, 0.4);
@@ -48,7 +50,9 @@
 /*
   1. Use a more-intuitive box-sizing model.
 */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -109,9 +113,11 @@ a {
   text-decoration-thickness: 0.05em;
   color: var(--color-link);
 }
+
 a:visited {
   color: var(--color-link-visited);
 }
+
 a:hover {
   color: var(--color-link-hover);
 }
@@ -119,7 +125,7 @@ a:hover {
 .flag {
   position: relative;
   width: 100%;
-  padding: 20px;
+  padding: calc(min(20px, max(10px, 10px + (10 * (100vw - 815px) / 185))));
   background: #e7edf4;
 }
 
@@ -150,13 +156,15 @@ a:hover {
   transition: none;
 }
 
-.lang:visited, .lang:hover {
+.lang:visited,
+.lang:hover {
   color: white;
 }
 
 .blog-title {
   display: flex;
-  position: relative; /* for positioning .lanugages */
+  position: relative;
+  /* for positioning .lanugages */
   padding-right: 80px;
   gap: 4pt 14pt;
   flex-wrap: wrap;
@@ -172,13 +180,13 @@ a:hover {
   height: 50px;
   border-radius: 50%;
   margin-right: 0.66rem;
-  background-image: url('./apple-touch-icon.png');
+  background-image: url("./apple-touch-icon.png");
   background-size: cover;
 }
 
 a .user-picture-image {
   box-shadow: inset 0 0 0 1px var(--color-link-underscore);
-  transition: .2s;
+  transition: 0.2s;
 }
 
 a:hover .user-picture-image {
@@ -208,8 +216,10 @@ a:hover .user-picture-image {
   background: var(--color-background-higher);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  position: relative; /* for :before element with blurhash image */
-  transition-property: outline; /* override link transition */
+  position: relative;
+  /* for :before element with blurhash image */
+  transition-property: outline;
+  /* override link transition */
   transition-duration: 0.05s;
 }
 
@@ -225,7 +235,8 @@ a:hover .user-picture-image {
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--background-blurhash); /* set by JS per element */
+  background: var(--background-blurhash);
+  /* set by JS per element */
   opacity: 0;
   transition: opacity 0.33s ease-out;
 }
@@ -247,7 +258,8 @@ a:hover .user-picture-image {
   display: grid;
   grid-template-columns: 1fr minmax(auto, 100%) 1fr;
   grid-template-rows: auto 1fr;
-  gap: 4px; /* to account for :focus outline */
+  gap: 4px;
+  /* to account for :focus outline */
   background: var(--color-background-higher);
 }
 
@@ -270,10 +282,13 @@ a:hover .user-picture-image {
   display: block;
   max-width: 100%;
   max-height: calc(100vh - 50px);
-  max-height: calc(100svh - 50px); /* Safari fix for bottom safe area */
-  object-fit: contain; /* avoid image stretching */
+  max-height: calc(100svh - 50px);
+  /* Safari fix for bottom safe area */
+  object-fit: contain;
+  /* avoid image stretching */
   border-radius: 6px;
-  margin: 0 auto; /* center image when text is longer than image width */
+  margin: 0 auto;
+  /* center image when text is longer than image width */
 }
 
 #viewer #image.blurhash {
@@ -405,10 +420,12 @@ a:hover .user-picture-image {
     color: var(--color-link-dark);
     border-color: var(--color-link-underscore-dark);
   }
+
   a:visited {
     color: var(--color-link-visited-dark);
     border-color: var(--color-link-visited-underscore-dark);
   }
+
   a:hover {
     color: var(--color-link-hover-dark);
     border-color: var(--color-link-hover-underscore-dark);
@@ -419,7 +436,7 @@ a:hover .user-picture-image {
   }
 
   .user-picture-image {
-    background-image: url('./img/memoji_v3_dark.png');
+    background-image: url("./img/memoji_v3_dark.png");
   }
 
   .photos .photo {
@@ -451,7 +468,9 @@ a:hover .user-picture-image {
   }
 }
 
-@media screen and (max-width: 815px) { /* tablet */
+@media screen and (max-width: 815px) {
+
+  /* tablet */
   .flag {
     padding: 10px;
   }
@@ -526,6 +545,7 @@ a:hover .user-picture-image {
   #viewer #image.narrow {
     height: auto !important;
   }
+
   #viewer #image.wide {
     width: inherit !important;
   }
