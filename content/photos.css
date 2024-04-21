@@ -194,7 +194,8 @@ a:hover .user-picture-image {
 }
 
 .photos {
-  padding: 20px;
+  /* calc padding to be 20px max at 1000px and scale down to 10px at 815px */
+  padding: calc(min(20px, max(10px, 10px + (10 * (100vw - 815px) / 185))));
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fill, 162px);
