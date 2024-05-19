@@ -187,3 +187,28 @@
   type: thing
   url: https://www.popsockets.com/en-us/p/popmount-2-car-and-desk-white/802757.html?cgid=dash-mount-popmount
   price: $30
+
+- name: Analogue Pocket
+  type: hardware
+  url: https://www.analogue.co/pocket
+  price: $220
+
+- name: Tevaplanter
+  type: thing
+  url: https://tevaplanter.com/products/tevaplanter
+  price: $80
+
+- name: Kokoon
+  type: thing
+  url: https://kokoon.io/en-us/products/philips-sleep-headphones-with-kokoon
+  price: $188
+
+- name: 8BitDo Retro Mechanical Keyboard
+  type: hardware
+  url: https://www.8bitdo.com/retro-mechanical-keyboard-c64/
+  price: $100
+
+- name: Henson Brothers Razor
+  type: thing
+  url: https://hensonshaving.com/products/henson-al13-in-aircraft-aluminum
+  price: $70
