@@ -30,7 +30,7 @@ jobs:
           COMMENTS_ENABLED: "1"
           COMMENTS_SITE_ID: "micro"
           SEARCH_ENABLED: "1"
-          SEARCH_HOST: "https://search.dev1.chuhlomin.com/"
+          SEARCH_HOST: "https://search.chuhlomin.com/"
           SEARCH_MASTER_KEY: ${{ secrets.SEARCH_MASTER_KEY }}
           SEARCH_API_KEY: ${{ secrets.SEARCH_API_KEY }}
         run:
