@@ -2,7 +2,7 @@
 date: 2024-08-24
 ---
 
-# Terminal Images Protocol
+# Terminal Images Protocols
 
 ![Terminal with an image](term-images.png)
 
