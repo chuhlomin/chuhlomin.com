@@ -212,3 +212,8 @@
   type: thing
   url: https://hensonshaving.com/products/henson-al13-in-aircraft-aluminum
   price: $70
+
+- name: The Graphic Design Bible
+  type: book
+  url: https://www.theoinglis.co.uk/GDB
+  price: $23
