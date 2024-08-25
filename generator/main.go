@@ -16,33 +16,33 @@ import (
 
 // Config is a struct that holds all configuration options
 type Config struct {
-	Debug               bool          `env:"DEBUG" long:"debug" description:"debug mode"`
 	ContentDirectory    string        `env:"CONTENT_DIR" long:"content" description:"content directory" default:"content"`
 	TemplatesDirectory  string        `env:"TEMPLATES_DIR" long:"templates" description:"templates directory" default:"templates"`
 	OutputDirectory     string        `env:"OUTPUT_DIR" long:"output" description:"output directory" default:"output"`
 	TempDirectory       string        `env:"TEMP_DIR" long:"temp" description:"temp directory" default:""`
 	DefaultLanguage     string        `env:"DEFAULT_LANG" long:"default-lang" description:"default language" default:"en"`
 	RootURL             string        `env:"ROOT_URL" long:"root-url" description:"root url" default:"https://local.chuhlomin.com"`
-	RemoveHTMLExtension bool          `env:"REMOVE_HTML_EXT" long:"remove-html-ext" description:"remove .html extension from urls"`
-	CommentsEnabled     bool          `env:"COMMENTS_ENABLED" long:"comments-enabled" description:"enable comments"`
 	CommentsSiteID      string        `env:"COMMENTS_SITE_ID" long:"comments-site-id" description:"comments site id"`
-	ShowDrafts          bool          `env:"SHOW_DRAFTS" long:"show-drafts" description:"show drafts"`
-	FilesChannelSize    int           `env:"FILES_CHANNEL_SIZE" long:"files-channel-size" description:"size of file channel" default:"100"`
-	ImagesChannelSize   int           `env:"IMAGES_CHANNEL_SIZE" long:"images-channel-size" description:"size of images channel" default:"100"`
 	CacheDirectory      string        `env:"CACHE_DIR" long:"cache-dir" description:"cache directory" default:"cache"`
 	I18NDirectory       string        `env:"I18N_DIR" long:"i18n-dir" description:"i18n directory" default:"i18n"`
-	SearchEnabled       bool          `env:"SEARCH_ENABLED" long:"search-enabled" description:"enable search"`
 	SearchHost          string        `env:"SEARCH_HOST" long:"search-host" description:"search host" default:"https://local.chuhlomin.com/blog/search"`
 	SearchMasterKey     string        `env:"SEARCH_MASTER_KEY" long:"search-master-key" description:"search master key, used to create index"`
 	SearchAPIKey        string        `env:"SEARCH_API_KEY" long:"search-api-key" description:"search api key, used on frontend to search"`
+	ThumbPath           string        `env:"THUMB_PATH" long:"thumb-path" description:"path to thumbnails" default:"/img/thumbs/"`
+	OpenGraphCacheFile  string        `env:"OPENGRAPH_CACHE_FILE" long:"opengraph-cache-file" description:"opengraph cache file" default:"cache.yml"`
+	PhotosDomain        string        `env:"PHOTOS_DOMAIN" long:"photos-domain" description:"photos domain" default:"https://photos.chuhlomin.com/"`
+	FilesChannelSize    int           `env:"FILES_CHANNEL_SIZE" long:"files-channel-size" description:"size of file channel" default:"100"`
+	ImagesChannelSize   int           `env:"IMAGES_CHANNEL_SIZE" long:"images-channel-size" description:"size of images channel" default:"100"`
 	SearchTimeout       time.Duration `env:"SEARCH_TIMEOUT" long:"search-timeout" description:"search timeout" default:"5s"`
 	NumWorkers          int           `env:"NUM_WORKERS" long:"workers" description:"number of workers" default:"4"`
-	ThumbPath           string        `env:"THUMB_PATH" long:"thumb-path" description:"path to thumbnails" default:"/img/thumbs/"`
 	ThumbMaxWidth       int           `env:"THUMB_MAX_WIDTH" long:"thumb-max-width" description:"max width of thumbnails" default:"140"`
 	ThumbMaxHeight      int           `env:"THUMB_MAX_HEIGHT" long:"thumb-max-height" description:"max height of thumbnails" default:"140"`
 	OpenGraphTimeout    time.Duration `env:"OPENGRAPH_TIMEOUT" long:"opengraph-timeout" description:"opengraph timeout" default:"5s"`
-	OpenGraphCacheFile  string        `env:"OPENGRAPH_CACHE_FILE" long:"opengraph-cache-file" description:"opengraph cache file" default:"cache.yml"`
-	PhotosDomain        string        `env:"PHOTOS_DOMAIN" long:"photos-domain" description:"photos domain" default:"https://photos.chuhlomin.com/"`
+	Debug               bool          `env:"DEBUG" long:"debug" description:"debug mode"`
+	RemoveHTMLExtension bool          `env:"REMOVE_HTML_EXT" long:"remove-html-ext" description:"remove .html extension from urls"`
+	CommentsEnabled     bool          `env:"COMMENTS_ENABLED" long:"comments-enabled" description:"enable comments"`
+	ShowDrafts          bool          `env:"SHOW_DRAFTS" long:"show-drafts" description:"show drafts"`
+	SearchEnabled       bool          `env:"SEARCH_ENABLED" long:"search-enabled" description:"enable search"`
 }
 
 // GetString returns the value of the environment variable named by the key.

@@ -12,17 +12,17 @@ type Photo struct {
 	Path                string
 	Title               string `yaml:"title,omitempty"`
 	TitleRu             string `yaml:"title_ru,omitempty"`
+	ThumbPath           string `yaml:"thumb,omitempty"`
+	Blurhash            string `yaml:"blurhash,omitempty"`
+	BlurhashImageBase64 string `yaml:"blurhash_image_base64,omitempty"`
 	Width               int    `yaml:"width,omitempty"`
 	Height              int    `yaml:"height,omitempty"`
-	ThumbPath           string `yaml:"thumb,omitempty"`
 	ThumbXOffset        int    `yaml:"thumb_x,omitempty"`
 	ThumbYOffset        int    `yaml:"thumb_y,omitempty"`
 	ThumbWidth          int    `yaml:"thumb_width,omitempty"`
 	ThumbHeight         int    `yaml:"thumb_height,omitempty"`
 	ThumbTotalWidth     int    `yaml:"thumb_total_width,omitempty"`
 	ThumbTotalHeight    int    `yaml:"thumb_total_height,omitempty"`
-	Blurhash            string `yaml:"blurhash,omitempty"`
-	BlurhashImageBase64 string `yaml:"blurhash_image_base64,omitempty"`
 }
 
 func (g *Generator) processPhotos(fileContent []byte) (interface{}, error) {

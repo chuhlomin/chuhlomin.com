@@ -29,9 +29,9 @@ var (
 type Data struct {
 	File       *MarkdownFile
 	All        map[string]*MarkdownFile
+	Timestamp  string
 	AllSorted  []*MarkdownFile
 	Alternates []*MarkdownFile // used only for index.html
-	Timestamp  string
 }
 
 // MarkdownFile represents a markdown file, for example
@@ -42,6 +42,7 @@ type Data struct {
 //	# Title
 //	Page content
 type MarkdownFile struct {
+	CommentsEnabled *bool    `yaml:"comments_enabled"`           // comments_enabled overrides config.CommentsEnabled
 	Source          string   `yaml:"-"`                          // path to the source markdown file
 	Path            string   `yaml:"-"`                          // path to the generated HTML file
 	Canonical       string   `yaml:"-"`                          // canonical URL
@@ -52,18 +53,17 @@ type MarkdownFile struct {
 	Body            string   `yaml:"-" indexer:"no_store"`       // html body, generated from markdown
 	Date            string   `yaml:"date" indexer:"date"`        // date when post was published, in format "2006-01-02"
 	Type            string   `yaml:"type"`                       // "post" (by default), "page", etc.
-	Tags            tags     `yaml:"tags"`                       // post tags, by default parsed from the post
 	Language        string   `yaml:"language"`                   // language ("en", "ru", ...), parsed from filename, overrides config.DefaultLanguage
-	Draft           bool     `yaml:"draft"`                      // draft is used to mark post as draft
 	Template        string   `yaml:"template"`                   // template to use in config.TemplatesDirectory, overrides default "post.html"
 	Order           string   `yaml:"order"`                      // can be used to sort pages
-	CommentsEnabled *bool    `yaml:"comments_enabled"`           // comments_enabled overrides config.CommentsEnabled
 	Description     string   `yaml:"description" indexer:"text"` // description is used for the meta description
 	Author          string   `yaml:"author"`                     // author is used for the meta author
 	Keywords        string   `yaml:"keywords"`                   // keywords is used for the meta keywords
-	Refs            []string `yaml:"refs"`                       // references to other posts, used to generate the list of related posts
 	Image           string   `yaml:"image"`                      // image associated with the post; it's used to generate the thumbnailPath
+	Tags            tags     `yaml:"tags"`                       // post tags, by default parsed from the post
+	Refs            []string `yaml:"refs"`                       // references to other posts, used to generate the list of related posts
 	Images          []image  `yaml:"-"`                          // images in the post
+	Draft           bool     `yaml:"draft"`                      // draft is used to mark post as draft
 }
 
 // image is a struct that contains metadata of image from the post

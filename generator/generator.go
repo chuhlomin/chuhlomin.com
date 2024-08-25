@@ -27,16 +27,16 @@ const (
 
 // Generator holds all the data needed to generate the site
 type Generator struct {
-	cfg          Config
 	t            *template.Template
-	md           map[string]*MarkdownFile // relative source path -> MarkdownFile
-	mdSorted     []*MarkdownFile          // sorted MarkdownFiles by creation date
-	mdMu         sync.Mutex
-	tempDir      string                              // temporary directory used to templates
+	md           map[string]*MarkdownFile            // relative source path -> MarkdownFile
 	templates    map[string]map[string]*MarkdownFile // id -> hashed path -> MarkdownFile
-	templatesMu  sync.Mutex
 	searchClient *meilisearch.Client
 	og           *openGraphClient
+	cfg          Config
+	tempDir      string          // temporary directory used to templates
+	mdSorted     []*MarkdownFile // sorted MarkdownFiles by creation date
+	mdMu         sync.Mutex
+	templatesMu  sync.Mutex
 }
 
 // NewGenerator creates a new Generator
