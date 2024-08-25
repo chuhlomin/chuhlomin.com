@@ -7,7 +7,9 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.19.1
 	github.com/aws/aws-sdk-go-v2/credentials v1.13.43
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.40.2
+	github.com/bbrks/go-blurhash v1.1.1
 	github.com/charmbracelet/log v0.2.5
+	github.com/disintegration/imageorient v0.0.0-20180920195336-8147d86e83ec
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
 	gopkg.in/yaml.v3 v3.0.1
@@ -29,8 +31,8 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sts v1.23.2 // indirect
 	github.com/aws/smithy-go v1.15.0 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
-	github.com/bbrks/go-blurhash v1.1.1 // indirect
 	github.com/charmbracelet/lipgloss v0.8.0 // indirect
+	github.com/disintegration/gift v1.1.2 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-isatty v0.0.18 // indirect

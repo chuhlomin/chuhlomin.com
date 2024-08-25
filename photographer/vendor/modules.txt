@@ -128,6 +128,12 @@ github.com/charmbracelet/lipgloss
 # github.com/charmbracelet/log v0.2.5
 ## explicit; go 1.17
 github.com/charmbracelet/log
+# github.com/disintegration/gift v1.1.2
+## explicit
+github.com/disintegration/gift
+# github.com/disintegration/imageorient v0.0.0-20180920195336-8147d86e83ec
+## explicit
+github.com/disintegration/imageorient
 # github.com/go-logfmt/logfmt v0.6.0
 ## explicit; go 1.17
 github.com/go-logfmt/logfmt

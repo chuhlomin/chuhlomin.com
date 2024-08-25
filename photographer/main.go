@@ -24,6 +24,7 @@ import (
 
 	"github.com/bbrks/go-blurhash"
 	"github.com/charmbracelet/log"
+	"github.com/disintegration/imageorient"
 	flags "github.com/jessevdk/go-flags"
 	"github.com/nfnt/resize"
 	"gopkg.in/yaml.v3"
@@ -520,7 +521,7 @@ func readImage(dir string, path string) (image.Image, error) {
 	}
 	defer file.Close()
 
-	img, _, err := image.Decode(file)
+	img, _, err := imageorient.Decode(file)
 	if err != nil {
 		return nil, fmt.Errorf("error decoding image: %v", err)
 	}
