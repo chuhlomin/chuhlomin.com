@@ -493,6 +493,7 @@ iframe {
 }
 
 .message {
+  grid-column: 1 / -1 !important;
   position: relative;
   display: block;
   max-width: max-content;
