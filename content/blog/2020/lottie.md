@@ -9,7 +9,7 @@ date: 2020-04-27
 Let's continue with Telegram stickers.
 Instead of WebP for animated stickers, a format called Lottie, developed at AirBnB (remember, you could still travel to other countries before?), was chosen.
 
-https://airbnb.design/lottie/
+https://airbnb.io/lottie/
 
 The main difference is that it is a vector animation and therefore tends to be smaller in size. Examples of animations: https://lottiefiles.com
 
