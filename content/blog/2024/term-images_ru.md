@@ -29,6 +29,6 @@ date: 2024-08-24
 <ESC>_Ga=T,f=100,t=d,m=1;<base-64 encoded image><ECS>\
 ```
 
-Для Go Рекомендую библиотеку [`rasterm`](https://github.com/BourgeoisBear/rasterm), которая реализует оба протокола.
+Для Go рекомендую библиотеку [`rasterm`](https://github.com/BourgeoisBear/rasterm), которая реализует оба протокола.
 
 #cli #image #go
