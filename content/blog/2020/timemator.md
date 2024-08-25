@@ -20,4 +20,6 @@ It is not recommended for paranoics.
 The trial is thirty days, and a lifetime license costs $39.  
 Today available for 19.50.
 
+Alternative: https://timingapp.com/
+
 #app #macos #timestamp

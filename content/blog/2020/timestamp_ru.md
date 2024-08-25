@@ -19,4 +19,6 @@ refs:
 
 <img src="timestamp.jpeg" width="408" height="640" alt="Timestamp Shortcut" />
 
+Альтернатива: https://timingapp.com/
+
 #ios #timestamp
