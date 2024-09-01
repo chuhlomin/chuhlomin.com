@@ -23,4 +23,6 @@ http://ccmenu.org
 
 ![CCMenu promo](ccmenu.png "CCMenu promo")
 
+**Update 2024-09-01**: CCMenu now supports GitHub Actions.
+
 #ops #app #macos
