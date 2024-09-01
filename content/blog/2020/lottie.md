@@ -23,4 +23,6 @@ https://github.com/airbnb/lottie-web
 Online editor for creating animations:
 https://www.lottielab.com
 
+**Update 2024-09-01**: There is a [Figma plagin](https://lottiefiles.com/plugins/figma) for creating Lottie animations.
+
 #telegram
