@@ -22,7 +22,7 @@ look like this:
 <meta property="og:url" content="https://chuhlomin.com/blog/2022/ogp" />
 <meta
   property="og:title"
-  content="Open Graph Protocol \ Microblog \ Konstantin Chukhlomin"
+  content="Open Graph Protocol \ Microblog \ Constantine Chukhlomin"
 />
 <meta
   property="og:image"
