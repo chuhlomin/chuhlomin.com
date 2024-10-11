@@ -18,20 +18,10 @@
   url: https://standardsmanual.com/products/qsl
   price: $60
 
-- name: Camera?
-  type: hardware
-  url: https://papershootcamera.com/products/croz-vanguard-camera-set
-  price: $160
-
 - name: Apple AirPods Max (silver)
   type: hardware
   url: https://www.apple.com/airpods-max/
   price: $550
-
-- name: Smeg Hand Blender
-  type: hardware
-  url: https://www.smeg.com/us/products/HBF02BLUS
-  price: $190
 
 - name: Backbone
   type: hardware
@@ -110,18 +100,13 @@
 
 - name: LG Oled TV
   type: hardware
-  url: https://www.lg.com/us/tvs/lg-oled55c1pub-oled-4k-tv
-  price: $1300
+  url: https://www.lg.com/us/tvs/lg-oled55c4pua-oled-4k-tv
+  price: $1400
 
 - name: Yeti Rambler 20oz Thumbler
   type: thing
   url: https://www.yeti.com/drinkware/tumblers/21070060028.html
   price: $35
-
-- name: OnePlus Nord Wired Earphones Black
-  type: thing
-  url: https://www.oneplus.com/us/product/oneplus-nord-wired-earphones
-  price: $14
 
 - name: GameShell
   type: hardware
@@ -222,3 +207,8 @@
   type: think
   url: https://ulxstore.com/products/grey-leather-desk-mat
   price: $70
+
+- name: Shinobi keyboard
+  type: hardware
+  url: https://tex.com.tw/products/shinobi?variant=16969883844698
+  price: $185
