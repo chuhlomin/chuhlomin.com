@@ -14,9 +14,6 @@ http://www.packal.org
 I have also recently come across an excellent collection by Vítor Galvão:  
 https://github.com/vitorgalvao/alfred-workflows
 
-By the way, the same guy also sells on beautiful abstract prints on Society6:  
-https://society6.com/vitorgalvao
-
 But back to our workflows. Recently I've been itching to make such a workflow that would prepare the computer for a presentation/screen recording:
 
 - turn off notifications,

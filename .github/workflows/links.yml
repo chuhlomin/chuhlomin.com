@@ -35,5 +35,7 @@ jobs:
             --exclude regexr.com
             --exclude open.spotify.com
             --exclude www.midjourney.com
+            --exclude patreon.com
+            --exclude sourceforge.net
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
