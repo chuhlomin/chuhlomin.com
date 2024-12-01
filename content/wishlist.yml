@@ -204,7 +204,7 @@
   price: $23
 
 - name: Leather desk mat
-  type: think
+  type: thing
   url: https://ulxstore.com/products/grey-leather-desk-mat
   price: $70
 
@@ -212,3 +212,13 @@
   type: hardware
   url: https://tex.com.tw/products/shinobi?variant=16969883844698
   price: $185
+
+- name: ScreenBar Halo Monitor Light + Webcam stand
+  type: hardware
+  url: https://www.benq.com/en-us/lighting/monitor-light/screenbar-halo/buy.html
+  price: $200
+
+- name: Brompton C-Line Explore Bike
+  type: thing
+  url: https://us.brompton.com/p/787/c-line-explore
+  price: $1850
