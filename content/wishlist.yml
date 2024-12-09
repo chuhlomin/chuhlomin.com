@@ -18,10 +18,10 @@
   url: https://standardsmanual.com/products/qsl
   price: $60
 
-- name: Apple AirPods Max (silver)
-  type: hardware
-  url: https://www.apple.com/airpods-max/
-  price: $550
+# - name: Apple AirPods Max (silver)
+#   type: hardware
+#   url: https://www.apple.com/airpods-max/
+#   price: $550
 
 - name: Backbone
   type: hardware
@@ -193,10 +193,10 @@
   url: https://www.8bitdo.com/retro-mechanical-keyboard-c64/
   price: $100
 
-- name: Henson Brothers Razor
-  type: thing
-  url: https://hensonshaving.com/products/henson-al13-in-aircraft-aluminum
-  price: $70
+# - name: Henson Brothers Razor
+#   type: thing
+#   url: https://hensonshaving.com/products/henson-al13-in-aircraft-aluminum
+#   price: $70
 
 - name: The Graphic Design Bible
   type: book
@@ -213,12 +213,17 @@
   url: https://tex.com.tw/products/shinobi?variant=16969883844698
   price: $185
 
-- name: ScreenBar Halo Monitor Light + Webcam stand
-  type: hardware
-  url: https://www.benq.com/en-us/lighting/monitor-light/screenbar-halo/buy.html
-  price: $200
+# - name: ScreenBar Halo Monitor Light + Webcam stand
+#   type: hardware
+#   url: https://www.benq.com/en-us/lighting/monitor-light/screenbar-halo/buy.html
+#   price: $200
 
 - name: Brompton C-Line Explore Bike
   type: thing
   url: https://us.brompton.com/p/787/c-line-explore
   price: $1850
+
+- name: Chord Machine AKT-0.1 by Akuto Studio
+  type: hardware
+  url: https://www.indiegogo.com/projects/chord-machine-akt-0-1-by-akuto-studio--2#/
+  price: $420
