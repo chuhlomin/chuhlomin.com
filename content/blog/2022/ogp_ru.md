@@ -33,6 +33,7 @@ https://ogp.me
 Несколько полезных инструментов:
 
 - [Link Preview](https://linkpreview.xyz/)
+- [Meta Tags Toolkit](https://metatags.io/)
 - [Open Graph Debugger/Simulator](https://en.rakko.tools/tools/9/)
 - [Open Graph Generator](https://webcode.tools/generators/open-graph)
 - [About Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
