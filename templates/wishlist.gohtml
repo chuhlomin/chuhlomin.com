@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wishlist \ {{ i18n "name" "en" }}</title>
+<title>{{ .Title }} \ {{ i18n "name" "en" }}</title>
 <link rel="stylesheet" href="wishlist.css">
 </head>
 <body>
@@ -15,14 +15,14 @@
         </div>
         <div class="blog-title">
             <a class="name" href="/{{ link "" "en" }}">{{ i18n "name" "en" }}</a>&nbsp;<span class="sep">/</span>
-            <h1>Wishlist</h1>
+            <h1>{{ .Title }}</h1>
         </div>
     </div>
 </div>
 
 {{/* collect all .Type in array */}}
 {{ $types := mkslice }}
-{{ range . }}
+{{ range .Items }}
 {{ $types = ($types | append .Type) }}
 {{ end }}
 {{/* remove duplicates */}}
@@ -37,7 +37,7 @@
 </ul>
 
 <div class="items">
-{{ range . }}
+{{ range .Items }}
 <a class="item" href="{{ .URL }}" data-type="{{ .Type }}">
     <div class="image" style="background-image: url({{ .Image }})"></div>
     <div class="info">

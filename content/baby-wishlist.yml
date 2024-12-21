@@ -1,0 +1,99 @@
+- name: Car Ken Cash
+  url: https://playforever.us/products/ken-cash
+  price: $55
+  type: toy
+- name: Car UFO Leonessa
+  url: https://playforever.us/products/ufo77-leonessa
+  price: $55
+  type: toy
+- name: Car Leadbelly Burnside
+  url: https://playforever.us/products/pl-vf504-lead-belly-burnside
+  price: $40
+  type: toy
+- name: Car Leadbelly Skeeter
+  url: https://playforever.us/products/pl-vf503-lead-belly-skeeter
+  price: $40
+  type: toy
+- name: Car Luft Hopper
+  url: https://playforever.us/products/t904-luft-hopper
+  price: $50
+  type: toy
+- name: Car Malibu Benjamin
+  url: https://playforever.us/products/vm202-malibu-benjamin
+  price: $35
+  type: toy
+- name: Bronti the Brontosaurus
+  url: https://bellzi.com/products/brontosaurus-stuffed-animal
+  price: $25
+  type: toy
+- name: Foxxi the Fox
+  url: https://bellzi.com/products/fox-stuffed-animal
+  price: $25
+  type: toy
+- name: Randy the Reindeer
+  url: https://fluffnest.com/products/randy-the-reindeer-pre-order
+  price: $20
+  type: toy
+- name: Pierre the Penguin Crochet Kit
+  url: https://thewoobles.com/collections/bestsellers/products/penguin-crochet-kit
+  price: $30
+  type: toy
+- name: Getahug Totoro Bear
+  url: https://www.getahug.co/products/the-totoro-bear-gift-set
+  price: $40
+  type: toy
+- name: Jermaine, The Bear - Large
+  url: https://adadastore.com/collections/our-teddies/products/jermaine-teddy-bear?variant=49349661557004
+  price: $160
+  type: toy
+- name: Let's Sense!
+  url: https://www.kiwico.com/panda/dp/lets-sense/4281#plus
+  price: $50
+  type: toy
+- name: Brown Curly Bear Warmies
+  url: https://warmies.com/products/brown-curly-bear-warmies
+  type: toy
+  price: $30
+
+- name: NEST plate 195x145mm
+  url: https://kinto-usa.com/collections/nest/products/20581?variant=41686274048048
+  price: $21.50
+  type: kitchen
+- name: NEST bowl 80x65mm
+  url: https://kinto-usa.com/collections/nest/products/20582?variant=41686274113584
+  price: $12
+  type: kitchen
+- name: NEST bowl 105x85mm
+  url: https://kinto-usa.com/collections/nest/products/20583?variant=41686274211888
+  price: $13
+  type: kitchen
+- name: NEST bowl 135x105mm
+  url: https://kinto-usa.com/collections/nest/products/20584?variant=41686274277424
+  price: $15.50
+  type: kitchen
+- name: NEST mug 250ml
+  url: https://kinto-usa.com/collections/nest/products/20585?variant=41686274342960
+  price: $13
+  type: kitchen
+- name: BONBO 6pcs set
+  url: https://kinto-usa.com/products/26389?pr_prod_strat=e5_desc&pr_rec_id=2a1367577&pr_rec_pid=7540744421424&pr_ref_pid=7540744192048&pr_seq=uniform
+  price: $65.60
+  type: kitchen
+- name: Silicone Feeding Spoons
+  url: https://moonkieshop.com/collections/hot-sale/products/feeding-spoons
+  price: $10
+  type: kitchen
+
+- name: Baby Oral Care Set
+  url: https://moonkieshop.com/collections/hot-sale/products/baby-toothbrush-kit?variant=45133935345917
+  price: $9
+  type: health
+
+- name: Cove Montessori Bookshelf
+  url: https://www.nestig.com/products/cove-montessori-bookshelf?variant=47795519455400
+  price: $230
+  type: furniture
+- name: Bear Cub Montessori Table & Chair Set
+  url: https://www.nestig.com/products/bear-cub-montessori-table-chairs-set?variant=47795519520936
+  price: $250
+  type: furniture
