@@ -3,10 +3,18 @@ package main
 import (
 	"fmt"
 	"slices"
+	"strings"
 
 	"github.com/charmbracelet/log"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 	"gopkg.in/yaml.v3"
 )
+
+type PageData struct {
+	Title string
+	Items interface{}
+}
 
 // WishlistItem is a struct for items in wishlist.yml file
 type WishlistItem struct {
@@ -18,12 +26,12 @@ type WishlistItem struct {
 	Image string // OpenGraph image URL
 }
 
-func (g *Generator) processWishlistItems(fileContent []byte) (interface{}, error) {
+func (g *Generator) processWishlistItems(fileContent []byte, filename string) (PageData, error) {
 	// unmarshal the file into array of WishlistItem
 	var items []WishlistItem
 	err := yaml.Unmarshal(fileContent, &items)
 	if err != nil {
-		return nil, fmt.Errorf("Error unmarshaling file: %v", err)
+		return PageData{}, fmt.Errorf("Error unmarshaling file: %v", err)
 	}
 
 	// reverse the items, so that the newest ones are first
@@ -40,5 +48,20 @@ func (g *Generator) processWishlistItems(fileContent []byte) (interface{}, error
 		items[i].Image = og.Image
 	}
 
-	return items, nil
+	return PageData{
+		Title: generateTitleFromFilename(filename),
+		Items: items,
+	}, nil
+}
+
+func generateTitleFromFilename(filename string) string {
+	caser := cases.Title(language.English, cases.NoLower)
+
+	return caser.String(
+		strings.ReplaceAll(
+			strings.TrimSuffix(filename, ".yml"),
+			"-",
+			" ",
+		),
+	)
 }
