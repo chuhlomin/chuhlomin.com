@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ .Title }} \ {{ i18n "name" "en" }}</title>
-<link rel="stylesheet" href="wishlist.css">
+<link rel="stylesheet" href="wishlist.css?crc={{ crc "wishlist.css" }}">
 </head>
 <body>
 
@@ -38,8 +38,8 @@
 
 <div class="items">
 {{ range .Items }}
-<a class="item" href="{{ .URL }}" data-type="{{ .Type }}">
-    <div class="image" style="background-image: url({{ .Image }})"></div>
+<a class="item" href="{{ .URL }}" data-type="{{ .Type }}" style="--image: url('{{ .Image }}')">
+    <div class="image"></div>
     <div class="info">
         <span class="name">{{ .Name }}</span>
         <span class="price">{{ .Price }}</span>
