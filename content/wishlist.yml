@@ -28,10 +28,10 @@
   url: https://playbackbone.com/products/backbone-one-playstation/
   price: $75
 
-- name: Apple Watch Band
-  type: wardrobe
-  url: https://bellroy.com/products/watch-strap?color=evergreen&material=leather&size=large_watch_strap#slide-3
-  price: $70
+# - name: Apple Watch Band
+#   type: wardrobe
+#   url: https://bellroy.com/products/watch-strap?color=evergreen&material=leather&size=large_watch_strap#slide-3
+#   price: $70
 
 - name: App Icon Book
   type: book
