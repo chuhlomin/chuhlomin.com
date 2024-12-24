@@ -54,6 +54,14 @@
   url: https://warmies.com/products/brown-curly-bear-warmies
   type: toy
   price: $30
+- name: Computer Engineering Big & Small Bundle
+  url: https://computerengineeringforbabies.com/products/babies-big-small-bundle
+  type: toy
+  price: $60
+- name: The Play Kits For 1-Year-Olds
+  url: https://lovevery.com/products/the-play-kits/1-year-old
+  type: toy
+  price: $80
 
 - name: NEST plate 195x145mm
   url: https://kinto-usa.com/collections/nest/products/20581?variant=41686274048048

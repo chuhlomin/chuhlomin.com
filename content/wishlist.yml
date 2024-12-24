@@ -227,3 +227,23 @@
   type: hardware
   url: https://www.indiegogo.com/projects/chord-machine-akt-0-1-by-akuto-studio--2#/
   price: $420
+
+- name: Discbound Analog
+  type: thing
+  url: https://ugmonk.com/collections/analog/products/discbound-analog?variant=44224149553302
+  price: $20
+
+- name: The Book. The Ultimate Guide to Rebuilding a Civilization
+  type: book
+  url: https://howtorebuildcivilization.com/products/the-book?variant=43738853081380
+  price: $120
+
+- name: Chess, classic
+  type: thing
+  url: https://printworksmarket.com/products/chess-classic
+  price: €65
+
+- name: XM2w 4k Gaming Mouse - White
+  type: hardware
+  url: https://www.endgamegear.com/en-us/gaming-mice/xm2w-4k?attribute%5Bcolor%5D=White
+  price: $120
