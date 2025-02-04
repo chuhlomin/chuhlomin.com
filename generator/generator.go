@@ -320,7 +320,7 @@ func (g *Generator) processYaml(path string) error {
 	)
 
 	switch path {
-	case "wishlist.yml", "baby-wishlist.yml":
+	case "wishlist.yml", "baby-wishlist.yml", "watches.yml":
 		tmpls[strings.Replace(path, ".yml", ".html", 1)] = "wishlist.gohtml"
 		data, err = g.processWishlistItems(fileContent, path)
 		if err != nil {
