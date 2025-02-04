@@ -61,7 +61,9 @@ func (c *openGraphClient) Save(cacheFile string) error {
 
 	defer f.Close()
 
-	return yaml.NewEncoder(f).Encode(c.cache)
+	e := yaml.NewEncoder(f)
+	e.SetIndent(2)
+	return e.Encode(c.cache)
 }
 
 func (c *openGraphClient) fetch(url string) (OpenGraph, error) {
