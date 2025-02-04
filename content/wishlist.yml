@@ -103,10 +103,10 @@
   url: https://www.lg.com/us/tvs/lg-oled55c4pua-oled-4k-tv
   price: $1400
 
-- name: Yeti Rambler 20oz Thumbler
-  type: thing
-  url: https://www.yeti.com/drinkware/tumblers/21070060028.html
-  price: $35
+# - name: Yeti Rambler 20oz Thumbler
+#   type: thing
+#   url: https://www.yeti.com/drinkware/tumblers/21070060028.html
+#   price: $35
 
 - name: GameShell
   type: hardware
@@ -247,3 +247,23 @@
   type: hardware
   url: https://www.endgamegear.com/en-us/gaming-mice/xm2w-4k?attribute%5Bcolor%5D=White
   price: $120
+
+- name: Analog Weekly Kit
+  type: thing
+  url: https://elementmade.com/products/analog-weekly-kit-walnut
+  price: $80
+
+- name: Large Wall Clock BC17 White
+  type: thing
+  url: https://littleking.online/products/new-large-wall-clock-bc17
+  price: $80
+
+- name: Human Transit, Revised Edition
+  type: book
+  url: https://www.amazon.com/Human-Transit-Revised-Thinking-Communities/dp/1642833053?
+  price: $35
+
+- name: Case for AirPods Max
+  type: thing
+  url: https://www.amazon.com/dp/B08RJ1GBP8/
+  price: $39
