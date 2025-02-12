@@ -267,3 +267,8 @@
   type: thing
   url: https://www.amazon.com/dp/B08RJ1GBP8/
   price: $39
+
+- name: Everything Must Go
+  type: book
+  url: https://www.amazon.com/dp/0593317092/
+  price: $27
