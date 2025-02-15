@@ -2,7 +2,7 @@
 date: 2025-02-15
 image: instapaper2rss_og.png
 refs:
-  - blog/2021/atom.md
+  - blog/2021/atom_ru.md
 ---
 
 # Instapaper2RSS
