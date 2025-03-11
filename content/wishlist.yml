@@ -272,3 +272,13 @@
   type: book
   url: https://www.amazon.com/dp/0593317092/
   price: $27
+
+- name: Tri-Mode Wireless Mouse
+  type: hardware
+  url: https://www.lofree.co/products/lofree-touch-pbt-wireless-mouse
+  price: $70
+
+- name: Sigma BF Camera (white)
+  type: hardware
+  url: https://www.sigma-global.com/en/cameras/bf/
+  price: $2000
