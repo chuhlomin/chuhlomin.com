@@ -15,16 +15,16 @@ https://www.conventionalcommits.org/ru/v1.0.0/
 
 Сообщение коммита должно содержать префикс, который указывает на тип изменений, например:
 
-* feat: add support for Typescript
-* fix(gha): release workflow missing secret
-* docs: add docs for account service
-* chore: update dependencies
-* refactor: extract method convertImage
+- feat: add support for Typescript
+- fix(gha): release workflow missing secret
+- docs: add docs for account service
+- chore: update dependencies
+- refactor: extract method convertImage
 
 Могу порекомендовать [action-semantic-pull-request](https://github.com/amannn/action-semantic-pull-request)
 GitHub Action чтобы автоматически проверять соответствие названия PR этому соглашению.
 
 Это можно настроить для всех PR в GitHub организации с помощью
-[Required Workflows](https://docs.github.com/en/actions/using-workflows/required-workflows).
+[Repository Rulesets](https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets).
 
 #git #github
