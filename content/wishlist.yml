@@ -168,10 +168,10 @@
   url: https://www.indiegogo.com/projects/van-der-waals--2#/
   price: $450
 
-- name: PopMount 2 Car & Desk White
-  type: thing
-  url: https://www.popsockets.com/en-us/p/popmount-2-car-and-desk-white/802757.html?cgid=dash-mount-popmount
-  price: $30
+# - name: PopMount 2 Car & Desk White
+#   type: thing
+#   url: https://www.popsockets.com/en-us/p/popmount-2-car-and-desk-white/802757.html?cgid=dash-mount-popmount
+# price: $30
 
 - name: Analogue Pocket
   type: hardware
@@ -253,10 +253,10 @@
   url: https://elementmade.com/products/analog-weekly-kit-walnut
   price: $80
 
-- name: Large Wall Clock BC17 White
-  type: thing
-  url: https://littleking.online/products/new-large-wall-clock-bc17
-  price: $80
+# - name: Large Wall Clock BC17 White
+#   type: thing
+#   url: https://littleking.online/products/new-large-wall-clock-bc17
+#   price: $80
 
 - name: Human Transit, Revised Edition
   type: book
@@ -282,3 +282,13 @@
   type: hardware
   url: https://www.sigma-global.com/en/cameras/bf/
   price: $2000
+
+- name: SwitchBot Curtain 3 Combo U Rail
+  type: hardware
+  url: https://www.switch-bot.com/products/curtain-3-remote-hub-2-solar-panel-3-combo?_pos=15&_sid=9c63ea14e&_ss=r&variant=43434233659559
+  price: $290
+
+- name: DJI Pocket 2 Creator Combo
+  type: hardware
+  url: https://store.dji.com/product/pocket-2-combo?vid=98661
+  price: $400
