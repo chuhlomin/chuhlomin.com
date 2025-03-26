@@ -1,8 +1,8 @@
 ---
 date: 2025-03-18
 refs:
-  - blog/2020/iterm2.md
-  - blog/2021/shaders.md
+  - blog/2020/iterm2_ru.md
+  - blog/2021/shaders_ru.md
 ---
 
 # Ghostty
