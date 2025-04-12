@@ -58,7 +58,7 @@
   url: https://www.thuma.co/products/the-bed?variant=40159566987369
   price: $1300
 
-- name: "The Works: Anatomy of a City"
+- name: 'The Works: Anatomy of a City'
   type: book
   url: https://www.amazon.com/Works-Anatomy-City-Kate-Ascher/dp/0143112708
   price: $20
@@ -292,3 +292,8 @@
   type: hardware
   url: https://store.dji.com/product/pocket-2-combo?vid=98661
   price: $400
+
+- name: BUSY Bar
+  type: hardware
+  url: https://busy.bar/shop
+  price: $249
