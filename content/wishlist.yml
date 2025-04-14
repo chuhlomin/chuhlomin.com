@@ -283,10 +283,10 @@
   url: https://www.sigma-global.com/en/cameras/bf/
   price: $2000
 
-- name: SwitchBot Curtain 3 Combo U Rail
-  type: hardware
-  url: https://www.switch-bot.com/products/curtain-3-remote-hub-2-solar-panel-3-combo?_pos=15&_sid=9c63ea14e&_ss=r&variant=43434233659559
-  price: $290
+# - name: SwitchBot Curtain 3 Combo U Rail
+#   type: hardware
+#   url: https://www.switch-bot.com/products/curtain-3-remote-hub-2-solar-panel-3-combo?_pos=15&_sid=9c63ea14e&_ss=r&variant=43434233659559
+#   price: $290
 
 - name: DJI Pocket 2 Creator Combo
   type: hardware
