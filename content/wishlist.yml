@@ -297,3 +297,18 @@
   type: hardware
   url: https://busy.bar/shop
   price: $249
+
+- name: Fujifilm X-S20 Body, Black with XF18-55mmF2.8-4 R LM OIS Lens Kit
+  type: hardware
+  url: https://shopusa.fujifilm-x.com/x-s20-x-s20/
+  price: $1700
+
+- name: 'Managing Local Government: An Essential Guide for Municipal and County Managers'
+  type: book
+  url: https://www.amazon.com/Managing-Local-Government-Essential-Municipal/dp/1506323375
+  price: $84
+
+- name: 'Working: People Talk About What They Do All Day and How They Feel About What They Do'
+  type: book
+  url: https://www.amazon.com/WORKING-Studs-Terkel/dp/0394478843/
+  price: $53
