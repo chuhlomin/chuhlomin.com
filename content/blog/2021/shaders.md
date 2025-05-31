@@ -25,17 +25,18 @@ void main() {
 There are several services where you can "play around" with shaders
 and see the result in real time:
 
-* https://twigl.app
-* https://glslsandbox.com
-* https://shadered.org/app?fork=4Y3P9GQID0
+- https://glsl.app
+- https://twigl.app
+- https://glslsandbox.com
+- https://shadered.org/app?fork=4Y3P9GQID0
 
 For those who want to dive deeper, I can recommend
 [The Book Of Shaders](https://thebookofshaders.com) (in progress) and Twitter accounts:
 
-* https://twitter.com/XorDev
-* https://twitter.com/kamoshika_vrc
-* https://twitter.com/zozuar
-* https://twitter.com/catzpaw
-* https://twitter.com/tdhooper
+- https://twitter.com/XorDev
+- https://twitter.com/kamoshika_vrc
+- https://twitter.com/zozuar
+- https://twitter.com/catzpaw
+- https://twitter.com/tdhooper
 
 #image

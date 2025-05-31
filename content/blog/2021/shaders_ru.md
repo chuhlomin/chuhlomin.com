@@ -25,17 +25,18 @@ void main() {
 Есть несколько сервисов где можно "поиграться" c шейдерами и в реальном времени
 увидеть результат:
 
-* https://twigl.app
-* https://glslsandbox.com
-* https://shadered.org/app?fork=4Y3P9GQID0
+- https://glsl.app
+- https://twigl.app
+- https://glslsandbox.com
+- https://shadered.org/app?fork=4Y3P9GQID0
 
 Для желающих погрузится глубже могу порекомендовать
 [The Book Of Shaders](https://thebookofshaders.com/?lan=ru) (в процессе написания)
 и аккаунты в Твиттере:
 
-* https://twitter.com/XorDev
-* https://twitter.com/kamoshika_vrc
-* https://twitter.com/zozuar
-* https://twitter.com/catzpaw
+- https://twitter.com/XorDev
+- https://twitter.com/kamoshika_vrc
+- https://twitter.com/zozuar
+- https://twitter.com/catzpaw
 
 #image
