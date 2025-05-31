@@ -1,8 +1,6 @@
-version: "3.9"
-
 services:
   search:
-    image: getmeili/meilisearch:v1.2.0
+    image: getmeili/meilisearch:v1.8.0
     ports:
       - 127.0.0.1:7700:7700
     environment:
