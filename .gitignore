@@ -1,8 +1,8 @@
-output
-search_index
-index
-ignore
-bin/*
-cache
+/output
+/search_index
+/index
+/ignore
+/bin
+/cache
+/*.env
 *.log
-secrets.env
