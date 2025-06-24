@@ -1,5 +1,7 @@
 https://adadastore.com/collections/our-teddies/products/jermaine-teddy-bear?variant=49349661557004:
   image: http://adadastore.com/cdn/shop/files/jermaine-lourson-grand-284318.jpg?v=1732878038
+https://adadastore.com/products/stuffed-animal-jermaine-the-teddybear-size-small:
+  image: http://adadastore.com/cdn/shop/files/jermaine-lourson-petit-534328.jpg?v=1737043829&width=2048
 https://bellroy.com/products/watch-strap?color=evergreen&material=leather&size=large_watch_strap#slide-3:
   image: https://bellroy-product-images.imgix.net/bellroy_dot_com_gallery_image/USD/TAWB-EVG-127/3?w=730&h=487&fit=clip&dpr=2&q=37&auto=format
 https://bellzi.com/products/brontosaurus-stuffed-animal:
@@ -22,6 +24,8 @@ https://fsd.it/shop/fonts/pragmatapro/:
   image: https://fsd.it/wp-content/uploads/PragmataPro_all.png
 https://gen2.tidbyt.com/:
   image: https://gen2.tidbyt.com/images/social.jpg
+https://goclove.com/products/clove-shoe-mens-brilliant-white?variant=39463887241274:
+  image: http://goclove.com/cdn/shop/products/classic-brilliant-white-1-mobile_grande.jpg?v=1679003798
 https://hensonshaving.com/products/henson-al13-in-aircraft-aluminum:
   image: https://cdn.shopify.com/s/files/1/0269/8025/3776/products/aircraftaluminum-01.jpg?v=1668100869
 https://howtorebuildcivilization.com/products/the-book?variant=43738853081380:
@@ -36,8 +40,8 @@ https://kinto-usa.com/collections/nest/products/20584?variant=41686274277424:
   image: http://kinto-usa.com/cdn/shop/files/20584_t_001_8a607618-6447-467a-a9c8-68154a28ebeb_grande.jpg?v=1729035054
 https://kinto-usa.com/collections/nest/products/20585?variant=41686274342960:
   image: http://kinto-usa.com/cdn/shop/files/20585_t_001_71aa4625-d100-41a0-9a1e-dba2e66d4109_grande.jpg?v=1729035062
-? https://kinto-usa.com/products/26389?pr_prod_strat=e5_desc&pr_rec_id=2a1367577&pr_rec_pid=7540744421424&pr_ref_pid=7540744192048&pr_seq=uniform
-: image: http://kinto-usa.com/cdn/shop/files/26389_t_001_grande.jpg?v=1724354246
+https://kinto-usa.com/products/26389?pr_prod_strat=e5_desc&pr_rec_id=2a1367577&pr_rec_pid=7540744421424&pr_ref_pid=7540744192048&pr_seq=uniform:
+  image: http://kinto-usa.com/cdn/shop/files/26389_t_001_grande.jpg?v=1724354246
 https://kokoon.io/en-us/products/philips-sleep-headphones-with-kokoon:
   image: http://kokoon.io/cdn/shop/files/preview_images/757e11246d824587815a29363507f6ef.thumbnail.0000000000.jpg?v=1713187058
 https://lab401.com/products/proxmark-3-rdv4:
@@ -54,8 +58,6 @@ https://mavenwatches.com/products/mus-01-orange-p-40mm:
   image: http://mavenwatches.com/cdn/shop/files/1st-angle_v2.jpg?v=1688524620
 https://moonkieshop.com/collections/hot-sale/products/baby-toothbrush-kit?variant=45133935345917:
   image: http://moonkieshop.com/cdn/shop/files/tongue-brush-and-finger-toothbrush-kit.jpg?v=1722909290
-https://moonkieshop.com/collections/hot-sale/products/feeding-spoons:
-  image: http://moonkieshop.com/cdn/shop/files/silicone_feeding_spoons_and_container_earthy_harmony.jpg?v=1723001459
 https://nomos-glashuette.com/en/watches/families/metro:
   image: https://cdn.nomos-glashuette.com/media/image/b0/41/f1/2560xauto-q80/1101-metro-datum-gangreserve-3d-front-weiss.jpg
 https://papershootcamera.com/products/croz-vanguard-camera-set:
@@ -104,10 +106,12 @@ https://ugmonk.com/collections/analog/products/discbound-analog?variant=44224149
   image: http://ugmonk.com/cdn/shop/files/db-analog-bg-gray_grande.jpg?v=1732895836
 https://ulxstore.com/products/grey-leather-desk-mat:
   image: http://ulxstore.com/cdn/shop/products/DeskMat-Grey_9ac6ba04-cf83-4521-9726-3989f22c45f3.jpg?v=1650445822
-? https://us.braun-clocks.com/collections/sale/products/braun-gents-bn0211-classic-slim-watch-white-dial-and-stainless-steel-bracelet?_pos=2&_sid=16f46e9c6&_ss=r
-: image: http://us.braun-clocks.com/cdn/shop/products/8a88ad8a-1e66-4111-b2e4-d64d4f258886_1200x1200.jpg?v=1654688901
+https://us.braun-clocks.com/collections/sale/products/braun-gents-bn0211-classic-slim-watch-white-dial-and-stainless-steel-bracelet?_pos=2&_sid=16f46e9c6&_ss=r:
+  image: http://us.braun-clocks.com/cdn/shop/products/8a88ad8a-1e66-4111-b2e4-d64d4f258886_1200x1200.jpg?v=1654688901
 https://us.brompton.com/p/787/c-line-explore:
   image: https://cdn11.bigcommerce.com/s-y6rxtt0m81/products/787/images/37224/M6L033B06B00R000B0050125333300_2__36428.1714746454.1280.1280.jpg?c=1
+https://us.store.bambulab.com/products/a1:
+  image: https://store.bblcdn.com/s7/default/aca1263a58bd4cfa84bae723c8a96caa/Group_161268795.png__op__resize,m_lfit,w_1920__op__format,f_auto__op__quality,q_80
 https://warmies.com/products/brown-curly-bear-warmies:
   image: http://warmies.com/cdn/shop/products/Brown-Bear2089.jpg?v=1724153950
 https://wayfindercarry.com/products/borderless-passport-notebook-holder:
@@ -146,6 +150,10 @@ https://www.clockworkpi.com/product-page/gameshell-kit:
   image: https://static.wixstatic.com/media/3833f7_1817acf8640a49e3ae99317644dfc6d1~mv2_d_1200_1200_s_2.jpg/v1/fit/w_500,h_500,q_90/file.jpg
 https://www.dadbrandapparel.com/products/low-battery:
   image: http://cdn.shopify.com/s/files/1/1430/6402/products/lowbatteryfront3.jpg?v=1619032944&width=1024
+https://www.defakto-watches.com/watches/struktur/schneeweiss/708/:
+  image: https://www.defakto-watches.com/watches/struktur/schneeweiss/708/index.php?rex_media_type=productZoom&rex_media_file=defakto_struktur_bauhaus_watch_design_germany_w_2022_2.jpg
+https://www.defakto-watches.com/watches/vektor/modul/702/:
+  image: https://www.defakto-watches.com/watches/vektor/modul/702/index.php?rex_media_type=productZoom&rex_media_file=defakto_vektor_modul_11_frontal_bauhaus_architect_watch_architektenuhr_minimal_design.jpg
 https://www.edwardtufte.com/tufte/books_be:
   image: https://www.edwardtufte.com/wp-content/uploads/2023/09/edward-tufte-beautiful-evidence.jpg
 https://www.edwardtufte.com/tufte/books_vdqi:
@@ -164,10 +172,12 @@ https://www.indiegogo.com/projects/van-der-waals--2#/:
   image: https://c1.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fill,f_auto,h_460,w_695/v1643826830/wteqtgfeflm2pa3hnsyc.jpg
 https://www.junghans.de/en/collection/watches/junghans-max-bill/max-bill-regulator/27449302?number=27449302:
   image: https://www.junghans.de/media/image/4d/9f/88/4f1ab6fae0c66d6c4fb6d77503de4eec.png
+https://www.junghans.de/en/collection/watches/junghans-meister/meister-chronoscope/27452602:
+  image: https://www.junghans.de/media/image/9d/ff/50/c1ec3474bd4b6b72a5f494aa1fc421ce.png
 https://www.kiwico.com/panda/dp/lets-sense/4281#plus:
   image: https://icdn.kiwico.com/fb_logo/OG_image-holiday.jpeg
 https://www.klokers.com/en/shop/klok-01/klok-01-green-394:
-  image: https://www.klokers.com/photos/boutique/produits/vignettes/klokers_soldat_klok-01-h3_21_1800_394.jpg
+  image: https://www.klokers.com/photos/boutique/produits/vignettes/image-21-03-2025-a-1637_394.jpg
 https://www.lg.com/us/tvs/lg-oled55c4pua-oled-4k-tv:
   image: https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/e557fb92-cd75-4dac-b1e8-ede13dcbaefc/TV_OLED55C4PUA_gallery_01_3000x3000
 https://www.litres.ru/book/artemiy-kozlov/arhitektura-videoigrovyh-mirov-uroven-proyden-69569851/:
@@ -182,6 +192,8 @@ https://www.nestig.com/products/bear-cub-montessori-table-chairs-set?variant=477
   image: http://www.nestig.com/cdn/shop/files/0001_06-05_Bear_Cub_Table_Chairs_Set_2024_Set.jpg?v=1716229933
 https://www.nestig.com/products/cove-montessori-bookshelf?variant=47795519455400:
   image: http://www.nestig.com/cdn/shop/files/0011_Cove_Shelve_PDP_Frontal_web.jpg?v=1732731679
+https://www.nike.com/t/killshot-2-leather-mens-shoes-1lEPvIbm/HM9431-001:
+  image: https://static.nike.com/a/images/t_default/cec70e42-1419-4055-af83-3bbf8e3c1fd6/KILLSHOT+2+LTR.png
 https://www.nobullproject.com/products/high-top-army-ivory-trainer-mens:
   image: https://www.nobullproject.com/cdn/shop/files/b358a1d2f758009da34f45ff4caa397c9b11becd_19759e7a-4402-4f8f-8763-a0d8f541b4a4.jpg?v=1701124953
 https://www.oneplus.com/us/product/oneplus-nord-wired-earphones:
@@ -200,13 +212,15 @@ https://www.svpg.com/books/empowered-ordinary-people-extraordinary-products/:
   image: https://www.svpg.com/wp-content/uploads/2022/04/book-svpg-empowered.jpg
 https://www.swatch.com/en-en/sistem-bau-sutw405/SUTW405.html:
   image: https://static.swatch.com/images/product/SUTW405/sa200/SUTW405_sa200_er005.png
-? https://www.switch-bot.com/products/curtain-3-remote-hub-2-solar-panel-3-combo?_pos=15&_sid=9c63ea14e&_ss=r&variant=43434233659559
-: image: http://www.switch-bot.com/cdn/shop/products/complete-dual-curtain-solar-combo-466761_1200x1200.jpg?v=1724740949
+https://www.switch-bot.com/products/curtain-3-remote-hub-2-solar-panel-3-combo?_pos=15&_sid=9c63ea14e&_ss=r&variant=43434233659559:
+  image: http://www.switch-bot.com/cdn/shop/products/complete-dual-curtain-solar-combo-466761_1200x1200.jpg?v=1724740949
 https://www.theoinglis.co.uk/GDB:
   image: https://cortex.persona.co/w/1250/q/94/i/4572890d3ca4fef29bc5197cac4cbd9832f39264759136e918713303ec570a9a/GDB_1.jpg
 https://www.thuma.co/products/the-bed?variant=40159566987369:
   image: http://cdn.shopify.com/s/files/1/2448/0687/products/Walnut-DarkCharcoal-01_1024x1024.jpg?v=1626062500
 https://www.traintrackr.io/product/mta2:
   image: https://www.traintrackr.io/images/boards/mta2_12.jpg
+https://www.troubadourgoods.com/products/apex-backpack:
+  image: https://cdn.shopify.com/s/files/1/0171/0160/files/Apex_3.0_-_1063_Navy_1_434ad801-b0bb-46ae-8171-7a8d3ee17099.jpg?v=1725620925&width=2048
 https://www.yeti.com/drinkware/tumblers/21070060028.html:
   image: https://yeti-web.imgix.net/7dfc6982d2e8cff9/W-Drinkware_Tumbler_20oz_Navy_Studio_PrimaryB.png?bg=0fff&auto=format&w=1920&h=1920

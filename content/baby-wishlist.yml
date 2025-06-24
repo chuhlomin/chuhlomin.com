@@ -87,10 +87,6 @@
   url: https://kinto-usa.com/products/26389?pr_prod_strat=e5_desc&pr_rec_id=2a1367577&pr_rec_pid=7540744421424&pr_ref_pid=7540744192048&pr_seq=uniform
   price: $65.60
   type: kitchen
-- name: Silicone Feeding Spoons
-  url: https://moonkieshop.com/collections/hot-sale/products/feeding-spoons
-  price: $10
-  type: kitchen
 
 - name: Baby Oral Care Set
   url: https://moonkieshop.com/collections/hot-sale/products/baby-toothbrush-kit?variant=45133935345917
@@ -105,3 +101,8 @@
   url: https://www.nestig.com/products/bear-cub-montessori-table-chairs-set?variant=47795519520936
   price: $250
   type: furniture
+
+- name: Jermaine, the bear (small)
+  url: https://adadastore.com/products/stuffed-animal-jermaine-the-teddybear-size-small
+  price: $98
+  type: toy

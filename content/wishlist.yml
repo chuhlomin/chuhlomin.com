@@ -312,3 +312,23 @@
   type: book
   url: https://www.amazon.com/WORKING-Studs-Terkel/dp/0394478843/
   price: $53
+
+- name: Nike Killshot 2 Leather
+  type: wardrobe
+  url: https://www.nike.com/t/killshot-2-leather-mens-shoes-1lEPvIbm/HM9431-001
+  price: $60
+
+- name: Clove Shoe Mens Brilliant White
+  type: wardrobe
+  url: https://goclove.com/products/clove-shoe-mens-brilliant-white?variant=39463887241274
+  price: $150
+
+- name: Apex Backpack 3.0
+  type: wardrobe
+  url: https://www.troubadourgoods.com/products/apex-backpack
+  price: $250
+
+- name: Bambu Lab A1
+  type: hardware
+  url: https://us.store.bambulab.com/products/a1
+  price: $550
