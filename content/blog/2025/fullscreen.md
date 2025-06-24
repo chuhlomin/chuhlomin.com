@@ -19,6 +19,6 @@ So I wrote a script that automatically sets all open Zed windows to fullscreen.
 
 It can be launched with the command `osascript zed-fullscreen.scpt` or can be imported into [Apple Shortcut](https://www.icloud.com/shortcuts/5f8bfe286d8b47d3b9d442b3bf731cee).
 
-<small>Note: For this script to work, you must grant `osascript` (and the app you are running it from), Shortcuts (plus Constrol Center and Script Editor) permissions in System Preferences → Privacy & Security → Accessibility.</small>
+<small>Note: For this script to work, you must grant `osascript` (and the app you are running it from), Shortcuts (plus Control Center and Script Editor) permissions in System Preferences → Privacy & Security → Accessibility.</small>
 
 #macos
