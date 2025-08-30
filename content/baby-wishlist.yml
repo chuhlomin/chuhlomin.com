@@ -106,3 +106,13 @@
   url: https://adadastore.com/products/stuffed-animal-jermaine-the-teddybear-size-small
   price: $98
   type: toy
+
+- name: Yoto Mini
+  url: https://us.yotoplay.com/yoto-mini
+  price: $70
+  type: toy
+
+- name: Modu blocks
+  url: https://modutoy.com/
+  price: $160-300
+  type: toy

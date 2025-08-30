@@ -118,10 +118,10 @@
   url: https://www.svpg.com/books/empowered-ordinary-people-extraordinary-products/
   price: $20
 
-- name: Microsoft Surface Mobile Mouse (Silver)
-  type: hardware
-  url: https://www.amazon.com/Microsoft-Surface-Mobile-Mouse-Silver/dp/B07FDQ2MGG/
-  price: $35
+# - name: Microsoft Surface Mobile Mouse (Silver)
+#   type: hardware
+#   url: https://www.amazon.com/Microsoft-Surface-Mobile-Mouse-Silver/dp/B07FDQ2MGG/
+#   price: $35
 
 - name: Проектирование виртуальных миров. Теория и практика дизайна уровней
   type: book
@@ -273,10 +273,10 @@
   url: https://www.amazon.com/dp/0593317092/
   price: $27
 
-- name: Tri-Mode Wireless Mouse
-  type: hardware
-  url: https://www.lofree.co/products/lofree-touch-pbt-wireless-mouse
-  price: $70
+# - name: Tri-Mode Wireless Mouse
+#   type: hardware
+#   url: https://www.lofree.co/products/lofree-touch-pbt-wireless-mouse
+#   price: $70
 
 - name: Sigma BF Camera (white)
   type: hardware
