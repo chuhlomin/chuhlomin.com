@@ -1,25 +1,29 @@
 @charset "UTF-8";
 
+@font-face {
+  font-family: 'BalsamiqSans';
+  font-weight: normal;
+  src: url(/fonts/BalsamiqSans-Regular.woff2) format('woff2');
+}
+
 :root {
   color-scheme: light dark;
   /* opt into the user's color scheme preferences */
 
   --underline-opacity: 0.25;
 
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans",
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
-    Courier, monospace;
+  --font-family: 'BalsamiqSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --font-family-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 
   --color-black-10pct: rgba(0, 0, 0, 0.1);
   --color-white-10pct: rgba(255, 255, 255, 0.1);
 
   --color-text: #222222;
-  --color-text-dark: rgb(201, 209, 217);
-  --color-background: #f6f6f4;
-  --color-background-dark: #181a1b;
+  --color-text-dark: #eec19d;
+  --color-background: #fcf6e6;
+  --color-background-dark: #1c1c1e;
   --color-background-higher: #fff;
-  --color-background-higher-dark: #2f3132;
+  --color-background-higher-dark: #2b2829;
   --color-header: #000000;
   --color-header-dark: #ddd;
   --color-link: #0969da;
@@ -30,12 +34,17 @@
   --color-link-visited-underscore: rgba(85, 26, 139, var(--underline-opacity));
   --color-link-visited-dark: #e0b0ff;
   --color-link-visited-underscore-dark: rgba(224, 176, 255, var(--underline-opacity));
-  --color-link-hover: #df6400;
-  --color-link-hover-dark: #f8ff83;
+  --color-link-hover: #ce6b5a;
+  --color-link-hover-dark: #d68f70;
   --color-link-hover-underscore: rgba(223, 100, 0, var(--underline-opacity));
   --color-link-hover-underscore-dark: rgba(248, 255, 131 var(--underline-opacity));
 
-  --lang-background: #555577;
+  --lang-color: #9d745d;
+  --lang-background: #fcdabb;
+  --lang-border: #9d745d;
+  --lang-color-dark: #d68f70;
+  --lang-background-dark: #553d36;
+  --lang-border-dark: #79493d;
 
   --color-neutral-muted: rgba(175, 184, 193, 0.2);
   --color-neutral-muted-dark: rgba(110, 118, 129, 0.4);
@@ -125,8 +134,8 @@ a:hover {
 .flag {
   position: relative;
   width: 100%;
-  padding: calc(min(20px, max(10px, 10px + (10 * (100vw - 815px) / 185))));
-  background: #e7edf4;
+  padding: 10px 20px 10px 10px;
+  background: #fae7d2;
 }
 
 .header-content {
@@ -145,20 +154,22 @@ a:hover {
 .lang {
   display: block;
   height: 24px;
-  line-height: 24px;
+  line-height: 22px;
   padding: 0 0.4rem;
   background: var(--lang-background);
   border-radius: 6px;
   text-transform: uppercase;
   font-size: 75%;
   text-decoration: none;
-  color: white;
+  color: var(--lang-color);
   transition: none;
+  border: 2px solid var(--lang-border);
 }
 
 .lang:visited,
 .lang:hover {
-  color: white;
+  color: var(--lang-color);
+  border: 2px solid var(--lang-border);
 }
 
 .blog-title {
@@ -176,21 +187,12 @@ a:hover {
 
 .user-picture-image {
   float: right;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   margin-right: 0.66rem;
-  background-image: url("./apple-touch-icon.png");
+  background-image: url('./img/v0.7\ Head.png');
   background-size: cover;
-}
-
-a .user-picture-image {
-  box-shadow: inset 0 0 0 1px var(--color-link-underscore);
-  transition: 0.2s;
-}
-
-a:hover .user-picture-image {
-  box-shadow: inset 0 0 0 1px var(--color-link-hover-underscore);
 }
 
 .photos {
@@ -230,7 +232,7 @@ a:hover .user-picture-image {
 
 .photos .photo::before {
   display: block;
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
@@ -405,7 +407,10 @@ a:hover .user-picture-image {
 @media (prefers-color-scheme: dark) {
   :root {
     --color-link-underscore: rgba(102, 187, 255, var(--underline-opacity));
-    --lang-background: #555577;
+
+    --lang-color: #9d745d;
+    --lang-background: #fcdabb;
+    --lang-border: #9d745d;
   }
 
   body {
@@ -433,11 +438,17 @@ a:hover .user-picture-image {
   }
 
   .flag {
-    background: #373f46;
+    background: #2b2829;
   }
 
   .user-picture-image {
-    background-image: url("./img/memoji_v3_dark.png");
+    background-image: url('./img/v0.7 Head Dark.png');
+  }
+
+  .lang {
+    background: var(--lang-background-dark);
+    color: var(--lang-color-dark);
+    border: 2px solid var(--lang-border-dark);
   }
 
   .photos .photo {
@@ -470,7 +481,6 @@ a:hover .user-picture-image {
 }
 
 @media screen and (max-width: 815px) {
-
   /* tablet */
   .flag {
     padding: 10px;
