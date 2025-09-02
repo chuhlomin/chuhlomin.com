@@ -170,7 +170,8 @@ func (g *Generator) processImages(images <-chan image, done chan<- bool) {
 				accessMap.Unlock()
 
 				if err := g.processImage(img); err != nil {
-					log.Fatalf("Error processing image %s: %v", img.Path, err)
+					log.Printf("Error processing image %s: %v", img.Path, err)
+					continue
 				}
 
 				accessMap.Lock()
