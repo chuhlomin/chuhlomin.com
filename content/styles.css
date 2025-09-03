@@ -512,8 +512,8 @@ iframe {
   position: relative;
   display: block;
   max-width: max-content;
-  border-image: url('./img/baloon.png') 42 34 34 42 fill;
-  border-image-width: 21px 17px 17px 21px;
+  border-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"><path fill="%23fff" stroke="%23000" stroke-width="2" d="M2.434 2.766C6.97 5.586 10.687 7.202 15.5 7.202h7.6c.846 0 1.237 0 1.562.015 7.764.343 13.98 6.559 14.323 14.323.015.325.015.715.015 1.56 0 .846 0 1.237-.015 1.562-.343 7.764-6.559 13.98-14.323 14.323-.325.015-.716.015-1.561.015H22c-1.881 0-2.75-.001-3.47-.072A15 15 0 0 1 5.071 25.47C5.002 24.75 5 23.88 5 22v-8c0-4.24-.7-7.098-2.566-11.234Z"/></svg>')
+    21 17 17 21 fill / 21px 17px 17px 21px;
   padding: 13px 15px 7px 19px;
   margin: -36px -1rem 0 3rem;
   margin-top: calc(-1 * min(36px, 15px + (25 * (100vw - 815px) / 185)));
@@ -804,8 +804,8 @@ hr {
   }
 
   .message {
-    border-image: url('./img/baloon_dark.png') 42 34 34 42 fill;
-    border-image-width: 21px 17px 17px 21px;
+    border-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"><path fill="%23382929" stroke="%23181517" stroke-width="2" d="M2.434 2.766C6.97 5.586 10.687 7.202 15.5 7.202h7.6c.846 0 1.237 0 1.562.015 7.764.343 13.98 6.559 14.323 14.323.015.325.015.715.015 1.56 0 .846 0 1.237-.015 1.562-.343 7.764-6.559 13.98-14.323 14.323-.325.015-.716.015-1.561.015H22c-1.881 0-2.75-.001-3.47-.072A15 15 0 0 1 5.071 25.47C5.002 24.75 5 23.88 5 22v-8c0-4.24-.7-7.098-2.566-11.234Z"/></svg>')
+      21 17 17 21 fill / 21px 17px 17px 21px;
   }
 }
 
@@ -819,8 +819,8 @@ hr {
     margin: -20px 0 0 0;
     /* make it so at 520px viewport with margin-left is 0, at 815px it's 3rem */
     /*margin-left: calc(min(3rem, (100vw - 520px) / 2));*/
-    border-image: url('./img/baloon_top.png') 42 36 34 34 fill;
-    border-image-width: 21px 18px 17px 17px;
+    border-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="37" height="40" fill="none"><path fill="%23fff" stroke="%23000" stroke-width="2" d="M6.65 1.534c1.268 2.446 2.409 3.948 3.938 4.773 1.709.921 3.756.895 6.412.895h3.1c.846 0 1.237 0 1.562.015 7.764.343 13.98 6.559 14.323 14.323.015.325.015.715.015 1.56 0 .846 0 1.237-.015 1.562-.343 7.764-6.559 13.98-14.323 14.323-.325.015-.716.015-1.561.015H18c-1.881 0-2.75-.001-3.47-.072A15 15 0 0 1 1.071 25.47C1.002 24.75 1 23.88 1 22c0-5.687.62-10.325 1.765-13.88.968-3.007 2.294-5.18 3.884-6.586Z"/></svg>')
+      21 18 17 17 fill / 21px 18px 17px 17px;
     padding: 12px 15px 10px 13px;
   }
 
@@ -857,8 +857,8 @@ hr {
 
 @media (prefers-color-scheme: dark) and (max-width: 815px) {
   .message {
-    border-image: url('./img/baloon_top_dark.png') 42 36 34 34 fill;
-    border-image-width: 21px 18px 17px 17px;
+    border-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="37" height="40" fill="none"><path fill="%23382929" stroke="%23181517" stroke-width="2" d="M4.803 1.911c.129.744.253 1.384.393 1.926.24.924.564 1.73 1.176 2.313.632.603 1.43.84 2.31.948.865.106 1.97.104 3.318.104h8.1c.846 0 1.237 0 1.562.015 7.764.343 13.98 6.559 14.323 14.323.015.325.015.715.015 1.56 0 .846 0 1.237-.015 1.562-.343 7.764-6.559 13.98-14.323 14.323-.325.015-.716.015-1.561.015H18c-1.881 0-2.75-.001-3.47-.072A15 15 0 0 1 1.071 25.47C1.002 24.75 1 23.88 1 22c0-5.74.251-10.398 1.04-13.973.603-2.742 1.504-4.747 2.763-6.116Z"/></svg>')
+      21 18 17 17 fill / 21px 18px 17px 17px;
   }
 
   .photos .photo {
