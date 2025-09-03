@@ -12,6 +12,9 @@
 }
 
 :root {
+  color-scheme: light dark;
+  /* opt into the user's color scheme preferences */
+
   --font-default: 'BalsamiqSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   --font-monospace: JetBrains Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
 
@@ -857,6 +860,34 @@ hr {
     border-image: url('./img/baloon_top_dark.png') 42 36 34 34 fill;
     border-image-width: 21px 18px 17px 17px;
   }
+
+  .photos .photo {
+    outline: 4px solid var(--color-background-higher);
+  }
+
+  .photos .photo.lazy {
+    background: var(--color-background-higher) !important;
+  }
+
+  #viewer {
+    background: #000000;
+  }
+
+  #viewer .prev a,
+  #viewer .next a,
+  #viewer .close a {
+    background: var(--color-background);
+  }
+
+  #viewer .prev a:hover,
+  #viewer .next a:hover,
+  #viewer .close a:hover {
+    background: var(--color-neutral-muted);
+  }
+
+  #viewer .close a {
+    color: var(--color-text);
+  }
 }
 
 @media screen and (max-width: 570px) {
@@ -899,6 +930,81 @@ hr {
 
   .postCard {
     margin-top: 10px;
+  }
+
+  .photos {
+    padding: 10px;
+  }
+}
+
+/* mobile view */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .blog-title h1 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  #viewer {
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr auto 0.3rem;
+  }
+
+  #viewer .photo {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+  }
+
+  #viewer #image {
+    /* rounded corners look bad on mobile with "full bleed" image */
+    border-radius: 0;
+  }
+
+  #viewer .prev {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+  }
+
+  #viewer .next {
+    grid-column: 3;
+    grid-row: 2;
+    width: 100%;
+  }
+
+  #viewer .close {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  #viewer .prev a,
+  #viewer .next a {
+    margin-top: 0;
+  }
+
+  #viewer .close a {
+    margin: 0;
+    width: 64px;
+  }
+
+  #viewer .photo figcaption {
+    padding: 0 0.25rem;
+  }
+
+  #viewer #image {
+    max-height: calc(100vh - 118px);
+  }
+
+  #viewer #image.narrow {
+    height: auto !important;
+  }
+
+  #viewer #image.wide {
+    width: inherit !important;
   }
 }
 
@@ -945,4 +1051,214 @@ hr {
   .project:hover {
     transform: none;
   }
+}
+
+/* Photo gallery styles */
+.photos {
+  /* calc padding to be 20px max at 1000px and scale down to 10px at 815px */
+  padding: calc(min(20px, max(10px, 10px + (10 * (100vw - 815px) / 185))));
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, 162px);
+  justify-content: space-around;
+}
+
+.photos .container {
+  align-self: center;
+}
+
+.photos .photo {
+  display: block;
+  max-height: 162px;
+  margin: 0 auto;
+  padding: 0;
+  outline: 4px solid var(--color-background-higher);
+  border: none;
+  border-radius: 6px;
+  background: var(--color-background-higher);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  /* for :before element with blurhash image */
+  transition-property: outline;
+  /* override link transition */
+  transition-duration: 0.05s;
+}
+
+.photos .photo.lazy {
+  background: var(--color-background-higher) !important;
+}
+
+.photos .photo::before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--background-blurhash);
+  /* set by JS per element */
+  opacity: 0;
+  transition: opacity 0.33s ease-out;
+}
+
+.photos .photo.lazy::before {
+  opacity: 1;
+}
+
+.photos a:focus {
+  outline: 4px solid var(--color-link);
+}
+
+#viewer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 100%) 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 4px;
+  /* to account for :focus outline */
+  background: var(--color-background-higher);
+}
+
+#viewer .photo {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+#viewer .photo figure {
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+#viewer #image {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 50px);
+  max-height: calc(100svh - 50px);
+  /* Safari fix for bottom safe area */
+  object-fit: contain;
+  /* avoid image stretching */
+  border-radius: 6px;
+  margin: 0 auto;
+  /* center image when text is longer than image width */
+}
+
+#viewer #image.blurhash {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+#viewer #image.narrow {
+  height: auto !important;
+}
+
+#viewer #image.wide {
+  width: auto !important;
+}
+
+#viewer .photo figcaption {
+  text-align: left;
+  font-size: 10pt;
+  height: 25px;
+  line-height: 25px;
+}
+
+#viewer .prev {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#viewer .next {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+#viewer .close {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+#viewer .prev,
+#viewer .next {
+  width: calc(64px + 0.3rem);
+}
+
+#viewer .prev,
+#viewer .next,
+#viewer .close {
+  align-self: center;
+  text-align: center;
+}
+
+#viewer .prev a,
+#viewer .next a,
+#viewer .close a {
+  width: 100%;
+  height: 64px;
+  line-height: 64px;
+  border: none;
+  background: var(--color-background);
+  font-size: 20pt;
+  text-decoration: none;
+  user-select: none;
+}
+
+#viewer .close a {
+  display: block;
+  width: 64px;
+  margin-top: 0.3rem;
+  margin-right: 0.3rem;
+  color: var(--color-text);
+  border-radius: 15%;
+}
+
+#viewer .prev a:hover,
+#viewer .next a:hover,
+#viewer .close a:hover {
+  background: var(--color-neutral-muted);
+}
+
+#viewer .prev a,
+#viewer .next a {
+  margin-top: -50%;
+}
+
+#viewer .prev a {
+  border-top-right-radius: 64px;
+  border-bottom-right-radius: 64px;
+}
+
+#viewer .next a {
+  border-top-left-radius: 64px;
+  border-bottom-left-radius: 64px;
+}
+
+#viewer .prev a:focus,
+#viewer .next a:focus,
+#viewer .close:focus {
+  outline: 2px solid var(--color-link);
+}
+
+#viewer #text {
+  display: none;
+  width: 600px;
+  font-size: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+}
+
+.edit #viewer #text {
+  display: block;
 }
