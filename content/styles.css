@@ -11,6 +11,12 @@
   src: url(/fonts/BalsamiqSans-Regular.woff2) format('woff2');
 }
 
+@font-face {
+  font-family: 'BalsamiqSans';
+  font-weight: bold;
+  src: url(/fonts/BalsamiqSans-Bold.woff2) format('woff2');
+}
+
 :root {
   color-scheme: light dark;
   /* opt into the user's color scheme preferences */
