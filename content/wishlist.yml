@@ -18,6 +18,7 @@
   url: https://standardsmanual.com/products/qsl
   price: $60
 
+# Got it
 # - name: Apple AirPods Max (silver)
 #   type: hardware
 #   url: https://www.apple.com/airpods-max/
@@ -43,10 +44,11 @@
   url: https://byltbasics.com/products/everyday-pant-2-0?variant=39835744108646
   price: $84
 
-- name: Boots
-  type: wardrobe
-  url: https://www.nobullproject.com/products/high-top-army-ivory-trainer-mens
-  price: $140
+# Not available anymore
+# - name: Boots
+#   type: wardrobe
+#   url: https://www.nobullproject.com/products/high-top-army-ivory-trainer-mens
+#   price: $140
 
 - name: Sneakers
   type: wardrobe
@@ -103,6 +105,7 @@
   url: https://www.lg.com/us/tvs/lg-oled55c4pua-oled-4k-tv
   price: $1400
 
+# Got it
 # - name: Yeti Rambler 20oz Thumbler
 #   type: thing
 #   url: https://www.yeti.com/drinkware/tumblers/21070060028.html
@@ -118,6 +121,7 @@
   url: https://www.svpg.com/books/empowered-ordinary-people-extraordinary-products/
   price: $20
 
+# Got a different mouse
 # - name: Microsoft Surface Mobile Mouse (Silver)
 #   type: hardware
 #   url: https://www.amazon.com/Microsoft-Surface-Mobile-Mouse-Silver/dp/B07FDQ2MGG/
@@ -168,6 +172,7 @@
   url: https://www.indiegogo.com/projects/van-der-waals--2#/
   price: $450
 
+# Got it
 # - name: PopMount 2 Car & Desk White
 #   type: thing
 #   url: https://www.popsockets.com/en-us/p/popmount-2-car-and-desk-white/802757.html?cgid=dash-mount-popmount
@@ -193,6 +198,7 @@
   url: https://www.8bitdo.com/retro-mechanical-keyboard-c64/
   price: $100
 
+# Got it
 # - name: Henson Brothers Razor
 #   type: thing
 #   url: https://hensonshaving.com/products/henson-al13-in-aircraft-aluminum
@@ -213,6 +219,7 @@
   url: https://tex.com.tw/products/shinobi?variant=16969883844698
   price: $185
 
+# Got it
 # - name: ScreenBar Halo Monitor Light + Webcam stand
 #   type: hardware
 #   url: https://www.benq.com/en-us/lighting/monitor-light/screenbar-halo/buy.html
@@ -243,16 +250,18 @@
   url: https://printworksmarket.com/products/chess-classic
   price: €65
 
-- name: XM2w 4k Gaming Mouse - White
-  type: hardware
-  url: https://www.endgamegear.com/en-us/gaming-mice/xm2w-4k?attribute%5Bcolor%5D=White
-  price: $120
+# Got a different mouse
+# - name: XM2w 4k Gaming Mouse - White
+#   type: hardware
+#   url: https://www.endgamegear.com/en-us/gaming-mice/xm2w-4k?attribute%5Bcolor%5D=White
+#   price: $120
 
 - name: Analog Weekly Kit
   type: thing
   url: https://elementmade.com/products/analog-weekly-kit-walnut
   price: $80
 
+# Got a similar one
 # - name: Large Wall Clock BC17 White
 #   type: thing
 #   url: https://littleking.online/products/new-large-wall-clock-bc17
@@ -263,16 +272,18 @@
   url: https://www.amazon.com/Human-Transit-Revised-Thinking-Communities/dp/1642833053?
   price: $35
 
-- name: Case for AirPods Max
-  type: thing
-  url: https://www.amazon.com/dp/B08RJ1GBP8/
-  price: $39
+# Changed my mind
+# - name: Case for AirPods Max
+#   type: thing
+#   url: https://www.amazon.com/dp/B08RJ1GBP8/
+#   price: $39
 
 - name: Everything Must Go
   type: book
   url: https://www.amazon.com/dp/0593317092/
   price: $27
 
+# Got it
 # - name: Tri-Mode Wireless Mouse
 #   type: hardware
 #   url: https://www.lofree.co/products/lofree-touch-pbt-wireless-mouse
@@ -283,6 +294,7 @@
   url: https://www.sigma-global.com/en/cameras/bf/
   price: $2000
 
+# Got it
 # - name: SwitchBot Curtain 3 Combo U Rail
 #   type: hardware
 #   url: https://www.switch-bot.com/products/curtain-3-remote-hub-2-solar-panel-3-combo?_pos=15&_sid=9c63ea14e&_ss=r&variant=43434233659559
@@ -293,10 +305,11 @@
   url: https://store.dji.com/product/pocket-2-combo?vid=98661
   price: $400
 
-- name: BUSY Bar
-  type: hardware
-  url: https://busy.bar/shop
-  price: $249
+# Changed my mind
+# - name: BUSY Bar
+#   type: hardware
+#   url: https://busy.bar/shop
+#   price: $249
 
 - name: Fujifilm X-S20 Body, Black with XF18-55mmF2.8-4 R LM OIS Lens Kit
   type: hardware
@@ -313,10 +326,11 @@
   url: https://www.amazon.com/WORKING-Studs-Terkel/dp/0394478843/
   price: $53
 
-- name: Nike Killshot 2 Leather
-  type: wardrobe
-  url: https://www.nike.com/t/killshot-2-leather-mens-shoes-1lEPvIbm/HM9431-001
-  price: $60
+# Got a different one
+# - name: Nike Killshot 2 Leather
+#   type: wardrobe
+#   url: https://www.nike.com/t/killshot-2-leather-mens-shoes-1lEPvIbm/HM9431-001
+#   price: $60
 
 - name: Clove Shoe Mens Brilliant White
   type: wardrobe
@@ -332,3 +346,8 @@
   type: hardware
   url: https://us.store.bambulab.com/products/a1
   price: $550
+
+- name: Panelki Set
+  type: book
+  url: https://www.zupagrafika.com/shop/panelki-pin-badge
+  price: €40
