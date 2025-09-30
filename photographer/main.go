@@ -400,7 +400,7 @@ func generateThumbnails(
 
 func generateThumbnail(batch int, photos []*Photo, dir string) (string, error) {
 	log.Infof("Generating thumbnail for %d", batch)
-	// each thumbnail should fit into 140x140px square, maximum 10 photos in a row
+	// each thumbnail should fit into 324x324px square, maximum 10 photos in a row
 	for _, photo := range photos {
 		// decode photo
 		img, err := readImage(dir, photo.Path)
@@ -410,7 +410,7 @@ func generateThumbnail(batch int, photos []*Photo, dir string) (string, error) {
 		photo.Width = img.Bounds().Dx()
 		photo.Height = img.Bounds().Dy()
 
-		// resize photo to 140x140px
+		// resize photo to 324x324px
 		img = resize.Thumbnail(
 			maxThumbSize,
 			maxThumbSize,
@@ -431,6 +431,11 @@ func generateThumbnail(batch int, photos []*Photo, dir string) (string, error) {
 
 	// sort the slice of pointers by thumb height in descending order
 	sort.Sort(byThumbHeightDesc(containers))
+
+	log.Printf("Have %d containers:", len(containers))
+	for i, container := range containers {
+		log.Printf("  %d: %s (%dx%d)", i, container.Photo.Path, container.Photo.ThumbWidth, container.Photo.ThumbHeight)
+	}
 
 	// calculate thumbnail image size
 	var (
@@ -456,6 +461,12 @@ func generateThumbnail(batch int, photos []*Photo, dir string) (string, error) {
 		rowWidth += container.Photo.ThumbWidth
 		counter++
 	}
+
+	// Make sure totalWidth is properly set when we have only a single row
+	if rowWidth > totalWidth {
+		totalWidth = rowWidth
+	}
+	log.Infof("Thumbnail size: %dx%d", totalWidth, totalHeight)
 
 	img := image.NewRGBA(image.Rect(0, 0, totalWidth, totalHeight))
 
