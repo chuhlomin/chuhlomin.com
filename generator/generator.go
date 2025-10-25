@@ -320,15 +320,16 @@ func (g *Generator) processYaml(path string) error {
 		tmpls = map[string]string{}
 	)
 
-	switch path {
-	case "wishlist.yml", "baby-wishlist.yml", "watches.yml":
+	if path == "wishlist.yml" || strings.HasPrefix(path, "wishlist-") {
 		tmpls[strings.Replace(path, ".yml", ".html", 1)] = "wishlist.gohtml"
 		data, err = g.processWishlistItems(fileContent, path)
 		if err != nil {
 			return fmt.Errorf("Error processing wishlist items for %q: %v", path, err)
 		}
 		return g.renderYamlData(data, tmpls)
+	}
 
+	switch path {
 	case "photos.yml":
 		tmpls["photos.html"] = "photos.gohtml"
 		tmpls["photos_ru.html"] = "photos_ru.gohtml"
