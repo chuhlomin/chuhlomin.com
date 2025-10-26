@@ -41,3 +41,6 @@ Example MJML code:
 
 Then running `mjml input.mjml -o output.html` will generate ugly HTML code,
 that can be rendered correctly by email clients.
+
+*Update 2025-10-26*: also check out [MRML](https://github.com/jdrouet/mrml/tree/main/packages/mrml-cli)
+(reimplementation in Rust).

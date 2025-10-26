@@ -41,3 +41,6 @@ https://github.com/mjmlio/mjml
 
 Затем запуск `mjml input.mjml -o output.html` сгенерирует ужасный HTML код,
 который будет корректно отображен в почтовых клиентах.
+
+*Обновление 2025-10-26*: Также посмотрите на [MRML](https://github.com/jdrouet/mrml/tree/main/packages/mrml-cli) 
+(переписанный с NodeJS на Rust)
