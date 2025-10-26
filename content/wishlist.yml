@@ -351,3 +351,9 @@
   type: book
   url: https://www.zupagrafika.com/shop/panelki-pin-badge
   price: €40
+
+- name: Chameleon Ultra
+  type: hardware
+  url: https://lab401.com/products/chameleon-ultra
+  price: €129
+
