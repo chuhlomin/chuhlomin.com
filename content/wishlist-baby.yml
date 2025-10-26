@@ -121,3 +121,14 @@
   url: https://www.flyawaydesigns.com/products/flyaway-kids-bed
   price: $160
   type: travel
+  
+- name: Bycicle
+  url: https://woom.com/en_US/kids-balance-bikes/wow-toddler-self-balancing-bike
+  price: $200
+  type: toy
+
+- name: Foldable Helper Tower
+  url: https://piccalio.com/products/mini-chef-foldable-helper-tower
+  price: £182
+  type: kitchen
+  
