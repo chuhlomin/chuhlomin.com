@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ .Title }} \ {{ i18n "name" "en" }}</title>
-<link rel="stylesheet" href="wishlist.css?crc={{ crc "wishlist.css" }}">
+<link rel="stylesheet" href="styles.css?crc={{ crc "styles.css" }}">
 </head>
 <body>
 
@@ -14,15 +14,19 @@
             <a href="/{{ link "" "en" }}"><div class="user-picture-image"></div></a>
         </div>
         <div class="blog-title">
-            <a class="name" href="/{{ link "" "en" }}">{{ i18n "name" "en" }}</a>&nbsp;<span class="sep">/</span>
+            <a class="name" href="/{{ link "" "en" }}">{{ i18n "name" "en" }}</a>
+            <a href="{{ link "/blog/index.html" .File.Language }}">{{ i18n "blog" .File.Language }}</a>
+            <a href="{{ link "/photos.html" .File.Language }}">{{ i18n "photos" .File.Language }}</a>
             <h1>{{ .Title }}</h1>
         </div>
     </div>
 </div>
 
+<div class="wrapper">
 {{/* collect all .Type in array */}}
 {{ $types := mkslice }}
 {{ range .Items }}
+{{ if eq (len .Type) 0 }}{{ continue }}{{ end }}
 {{ $types = ($types | append .Type) }}
 {{ end }}
 {{/* remove duplicates */}}
@@ -30,11 +34,13 @@
 {{/* sort the slice */}}
 {{ $types = $types | sort }}
 {{/* loop over the slice */}}
+{{ if gt (len $types) 0 }}
 <ul class="filter" id="filter">
 {{ range $types }}
 <li><a href="#{{ . }}">{{ . }}</a></li>
 {{ end }}
 </ul>
+{{ end }}
 
 <div class="items">
 {{ range .Items }}
@@ -47,6 +53,9 @@
     </div>
 </a>
 {{ end }}
+</div>
+</div>
+
 <script>
 var filterEl = document.getElementById("filter");
 var filterItems = filterEl.getElementsByTagName("a");

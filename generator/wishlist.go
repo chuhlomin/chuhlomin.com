@@ -11,7 +11,12 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+type WishlistFile struct {
+	Language string
+}
+
 type PageData struct {
+	File  WishlistFile
 	Title string
 	Items interface{}
 }
@@ -49,6 +54,9 @@ func (g *Generator) processWishlistItems(fileContent []byte, filename string) (P
 	}
 
 	return PageData{
+		File: WishlistFile{
+			Language: "en",
+		},
 		Title: generateTitleFromFilename(filename),
 		Items: items,
 	}, nil
