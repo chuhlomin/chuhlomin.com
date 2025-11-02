@@ -1,11 +1,13 @@
-- name: Car Ken Cash
-  url: https://playforever.us/products/ken-cash
-  price: $55
-  type: toy
-- name: Car UFO Leonessa
-  url: https://playforever.us/products/ufo77-leonessa
-  price: $55
-  type: toy
+# Got it
+# - name: Car Ken Cash
+#   url: https://playforever.us/products/ken-cash
+#   price: $55
+#   type: toy
+# Gifted it to a friend
+# - name: Car UFO Leonessa
+#   url: https://playforever.us/products/ufo77-leonessa
+#   price: $55
+#   type: toy
 - name: Car Leadbelly Burnside
   url: https://playforever.us/products/pl-vf504-lead-belly-burnside
   price: $40
@@ -14,10 +16,11 @@
   url: https://playforever.us/products/pl-vf503-lead-belly-skeeter
   price: $40
   type: toy
-- name: Car Luft Hopper
-  url: https://playforever.us/products/t904-luft-hopper
-  price: $50
-  type: toy
+# Gifted it to a friend
+# - name: Car Luft Hopper
+#   url: https://playforever.us/products/t904-luft-hopper
+#   price: $50
+#   type: toy
 - name: Car Malibu Benjamin
   url: https://playforever.us/products/vm202-malibu-benjamin
   price: $35
@@ -58,10 +61,11 @@
   url: https://computerengineeringforbabies.com/products/babies-big-small-bundle
   type: toy
   price: $60
-- name: The Play Kits For 1-Year-Olds
-  url: https://lovevery.com/products/the-play-kits/1-year-old
-  type: toy
-  price: $80
+# Got it
+# - name: The Play Kits For 1-Year-Olds
+#   url: https://lovevery.com/products/the-play-kits/1-year-old
+#   type: toy
+#   price: $80
 
 - name: NEST plate 195x145mm
   url: https://kinto-usa.com/collections/nest/products/20581?variant=41686274048048
@@ -88,10 +92,11 @@
   price: $65.60
   type: kitchen
 
-- name: Baby Oral Care Set
-  url: https://moonkieshop.com/collections/hot-sale/products/baby-toothbrush-kit?variant=45133935345917
-  price: $9
-  type: health
+# Got a similar one
+# - name: Baby Oral Care Set
+#   url: https://moonkieshop.com/collections/hot-sale/products/baby-toothbrush-kit?variant=45133935345917
+#   price: $9
+#   type: health
 
 - name: Cove Montessori Bookshelf
   url: https://www.nestig.com/products/cove-montessori-bookshelf?variant=47795519455400
@@ -107,10 +112,11 @@
   price: $98
   type: toy
 
-- name: Yoto Mini
-  url: https://us.yotoplay.com/yoto-mini
-  price: $70
-  type: toy
+# Got a similar one
+# - name: Yoto Mini
+#   url: https://us.yotoplay.com/yoto-mini
+#   price: $70
+#   type: toy
 
 - name: Modu blocks
   url: https://modutoy.com/
@@ -121,7 +127,7 @@
   url: https://www.flyawaydesigns.com/products/flyaway-kids-bed
   price: $160
   type: travel
-  
+
 - name: Bycicle
   url: https://woom.com/en_US/kids-balance-bikes/wow-toddler-self-balancing-bike
   price: $200
@@ -131,4 +137,3 @@
   url: https://piccalio.com/products/mini-chef-foldable-helper-tower
   price: £182
   type: kitchen
-  
