@@ -9,6 +9,8 @@ import (
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"gopkg.in/yaml.v3"
+
+	"github.com/chuhlomin/chuhlomin.com/internal/models"
 )
 
 type WishlistFile struct {
@@ -21,19 +23,9 @@ type PageData struct {
 	Items interface{}
 }
 
-// WishlistItem is a struct for items in wishlist.yml file
-type WishlistItem struct {
-	Name  string
-	Type  string
-	URL   string
-	Price string
-
-	Image string // OpenGraph image URL
-}
-
 func (g *Generator) processWishlistItems(fileContent []byte, filename string) (PageData, error) {
 	// unmarshal the file into array of WishlistItem
-	var items []WishlistItem
+	var items []models.WishlistItem
 	err := yaml.Unmarshal(fileContent, &items)
 	if err != nil {
 		return PageData{}, fmt.Errorf("Error unmarshaling file: %v", err)

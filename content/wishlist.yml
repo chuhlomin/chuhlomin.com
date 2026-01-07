@@ -2,358 +2,313 @@
   type: font
   url: https://fsd.it/shop/fonts/pragmatapro/
   price: €200
-
 - name: Proxymark 3 RDV 4
   type: hardware
   url: https://lab401.com/products/proxmark-3-rdv4
   price: €300
-
 - name: RFID Field Detector
   type: hardware
   url: https://lab401.com/products/rfid-field-detector
   price: €17
-
 - name: QSL?
   type: book
   url: https://standardsmanual.com/products/qsl
   price: $60
-
 # Got it
 # - name: Apple AirPods Max (silver)
 #   type: hardware
 #   url: https://www.apple.com/airpods-max/
 #   price: $550
-
 - name: Backbone
   type: hardware
   url: https://playbackbone.com/products/backbone-one-playstation/
   price: $75
-
 # - name: Apple Watch Band
 #   type: wardrobe
 #   url: https://bellroy.com/products/watch-strap?color=evergreen&material=leather&size=large_watch_strap#slide-3
 #   price: $70
-
 - name: App Icon Book
   type: book
   url: https://flarup.shop/products/the-ios-app-icon-book
   price: $73
-
 - name: Pants
   type: wardrobe
   url: https://byltbasics.com/products/everyday-pant-2-0?variant=39835744108646
   price: $84
-
 # Not available anymore
 # - name: Boots
 #   type: wardrobe
 #   url: https://www.nobullproject.com/products/high-top-army-ivory-trainer-mens
 #   price: $140
-
 - name: Sneakers
   type: wardrobe
   url: https://rothys.com/products/mens-rs01-sneaker-bone
   price: $170
-
 - name: Bed
   type: furniture
   url: https://www.thuma.co/products/the-bed?variant=40159566987369
   price: $1300
-
 - name: 'The Works: Anatomy of a City'
   type: book
   url: https://www.amazon.com/Works-Anatomy-City-Kate-Ascher/dp/0143112708
   price: $20
-
 - name: The Visual Display of Quantitative Information
   type: book
   url: https://www.edwardtufte.com/tufte/books_vdqi
   price: $507
-
 - name: Visual Explanations
   type: book
   url: https://www.edwardtufte.com/tufte/books_visex
   price: $20
-
 - name: Beautiful Evidence
   type: book
   url: https://www.edwardtufte.com/tufte/books_be
   price: $45
-
 - name: Transit Maps of the World
   type: book
   url: https://www.amazon.com/Transit-Maps-World-Expanded-Collection/dp/0143128493
   price: $30
-
 - name: Magical Geometry
   type: book
   url: https://www.amazon.com/Magical-Geometry-Graphic-Design-Composition/dp/9881470390
   price: $25
-
 - name: Designing Type
   type: book
   url: https://www.amazon.com/Designing-Type-Karen-Cheng/dp/0300249926
   price: $35
-
 - name: New York City Subway LED map
   type: hardware
   url: https://www.traintrackr.io/product/mta2
   price: $220
-
 - name: LG Oled TV
   type: hardware
   url: https://www.lg.com/us/tvs/lg-oled55c4pua-oled-4k-tv
   price: $1400
-
 # Got it
 # - name: Yeti Rambler 20oz Thumbler
 #   type: thing
 #   url: https://www.yeti.com/drinkware/tumblers/21070060028.html
 #   price: $35
-
 - name: GameShell
   type: hardware
   url: https://www.clockworkpi.com/product-page/gameshell-kit
   price: $130
-
 - name: Empowered
   type: book
   url: https://www.svpg.com/books/empowered-ordinary-people-extraordinary-products/
   price: $20
-
 # Got a different mouse
 # - name: Microsoft Surface Mobile Mouse (Silver)
 #   type: hardware
 #   url: https://www.amazon.com/Microsoft-Surface-Mobile-Mouse-Silver/dp/B07FDQ2MGG/
 #   price: $35
-
 - name: Проектирование виртуальных миров. Теория и практика дизайна уровней
   type: book
   url: https://www.litres.ru/book/mihail-kadikov/proektirovanie-virtualnyh-mirov-teoriya-i-praktika-dizayna-41256719/
   price: 490 ₽
-
 - name: Архитектура видеоигровых миров. Уровень пройден!
   type: book
   url: https://www.litres.ru/book/artemiy-kozlov/arhitektura-videoigrovyh-mirov-uroven-proyden-69569851/
   price: 400 ₽
-
 - name: HomePod mini (white)
   type: hardware
   url: https://www.apple.com/homepod-mini/
   price: $100
-
 - name: Tidbyt 2
   type: hardware
   url: https://gen2.tidbyt.com/
   price: (unknown)
-
 - name: CM-15
   type: hardware
   url: https://teenage.engineering/products/cm-15
   price: $1200
-
 - name: Sayl Chair
   type: furniture
   url: https://www.hermanmiller.com/products/seating/office-chairs/sayl-chairs/
   price: $1200
-
 - name: Borderless Passport Holder
   type: thing
   url: https://wayfindercarry.com/products/borderless-passport-notebook-holder
   price: $32
-
 - name: Little Ben Wall Clock
   type: thing
   url: https://shop.pupupula.com/products/little-ben-wall-clock
   price: $65
-
 - name: Van Der Waals speaker
   type: hardware
   url: https://www.indiegogo.com/projects/van-der-waals--2#/
   price: $450
-
 # Got it
 # - name: PopMount 2 Car & Desk White
 #   type: thing
 #   url: https://www.popsockets.com/en-us/p/popmount-2-car-and-desk-white/802757.html?cgid=dash-mount-popmount
 # price: $30
-
 - name: Analogue Pocket
   type: hardware
   url: https://www.analogue.co/pocket
   price: $220
-
 - name: Tevaplanter
   type: thing
   url: https://tevaplanter.com/products/tevaplanter
   price: $80
-
 - name: Kokoon
   type: thing
   url: https://kokoon.io/en-us/products/philips-sleep-headphones-with-kokoon
   price: $188
-
 - name: 8BitDo Retro Mechanical Keyboard
   type: hardware
   url: https://www.8bitdo.com/retro-mechanical-keyboard-c64/
   price: $100
-
 # Got it
 # - name: Henson Brothers Razor
 #   type: thing
 #   url: https://hensonshaving.com/products/henson-al13-in-aircraft-aluminum
 #   price: $70
-
 - name: The Graphic Design Bible
   type: book
   url: https://www.theoinglis.co.uk/GDB
   price: $23
-
 - name: Leather desk mat
   type: thing
   url: https://ulxstore.com/products/grey-leather-desk-mat
   price: $70
-
 - name: Shinobi keyboard
   type: hardware
   url: https://tex.com.tw/products/shinobi?variant=16969883844698
   price: $185
-
 # Got it
 # - name: ScreenBar Halo Monitor Light + Webcam stand
 #   type: hardware
 #   url: https://www.benq.com/en-us/lighting/monitor-light/screenbar-halo/buy.html
 #   price: $200
-
 - name: Brompton C-Line Explore Bike
   type: thing
   url: https://us.brompton.com/p/787/c-line-explore
   price: $1850
-
 - name: Chord Machine AKT-0.1 by Akuto Studio
   type: hardware
   url: https://www.indiegogo.com/projects/chord-machine-akt-0-1-by-akuto-studio--2#/
   price: $420
-
 - name: Discbound Analog
   type: thing
   url: https://ugmonk.com/collections/analog/products/discbound-analog?variant=44224149553302
   price: $20
-
 - name: The Book. The Ultimate Guide to Rebuilding a Civilization
   type: book
   url: https://howtorebuildcivilization.com/products/the-book?variant=43738853081380
   price: $120
-
 - name: Chess, classic
   type: thing
   url: https://printworksmarket.com/products/chess-classic
   price: €65
-
 # Got a different mouse
 # - name: XM2w 4k Gaming Mouse - White
 #   type: hardware
 #   url: https://www.endgamegear.com/en-us/gaming-mice/xm2w-4k?attribute%5Bcolor%5D=White
 #   price: $120
-
 - name: Analog Weekly Kit
   type: thing
   url: https://elementmade.com/products/analog-weekly-kit-walnut
   price: $80
-
 # Got a similar one
 # - name: Large Wall Clock BC17 White
 #   type: thing
 #   url: https://littleking.online/products/new-large-wall-clock-bc17
 #   price: $80
-
 - name: Human Transit, Revised Edition
   type: book
   url: https://www.amazon.com/Human-Transit-Revised-Thinking-Communities/dp/1642833053?
   price: $35
-
 # Changed my mind
 # - name: Case for AirPods Max
 #   type: thing
 #   url: https://www.amazon.com/dp/B08RJ1GBP8/
 #   price: $39
-
 - name: Everything Must Go
   type: book
   url: https://www.amazon.com/dp/0593317092/
   price: $27
-
 # Got it
 # - name: Tri-Mode Wireless Mouse
 #   type: hardware
 #   url: https://www.lofree.co/products/lofree-touch-pbt-wireless-mouse
 #   price: $70
-
 - name: Sigma BF Camera (white)
   type: hardware
   url: https://www.sigma-global.com/en/cameras/bf/
   price: $2000
-
 # Got it
 # - name: SwitchBot Curtain 3 Combo U Rail
 #   type: hardware
 #   url: https://www.switch-bot.com/products/curtain-3-remote-hub-2-solar-panel-3-combo?_pos=15&_sid=9c63ea14e&_ss=r&variant=43434233659559
 #   price: $290
-
 - name: DJI Pocket 2 Creator Combo
   type: hardware
   url: https://store.dji.com/product/pocket-2-combo?vid=98661
   price: $400
-
 # Changed my mind
 # - name: BUSY Bar
 #   type: hardware
 #   url: https://busy.bar/shop
 #   price: $249
-
 - name: Fujifilm X-S20 Body, Black with XF18-55mmF2.8-4 R LM OIS Lens Kit
   type: hardware
   url: https://shopusa.fujifilm-x.com/x-s20-x-s20/
   price: $1700
-
 - name: 'Managing Local Government: An Essential Guide for Municipal and County Managers'
   type: book
   url: https://www.amazon.com/Managing-Local-Government-Essential-Municipal/dp/1506323375
   price: $84
-
 - name: 'Working: People Talk About What They Do All Day and How They Feel About What They Do'
   type: book
   url: https://www.amazon.com/WORKING-Studs-Terkel/dp/0394478843/
   price: $53
-
 # Got a different one
 # - name: Nike Killshot 2 Leather
 #   type: wardrobe
 #   url: https://www.nike.com/t/killshot-2-leather-mens-shoes-1lEPvIbm/HM9431-001
 #   price: $60
-
 - name: Clove Shoe Mens Brilliant White
   type: wardrobe
   url: https://goclove.com/products/clove-shoe-mens-brilliant-white?variant=39463887241274
   price: $150
-
 - name: Apex Backpack 3.0
   type: wardrobe
   url: https://www.troubadourgoods.com/products/apex-backpack
   price: $250
-
 - name: Bambu Lab A1
   type: hardware
   url: https://us.store.bambulab.com/products/a1
   price: $550
-
 - name: Panelki Set
   type: book
   url: https://www.zupagrafika.com/shop/panelki-pin-badge
   price: €40
-
 - name: Chameleon Ultra
   type: hardware
   url: https://lab401.com/products/chameleon-ultra
   price: €129
-
+- name: iPod Classic 7th Gen Silver (upgraded with USB-C, SDXC, Bluetooth, Taptic Engine)
+  type: hardware
+  url: https://player-mods.com/products/bluetooth-modded-ipod-classic-7th-gen-silver-upgraded-sdxc-personalised-media-player?variant=45143826563382
+  price: $780
+- name: BUSY Bar
+  type: hardware
+  url: https://busy.bar/
+  price: $200
+- name: Airport Wayfinding
+  type: book
+  url: https://www.slanted.de/product/airport-wayfinding/
+  price: 44€
+- name: British Rail Manual
+  type: book
+  url: https://britishrailmanual.com/
+  price: £85
+- name: IdN v29n2
+  type: book
+  url: https://shop.idnworld.com/product/v29n2/
+  price: $26
+- name: idea アイデア issue 324
+  type: book
+  url: https://www.idea-mag.com/idea_magazine/324/
+  price: $20

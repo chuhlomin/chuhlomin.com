@@ -2,3 +2,6 @@ go 1.21.3
 
 use ./generator
 use ./photographer
+use ./cmd/wishlist
+use ./internal/models
+use ./internal/cache

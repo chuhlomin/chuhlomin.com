@@ -1,0 +1,4 @@
+https://example.com/test-product:
+  image: https://example.com/image.jpg
+https://test.example.com:
+  image: https://test.example.com/image2.jpg

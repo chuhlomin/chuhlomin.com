@@ -10,11 +10,13 @@ import (
 	"github.com/chuhlomin/chuhlomin.com/internal/cache"
 )
 
+// openGraphClient is a client for fetching OpenGraph metadata with caching
 type openGraphClient struct {
 	client *http.Client
 	cache  map[string]cache.OpenGraph
 }
 
+// newOpenGraphClient creates a new OpenGraph client with the given timeout and cache file
 func newOpenGraphClient(clientTimeout time.Duration, cacheFile string) (*openGraphClient, error) {
 	ogCache, err := cache.ReadCache(cacheFile)
 	if err != nil {
@@ -28,6 +30,7 @@ func newOpenGraphClient(clientTimeout time.Duration, cacheFile string) (*openGra
 	return &openGraphClient{client: client, cache: ogCache}, nil
 }
 
+// Get retrieves OpenGraph metadata for the given URL (from cache or by fetching)
 func (c *openGraphClient) Get(url string) (cache.OpenGraph, error) {
 	og, ok := c.cache[url]
 	if ok {
@@ -44,10 +47,17 @@ func (c *openGraphClient) Get(url string) (cache.OpenGraph, error) {
 	return og, nil
 }
 
+// Save writes the cache to disk
 func (c *openGraphClient) Save(cacheFile string) error {
 	return cache.SaveCache(cacheFile, c.cache)
 }
 
+// Set adds or updates an OpenGraph entry in the cache
+func (c *openGraphClient) Set(url, imageURL string) {
+	c.cache[url] = cache.OpenGraph{Image: imageURL}
+}
+
+// fetch retrieves OpenGraph metadata from the given URL
 func (c *openGraphClient) fetch(url string) (cache.OpenGraph, error) {
 	resp, err := c.client.Get(url)
 	if err != nil {
@@ -59,6 +69,7 @@ func (c *openGraphClient) fetch(url string) (cache.OpenGraph, error) {
 	return parseOpenGraph(resp.Body)
 }
 
+// parseOpenGraph extracts OpenGraph image from HTML content
 func parseOpenGraph(r io.Reader) (og cache.OpenGraph, err error) {
 	body, err := io.ReadAll(r)
 	if err != nil {
