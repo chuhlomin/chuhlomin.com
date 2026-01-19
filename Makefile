@@ -41,7 +41,7 @@ watch:
 ## photographer-build: build the photographer
 photographer-build:
 	@echo "Building photographer..."
-	@cd photographer && go build -o ../bin/photographer
+	@cd cmd/photographer && go build -o ../../bin/photographer
 
 .PHONY: photographer
 ## photographer: run the photographer
