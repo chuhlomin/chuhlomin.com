@@ -251,10 +251,10 @@
 #   type: hardware
 #   url: https://busy.bar/shop
 #   price: $249
-- name: Fujifilm X-S20 Body, Black with XF18-55mmF2.8-4 R LM OIS Lens Kit
+- name: Fujifilm X-E5 Body, Silver with XF23mmF2.8 R WR Lens Kit
   type: hardware
-  url: https://shopusa.fujifilm-x.com/x-s20-x-s20/
-  price: $1700
+  url: https://shopusa.fujifilm-x.com/x-e5-x-e5/
+  price: $1900
 - name: 'Managing Local Government: An Essential Guide for Municipal and County Managers'
   type: book
   url: https://www.amazon.com/Managing-Local-Government-Essential-Municipal/dp/1506323375
@@ -312,3 +312,11 @@
   type: book
   url: https://www.idea-mag.com/idea_magazine/324/
   price: $20
+- name: idea アイデア issue 352
+  type: book
+  url: https://www.idea-mag.com/en/idea_magazine/352/
+  price: $20
+- name: TRMNL e-ink dashboard
+  type: hardware
+  url: https://usetrmnl.com/
+  price: $139
