@@ -12,11 +12,13 @@ date: 2021-12-06
 Иногда бывает нужно узнать свой IP, или посмотреть информацию о другом IP.  
 Для этих целей есть несколько сервисов:
 
-* https://ip.me
-* https://ifconfig.co
-* https://httpbin.org/ip
-* https://ipinfo.io
-* https://whatismyipaddress.com
+- https://ip.me
+- https://ifconfig.co
+- https://httpbin.org/ip
+- https://ipinfo.io
+- https://whatismyipaddress.com
+- https://ipapi.co/json/
+- https://ip-api.com/json/
 
 Мне же хотелось чего-то более минималистичного, без стилей, чтобы можно было
 пользоваться и из консоли с `curl`.
