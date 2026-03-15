@@ -807,6 +807,33 @@ hr {
   color: var(--color-background-higher);
 }
 
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#sort-select {
+  --shadow-color: 44deg 26% 51%;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background-color: var(--color-background-higher);
+  color: var(--color-text);
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow:
+    0px 0.6px 0.6px hsl(var(--shadow-color) / 0.52),
+    0px 1.1px 1.2px -1.5px hsl(var(--shadow-color) / 0.46),
+    0px 2.9px 3px -3px hsl(var(--shadow-color) / 0.4);
+}
+
 .items {
   display: grid;
   gap: 20px;
@@ -951,6 +978,12 @@ hr {
   .filter a.active {
     background-color: var(--color-link);
     color: var(--color-background-higher);
+  }
+
+  #sort-select {
+    --shadow-color: 240deg 6% 4%;
+    background-color: var(--color-background-higher);
+    color: var(--color-text);
   }
 
   .item {
@@ -1418,5 +1451,38 @@ hr {
 }
 
 .edit #viewer #text {
+  display: block;
+}
+
+/* Project page meta (external link + tech icons) */
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.project-meta__url {
+  font-size: 0.9rem;
+}
+.project-meta__tech {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Image gallery — wrap images in <div class="gallery"> in markdown */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+.gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--border-radius);
+}
+.gallery a {
   display: block;
 }

@@ -531,12 +531,12 @@ func (g *Generator) copyFile(src, dst string) error {
 
 func (g *Generator) renderMarkdown(md *MarkdownFile, ts time.Time) error {
 	tmpl := g.t.Lookup("post.gohtml")
-	// if file.Template != "" {
-	// 	tmpl = defaultTmpl.Lookup(file.Template)
-	// 	if tmpl == nil {
-	// 		return errors.Errorf("template %q not found", file.Template)
-	// 	}
-	// }
+	if md.Template != "" {
+		tmpl = g.t.Lookup(md.Template)
+		if tmpl == nil {
+			return fmt.Errorf("template %q not found", md.Template)
+		}
+	}
 
 	if err := g.renderTemplate(
 		filepath.Join(cfg.OutputDirectory, md.Path),

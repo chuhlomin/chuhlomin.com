@@ -62,6 +62,8 @@ type MarkdownFile struct {
 	Image           string   `yaml:"image"`                      // image associated with the post; it's used to generate the thumbnailPath
 	Tags            tags     `yaml:"tags"`                       // post tags, by default parsed from the post
 	Refs            []string `yaml:"refs"`                       // references to other posts, used to generate the list of related posts
+	ExternalURL     string   `yaml:"external_url"`               // link to the live project
+	Tech            []string `yaml:"tech"`                       // tech slugs matching existing icon CSS classes
 	Images          []image  `yaml:"-"`                          // images in the post
 	Draft           bool     `yaml:"draft"`                      // draft is used to mark post as draft
 }

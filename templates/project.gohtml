@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{ .File.Language }}">
+<head>
+<meta charset="UTF-8">
+<title>{{ stripTags .File.Title }} \ {{ i18n "name" .File.Language }}</title>
+<link rel="stylesheet" href="{{ link "/styles.css?crc=" }}{{ crc "styles.css" }}">
+{{- with .File.Images }}
+{{- $img := index . 0 }}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:image" content="{{ config "RootURL" }}/{{ link $img.Path }}">
+{{- end }}
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ config "RootURL" }}{{ link .File.Path }}">
+<meta property="og:title" content="{{ stripTags .File.Title }} \ {{ i18n "name" .File.Language }}">
+<link rel="canonical" href="{{ .File.Canonical }}">
+{{- $langs := alternates . }}
+{{- $length := len $langs }}
+{{- if gt $length 1 }}
+{{- range $langs }}
+{{- if ne .Language $.File.Language }}
+<link rel="alternate" hreflang="{{ .Language }}" href="{{ config "RootURL" }}{{ link .Path .Language }}">
+{{- end }}
+{{- end }}
+{{- end }}
+{{- template "head" . }}
+</head>
+<body>
+<div class="common">
+    {{- template "header" . }}
+    <div class="wrapper column">
+        <div class="content post">
+            <h1>{{ .File.Title }}</h1>
+            {{- if or .File.ExternalURL .File.Tech }}
+            <div class="project-meta">
+                {{- if .File.ExternalURL }}
+                <a class="project-meta__url" href="{{ .File.ExternalURL }}" target="_blank" rel="noopener noreferrer">
+                    {{ .File.ExternalURL }} ↗
+                </a>
+                {{- end }}
+                {{- if .File.Tech }}
+                <div class="project-meta__tech">
+                    {{- range .File.Tech }}<span class="icon-{{ . }}" title="{{ . }}"></span>{{ end }}
+                </div>
+                {{- end }}
+            </div>
+            {{- end }}
+            {{- .File.Body }}
+        </div>
+    </div>
+</div>
+{{- template "scripts" . }}
+</body>
+</html>

@@ -4,16 +4,26 @@ on:
   push:
     branches:
       - preview/*
+  pull_request:
+    branches:
+      - main
 
 jobs:
   preview:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract preview name
+      - name: Set preview name (push)
+        if: github.event_name == 'push'
         run: echo "PREVIEW_NAME=${GITHUB_REF#refs/heads/preview/}" >> $GITHUB_ENV
+
+      - name: Set preview name (pull_request)
+        if: github.event_name == 'pull_request'
+        run: echo "PREVIEW_NAME=pr-${{ github.event.pull_request.number }}" >> $GITHUB_ENV
 
       - name: Restore cache
         uses: actions/cache@v4
@@ -21,9 +31,14 @@ jobs:
           path: cache
           key: ${{ runner.os }}-cache
 
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: "1.21"
+
       - name: Build
         env:
-          ROOT_URL: https://chuhlomin.com/
+          ROOT_URL: https://${{ env.PREVIEW_NAME }}.homepage-bqu.pages.dev
           REMOVE_HTML_EXT: "1"
           COMMENTS_ENABLED: "1"
           COMMENTS_SITE_ID: "micro"
@@ -32,8 +47,26 @@ jobs:
           make build
 
       - name: Publish
+        id: publish
         uses: cloudflare/wrangler-action@v3.5.0
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages publish output --project-name=homepage --branch=$PREVIEW_NAME --commit-dirty=true
+          command: pages publish output --project-name=homepage --branch=${{ env.PREVIEW_NAME }} --commit-dirty=true
+
+      - name: Find existing PR comment
+        if: github.event_name == 'pull_request'
+        id: find-comment
+        uses: peter-evans/find-comment@v3
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: github-actions[bot]
+          body-contains: "Preview deployment"
+
+      - name: Post PR comment
+        if: github.event_name == 'pull_request' && steps.find-comment.outputs.comment-id == ''
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Preview deployment: https://${{ env.PREVIEW_NAME }}.homepage-bqu.pages.dev
