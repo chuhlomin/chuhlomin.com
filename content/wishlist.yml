@@ -80,10 +80,6 @@
   type: hardware
   url: https://www.traintrackr.io/product/mta2
   price: $220
-- name: LG Oled TV
-  type: hardware
-  url: https://www.lg.com/us/tvs/lg-oled55c4pua-oled-4k-tv
-  price: $1400
 # Got it
 # - name: Yeti Rambler 20oz Thumbler
 #   type: thing
@@ -320,3 +316,7 @@
   type: hardware
   url: https://usetrmnl.com/
   price: $139
+- name: LG OLED evo AI G5 4K Smart TV 2025
+  type: hardware
+  url: https://www.lg.com/us/tvs/lg-oled55g5wua-oled-4k-tv
+  price: $1,799.99

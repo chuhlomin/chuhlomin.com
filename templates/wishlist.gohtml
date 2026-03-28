@@ -42,9 +42,20 @@
 </ul>
 {{ end }}
 
-<div class="items">
+<div class="controls">
+    <div class="sort-control">
+        <label for="sort-select">Sort:</label>
+        <select id="sort-select">
+            <option value="default" selected>Newer on top</option>
+            <option value="price-asc">From less to more expensive</option>
+            <option value="price-desc">From more to less expensive</option>
+        </select>
+    </div>
+</div>
+
+<div class="items" id="items">
 {{ range .Items }}
-<a class="item" href="{{ .URL }}" data-type="{{ .Type }}" style="--image: url('{{ .Image }}')">
+<a class="item" href="{{ .URL }}" data-type="{{ .Type }}" data-price="{{ .NormalizedPrice }}" style="--image: url('{{ .Image }}')">
     <div class="image"></div>
     <div class="info">
         <span class="name">{{ .Name }}</span>
@@ -58,9 +69,27 @@
 
 <script>
 var filterEl = document.getElementById("filter");
-var filterItems = filterEl.getElementsByTagName("a");
+var filterItems = filterEl ? filterEl.getElementsByTagName("a") : [];
 
+var itemsContainer = document.getElementById("items");
 var items = document.getElementsByClassName("item");
+
+/* Store original order on page load */
+var originalOrder = [];
+for (var i = 0; i < items.length; i++) {
+    originalOrder.push(items[i]);
+}
+
+function applyFilter() {
+    var type = window.location.hash ? window.location.hash.substring(1) : "";
+    for (var i = 0; i < items.length; i++) {
+        if (type == "" || items[i].dataset.type == type) {
+            items[i].style.display = "flex";
+        } else {
+            items[i].style.display = "none";
+        }
+    }
+}
 
 function filter(type, event) {
     /* if type is empty, show all items */
@@ -74,7 +103,7 @@ function filter(type, event) {
         }
         /* remove hash from url */
         window.location.hash = "";
-        event.preventDefault();
+        if (event) event.preventDefault();
         return;
     }
 
@@ -96,6 +125,45 @@ function filter(type, event) {
         }
     }
 }
+
+function sortItems(sortBy) {
+    var itemsArray = Array.prototype.slice.call(items);
+
+    if (sortBy == "default") {
+        /* restore original order */
+        itemsArray = originalOrder.slice();
+    } else if (sortBy == "price-asc" || sortBy == "price-desc") {
+        itemsArray.sort(function(a, b) {
+            var priceA = parseInt(a.dataset.price, 10);
+            var priceB = parseInt(b.dataset.price, 10);
+
+            /* Items with unknown price (-1) go to the end */
+            if (priceA == -1 && priceB == -1) return 0;
+            if (priceA == -1) return 1;
+            if (priceB == -1) return -1;
+
+            if (sortBy == "price-asc") {
+                return priceA - priceB;
+            } else {
+                return priceB - priceA;
+            }
+        });
+    }
+
+    /* Re-append items in sorted order */
+    for (var i = 0; i < itemsArray.length; i++) {
+        itemsContainer.appendChild(itemsArray[i]);
+    }
+
+    /* Re-apply active filter */
+    applyFilter();
+}
+
+/* Sort select change handler */
+var sortSelect = document.getElementById("sort-select");
+sortSelect.addEventListener("change", function(e) {
+    sortItems(e.target.value);
+});
 
 /* on start check anchor link */
 window.onload = function() {
