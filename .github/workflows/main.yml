@@ -10,18 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
 
       - name: Restore cache
-        uses: actions/cache@v4
+        uses: actions/cache@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           path: cache
           key: ${{ runner.os }}-cache
 
       - name: Setup Go
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417 # v6
         with:
-          go-version: "1.21"
+          go-version-file: generator/go.mod
 
       - name: Build
         env:
@@ -37,7 +37,7 @@ jobs:
           make build
 
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3.5.0
+        uses: cloudflare/wrangler-action@a84dcc6dd36c8769fbff7e622308c8050fc41f4f # v3.5.0
         if: github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip deploy]')
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}

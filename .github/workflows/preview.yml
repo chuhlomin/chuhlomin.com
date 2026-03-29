@@ -15,7 +15,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
 
       - name: Set preview name (push)
         if: github.event_name == 'push'
@@ -26,15 +26,15 @@ jobs:
         run: echo "PREVIEW_NAME=pr-${{ github.event.pull_request.number }}" >> $GITHUB_ENV
 
       - name: Restore cache
-        uses: actions/cache@v4
+        uses: actions/cache@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           path: cache
-          key: ${{ runner.os }}-cache
+          key: ${{ runner.os }}-cache-preview
 
       - name: Setup Go
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417 # v6
         with:
-          go-version: "1.21"
+          go-version-file: generator/go.mod
 
       - name: Build
         env:
@@ -48,7 +48,7 @@ jobs:
 
       - name: Publish
         id: publish
-        uses: cloudflare/wrangler-action@v3.5.0
+        uses: cloudflare/wrangler-action@a84dcc6dd36c8769fbff7e622308c8050fc41f4f # v3.5.0
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
@@ -57,16 +57,18 @@ jobs:
       - name: Find existing PR comment
         if: github.event_name == 'pull_request'
         id: find-comment
-        uses: peter-evans/find-comment@v3
+        uses: peter-evans/find-comment@3eae4d37986fb5a8592848f6a574fdf654e61f9e # v3
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: github-actions[bot]
           body-contains: "Preview deployment"
 
-      - name: Post PR comment
-        if: github.event_name == 'pull_request' && steps.find-comment.outputs.comment-id == ''
-        uses: peter-evans/create-or-update-comment@v4
+      - name: Upsert PR comment
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4
         with:
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
+          edit-mode: replace
           body: |
             Preview deployment: https://${{ env.PREVIEW_NAME }}.homepage-bqu.pages.dev
