@@ -1,37 +1,37 @@
 {{ define "header" }}
 <div class="flag">
-    <div class="header-content">
-        <div class="logo">
-            {{ if eq .File.ID "index.gohtml" }}
+    <div class="header-top">
+        {{ if eq .File.ID "index.gohtml" }}
+        <div class="header-wordmark">
             <div class="user-picture-image"></div>
-            {{ else }}
-            <a href="/{{ link "" .File.Language }}"><div class="user-picture-image"></div></a>
+            Constantine Chukhlomin
+        </div>
+        {{ else }}
+        <a class="header-wordmark" href="/{{ link "" .File.Language }}">
+            <div class="user-picture-image"></div>
+            Constantine Chukhlomin
+        </a>
+        {{ end }}
+        <div class="header-meta">
+            <a href="{{ link "/blog/feed.atom" .File.Language }}" class="feed-icon"></a>
+            {{ $langs := alternates . }}
+            {{ $length := len $langs }}
+            {{ if gt $length 1 }}
+            {{ range $langs }}
+                {{ if ne .Language $.File.Language }}
+                    <a class="lang lang-{{ .Language }}" href="{{ link .Path .Language }}">{{ .Language }}</a>
+                {{ end }}
+            {{ end }}
             {{ end }}
         </div>
-        <div class="blog-title">
-            <a class="name" href="/{{ link "" .File.Language }}">{{ i18n "name" .File.Language }}</a>
-            {{ if eq .File.ID "blog/index.gohtml" }}
-            <span>{{ i18n "blog" .File.Language }}</span>
-            {{ else }}
-            <a href="{{ link "/blog/index.html" .File.Language }}">{{ i18n "blog" .File.Language }}</a>
-            {{ end }}
-
-            <a href="{{ link "/photos.html" .File.Language }}">{{ i18n "photos" .File.Language }}</a>
-
-            <div class="extra">
-                <a href="{{ link "/blog/feed.atom" .File.Language }}" class="feed-icon"></a>
-
-                {{ $langs := alternates . }}
-                {{ $length := len $langs }}
-                {{ if gt $length 1 }}
-                {{ range $langs }}
-                    {{ if ne .Language $.File.Language }}
-                        <a class="lang lang-{{ .Language }}" href="{{ link .Path .Language }}">{{ .Language }}</a>
-                    {{ end }}
-                {{ end }}
-                {{ end }}
-            </div>
-        </div>
+    </div>
+    <div class="header-nav">
+        {{ if eq .File.ID "blog/index.gohtml" }}
+        <span>{{ i18n "blog" .File.Language }}</span>
+        {{ else }}
+        <a href="{{ link "/blog/index.html" .File.Language }}">{{ i18n "blog" .File.Language }}</a>
+        {{ end }}
+        <a href="{{ link "/photos.html" .File.Language }}">{{ i18n "photos" .File.Language }}</a>
     </div>
 </div>
 {{ end }}
